@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.commands;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -15,7 +15,7 @@ public class SpawnCommand implements CommandExecutor {
     if (sender instanceof Player) {
       Player player = (Player)sender;
       if (args.length == 0) {
-        FileConfiguration config = Main.getPlugin().getConfig();
+        FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
         World world = Bukkit.getWorld(config.getString("Spawn.World"));
         double x = config.getDouble("Spawn.X");
         double y = config.getDouble("Spawn.Y");

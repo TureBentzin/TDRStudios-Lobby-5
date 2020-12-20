@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.Navigator;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -109,7 +109,7 @@ public class CompassNavigator implements Listener {
       event.setCancelled(true);
       switch (event.getCurrentItem().getType()) {
         case NETHER_STAR:
-          config = Main.getPlugin().getConfig();
+          config = LobbyPlugin.getPlugin().getConfig();
           world = Bukkit.getWorld(config.getString("Spawn.World"));
           x = config.getDouble("Spawn.X");
           y = config.getDouble("Spawn.Y");
@@ -121,7 +121,7 @@ public class CompassNavigator implements Listener {
           player.playSound(player.getLocation(), Sound.FIREWORK_BLAST, 10.0F, 1.0F);
           return;
         case GRASS:
-          setlobbyspawn1config = Main.getPlugin().getConfig();
+          setlobbyspawn1config = LobbyPlugin.getPlugin().getConfig();
           setlobbyspawn1world = Bukkit.getWorld(setlobbyspawn1config.getString("lobbySpawn1.World"));
           setlobbyspawn1x = setlobbyspawn1config.getDouble("lobbySpawn1.X");
           setlobbyspawn1y = setlobbyspawn1config.getDouble("lobbySpawn1.Y");
@@ -133,7 +133,7 @@ public class CompassNavigator implements Listener {
           player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
           return;
         case BED:
-          setlobbyspawn2config = Main.getPlugin().getConfig();
+          setlobbyspawn2config = LobbyPlugin.getPlugin().getConfig();
           setlobbyspawn2world = Bukkit.getWorld(setlobbyspawn2config.getString("lobbySpawn2.World"));
           setlobbyspawn2x = setlobbyspawn2config.getDouble("lobbySpawn2.X");
           setlobbyspawn2y = setlobbyspawn2config.getDouble("lobbySpawn2.Y");
@@ -145,7 +145,7 @@ public class CompassNavigator implements Listener {
           player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
           return;
         case DIAMOND_PICKAXE:
-          setlobbyspawn3config = Main.getPlugin().getConfig();
+          setlobbyspawn3config = LobbyPlugin.getPlugin().getConfig();
           setlobbyspawn3world = Bukkit.getWorld(setlobbyspawn3config.getString("lobbySpawn3.World"));
           setlobbyspawn3x = setlobbyspawn3config.getDouble("lobbySpawn3.X");
           setlobbyspawn3y = setlobbyspawn3config.getDouble("lobbySpawn3.Y");
@@ -157,7 +157,7 @@ public class CompassNavigator implements Listener {
           player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
           return;
         case DIAMOND_AXE:
-          setlobbyspawn4config = Main.getPlugin().getConfig();
+          setlobbyspawn4config = LobbyPlugin.getPlugin().getConfig();
           setlobbyspawn4world = Bukkit.getWorld(setlobbyspawn4config.getString("lobbySpawn4.World"));
           setlobbyspawn4x = setlobbyspawn4config.getDouble("lobbySpawn4.X");
           setlobbyspawn4y = setlobbyspawn4config.getDouble("lobbySpawn4.Y");
@@ -169,7 +169,7 @@ public class CompassNavigator implements Listener {
           player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
           return;
         case DIAMOND_SWORD:
-          setlobbyspawn5config = Main.getPlugin().getConfig();
+          setlobbyspawn5config = LobbyPlugin.getPlugin().getConfig();
           setlobbyspawn5world = Bukkit.getWorld(setlobbyspawn5config.getString("lobbySpawn5.World"));
           setlobbyspawn5x = setlobbyspawn5config.getDouble("lobbySpawn5.X");
           setlobbyspawn5y = setlobbyspawn5config.getDouble("lobbySpawn5.Y");

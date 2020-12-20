@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.listeners;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -43,7 +43,7 @@ public class JoinListener implements Listener {
     playerInventory.setItem(1, item2);
     playerInventory.setItem(4, item1);
     playerInventory.setItem(8, item4);
-    FileConfiguration config = Main.getPlugin().getConfig();
+    FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
     World world = Bukkit.getWorld(config.getString("Spawn.World"));
     double x = config.getDouble("Spawn.X");
     double y = config.getDouble("Spawn.Y");

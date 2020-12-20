@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.Navigator;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,7 +21,7 @@ public class Einstellungen implements Listener {
   
   private final String BEWERTEN_GUI_NAME = "§a►  Bewerten";
   
-  private Main plugin;
+  private LobbyPlugin plugin;
   
   private FileConfiguration config;
   
@@ -100,7 +100,7 @@ public class Einstellungen implements Listener {
       switch (event.getCurrentItem().getType()) {
         case REDSTONE_TORCH_ON:
           if (player.hasPermission("DatenInfo")) {
-            FileConfiguration setlobbyspawn1config = Main.getPlugin().getConfig();
+            FileConfiguration setlobbyspawn1config = LobbyPlugin.getPlugin().getConfig();
             World setlobbyspawn1world = Bukkit.getWorld(setlobbyspawn1config.getString("lobbySpawn1.World"));
             double setlobbyspawn1x = setlobbyspawn1config.getDouble("lobbySpawn1.X");
             double setlobbyspawn1y = setlobbyspawn1config.getDouble("lobbySpawn1.Y");
@@ -108,7 +108,7 @@ public class Einstellungen implements Listener {
             float setlobbyspawn1yaw = (float)setlobbyspawn1config.getDouble("lobbySpawn1.Yaw");
             float setlobbyspawn1pitch = (float)setlobbyspawn1config.getDouble("lobbySpawn1.Pitch");
             Location setlobbyspawn1location = new Location(setlobbyspawn1world, setlobbyspawn1x, setlobbyspawn1y, setlobbyspawn1z, setlobbyspawn1yaw, setlobbyspawn1pitch);
-            FileConfiguration config = Main.getPlugin().getConfig();
+            FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
             World world = Bukkit.getWorld(config.getString("Spawn.World"));
             double x = config.getDouble("Spawn.X");
             double y = config.getDouble("Spawn.Y");
@@ -116,7 +116,7 @@ public class Einstellungen implements Listener {
             float yaw = (float)config.getDouble("Spawn.Yaw");
             float pitch = (float)config.getDouble("Spawn.Pitch");
             Location location = new Location(world, x, y, z, yaw, pitch);
-            FileConfiguration setlobbyspawn2config = Main.getPlugin().getConfig();
+            FileConfiguration setlobbyspawn2config = LobbyPlugin.getPlugin().getConfig();
             World setlobbyspawn2world = Bukkit.getWorld(setlobbyspawn2config.getString("lobbySpawn2.World"));
             double setlobbyspawn2x = setlobbyspawn2config.getDouble("lobbySpawn2.X");
             double setlobbyspawn2y = setlobbyspawn2config.getDouble("lobbySpawn2.Y");
