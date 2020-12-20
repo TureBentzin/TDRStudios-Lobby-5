@@ -18,6 +18,7 @@ import net.juligames.lobbyplugin.listeners.JoinListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -33,6 +34,7 @@ public class LobbyPlugin extends JavaPlugin {
 
   public void onEnable() {
     initChat();
+    chat.send((Player) Bukkit.getOnlinePlayers(), "This Plugin is currently in Maintenance!");
     plugin = this;
     getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
     getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
