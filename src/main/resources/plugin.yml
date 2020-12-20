@@ -1,0 +1,25 @@
+name: LobbyPlugin
+version: 1.1
+main: net.juligames.lobbyplugin.Main
+
+commands:
+   setspawn:
+     description: Setze den Spawnpunkt mit /setspawn
+   spawn:
+     description: Teleportiere dich zum Spawn mit /spawn
+   setlobbyspawn1:
+     description: Setze den Spawnpunkt für das erste Lobbyitem mit /setlobbyspawn1
+   setlobbyspawn2:
+     description: Setze den Spawnpunkt für das 2te Lobbyitem mit /setlobbyspawn2
+   setlobbyspawn3:
+     description: Setze den Spawnpunkt für das 3te Lobbyitem mit /setlobbyspawn3
+   setlobbyspawn4:
+     description: Setze den Spawnpunkt für das 4te Lobbyitem mit /setlobbyspawn4
+   setlobbyspawn5:
+     description: Setze den Spawnpunkt für das 5te Lobbyitem mit /setlobbyspawn5
+   gm:
+     description: Ändere deinen Gamemode mit /gm [0] [1] [2] [3]
+   lv:
+     description: Zeige die Version vom Plugin an.
+   lobbyversion:
+     description: Zeige die Version vom Plugin an.
