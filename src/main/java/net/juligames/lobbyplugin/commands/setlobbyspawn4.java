@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.commands;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,14 +13,14 @@ public class setlobbyspawn4 implements CommandExecutor {
       Player player = (Player)sender;
       if (player.hasPermission("setlobbyspawn4")) {
         if (args.length == 0) {
-          FileConfiguration config = Main.getPlugin().getConfig();
+          FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
           config.set("lobbySpawn4.World", player.getWorld().getName());
           config.set("lobbySpawn4.X", Double.valueOf(player.getLocation().getX()));
           config.set("lobbySpawn4.Y", Double.valueOf(player.getLocation().getY()));
           config.set("lobbySpawn4.Z", Double.valueOf(player.getLocation().getZ()));
           config.set("lobbySpawn4.Yaw", Float.valueOf(player.getLocation().getYaw()));
           config.set("lobbySpawn4.Pitch", Float.valueOf(player.getLocation().getPitch()));
-          Main.getPlugin().saveConfig();
+          LobbyPlugin.getPlugin().saveConfig();
           player.sendMessage("§8[§eInfo§8]§a Du hast den Lobbyspawnpunkt gesetzt!");
         } else {
           player.sendMessage("§8[§e!§8]§a Bitte benutze /setlobbyspawn");

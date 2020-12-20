@@ -16,16 +16,23 @@ import net.juligames.lobbyplugin.commands.setspawn;
 import net.juligames.lobbyplugin.events.allgemein;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin {
-  private static Main plugin;
-  
+public class LobbyPlugin extends JavaPlugin {
+  private static LobbyPlugin plugin;
+  private static Chat chat;
+
+  public static Chat getChat() {
+    return chat;
+  }
+
   public void onEnable() {
+    initChat();
     plugin = this;
     getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
     getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
@@ -45,8 +52,13 @@ public class Main extends JavaPlugin {
     pluginManager.registerEvents((Listener)new allgemein(), (Plugin)this);
     pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
   }
+
+  public void initChat() {
+    Chat.setChatColor(ChatColor.GOLD);
+    Chat.setPrefix(ChatColor.BLACK + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.BLACK + "] " + Chat.getChatColor());
+  }
   
-  public static Main getPlugin() {
+  public static LobbyPlugin getPlugin() {
     return plugin;
   }
 }

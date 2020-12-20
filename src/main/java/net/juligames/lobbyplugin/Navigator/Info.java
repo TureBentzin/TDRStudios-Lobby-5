@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.Navigator;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class Info implements Listener {
   private final String GUI_NAME = "§a►  by Zzocker77";
   
-  private Main plugin;
+  private LobbyPlugin plugin;
   
   private FileConfiguration config;
   

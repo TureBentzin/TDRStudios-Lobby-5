@@ -1,6 +1,6 @@
 package net.juligames.lobbyplugin.Navigator;
 
-import net.juligames.lobbyplugin.Main;
+import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,7 +20,7 @@ public class Cosmetics implements Listener {
   
   private final String SHOP_NAME = "§a► Shop | Immer 24 Stunden";
   
-  private Main plugin;
+  private LobbyPlugin plugin;
   
   private FileConfiguration config;
   

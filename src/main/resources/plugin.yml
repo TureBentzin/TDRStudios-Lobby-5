@@ -1,6 +1,6 @@
 name: LobbyPlugin
 version: 1.1
-main: net.juligames.lobbyplugin.Main
+main: net.juligames.lobbyplugin.LobbyPlugin
 
 commands:
    setspawn:
