@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class setspawn implements CommandExecutor {
+/*public class setspawn implements CommandExecutor {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if (sender instanceof Player) {
       Player player = (Player)sender;
@@ -32,3 +32,6 @@ public class setspawn implements CommandExecutor {
     return false;
   }
 }
+*/
+
+
