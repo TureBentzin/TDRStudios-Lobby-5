@@ -23,6 +23,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class LobbyPlugin extends JavaPlugin {
   private static LobbyPlugin plugin;
+
+  public static void setPlugin(LobbyPlugin plugin) {
+    LobbyPlugin.plugin = plugin;
+  }
+
   private static Chat chat;
   private static MessageManager messageManager;
   private static Console log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
@@ -40,6 +45,10 @@ public class LobbyPlugin extends JavaPlugin {
     return chat;
   }
 
+  public LobbyPlugin() {
+    //This is a Temp Fix for the Issue-InvalidPluginExeption #3
+    setPlugin(this);
+  }
   public void onEnable() {
 
     getLog().send("JavaPlugin by tdrstudios.de load!");
