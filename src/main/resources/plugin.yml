@@ -9,15 +9,15 @@ commands:
      description: Setze den Spawnpunkt mit /setspawn
    spawn:
      description: Teleportiere dich zum Spawn mit /spawn
-   setlobbyspawn1:
+   setlobbyWarp1:
      description: Setze den Spawnpunkt für das erste Lobbyitem mit /setlobbyspawn1
-   setlobbyspawn2:
+   setlobbyWarp2:
      description: Setze den Spawnpunkt für das 2te Lobbyitem mit /setlobbyspawn2
-   setlobbyspawn3:
+   setlobbyWarp3:
      description: Setze den Spawnpunkt für das 3te Lobbyitem mit /setlobbyspawn3
-   setlobbyspawn4:
+   setlobbyWarp4:
      description: Setze den Spawnpunkt für das 4te Lobbyitem mit /setlobbyspawn4
-   setlobbyspawn5:
+   setlobbyWarp5:
      description: Setze den Spawnpunkt für das 5te Lobbyitem mit /setlobbyspawn5
    gm:
      description: Ändere deinen Gamemode mit /gm [0] [1] [2] [3]
