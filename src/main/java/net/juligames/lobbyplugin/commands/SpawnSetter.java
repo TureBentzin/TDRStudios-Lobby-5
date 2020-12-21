@@ -3,6 +3,9 @@ package net.juligames.lobbyplugin.commands;
 import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Chat;
 import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.msgs.Message;
+import net.juligames.lobbyplugin.msgs.MessageManager;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +20,15 @@ public class SpawnSetter implements CommandExecutor{
     private Permission permission;
     private FileConfiguration config;
     private Console log = new Console(getName(), this.getClass().getSimpleName(), "!");
+    private Command command;
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    public Command getCommand() {
+        return command;
+    }
 
     public Console getConsole() {
         return log;
@@ -52,6 +64,7 @@ public class SpawnSetter implements CommandExecutor{
         setPermission(new Permission(permission, "The Permission for : " + getName() + "!"));
     }
         public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        setCommand(command);
             if (sender instanceof Player) {
                 Player player = (Player)sender;
                 if (player.hasPermission(getPermission())) {
@@ -73,6 +86,12 @@ public class SpawnSetter implements CommandExecutor{
                 }
             }
             return false;
+        }
+        public void  registerMSGs() {
+            MessageManager manager = LobbyPlugin.getMessageManager();
+            manager.registerMessage(new Message("spawn.setter." + getName() +".success","You have set the position for " + Chat.getAccentColor() + getName() + Chat.getChatColor() + "!"));
+            manager.registerMessage(new Message("spawn.setter." + getName() + ".error.arguments" , Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + getCommand().getUsage() + Chat.getChatColor() + "!"));
+
         }
 
 
