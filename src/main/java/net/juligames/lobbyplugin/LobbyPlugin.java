@@ -32,15 +32,13 @@ public class LobbyPlugin extends JavaPlugin {
 
   public void onEnable() {
     initChat();
-    chat.send((Player) Bukkit.getOnlinePlayers(), "This Plugin is currently in Maintenance!");
+    chat.send((Player[]) Bukkit.getOnlinePlayers().toArray(), "This Plugin is currently in Maintenance!");
     plugin = this;
    // getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
-    getCommand("setLobbySpawn").setExecutor(new SpawnSetter("setspawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
-    getCommand("setLobbyWarp1").setExecutor(new SpawnSetter("setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
-    getCommand("setLobbyWarp2").setExecutor(new SpawnSetter("setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
-    getCommand("setLobbyWarp3").setExecutor(new SpawnSetter("setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
-    getCommand("setLobbyWarp4").setExecutor(new SpawnSetter("setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
-    getCommand("setLobbyWarp5").setExecutor(new SpawnSetter("setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
+
+    registerMessages();
+    registerCommands();
+
     getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
 
 
@@ -62,6 +60,14 @@ public class LobbyPlugin extends JavaPlugin {
   }
   private void registerMessages() {
 
+  }
+  private void registerCommands() {
+    getCommand("setLobbySpawn").setExecutor(new SpawnSetter("setspawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
+    getCommand("setLobbyWarp1").setExecutor(new SpawnSetter("setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
+    getCommand("setLobbyWarp2").setExecutor(new SpawnSetter("setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
+    getCommand("setLobbyWarp3").setExecutor(new SpawnSetter("setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
+    getCommand("setLobbyWarp4").setExecutor(new SpawnSetter("setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
+    getCommand("setLobbyWarp5").setExecutor(new SpawnSetter("setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
   }
   
   public static LobbyPlugin getPlugin() {
