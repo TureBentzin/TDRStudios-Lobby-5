@@ -5,7 +5,10 @@ import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
 import net.juligames.lobbyplugin.Navigator.Info;
-import net.juligames.lobbyplugin.commands.*;
+import net.juligames.lobbyplugin.commands.SpawnCommand;
+import net.juligames.lobbyplugin.commands.SpawnSetter;
+import net.juligames.lobbyplugin.commands.Versioncheck;
+import net.juligames.lobbyplugin.commands.gamemode0;
 import net.juligames.lobbyplugin.events.allgemein;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
@@ -39,6 +42,7 @@ public class LobbyPlugin extends JavaPlugin {
 
   public void onEnable() {
 
+    getLog().send("JavaPlugin by tdrstudios.de load!");
     initChat();
     chat.send((Player[]) Bukkit.getOnlinePlayers().toArray(), "This Plugin is currently in Maintenance!");
     plugin = this;
