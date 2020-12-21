@@ -1,10 +1,18 @@
 package net.juligames.lobbyplugin;
 
+import net.juligames.lobbyplugin.msgs.Message;
+import net.juligames.lobbyplugin.msgs.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class Chat {
+
+    public static String buildSendS(String message) {
+        return getPrefix() + message;
+    }
+
     public static String Prefix = "null ";
+
     public static String getPrefix() {
         return Prefix;
     }
@@ -20,6 +28,23 @@ public class Chat {
         Chat.chatColor = chatColor;
     }
 
+   // public static String
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //For Object
     public Player[] players;
 
     public void setPlayers(Player[] players) {
@@ -44,4 +69,17 @@ public class Chat {
             }
         }
     }
+    public String buildSend(String message) {
+        return getPrefix() + message;
+   }
+
+   public void sendMessage(Message message) {
+        send(message.getContent());
+   }
+   public void sendMessage(int id) {
+        sendMessage(LobbyPlugin.getMessageManager().getMessageByID(id));
+   }
+   public void sendMessage(String name) {
+        sendMessage(LobbyPlugin.getMessageManager().getMessageByName(name));
+   }
 }

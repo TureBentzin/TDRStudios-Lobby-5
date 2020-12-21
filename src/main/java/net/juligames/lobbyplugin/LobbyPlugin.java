@@ -15,6 +15,7 @@ import net.juligames.lobbyplugin.commands.setlobbyspawn5;
 import net.juligames.lobbyplugin.commands.setspawn;
 import net.juligames.lobbyplugin.events.allgemein;
 import net.juligames.lobbyplugin.listeners.JoinListener;
+import net.juligames.lobbyplugin.msgs.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
@@ -27,6 +28,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class LobbyPlugin extends JavaPlugin {
   private static LobbyPlugin plugin;
   private static Chat chat;
+  private static MessageManager messageManager;
+
+  public static MessageManager getMessageManager() {
+    return messageManager;
+  }
 
   public static Chat getChat() {
     return chat;
@@ -58,6 +64,9 @@ public class LobbyPlugin extends JavaPlugin {
   public void initChat() {
     Chat.setChatColor(ChatColor.GOLD);
     Chat.setPrefix(ChatColor.BLACK + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.BLACK + "] " + Chat.getChatColor());
+  }
+  private void registerMessages() {
+
   }
   
   public static LobbyPlugin getPlugin() {
