@@ -1,5 +1,6 @@
 package net.juligames.lobbyplugin;
 
+import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
@@ -21,16 +22,23 @@ public class LobbyPlugin extends JavaPlugin {
   private static LobbyPlugin plugin;
   private static Chat chat;
   private static MessageManager messageManager;
+  private static Console log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
+
+  public static Console getLog() {
+    return log;
+  }
 
   public static MessageManager getMessageManager() {
     return messageManager;
   }
+
 
   public static Chat getChat() {
     return chat;
   }
 
   public void onEnable() {
+
     initChat();
     chat.send((Player[]) Bukkit.getOnlinePlayers().toArray(), "This Plugin is currently in Maintenance!");
     plugin = this;
