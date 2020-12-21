@@ -21,7 +21,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class LobbyPlugin extends JavaPlugin {
@@ -54,6 +53,7 @@ public class LobbyPlugin extends JavaPlugin {
   public void onEnable() {
 
     setPlugin(this);
+    chat = new Chat();
     log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
     getLog().send("JavaPlugin by tdrstudios.de load!");
     initChat();
