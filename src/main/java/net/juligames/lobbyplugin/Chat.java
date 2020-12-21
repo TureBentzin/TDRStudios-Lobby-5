@@ -11,7 +11,7 @@ public class Chat {
         return getPrefix() + message;
     }
 
-    public static String Prefix = "null ";
+    private static String Prefix = "null ";
 
     public static String getPrefix() {
         return Prefix;
@@ -20,15 +20,25 @@ public class Chat {
         Prefix = prefix;
     }
 
-    public static ChatColor chatColor = ChatColor.AQUA;
+    private static ChatColor chatColor = ChatColor.AQUA;
     public static ChatColor getChatColor() {
         return chatColor;
     }
     public static void setChatColor(ChatColor chatColor) {
         Chat.chatColor = chatColor;
     }
+    private static ChatColor ErrorColor = ChatColor.RED;
 
-   // public static String
+    private static ChatColor AccentColor = ChatColor.BLUE;
+
+    public static ChatColor getAccentColor() {
+        return AccentColor;
+    }
+
+    public static ChatColor getErrorColor() {
+        return ErrorColor;
+    }
+    // public static String
 
 
 
