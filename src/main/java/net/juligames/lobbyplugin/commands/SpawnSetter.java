@@ -3,6 +3,7 @@ package net.juligames.lobbyplugin.commands;
 import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Chat;
 import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.msgs.LackingPermissionMessage;
 import net.juligames.lobbyplugin.msgs.Message;
 import net.juligames.lobbyplugin.msgs.MessageManager;
 import org.bukkit.ChatColor;
@@ -59,6 +60,7 @@ public class SpawnSetter implements CommandExecutor{
 
     public SpawnSetter(String pname , String permission, FileConfiguration configuration) {
         log.send("Init : " + pname);
+        registerMSGs();
         setConfig(configuration);
         setName(pname);
         setPermission(new Permission(permission, "The Permission for : " + getName() + "!"));
@@ -66,7 +68,10 @@ public class SpawnSetter implements CommandExecutor{
         public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         setCommand(command);
             if (sender instanceof Player) {
-                Player player = (Player)sender;
+                Player player = (Player) sender;
+                Chat chat = new Chat();
+                chat.setPlayers(new Player[]{player});
+
                 if (player.hasPermission(getPermission())) {
                     if (args.length == 0) {
                         FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
@@ -77,12 +82,16 @@ public class SpawnSetter implements CommandExecutor{
                         config.set(getName() +".Yaw", Float.valueOf(player.getLocation().getYaw()));
                         config.set(getName() +".Pitch", Float.valueOf(player.getLocation().getPitch()));
                         LobbyPlugin.getPlugin().saveConfig();
-                        player.sendMessage("§8[§eInfo§8]§a Du hast den Lobbyspawnpunkt gesetzt!");
+
+                        chat.sendMessage("spawn.setter." + getName() + ".success");
                     } else {
-                        player.sendMessage("§8[§e!§8]§a Bitte benutze /setlobbyspawn");
+                       // player.sendMessage("§8[§e!§8]§a Bitte benutze /setlobbyspawn");
+                       chat.sendMessage(LobbyPlugin.getMessageManager().getMessageByName("spawn.setter." + getName() +".error.arguments"));
+                       chat.sendMessage("spawn.setter." + getName() + "error.arguments");
+
                     }
                 } else {
-                    player.sendMessage("§8[§e!§8]§a Dafür reichen deine Recht nicht aus!");
+                    chat.sendMessage(LackingPermissionMessage.getNameFIX(permission));
                 }
             }
             return false;
@@ -91,6 +100,7 @@ public class SpawnSetter implements CommandExecutor{
             MessageManager manager = LobbyPlugin.getMessageManager();
             manager.registerMessage(new Message("spawn.setter." + getName() +".success","You have set the position for " + Chat.getAccentColor() + getName() + Chat.getChatColor() + "!"));
             manager.registerMessage(new Message("spawn.setter." + getName() + ".error.arguments" , Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + getCommand().getUsage() + Chat.getChatColor() + "!"));
+            manager.registerMessage(new LackingPermissionMessage(permission));
 
         }
 
