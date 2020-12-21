@@ -4,14 +4,7 @@ import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
 import net.juligames.lobbyplugin.Navigator.Info;
-import net.juligames.lobbyplugin.commands.SpawnCommand;
-import net.juligames.lobbyplugin.commands.Versioncheck;
-import net.juligames.lobbyplugin.commands.gamemode0;
-import net.juligames.lobbyplugin.commands.setlobbyspawn1;
-import net.juligames.lobbyplugin.commands.setlobbyspawn2;
-import net.juligames.lobbyplugin.commands.setlobbyspawn3;
-import net.juligames.lobbyplugin.commands.setlobbyspawn4;
-import net.juligames.lobbyplugin.commands.setlobbyspawn5;
+import net.juligames.lobbyplugin.commands.*;
 import net.juligames.lobbyplugin.commands.setspawn;
 import net.juligames.lobbyplugin.events.allgemein;
 import net.juligames.lobbyplugin.listeners.JoinListener;
@@ -42,13 +35,16 @@ public class LobbyPlugin extends JavaPlugin {
     initChat();
     chat.send((Player) Bukkit.getOnlinePlayers(), "This Plugin is currently in Maintenance!");
     plugin = this;
-    getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
+   // getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
+    getCommand("setLobbyWarp1").setExecutor(new SpawnSetter("setspawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
+    getCommand("setLobbyWarp2").setExecutor(new SpawnSetter("setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
+    getCommand("setLobbyWarp3").setExecutor(new SpawnSetter("setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
+    getCommand("setLobbyWarp4").setExecutor(new SpawnSetter("setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
+    getCommand("setLobbyWarp5").setExecutor(new SpawnSetter("setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
+    getCommand("setLobbyWarp6").setExecutor(new SpawnSetter("setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
     getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
-    getCommand("setlobbyspawn1").setExecutor((CommandExecutor)new setlobbyspawn1());
-    getCommand("setlobbyspawn2").setExecutor((CommandExecutor)new setlobbyspawn2());
-    getCommand("setlobbyspawn3").setExecutor((CommandExecutor)new setlobbyspawn3());
-    getCommand("setlobbyspawn4").setExecutor((CommandExecutor)new setlobbyspawn4());
-    getCommand("setlobbyspawn5").setExecutor((CommandExecutor)new setlobbyspawn5());
+
+
     getCommand("gm").setExecutor((CommandExecutor)new gamemode0());
     getCommand("lv").setExecutor((CommandExecutor)new Versioncheck());
     getCommand("lobbyversion").setExecutor((CommandExecutor)new Versioncheck());
