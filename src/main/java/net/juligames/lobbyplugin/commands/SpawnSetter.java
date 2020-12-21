@@ -74,8 +74,8 @@ public class SpawnSetter implements CommandExecutor{
 
                 if (player.hasPermission(getPermission())) {
                     if (args.length == 0) {
-                        FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
-                        config.set( getName()+ ".World", player.getWorld().getName());
+                        FileConfiguration config = getConfig();
+                        config.set(getName()+ ".World", player.getWorld().getName());
                         config.set(getName() +".X", Double.valueOf(player.getLocation().getX()));
                         config.set(getName() +".Y", Double.valueOf(player.getLocation().getY()));
                         config.set(getName() +".Z", Double.valueOf(player.getLocation().getZ()));
