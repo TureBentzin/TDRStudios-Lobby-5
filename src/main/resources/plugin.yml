@@ -2,7 +2,7 @@ name: LobbyPlugin
 version: 1.2
 main: net.juligames.lobbyplugin.LobbyPlugin
 authors:
-  -TDRStudios
+  - TDRStudios
 
 commands:
    setspawn:

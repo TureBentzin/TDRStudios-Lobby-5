@@ -2,6 +2,7 @@ package net.juligames.lobbyplugin.msgs;
 
 import java.util.ArrayList;
 
+
 public class MessageManager {
     private int highID;
     private int getHighID() {
