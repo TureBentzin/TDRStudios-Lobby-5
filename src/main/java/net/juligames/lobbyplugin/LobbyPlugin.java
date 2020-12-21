@@ -21,6 +21,9 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class LobbyPlugin extends JavaPlugin {
   private static LobbyPlugin plugin;
 
@@ -30,7 +33,7 @@ public class LobbyPlugin extends JavaPlugin {
 
   private static Chat chat;
   private static MessageManager messageManager;
-  private static Console log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
+  private static Console log;
 
   public static Console getLog() {
     return log;
@@ -47,13 +50,16 @@ public class LobbyPlugin extends JavaPlugin {
 
   public LobbyPlugin() {
     //This is a Temp Fix for the Issue-InvalidPluginExeption #3
-    setPlugin(this);
   }
   public void onEnable() {
 
+    setPlugin(this);
+    log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
     getLog().send("JavaPlugin by tdrstudios.de load!");
     initChat();
-    chat.send((Player[]) Bukkit.getOnlinePlayers().toArray(), "This Plugin is currently in Maintenance!");
+    Collection<? extends Player> players = Bukkit.getOnlinePlayers();
+    Player[] players1 = players.toArray(new Player[players.size()]);
+    chat.send(players1, "This Plugin is currently in Maintenance!");
     plugin = this;
    // getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
 

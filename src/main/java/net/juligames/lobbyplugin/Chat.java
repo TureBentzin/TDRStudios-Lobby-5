@@ -68,14 +68,15 @@ public class Chat {
         player.sendMessage(getPrefix() + message);
     }
     public void send(Player[] players, String message) {
-
        setPlayers(players);
        send(message);
     }
     public void send(String message) {
-        for(Player player : getPlayers()) {
-            if(player != null) {
-                player.sendMessage(getPrefix() + message);
+        if(getPlayers() !=null) {
+            for (Player player : getPlayers()) {
+                if (player != null) {
+                    player.sendMessage(getPrefix() + message);
+                }
             }
         }
     }
