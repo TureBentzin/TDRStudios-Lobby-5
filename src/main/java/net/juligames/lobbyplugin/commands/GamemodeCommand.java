@@ -5,8 +5,40 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 
-public class gamemode0 implements CommandExecutor {
+public class GamemodeCommand implements CommandExecutor {
+  private Permission[] permissions = new Permission[4];
+
+  public void setPermissions(Permission[] permissions) {
+    this.permissions = permissions;
+  }
+  public void setPermission(int i, Permission permission) {
+    permissions[i] = permission;
+  }
+
+  public double getGamemodeid() {
+    return gamemodeid;
+  }
+
+  public Permission[] getPermissions() {
+    return permissions;
+  }
+
+  public GamemodeCommand(Permission permission0, Permission permission1, Permission permission2, Permission permission3) {
+    setPermission(0, permission0);
+    setPermission(1, permission1);
+    setPermission(2, permission2);
+    setPermission(3, permission3);;
+  }
+
+  /**
+   *
+   * @param perms shoud have a length of 4 and the Index number is the number of the gamemode!
+   */
+  public GamemodeCommand(Permission[] perms) {
+    setPermissions(perms);
+  }
   double gamemodeid = 0.0D;
   
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
