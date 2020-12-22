@@ -104,14 +104,14 @@ public class GamemodeCommand implements CommandExecutor {
         if (this.gamemodeid == 2.0D)
           if (p.hasPermission(getPermission(2))) {
             p.setGameMode(GameMode.ADVENTURE);
-            p.sendMessage("§8[§eInfo§8]§a Dein neuer Gamemode ist nun Arbenteurer");
+            chat.sendMessage("command.gamemode.success.2");
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
         if (this.gamemodeid == 3.0D)
           if (p.hasPermission(getPermission(3))) {
             p.setGameMode(GameMode.SPECTATOR);
-            p.sendMessage("§8[§eInfo§8]§a Dein neuer Gamemode ist nun Beobachter");
+            chat.sendMessage("command.gamemode.success.3");
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
@@ -142,6 +142,8 @@ public class GamemodeCommand implements CommandExecutor {
     LobbyPlugin.getMessageManager().registerMessage(new UsageMessage(getCommand()));
     LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.0", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!"));
     LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.1", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Creative" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.2", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Adventure" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.3", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Spectator" + Chat.getChatColor() + "!"));
 
 
 
