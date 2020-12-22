@@ -60,7 +60,7 @@ public class SpawnSetter implements CommandExecutor{
         setConfig(configuration);
         setName(pname);
         setPermission(new Permission(permission, "The Permission for : " + getName() + "!"));
-        registerMSGs();
+        registerMSGs(); // This have to be after the Init of the Name, the Permission and The Chat!
     }
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
