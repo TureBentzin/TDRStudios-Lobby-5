@@ -5,7 +5,9 @@ import net.juligames.lobbyplugin.LobbyPlugin;
 import net.juligames.lobbyplugin.msgs.LackingPermissionMessage;
 import net.juligames.lobbyplugin.msgs.Message;
 import net.juligames.lobbyplugin.msgs.UsageMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -54,6 +56,9 @@ public class GamemodeCommand implements CommandExecutor {
   private Permission getPermission(int i) {
     return permissions[i];
   }
+  private Permission getPermissionOTHER(int i) {
+    return  new Permission(permissions[i].getName() + ".other" , "The .other permission allows you to edit the gamemode of every other Person");
+  }
 
   public GamemodeCommand(String cmdName ,Permission permission0, Permission permission1, Permission permission2, Permission permission3) {
 
@@ -83,54 +88,103 @@ public class GamemodeCommand implements CommandExecutor {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     setChat(new Chat());
     if (sender instanceof Player) {
+      float v = 30;
+      float v1 = 1;
       Player p = (Player)sender;
       getChat().setPlayers(new Player[]{p});
       if (args.length == 1) {
-        this.gamemodeid = Double.parseDouble(args[0]);
-        if (this.gamemodeid == 0.0D)
+        if (args[0].equals("0"))
           if (p.hasPermission(getPermission(0))) {
             p.setGameMode(GameMode.SURVIVAL);
             chat.sendMessage("command.gamemode.success.0");
+
+            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
-        if (this.gamemodeid == 1.0D)
+        if (args[0].equals("1"))
           if (p.hasPermission(getPermission(1))) {
             p.setGameMode(GameMode.CREATIVE);
             chat.sendMessage("command.gamemode.success.1");
+            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
-        if (this.gamemodeid == 2.0D)
+        if (args[0].equals("2"))
           if (p.hasPermission(getPermission(2))) {
             p.setGameMode(GameMode.ADVENTURE);
             chat.sendMessage("command.gamemode.success.2");
+            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
-        if (this.gamemodeid == 3.0D)
+        if (args[0].equals("3"))
           if (p.hasPermission(getPermission(3))) {
             p.setGameMode(GameMode.SPECTATOR);
             chat.sendMessage("command.gamemode.success.3");
+            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
 
-        if (this.gamemodeid > 3.0D | getGamemodeid() < 0) {
+        if (args[0].equals("0") | args[0].equals("1") | args[0].equals("2") |args[0].equals("3")) {
+
+          return true;
+        }else {
+
           getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
           return false;
-        }else {
-          return true;
         }
 
       } else {
        //Other
-          p.sendMessage("[TDR´s Debug]: This Feature isn't available in your build! Give the Devteam the time, witch is available!");
+        p.sendMessage("[TDR´s Debug]: This Feature isn't available in your build! Give the Devteam the time, witch is available!");
         System.out.println("Debug execute!");
+        if(args.length == 2) {
+          if(Bukkit.getOfflinePlayer(args[1]).isOnline()) {
+            Player target = Bukkit.getPlayer(args[1]);
+            if(args[0].equals("0")) {
+              if(p.hasPermission(getPermissionOTHER(0))) {
+                target.setGameMode(GameMode.SURVIVAL);
 
+                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+              }else {
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+              }
+              if(p.hasPermission(getPermissionOTHER(1))) {
+                target.setGameMode(GameMode.SURVIVAL);
 
+                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+              }else {
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+              }
+              if(p.hasPermission(getPermissionOTHER(2))) {
+                target.setGameMode(GameMode.SURVIVAL);
 
+                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+              }else {
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+              }
+              if(p.hasPermission(getPermissionOTHER(3))) {
+                target.setGameMode(GameMode.SURVIVAL);
 
+                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+              }else {
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+              }
+            }
+          }else {
+             chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor()+ " is not online!");
+          }
+        }
 
       } 
     } 
@@ -140,12 +194,10 @@ public class GamemodeCommand implements CommandExecutor {
   public void registerMessages() {
     System.out.println("Commands Register!");
     LobbyPlugin.getMessageManager().registerMessage(new UsageMessage(getCommand()));
-    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.0", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!"));
-    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.1", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Creative" + Chat.getChatColor() + "!"));
-    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.2", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Adventure" + Chat.getChatColor() + "!"));
-    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.3", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Spectator" + Chat.getChatColor() + "!"));
-
-
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.0", Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.1", Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Creative" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.2", Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Adventure" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.3", Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Spectator" + Chat.getChatColor() + "!"));
 
 
 
@@ -153,6 +205,14 @@ public class GamemodeCommand implements CommandExecutor {
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermission(1)));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermission(2)));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermission(3)));
+
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(0)));
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(1)));
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(2)));
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(3)));
+
+
+
     System.out.println("Commands im Manager -> " + LobbyPlugin.getMessageManager().getDebug());
   }
 }

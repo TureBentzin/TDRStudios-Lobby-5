@@ -74,6 +74,7 @@ public class LobbyPlugin extends JavaPlugin {
     Permission[] permissions = {new Permission("de.tdrstudios.lobby.gamemode.0"), new Permission("de.tdrstudios.lobby.gamemode.1"), new Permission("de.tdrstudios.lobby.gamemode.2"), new Permission("de.tdrstudios.lobby.gamemode.3")};
 
     getCommand("gm").setExecutor((CommandExecutor)new GamemodeCommand("gm", permissions));
+    getCommand("gamemode").setExecutor((CommandExecutor)new GamemodeCommand("gamemode", permissions));
     getCommand("lv").setExecutor((CommandExecutor)new Versioncheck());
     getCommand("lobbyversion").setExecutor((CommandExecutor)new Versioncheck());
     PluginManager pluginManager = Bukkit.getPluginManager();
