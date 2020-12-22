@@ -1,5 +1,7 @@
 package net.juligames.lobbyplugin.commands;
 
+import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.msgs.Message;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -39,8 +41,12 @@ public class GamemodeCommand implements CommandExecutor {
   public GamemodeCommand(Permission[] perms) {
     setPermissions(perms);
   }
-  double gamemodeid = 0.0D;
-  
+   private double gamemodeid = 0.0D;
+
+  public void setGamemodeid(double gamemodeid) {
+    this.gamemodeid = gamemodeid;
+  }
+
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if (sender instanceof Player) {
       Player p = (Player)sender;
@@ -81,5 +87,9 @@ public class GamemodeCommand implements CommandExecutor {
       } 
     } 
     return false;
+  }
+
+  public void registerMessages() {
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.usage"))
   }
 }
