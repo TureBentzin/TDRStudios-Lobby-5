@@ -9,6 +9,7 @@
 #IntelliJ
 .idea/
 *.iml
+.target/
 scratch.tdrstudios.java
 
 # Mobile Tools for Java (J2ME)

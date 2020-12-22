@@ -120,6 +120,7 @@ public class GamemodeCommand implements CommandExecutor {
 
       } else {
        //Other
+          p.sendMessage("[TDR´s Debug]: This Feature isn't available in your build! Give the Devteam the time, witch is available!");
 
 
 
