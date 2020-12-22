@@ -97,7 +97,7 @@ public class GamemodeCommand implements CommandExecutor {
         if (this.gamemodeid == 1.0D)
           if (p.hasPermission(getPermission(1))) {
             p.setGameMode(GameMode.CREATIVE);
-            p.sendMessage("§8[§eInfo§8]§a Dein neuer Gamemode ist nun Kreativ");
+            chat.sendMessage("command.gamemode.success.1");
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
@@ -136,8 +136,9 @@ public class GamemodeCommand implements CommandExecutor {
   public void registerMessages() {
     System.out.println("Commands Register!");
     LobbyPlugin.getMessageManager().registerMessage(new UsageMessage(getCommand()));
-    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.0", "You have switched your " + Chat.getAccentColor() + "gamemode " + Chat.getChatColor() + "to " + Chat.getAccentColor() + "UEBERLEBENSMODUS" + Chat.getChatColor() + "!"));
-    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.1", "You have switched your " + Chat.getAccentColor() + "gamemode " + Chat.getChatColor() + "to " + Chat.getAccentColor() + "KREATIVMODUS" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.0", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!"));
+    LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.1", "You have switched" + Chat.getAccentColor() +" your "  + Chat.getChatColor() + "gamemode to " + Chat.getAccentColor() + "Creative" + Chat.getChatColor() + "!"));
+
 
 
 

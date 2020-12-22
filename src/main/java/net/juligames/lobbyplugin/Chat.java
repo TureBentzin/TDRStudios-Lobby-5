@@ -32,7 +32,7 @@ public class Chat {
     }
     private static ChatColor ErrorColor = ChatColor.RED;
 
-    private static ChatColor AccentColor = ChatColor.BLUE;
+    private static ChatColor AccentColor = ChatColor.GRAY;
 
     public static ChatColor getAccentColor() {
         return AccentColor;
@@ -79,8 +79,6 @@ public class Chat {
             for (Player player : getPlayers()) {
                 if (player != null) {
                     player.sendMessage(getPrefix() + message);
-                    player.sendMessage("Prefix: " + getPrefix());
-                    player.sendMessage("MSG: " + message);
                 }
             }
         }
