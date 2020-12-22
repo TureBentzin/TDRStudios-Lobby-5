@@ -100,7 +100,7 @@ public class LobbyPlugin extends JavaPlugin {
     final String setLobbyWarp3Name = "setLobbyWarp3";
     final String setLobbyWarp4Name = "setLobbyWarp4";
     final String setLobbyWarp5Name = "setLobbyWarp5";
-    getCommand(setSpawnCommandName).setExecutor(new SpawnSetter(setSpawnCommandName, "setspawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
+    getCommand(setSpawnCommandName).setExecutor(new SpawnSetter(setSpawnCommandName, "Spawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
     getCommand(setLobbyWarp1Name).setExecutor(new SpawnSetter(setLobbyWarp1Name, "setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
     getCommand(setLobbyWarp2Name).setExecutor(new SpawnSetter(setLobbyWarp2Name, "setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
     getCommand(setLobbyWarp3Name).setExecutor(new SpawnSetter(setLobbyWarp3Name, "setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
