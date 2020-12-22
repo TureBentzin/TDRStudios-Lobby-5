@@ -29,7 +29,7 @@ public class CompassNavigator implements Listener {
     ItemMeta itemMetaSlimeball = slimeball.getItemMeta();
     itemMetaSlimeball.setDisplayName("§lSkywars");
     slimeball.setItemMeta(itemMetaSlimeball);
-    ItemStack BED = new ItemStack(Material.BED);
+    ItemStack BED = new ItemStack(Material.RED_BED);
     ItemMeta itemMetaBED = BED.getItemMeta();
     itemMetaBED.setDisplayName("§lBedWars");
     BED.setItemMeta(itemMetaBED);
@@ -75,7 +75,7 @@ public class CompassNavigator implements Listener {
     if (!(event.getWhoClicked() instanceof Player))
       return; 
     Player player = (Player)event.getWhoClicked();
-    if (event.getClickedInventory().getTitle().equals("§a►  Teleporter")) {
+    if (event.getView().getTitle().equals("§a►  Teleporter")) {
       FileConfiguration config;
       World world;
       double x, y, z;
@@ -118,7 +118,7 @@ public class CompassNavigator implements Listener {
           pitch = (float)config.getDouble("Spawn.Pitch");
           location = new Location(world, x, y, z, yaw, pitch);
           player.teleport(location);
-          player.playSound(player.getLocation(), Sound.FIREWORK_BLAST, 10.0F, 1.0F);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 10.0F, 1.0F);
           return;
         case GRASS:
           setlobbyspawn1config = LobbyPlugin.getPlugin().getConfig();
@@ -130,9 +130,9 @@ public class CompassNavigator implements Listener {
           setlobbyspawn1pitch = (float)setlobbyspawn1config.getDouble("lobbySpawn1.Pitch");
           setlobbyspawn1location = new Location(setlobbyspawn1world, setlobbyspawn1x, setlobbyspawn1y, setlobbyspawn1z, setlobbyspawn1yaw, setlobbyspawn1pitch);
           player.teleport(setlobbyspawn1location);
-          player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
           return;
-        case BED:
+        case RED_BED:
           setlobbyspawn2config = LobbyPlugin.getPlugin().getConfig();
           setlobbyspawn2world = Bukkit.getWorld(setlobbyspawn2config.getString("lobbySpawn2.World"));
           setlobbyspawn2x = setlobbyspawn2config.getDouble("lobbySpawn2.X");
@@ -142,7 +142,7 @@ public class CompassNavigator implements Listener {
           setlobbyspawn2pitch = (float)setlobbyspawn2config.getDouble("lobbySpawn2.Pitch");
           setlobbyspawn2location = new Location(setlobbyspawn2world, setlobbyspawn2x, setlobbyspawn2y, setlobbyspawn2z, setlobbyspawn2yaw, setlobbyspawn2pitch);
           player.teleport(setlobbyspawn2location);
-          player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
           return;
         case DIAMOND_PICKAXE:
           setlobbyspawn3config = LobbyPlugin.getPlugin().getConfig();
@@ -154,7 +154,7 @@ public class CompassNavigator implements Listener {
           setlobbyspawn3pitch = (float)setlobbyspawn3config.getDouble("lobbySpawn3.Pitch");
           setlobbyspawn3location = new Location(setlobbyspawn3world, setlobbyspawn3x, setlobbyspawn3y, setlobbyspawn3z, setlobbyspawn3yaw, setlobbyspawn3pitch);
           player.teleport(setlobbyspawn3location);
-          player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
           return;
         case DIAMOND_AXE:
           setlobbyspawn4config = LobbyPlugin.getPlugin().getConfig();
@@ -166,7 +166,7 @@ public class CompassNavigator implements Listener {
           setlobbyspawn4pitch = (float)setlobbyspawn4config.getDouble("lobbySpawn4.Pitch");
           setlobbyspawn4location = new Location(setlobbyspawn4world, setlobbyspawn4x, setlobbyspawn4y, setlobbyspawn4z, setlobbyspawn4yaw, setlobbyspawn4pitch);
           player.teleport(setlobbyspawn4location);
-          player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
           return;
         case DIAMOND_SWORD:
           setlobbyspawn5config = LobbyPlugin.getPlugin().getConfig();
@@ -178,7 +178,7 @@ public class CompassNavigator implements Listener {
           setlobbyspawn5pitch = (float)setlobbyspawn5config.getDouble("lobbySpawn5.Pitch");
           setlobbyspawn5location = new Location(setlobbyspawn5world, setlobbyspawn5x, setlobbyspawn5y, setlobbyspawn5z, setlobbyspawn5yaw, setlobbyspawn5pitch);
           player.teleport(setlobbyspawn5location);
-          player.playSound(player.getLocation(), Sound.FIREWORK_TWINKLE, 10.0F, 1.0F);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
           player.sendMessage("§8[§eInfo§8]§a Der Modus kommt noch!");
           return;
         case ARROW:

@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import tdrstudios.Work_In_Progress;
 
-import javax.persistence.Lob;
+
 
 @Work_In_Progress
 public class GamemodeCommand implements CommandExecutor {
