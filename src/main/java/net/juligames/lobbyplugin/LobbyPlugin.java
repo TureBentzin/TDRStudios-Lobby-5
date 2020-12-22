@@ -57,7 +57,7 @@ public class LobbyPlugin extends JavaPlugin {
     chat = new Chat();
     log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
     messageManager = new MessageManager();
-    getLog().send("JavaPlugin by tdrstudios.de load!");
+    getLog().send("JavaPlugin by tdrstudios.de load!"); //WaterMark
     initChat();
     Collection<? extends Player> players = Bukkit.getOnlinePlayers();
     Player[] players1 = players.toArray(new Player[players.size()]);
