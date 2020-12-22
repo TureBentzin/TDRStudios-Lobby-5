@@ -9,8 +9,7 @@ public class UsageMessage extends Message{
         return  "tdrstudios.usage.invalid." + command.getName();
     }
     public UsageMessage(Command command) {
-        super("tdrstudios.usage.invalid." + command.getName(), Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + command.getUsage() + Chat.getChatColor() + "!");
-
+        super("tdrstudios.usage.invalid." + command.getName(), Chat.getErrorColor() + "Please care about the usage :\"" + Chat.getAccentColor() + command.getUsage() + Chat.getErrorColor() + "\"!");
 
     }
 }

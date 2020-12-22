@@ -115,8 +115,12 @@ public class GamemodeCommand implements CommandExecutor {
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
+
         if (this.gamemodeid > 3.0D | getGamemodeid() < 0) {
           getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
+          return false;
+        }else {
+          return true;
         }
 
       } else {
@@ -130,7 +134,7 @@ public class GamemodeCommand implements CommandExecutor {
 
       } 
     } 
-    return false;
+    return true;
   }
 
   public void registerMessages() {
