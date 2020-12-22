@@ -11,9 +11,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import tdrstudios.Work_In_Progress;
 
 import javax.persistence.Lob;
 
+@Work_In_Progress
 public class GamemodeCommand implements CommandExecutor {
   private Permission[] permissions = new Permission[4];
   private Command command;
