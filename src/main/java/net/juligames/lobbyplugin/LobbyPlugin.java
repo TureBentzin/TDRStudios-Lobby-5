@@ -8,7 +8,7 @@ import net.juligames.lobbyplugin.Navigator.Info;
 import net.juligames.lobbyplugin.commands.SpawnCommand;
 import net.juligames.lobbyplugin.commands.SpawnSetter;
 import net.juligames.lobbyplugin.commands.Versioncheck;
-import net.juligames.lobbyplugin.commands.gamemode0;
+import net.juligames.lobbyplugin.commands.GamemodeCommand;
 import net.juligames.lobbyplugin.events.allgemein;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
@@ -70,7 +70,7 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
 
 
-    getCommand("gm").setExecutor((CommandExecutor)new gamemode0());
+    getCommand("gm").setExecutor((CommandExecutor)new GamemodeCommand());
     getCommand("lv").setExecutor((CommandExecutor)new Versioncheck());
     getCommand("lobbyversion").setExecutor((CommandExecutor)new Versioncheck());
     PluginManager pluginManager = Bukkit.getPluginManager();
