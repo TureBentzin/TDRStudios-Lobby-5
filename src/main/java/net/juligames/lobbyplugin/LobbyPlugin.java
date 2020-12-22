@@ -17,6 +17,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -70,7 +71,9 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
 
 
-    getCommand("gm").setExecutor((CommandExecutor)new GamemodeCommand());
+    Permission[] permissions = {new Permission("de.tdrstudios.lobby.gamemode.0"), new Permission("de.tdrstudios.lobby.gamemode.1"), new Permission("de.tdrstudios.lobby.gamemode.2"), new Permission("de.tdrstudios.lobby.gamemode.3")};
+
+    getCommand("gm").setExecutor((CommandExecutor)new GamemodeCommand("gm", permissions));
     getCommand("lv").setExecutor((CommandExecutor)new Versioncheck());
     getCommand("lobbyversion").setExecutor((CommandExecutor)new Versioncheck());
     PluginManager pluginManager = Bukkit.getPluginManager();
