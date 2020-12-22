@@ -57,7 +57,7 @@ public class GamemodeCommand implements CommandExecutor {
     return permissions[i];
   }
   private Permission getPermissionOTHER(int i) {
-    return  new Permission(permissions[i].getName() + ".other" , "The .other permission allows you to edit the gamemode of every other Person");
+    return  new Permission(permissions[i].getName() + ".other" , " The .other permission allows you to edit the gamemode of every other Person");
   }
 
   public GamemodeCommand(String cmdName ,Permission permission0, Permission permission1, Permission permission2, Permission permission3) {
@@ -138,11 +138,17 @@ public class GamemodeCommand implements CommandExecutor {
 
       } else {
        //Other
-        p.sendMessage("[TDR´s Debug]: This Feature isn't available in your build! Give the Devteam the time, witch is available!");
-        System.out.println("Debug execute!");
         if(args.length == 2) {
+
           if(Bukkit.getOfflinePlayer(args[1]).isOnline()) {
             Player target = Bukkit.getPlayer(args[1]);
+            if(LobbyPlugin.getPlugin().getConfig().getBoolean("tdrstudios.commands.gamemode.allow.otherSelfSet")) {
+
+              if(target == p) {
+                chat.sendMessage(Chat.getErrorColor() + "For this action: use \"" + Chat.getAccentColor() + getCommand().getName() + " [0] [1] [2] [3] " + Chat.getChatColor() + "\" !");
+                return true;
+              }
+            }
             if(args[0].equals("0")) {
               if(p.hasPermission(getPermissionOTHER(0))) {
                 target.setGameMode(GameMode.SURVIVAL);
