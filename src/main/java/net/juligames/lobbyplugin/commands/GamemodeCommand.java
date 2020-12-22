@@ -62,7 +62,7 @@ public class GamemodeCommand implements CommandExecutor {
     setPermission(2, permission2);
     setPermission(3, permission3);;
     setCommand(LobbyPlugin.getPlugin().getCommand(cmdName));
-
+    registerMessages();
   }
 
   /**
@@ -72,6 +72,7 @@ public class GamemodeCommand implements CommandExecutor {
   public GamemodeCommand(String cmdName,Permission[] perms) {
     setPermissions(perms);
     setCommand(LobbyPlugin.getPlugin().getCommand(cmdName));
+    registerMessages();
   }
    private double gamemodeid = 0.0D;
 
@@ -121,6 +122,7 @@ public class GamemodeCommand implements CommandExecutor {
       } else {
        //Other
           p.sendMessage("[TDR´s Debug]: This Feature isn't available in your build! Give the Devteam the time, witch is available!");
+        System.out.println("Debug execute!");
 
 
 
@@ -132,6 +134,7 @@ public class GamemodeCommand implements CommandExecutor {
   }
 
   public void registerMessages() {
+    System.out.println("Commands Register!");
     LobbyPlugin.getMessageManager().registerMessage(new UsageMessage(getCommand()));
     LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.0", "You have switched your " + Chat.getAccentColor() + "gamemode " + Chat.getChatColor() + "to " + Chat.getAccentColor() + "UEBERLEBENSMODUS" + Chat.getChatColor() + "!"));
     LobbyPlugin.getMessageManager().registerMessage(new Message("command.gamemode.success.1", "You have switched your " + Chat.getAccentColor() + "gamemode " + Chat.getChatColor() + "to " + Chat.getAccentColor() + "KREATIVMODUS" + Chat.getChatColor() + "!"));
@@ -143,5 +146,6 @@ public class GamemodeCommand implements CommandExecutor {
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermission(1)));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermission(2)));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermission(3)));
+    System.out.println("Commands im Manager -> " + LobbyPlugin.getMessageManager().getDebug());
   }
 }
