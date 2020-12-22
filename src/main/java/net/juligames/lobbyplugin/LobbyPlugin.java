@@ -55,6 +55,7 @@ public class LobbyPlugin extends JavaPlugin {
     setPlugin(this);
     chat = new Chat();
     log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
+    messageManager = new MessageManager();
     getLog().send("JavaPlugin by tdrstudios.de load!");
     initChat();
     Collection<? extends Player> players = Bukkit.getOnlinePlayers();
@@ -89,12 +90,18 @@ public class LobbyPlugin extends JavaPlugin {
 
   }
   private void registerCommands() {
-    getCommand("setLobbySpawn").setExecutor(new SpawnSetter("setspawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
-    getCommand("setLobbyWarp1").setExecutor(new SpawnSetter("setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
-    getCommand("setLobbyWarp2").setExecutor(new SpawnSetter("setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
-    getCommand("setLobbyWarp3").setExecutor(new SpawnSetter("setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
-    getCommand("setLobbyWarp4").setExecutor(new SpawnSetter("setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
-    getCommand("setLobbyWarp5").setExecutor(new SpawnSetter("setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
+    final String setSpawnCommandName = "setspawn";
+    final String setLobbyWarp1Name = "setLobbyWarp1";
+    final String setLobbyWarp2Name = "setLobbyWarp2";
+    final String setLobbyWarp3Name = "setLobbyWarp3";
+    final String setLobbyWarp4Name = "setLobbyWarp4";
+    final String setLobbyWarp5Name = "setLobbyWarp5";
+    getCommand(setSpawnCommandName).setExecutor(new SpawnSetter(setSpawnCommandName, "setspawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
+    getCommand(setLobbyWarp1Name).setExecutor(new SpawnSetter(setLobbyWarp1Name, "setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
+    getCommand(setLobbyWarp2Name).setExecutor(new SpawnSetter(setLobbyWarp2Name, "setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
+    getCommand(setLobbyWarp3Name).setExecutor(new SpawnSetter(setLobbyWarp3Name, "setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
+    getCommand(setLobbyWarp4Name).setExecutor(new SpawnSetter(setLobbyWarp4Name, "setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
+    getCommand(setLobbyWarp5Name).setExecutor(new SpawnSetter(setLobbyWarp5Name, "setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
   }
   
   public static LobbyPlugin getPlugin() {
