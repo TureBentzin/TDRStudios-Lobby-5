@@ -86,8 +86,9 @@ public class LobbyPlugin extends JavaPlugin {
   }
 
   public void initChat() {
-    Chat.setChatColor(ChatColor.GOLD);
+    Chat.setChatColor(ChatColor.GREEN);
     Chat.setPrefix(ChatColor.BLACK + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.BLACK + "] " + Chat.getChatColor());
+    Chat.setPrefix(ChatColor.BLACK + "[" + ChatColor.YELLOW + "Lobby" + ChatColor.BLACK + "] " + Chat.getChatColor());
   }
   private void registerMessages() {
 

@@ -76,6 +76,8 @@ public class Chat {
             for (Player player : getPlayers()) {
                 if (player != null) {
                     player.sendMessage(getPrefix() + message);
+                    player.sendMessage("Prefix: " + getPrefix());
+                    player.sendMessage("MSG: " + message);
                 }
             }
         }
