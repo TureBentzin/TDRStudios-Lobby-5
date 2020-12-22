@@ -42,7 +42,7 @@ public class Message {
 
     public Message(String pname,String content) {
         setName(pname);
-        setContent(Chat.buildSendS(content));
+        setContent(content);
     }
 
     @Override

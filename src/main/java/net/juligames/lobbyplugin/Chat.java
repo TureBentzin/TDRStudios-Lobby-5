@@ -7,8 +7,11 @@ import org.bukkit.entity.Player;
 
 public class Chat {
 
-    public static String buildSendS(String message) {
-        return getPrefix() + message;
+    @Deprecated
+    public static String buildSendS(String message, boolean withPrefix) {
+        if(withPrefix) {
+        return getPrefix() + message; }
+        return message;
     }
 
     private static String Prefix = "null ";
