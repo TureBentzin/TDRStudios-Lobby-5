@@ -21,6 +21,7 @@ commands:
      description: Setze den Spawnpunkt für das 5te Lobbyitem mit /setlobbyspawn5
    gm:
      description: Ändere deinen Gamemode mit /gm [0] [1] [2] [3]
+     usage: Change your gamoemode with /<command> [0] [1] [2] [3]
    lv:
      description: Zeige die Version vom Plugin an.
    lobbyversion:
