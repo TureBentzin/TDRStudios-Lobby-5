@@ -62,14 +62,14 @@ public class Info implements Listener {
     if (!(event.getWhoClicked() instanceof Player))
       return; 
     Player player = (Player)event.getWhoClicked();
-    if (event.getClickedInventory().getTitle().equals("§a►  by Zzocker77")) {
+    if (event.getView().getTitle().equals("§a►  by TDRStudios")) {
       event.setCancelled(true);
       switch (event.getCurrentItem().getType()) {
         case DIAMOND:
           player.sendMessage("§8[§eInfo§8]§a Benutze den Teleporter um zu den verschiedenen Modis herum zu wechseln.");
           return;
         case IRON_INGOT:
-          player.sendMessage("§8[§eInfo§8]§a Programmiert von Zzocker77 kommt gerne auf meinen Discord Server §8https://discord.gg/ed3Xhvz ");
+          player.sendMessage("§8[§eInfo§8]§a Programmiert von Zzocker77 & TDRStudios kommt gerne auf unseren Discord Server §8https://discord.gg/jZKFZZf ");
           return;
         case EMERALD:
           player.sendMessage("§8[§eInfo§8]§a Unseren Discord findest du über den Link: §8https://discord.gg/mEv3bnh");

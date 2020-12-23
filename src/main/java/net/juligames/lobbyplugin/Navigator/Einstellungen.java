@@ -26,7 +26,7 @@ public class Einstellungen implements Listener {
   private FileConfiguration config;
   
   public void openGUI(Player player) {
-    ItemStack diamond = new ItemStack(Material.REDSTONE_TORCH_ON);
+    ItemStack diamond = new ItemStack(Material.LEGACY_REDSTONE_TORCH_ON);
     ItemMeta itemMetadiamond = diamond.getItemMeta();
     itemMetadiamond.setDisplayName("§lDaten Info");
     diamond.setItemMeta(itemMetadiamond);
@@ -42,7 +42,7 @@ public class Einstellungen implements Listener {
     ItemMeta itemMetaBack = back.getItemMeta();
     itemMetaBack.setDisplayName("§3§lZurück");
     back.setItemMeta(itemMetaBack);
-    ItemStack bewerten = new ItemStack(Material.SIGN);
+    ItemStack bewerten = new ItemStack(Material.OAK_SIGN);
     ItemMeta itemMetabewerten = bewerten.getItemMeta();
     itemMetabewerten.setDisplayName("§lBewerten");
     bewerten.setItemMeta(itemMetabewerten);
@@ -83,7 +83,7 @@ public class Einstellungen implements Listener {
   @EventHandler
   public void handleNavigatorOpen(PlayerInteractEvent event) {
     if (event.getItem() != null) {
-      if (event.getItem().getType() != Material.REDSTONE_COMPARATOR)
+      if (event.getItem().getType() != Material.COMPARATOR)
         return; 
       if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)
         openGUI(event.getPlayer()); 
@@ -95,10 +95,10 @@ public class Einstellungen implements Listener {
     if (!(event.getWhoClicked() instanceof Player))
       return; 
     Player player = (Player) event.getWhoClicked();
-    if (event.getClickedInventory().getTitle().equals("§a►  Settings")) {
+    if (event.getView().getTitle().equals("§a►  Settings")) {
       event.setCancelled(true);
       switch (event.getCurrentItem().getType()) {
-        case REDSTONE_TORCH_ON:
+        case LEGACY_REDSTONE_TORCH_ON:
           if (player.hasPermission("DatenInfo")) {
             FileConfiguration setlobbyspawn1config = LobbyPlugin.getPlugin().getConfig();
             World setlobbyspawn1world = Bukkit.getWorld(setlobbyspawn1config.getString("lobbySpawn1.World"));
@@ -150,7 +150,7 @@ public class Einstellungen implements Listener {
         case ARROW:
           player.closeInventory();
           break;
-        case SIGN:
+        case OAK_SIGN:
           openBewertenGUI(player);
           break;
         case REDSTONE:
@@ -167,7 +167,7 @@ public class Einstellungen implements Listener {
           break;
       } 
     } 
-    if (event.getClickedInventory().getTitle().equals("§a►  Bewerten")) {
+    if (event.getView().getTitle().equals("§a►  Bewerten")) {
       event.setCancelled(true);
       switch (event.getCurrentItem().getType()) {
         case ARROW:

@@ -7,8 +7,11 @@ import org.bukkit.entity.Player;
 
 public class Chat {
 
-    public static String buildSendS(String message) {
-        return getPrefix() + message;
+    @Deprecated
+    public static String buildSendS(String message, boolean withPrefix) {
+        if(withPrefix) {
+        return getPrefix() + message; }
+        return message;
     }
 
     private static String Prefix = "null ";
@@ -29,7 +32,7 @@ public class Chat {
     }
     private static ChatColor ErrorColor = ChatColor.RED;
 
-    private static ChatColor AccentColor = ChatColor.BLUE;
+    private static ChatColor AccentColor = ChatColor.GRAY;
 
     public static ChatColor getAccentColor() {
         return AccentColor;
@@ -91,6 +94,11 @@ public class Chat {
         sendMessage(LobbyPlugin.getMessageManager().getMessageByID(id));
    }
    public void sendMessage(String name) {
-        sendMessage(LobbyPlugin.getMessageManager().getMessageByName(name));
+        Message send = LobbyPlugin.getMessageManager().getMessageByName(name);
+        if(send != null) {
+            sendMessage(send);
+        }else {
+            send(name);
+        }
    }
 }

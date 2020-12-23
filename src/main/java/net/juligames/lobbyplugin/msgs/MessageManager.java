@@ -48,11 +48,17 @@ public class MessageManager {
     public Message getMessageByName(String MessageName) {
         Message returnMessage = null;
         for(Message message : getMessages()) {
-            if(message.getName() == MessageName) {
+            if(message.getName().equalsIgnoreCase(MessageName)) {
                 returnMessage = message;
             }
         }
         return returnMessage;
+    }
+    public int getLength() {
+        return getMessages().size();
+    }
+    public ArrayList<Message> getDebug() {
+        return getMessages();
     }
 
 

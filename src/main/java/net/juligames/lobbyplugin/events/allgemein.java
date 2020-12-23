@@ -128,7 +128,7 @@ public class allgemein implements Listener {
     ItemMeta itemMeta2 = item2.getItemMeta();
     itemMeta2.setDisplayName("§3§lInfo");
     item2.setItemMeta(itemMeta2);
-    ItemStack item3 = new ItemStack(Material.REDSTONE_COMPARATOR);
+    ItemStack item3 = new ItemStack(Material.COMPARATOR);
     ItemMeta itemMeta3 = item3.getItemMeta();
     itemMeta3.setDisplayName("§3§lEinstellungen");
     item3.setItemMeta(itemMeta3);

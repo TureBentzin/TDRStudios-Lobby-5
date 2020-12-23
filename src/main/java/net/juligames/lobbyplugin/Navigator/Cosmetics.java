@@ -29,7 +29,7 @@ public class Cosmetics implements Listener {
     ItemMeta itemMetaleatherhelmet = leatherhelmet.getItemMeta();
     itemMetaleatherhelmet.setDisplayName("§lMütze");
     leatherhelmet.setItemMeta(itemMetaleatherhelmet);
-    ItemStack crown = new ItemStack(Material.GOLD_HELMET);
+    ItemStack crown = new ItemStack(Material.GOLDEN_HELMET);
     ItemMeta itemMetacrown = crown.getItemMeta();
     itemMetacrown.setDisplayName("§lKrone");
     crown.setItemMeta(itemMetacrown);
@@ -37,7 +37,7 @@ public class Cosmetics implements Listener {
     ItemMeta itemMetaBack = back.getItemMeta();
     itemMetaBack.setDisplayName("§3§lZurück");
     back.setItemMeta(itemMetaBack);
-    ItemStack shop = new ItemStack(Material.SIGN);
+    ItemStack shop = new ItemStack(Material.OAK_SIGN);
     ItemMeta itemMetashop = shop.getItemMeta();
     itemMetashop.setDisplayName("§lShop");
     shop.setItemMeta(itemMetashop);
@@ -74,11 +74,11 @@ public class Cosmetics implements Listener {
     Player player = (Player)event.getWhoClicked();
     PlayerInventory pi = player.getInventory();
     ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
-    ItemStack crown = new ItemStack(Material.GOLD_HELMET);
+    ItemStack crown = new ItemStack(Material.GOLDEN_HELMET);
     ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
     ItemStack leggins = new ItemStack(Material.LEATHER_LEGGINGS);
     ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-    if (event.getClickedInventory().getTitle().equals("§a►  BETA TEST 1.0 | Cosmetics")) {
+    if (event.getView().getTitle().equals("§a►  BETA TEST 1.0 | Cosmetics")) {
       event.setCancelled(true);
       switch (event.getCurrentItem().getType()) {
         case LEATHER_HELMET:
@@ -89,7 +89,7 @@ public class Cosmetics implements Listener {
             player.sendMessage("§8[§eInfo§8]§a Dafür reichen deine Recht nicht aus.");
           } 
           return;
-        case GOLD_HELMET:
+        case GOLDEN_HELMET:
           if (player.hasPermission("crown.cosmetic")) {
             pi.setArmorContents(null);
             pi.setHelmet(crown);
@@ -101,7 +101,7 @@ public class Cosmetics implements Listener {
         case ARROW:
           player.closeInventory();
           return;
-        case SIGN:
+        case OAK_SIGN:
           player.sendMessage("Der Shop");
           shopGUI(player);
           return;

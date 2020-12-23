@@ -6,6 +6,7 @@ import net.juligames.lobbyplugin.LobbyPlugin;
 import net.juligames.lobbyplugin.msgs.LackingPermissionMessage;
 import net.juligames.lobbyplugin.msgs.Message;
 import net.juligames.lobbyplugin.msgs.MessageManager;
+import net.juligames.lobbyplugin.msgs.UsageMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -83,7 +84,7 @@ public class SpawnSetter implements CommandExecutor{
                 } else {
                     // player.sendMessage("§8[§e!§8]§a Bitte benutze /setlobbyspawn");
                     chat.sendMessage(LobbyPlugin.getMessageManager().getMessageByName("spawn.setter." + getName() +".error.arguments"));
-                    chat.sendMessage("spawn.setter." + getName() + "error.arguments");
+                    chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
 
                 }
             } else {
@@ -95,7 +96,8 @@ public class SpawnSetter implements CommandExecutor{
     public void  registerMSGs() {
         MessageManager manager = LobbyPlugin.getMessageManager();
         manager.registerMessage(new Message("spawn.setter." + getName() +".success","You have set the position for " + Chat.getAccentColor() + getName() + Chat.getChatColor() + "!"));
-        manager.registerMessage(new Message("spawn.setter." + getName() + ".error.arguments" , Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + getCommand().getUsage() + Chat.getChatColor() + "!"));
+        //manager.registerMessage(new Message("spawn.setter." + getName() + ".error.arguments" , Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + getCommand().getUsage() + Chat.getChatColor() + "!"));
+        manager.registerMessage(new UsageMessage(getCommand()));
         manager.registerMessage(new LackingPermissionMessage(permission));
 
     }

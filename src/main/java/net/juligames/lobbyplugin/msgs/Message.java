@@ -8,6 +8,8 @@ public class Message {
     private String content;
     private boolean prefix = true;
 
+
+
     public void setPrefix(boolean prefix) {
         this.prefix = prefix;
     }
@@ -42,7 +44,7 @@ public class Message {
 
     public Message(String pname,String content) {
         setName(pname);
-        setContent(Chat.buildSendS(content));
+        setContent(content);
     }
 
     @Override
