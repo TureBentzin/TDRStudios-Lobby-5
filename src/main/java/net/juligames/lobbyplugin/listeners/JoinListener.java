@@ -1,6 +1,8 @@
 package net.juligames.lobbyplugin.listeners;
 
+import net.juligames.lobbyplugin.Chat;
 import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -14,17 +16,36 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import sun.security.krb5.Config;
+import tdrstudios.Work_In_Progress;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@Work_In_Progress
 public class JoinListener implements Listener {
   @EventHandler
+/**
+ * @param PlayerJoinEvent event
+ * @see PlayerJoinEvent
+ */
   public void onPlayerJoin(PlayerJoinEvent event) {
-    event.setJoinMessage("§8[§e+§8]§a " + event.getPlayer().getName());
+    event.setJoinMessage( ConfigUtils.getConfig().getString("tdrstudios.join.msg").replace("%Player%" , event.getPlayer().getDisplayName()));
+
     Player player = event.getPlayer();
-    player.sendMessage("§8[§eInfo§8]§a Willkommen auf dem JuliGames Server.");
-    ItemStack item1 = new ItemStack(Material.COMPASS);
+    Chat chat = new Chat();
+    chat.setPlayers(new Player[]{player});
+    SimpleDateFormat formatter = new SimpleDateFormat(ConfigUtils.getConfig().getString("tdrstudios.join.date.pattern"));
+    Date date = new Date();
+    System.out.println("Current Server Time: " + formatter.format(date));
+    chat.send(ConfigUtils.getConfig().getString("tdrstudios.join.welcome").replace("%Player%" , player.getName()).replace("%Date%" , formatter.format(date)));
+
+
+    ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
     ItemMeta itemMeta = item1.getItemMeta();
-    itemMeta.setDisplayName("§3§lTeleporter");
+    itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
     item1.setItemMeta(itemMeta);
+
     ItemStack item2 = new ItemStack(Material.GOLD_NUGGET);
     ItemMeta itemMeta2 = item2.getItemMeta();
     itemMeta2.setDisplayName("§3§lInfo");

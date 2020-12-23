@@ -32,8 +32,12 @@ commands:
    gamemode:
      description: Ändere deinen Gamemode mit /gamemode [0] [1] [2] [3]
      usage: /<command> [0] [1] [2] [3] <Player>
-   lv:usage: /<command>
+   lv:
+     usage: /<command>
      description: Zeige die Version vom Plugin an.
    lobbyversion:
      usage: /<command>
      description: Zeige die Version vom Plugin an.
+   config:
+    usage: /<command> [save] [read]
+    description: This command is only for the debug!

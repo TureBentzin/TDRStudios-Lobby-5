@@ -5,13 +5,11 @@ import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
 import net.juligames.lobbyplugin.Navigator.Info;
-import net.juligames.lobbyplugin.commands.SpawnCommand;
-import net.juligames.lobbyplugin.commands.SpawnSetter;
-import net.juligames.lobbyplugin.commands.Versioncheck;
-import net.juligames.lobbyplugin.commands.GamemodeCommand;
+import net.juligames.lobbyplugin.commands.*;
 import net.juligames.lobbyplugin.events.allgemein;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -66,6 +64,7 @@ public class LobbyPlugin extends JavaPlugin {
     plugin = this;
    // getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
     getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
+    ConfigUtils.registerAllConfigurations();
     registerMessages();
     registerCommands();
 
@@ -113,6 +112,8 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand(setLobbyWarp3Name).setExecutor(new SpawnSetter(setLobbyWarp3Name, "setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
     getCommand(setLobbyWarp4Name).setExecutor(new SpawnSetter(setLobbyWarp4Name, "setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
     getCommand(setLobbyWarp5Name).setExecutor(new SpawnSetter(setLobbyWarp5Name, "setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
+
+    getCommand("config").setExecutor(new ConfigCommand("config"));
   }
   
   public static LobbyPlugin getPlugin() {
