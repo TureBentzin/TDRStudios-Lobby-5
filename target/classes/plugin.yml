@@ -7,25 +7,33 @@ api-version: 1.15
 commands:
    setspawn:
      description: Setze den Spawnpunkt mit /setspawn
+     usage: /<command>
    spawn:
      description: Teleportiere dich zum Spawn mit /spawn
+     usage: /<command>
    setlobbyWarp1:
      description: Setze den Spawnpunkt für das erste Lobbyitem mit /setlobbyspawn1
+     usage: /<command>
    setlobbyWarp2:
      description: Setze den Spawnpunkt für das 2te Lobbyitem mit /setlobbyspawn2
+     usage: /<command>
    setlobbyWarp3:
+     usage: /<command>
      description: Setze den Spawnpunkt für das 3te Lobbyitem mit /setlobbyspawn3
    setlobbyWarp4:
+     usage: /<command>
      description: Setze den Spawnpunkt für das 4te Lobbyitem mit /setlobbyspawn4
    setlobbyWarp5:
+     usage: /<command>
      description: Setze den Spawnpunkt für das 5te Lobbyitem mit /setlobbyspawn5
    gm:
      description: Ändere deinen Gamemode mit /gm [0] [1] [2] [3]
-     usage: Change your gamemode with /<command> [0] [1] [2] [3] <Player>
+     usage: /<command> [0] [1] [2] [3] <Player>
    gamemode:
      description: Ändere deinen Gamemode mit /gamemode [0] [1] [2] [3]
-     usage: Change your gamemode with /<command> [0] [1] [2] [3] <Player>
-   lv:
+     usage: /<command> [0] [1] [2] [3] <Player>
+   lv:usage: /<command>
      description: Zeige die Version vom Plugin an.
    lobbyversion:
+     usage: /<command>
      description: Zeige die Version vom Plugin an.

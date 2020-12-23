@@ -212,7 +212,7 @@ public class GamemodeCommand implements CommandExecutor {
 
 
                   }else {
-                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)) + ".all");
+                    chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)) + ".all");
                   }
                 }
                 if (gameMode == GameMode.CREATIVE) {
@@ -228,7 +228,7 @@ public class GamemodeCommand implements CommandExecutor {
                     }
 
                   }else {
-                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(1)) + ".all");
+                    chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(1)) + ".all");
                   }
                 }
                 if (gameMode == GameMode.ADVENTURE) {
@@ -243,7 +243,7 @@ public class GamemodeCommand implements CommandExecutor {
                               "Adventure" + Chat.getChatColor() + "!");
                     }
                   }else {
-                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(2)) + ".all");
+                    chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(2)) + ".all");
                   }
                 }
                 if (gameMode == GameMode.SPECTATOR) {
@@ -259,7 +259,7 @@ public class GamemodeCommand implements CommandExecutor {
 
                     }
                   }else {
-                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(3)) + ".all");
+                    chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(3)) + ".all");
                   }
                 }
 

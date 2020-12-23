@@ -94,6 +94,11 @@ public class Chat {
         sendMessage(LobbyPlugin.getMessageManager().getMessageByID(id));
    }
    public void sendMessage(String name) {
-        sendMessage(LobbyPlugin.getMessageManager().getMessageByName(name));
+        Message send = LobbyPlugin.getMessageManager().getMessageByName(name);
+        if(send != null) {
+            sendMessage(send);
+        }else {
+            send(name);
+        }
    }
 }
