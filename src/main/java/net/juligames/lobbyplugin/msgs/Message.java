@@ -8,6 +8,8 @@ public class Message {
     private String content;
     private boolean prefix = true;
 
+
+
     public void setPrefix(boolean prefix) {
         this.prefix = prefix;
     }

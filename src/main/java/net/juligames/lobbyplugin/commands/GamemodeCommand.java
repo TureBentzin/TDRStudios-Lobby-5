@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import tdrstudios.Work_In_Progress;
 
+import java.util.Arrays;
 
 
 @Work_In_Progress
@@ -191,8 +192,12 @@ public class GamemodeCommand implements CommandExecutor {
             }
           }else {
             if(args[1].equals("*") | args[1].equals("@a")) {
-              if (args[1] == "1" | args[1] == "2" | args[1] == "3" | args[1] == "0") {
-                GameMode gameMode = GameMode.getByValue(Integer.parseInt(args[1]));
+              System.out.println("sender = " + sender + ", command = " + command + ", label = " + label + ", args = " + Arrays.deepToString(args));
+              System.out.println("GamemodeCommand.onCommand");
+              if (args[0].equals("0") |args[0].equals("1")  | args[0].equals("2")  | args[0].equals("3") ) {
+                GameMode gameMode = GameMode.getByValue(Integer.parseInt(args[0]));
+                chat.send("Debug: Gamemode = " + gameMode.toString());
+
                 if (gameMode == GameMode.SURVIVAL) {
                   if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
                     for (Player all : Bukkit.getOnlinePlayers()) {
@@ -206,10 +211,12 @@ public class GamemodeCommand implements CommandExecutor {
                     }
 
 
+                  }else {
+                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)) + ".all");
                   }
                 }
                 if (gameMode == GameMode.CREATIVE) {
-                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                  if (p.hasPermission(getPermissionOTHER(1) + ".all")) {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);
@@ -220,10 +227,12 @@ public class GamemodeCommand implements CommandExecutor {
                               "Creative" + Chat.getChatColor() + "!");
                     }
 
+                  }else {
+                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(1)) + ".all");
                   }
                 }
                 if (gameMode == GameMode.ADVENTURE) {
-                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                  if (p.hasPermission(getPermissionOTHER(2) + ".all")) {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);
@@ -233,10 +242,12 @@ public class GamemodeCommand implements CommandExecutor {
                       chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
                               "Adventure" + Chat.getChatColor() + "!");
                     }
+                  }else {
+                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(2)) + ".all");
                   }
                 }
                 if (gameMode == GameMode.SPECTATOR) {
-                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                  if (p.hasPermission(getPermissionOTHER(3) + ".all")) {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);
@@ -247,17 +258,21 @@ public class GamemodeCommand implements CommandExecutor {
                               "Spectator" + Chat.getChatColor() + "!");
 
                     }
+                  }else {
+                    chat.send(LackingPermissionMessage.getNameFIX(getPermissionOTHER(3)) + ".all");
                   }
                 }
 
 
               } else {
-                chat.send(UsageMessage.getNameFIX(getCommand()));
+                chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
               }
 
 
+            }else {
+              chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor()+ " is not online!");
             }
-             chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor()+ " is not online!");
+
           }
         }
 
@@ -285,6 +300,11 @@ public class GamemodeCommand implements CommandExecutor {
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(1)));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(2)));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(3)));
+
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(0) +  ".all"));
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(1) +  ".all"));
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(2) +  ".all"));
+    LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(3) +  ".all"));
 
 
 
