@@ -192,11 +192,9 @@ public class GamemodeCommand implements CommandExecutor {
             }
           }else {
             if(args[1].equals("*") | args[1].equals("@a")) {
-              System.out.println("sender = " + sender + ", command = " + command + ", label = " + label + ", args = " + Arrays.deepToString(args));
-              System.out.println("GamemodeCommand.onCommand");
+
               if (args[0].equals("0") |args[0].equals("1")  | args[0].equals("2")  | args[0].equals("3") ) {
                 GameMode gameMode = GameMode.getByValue(Integer.parseInt(args[0]));
-                chat.send("Debug: Gamemode = " + gameMode.toString());
 
                 if (gameMode == GameMode.SURVIVAL) {
                   if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
