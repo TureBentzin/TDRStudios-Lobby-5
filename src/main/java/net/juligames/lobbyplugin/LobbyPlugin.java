@@ -64,7 +64,7 @@ public class LobbyPlugin extends JavaPlugin {
     chat.send(players1, "This Plugin is currently in Maintenance!");
     plugin = this;
    // getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
-
+    getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
     registerMessages();
     registerCommands();
 
