@@ -36,6 +36,7 @@ public class JoinListener implements Listener {
     Chat chat = new Chat();
     chat.setPlayers(new Player[]{player});
     SimpleDateFormat formatter = new SimpleDateFormat(ConfigUtils.getConfig().getString("tdrstudios.join.date.pattern"));
+    SimpleDateFormat formatter1 = new SimpleDateFormat("yyyy");
     Date date = new Date();
     System.out.println("Current Server Time: " + formatter.format(date));
     chat.send(ConfigUtils.getConfig().getString("tdrstudios.join.welcome").replace("%Player%" , player.getName()).replace("%Date%" , formatter.format(date)));
@@ -46,18 +47,22 @@ public class JoinListener implements Listener {
     itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
     item1.setItemMeta(itemMeta);
 
-    ItemStack item2 = new ItemStack(Material.GOLD_NUGGET);
+    FileConfiguration c = ConfigUtils.getConfig();
+    ItemStack item2 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.info.material")));
     ItemMeta itemMeta2 = item2.getItemMeta();
-    itemMeta2.setDisplayName("§3§lInfo");
+    itemMeta2.setDisplayName(c.getString("tdrstudios.hotbar.info.displayName"));
     item2.setItemMeta(itemMeta2);
-    ItemStack item3 = new ItemStack(Material.COMPARATOR);
+
+    ItemStack item3 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.settings.material")));
     ItemMeta itemMeta3 = item3.getItemMeta();
-    itemMeta3.setDisplayName("§3§lEinstellungen");
+    itemMeta3.setDisplayName(c.getString("tdrstudios.hotbar.settings.displayName"));
     item3.setItemMeta(itemMeta3);
-    ItemStack item4 = new ItemStack(Material.BLAZE_ROD);
+
+    ItemStack item4 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.stick.material")));
     ItemMeta itemMeta4 = item4.getItemMeta();
-    itemMeta4.setDisplayName("§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken");
+    itemMeta4.setDisplayName(c.getString("tdrstudios.hotbar.stick.displayName"));
     item4.setItemMeta(itemMeta4);
+
     PlayerInventory playerInventory = player.getInventory();
     player.getInventory().clear();
     playerInventory.setItem(7, item3);
@@ -73,8 +78,9 @@ public class JoinListener implements Listener {
     float pitch = (float)config.getDouble("Spawn.Pitch");
     Location location = new Location(world, x, y, z, yaw, pitch);
     player.teleport(location);
-    player.setGameMode(GameMode.SURVIVAL);
+    player.setGameMode(GameMode.valueOf(ConfigUtils.getConfig().getString("tdrstudios.defaultGameMode"))); // DEBUG @WIP
+
     player.setExp(1.0F);
-    player.setLevel(2020);
+    player.setLevel(Integer.parseInt(formatter1.format(date)));
   }
 }
