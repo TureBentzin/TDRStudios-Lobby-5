@@ -14,6 +14,7 @@ import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -84,6 +85,11 @@ public class LobbyPlugin extends JavaPlugin {
     pluginManager.registerEvents((Listener)new Einstellungen(), (Plugin)this);
     pluginManager.registerEvents((Listener)new allgemein(), (Plugin)this);
     pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
+  }
+  public void fixConfig() {
+    if(getConfig().getLocation("tdrstudios.spawn") == null) {
+      getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
+    }
   }
 
   public void initChat() {
