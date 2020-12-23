@@ -52,7 +52,11 @@ public class allgemein implements Listener {
   
   @EventHandler
   public void onWeatherChange(WeatherChangeEvent e) {
-    e.setCancelled(true);
+
+      if(!ConfigUtils.getConfig().getBoolean("tdrstudios.allowWeatherChange")) {
+          e.setCancelled(true);
+      }
+
   }
   
   @EventHandler

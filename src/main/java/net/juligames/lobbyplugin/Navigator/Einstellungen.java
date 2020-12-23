@@ -1,6 +1,7 @@
 package net.juligames.lobbyplugin.Navigator;
 
 import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -81,9 +82,9 @@ public class Einstellungen implements Listener {
   }
   
   @EventHandler
-  public void handleNavigatorOpen(PlayerInteractEvent event) {
+  public void handleSettingsOpen(PlayerInteractEvent event) {
     if (event.getItem() != null) {
-      if (event.getItem().getType() != Material.COMPARATOR)
+      if (event.getItem().getType() != Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.settings.material")))
         return; 
       if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)
         openGUI(event.getPlayer()); 
@@ -91,7 +92,7 @@ public class Einstellungen implements Listener {
   }
   
   @EventHandler
-  public void handleNavigatorGUIClick(InventoryClickEvent event) {
+  public void handleSettingsGUIClick(InventoryClickEvent event) {
     if (!(event.getWhoClicked() instanceof Player))
       return; 
     Player player = (Player) event.getWhoClicked();
