@@ -199,8 +199,13 @@ public class GamemodeCommand implements CommandExecutor {
                       Player target = all;
                       target.setGameMode(gameMode);;
                       target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                      chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
+                              "Survival" + Chat.getChatColor() + "!");
                     }
+
+
                   }
                 }
                 if (gameMode == GameMode.CREATIVE) {
@@ -211,7 +216,10 @@ public class GamemodeCommand implements CommandExecutor {
                       target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
                               + "Creative" + Chat.getChatColor() + "!");
+                      chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
+                              "Creative" + Chat.getChatColor() + "!");
                     }
+
                   }
                 }
                 if (gameMode == GameMode.ADVENTURE) {
@@ -222,10 +230,12 @@ public class GamemodeCommand implements CommandExecutor {
                       target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
                               + "Adventure" + Chat.getChatColor() + "!");
+                      chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
+                              "Adventure" + Chat.getChatColor() + "!");
                     }
                   }
                 }
-                if (gameMode == GameMode.CREATIVE) {
+                if (gameMode == GameMode.SPECTATOR) {
                   if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
@@ -233,9 +243,13 @@ public class GamemodeCommand implements CommandExecutor {
                       target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
                               + "Spectator" + Chat.getChatColor() + "!");
+                      chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
+                              "Spectator" + Chat.getChatColor() + "!");
+
                     }
                   }
                 }
+
 
               } else {
                 chat.send(UsageMessage.getNameFIX(getCommand()));
