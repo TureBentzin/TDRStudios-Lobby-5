@@ -190,6 +190,59 @@ public class GamemodeCommand implements CommandExecutor {
               }
             }
           }else {
+            if(args[1].equals("*") | args[1].equals("@a")) {
+              if (args[1] == "1" | args[1] == "2" | args[1] == "3" | args[1] == "0") {
+                GameMode gameMode = GameMode.getByValue(Integer.parseInt(args[1]));
+                if (gameMode == GameMode.SURVIVAL) {
+                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                    for (Player all : Bukkit.getOnlinePlayers()) {
+                      Player target = all;
+                      target.setGameMode(gameMode);;
+                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                      chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                    }
+                  }
+                }
+                if (gameMode == GameMode.CREATIVE) {
+                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                    for (Player all : Bukkit.getOnlinePlayers()) {
+                      Player target = all;
+                      target.setGameMode(gameMode);
+                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                      chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
+                              + "Creative" + Chat.getChatColor() + "!");
+                    }
+                  }
+                }
+                if (gameMode == GameMode.ADVENTURE) {
+                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                    for (Player all : Bukkit.getOnlinePlayers()) {
+                      Player target = all;
+                      target.setGameMode(gameMode);
+                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                      chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
+                              + "Adventure" + Chat.getChatColor() + "!");
+                    }
+                  }
+                }
+                if (gameMode == GameMode.CREATIVE) {
+                  if (p.hasPermission(getPermissionOTHER(0) + ".all")) {
+                    for (Player all : Bukkit.getOnlinePlayers()) {
+                      Player target = all;
+                      target.setGameMode(gameMode);
+                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+                      chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
+                              + "Spectator" + Chat.getChatColor() + "!");
+                    }
+                  }
+                }
+
+              } else {
+                chat.send(UsageMessage.getNameFIX(getCommand()));
+              }
+
+
+            }
              chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor()+ " is not online!");
           }
         }
