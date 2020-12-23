@@ -1,6 +1,8 @@
 package net.juligames.lobbyplugin.events;
 
 import java.util.ArrayList;
+
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -108,7 +110,7 @@ public class allgemein implements Listener {
   @EventHandler
   public void onLeave(PlayerQuitEvent e) {
     Player player = e.getPlayer();
-    e.setQuitMessage("§8[§4-§8]§4 " + e.getPlayer().getName());
+    e.setQuitMessage(ConfigUtils.getConfig().getString("tdrstudios.leave.msg").replace("%Player%" , player.getName()));
   }
   
   @EventHandler
@@ -120,9 +122,9 @@ public class allgemein implements Listener {
   @EventHandler
   public void onGamemodechange(PlayerGameModeChangeEvent e) {
     Player player = e.getPlayer();
-    ItemStack item1 = new ItemStack(Material.COMPASS);
+    ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
     ItemMeta itemMeta = item1.getItemMeta();
-    itemMeta.setDisplayName("§3§lTeleporter");
+    itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
     item1.setItemMeta(itemMeta);
     ItemStack item2 = new ItemStack(Material.GOLD_NUGGET);
     ItemMeta itemMeta2 = item2.getItemMeta();

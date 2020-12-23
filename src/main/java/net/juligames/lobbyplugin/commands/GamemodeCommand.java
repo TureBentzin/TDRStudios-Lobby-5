@@ -306,6 +306,5 @@ public class GamemodeCommand implements CommandExecutor {
 
 
 
-    System.out.println("Commands im Manager -> " + LobbyPlugin.getMessageManager().getDebug());
   }
 }

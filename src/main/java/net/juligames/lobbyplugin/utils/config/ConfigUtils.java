@@ -5,6 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.File;
+
 public class ConfigUtils {
     public static FileConfiguration getConfig() {
         return LobbyPlugin.getPlugin().getConfig();
@@ -13,6 +15,7 @@ public class ConfigUtils {
         LobbyPlugin.getPlugin().saveConfig();
     }
     public static void registerAllConfigurations() {
+
     registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
     registerConfiguration("tdrstudios.leave.msg");
     registerConfiguration("tdrstudios.join.welcome" , "Welcome to JuliGames %Player%! %Date%" );
@@ -23,8 +26,8 @@ public class ConfigUtils {
      */
     registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
     registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
-    registerConfiguration("tdrstudios.hotbar.nav.material-DEPRI" , Material.COMPASS);
     registerConfiguration("tdrstudios.hotbar.nav.displayName","§3§lTeleporter");
+
 
     }
     public static void registerConfiguration(String path) {
@@ -41,7 +44,9 @@ public class ConfigUtils {
         if(getConfig().get(path) != null) {
             LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is alredy set!");
         }else {
+            System.out.println("DEBUG: Vorher im Slot " + path + getConfig().get(path));
             getConfig().set(path , object);
+            System.out.println("DEBUG: Nachher im Slot " + path + getConfig().get(path));
         }
         saveConfig();
     }
