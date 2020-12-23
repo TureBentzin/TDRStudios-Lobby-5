@@ -146,37 +146,39 @@ public class GamemodeCommand implements CommandExecutor {
             if(args[0].equals("0")) {
               if(p.hasPermission(getPermissionOTHER(0))) {
                 target.setGameMode(GameMode.SURVIVAL);
-
                 target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
                 chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
               }
-              if(p.hasPermission(getPermissionOTHER(1))) {
-                target.setGameMode(GameMode.SURVIVAL);
-
+            }
+            if(args[0].equals("1")) {
+              if(p.hasPermission(getPermissionOTHER(0))) {
+                target.setGameMode(GameMode.CREATIVE);
                 target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
-                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
-                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Creative" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Creative" + Chat.getChatColor() + "!");
               }else {
                 chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
               }
-              if(p.hasPermission(getPermissionOTHER(2))) {
-                target.setGameMode(GameMode.SURVIVAL);
-
+            }
+            if(args[0].equals("2")) {
+              if(p.hasPermission(getPermissionOTHER(0))) {
+                target.setGameMode(GameMode.ADVENTURE);
                 target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
-                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
-                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Adventure" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Adventure" + Chat.getChatColor() + "!");
               }else {
                 chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
               }
-              if(p.hasPermission(getPermissionOTHER(3))) {
-                target.setGameMode(GameMode.SURVIVAL);
-
+            }
+            if(args[0].equals("3")) {
+              if(p.hasPermission(getPermissionOTHER(0))) {
+                target.setGameMode(GameMode.SPECTATOR);
                 target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
-                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
-                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
+                chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Spectator" + Chat.getChatColor() + "!");
+                chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Spectator" + Chat.getChatColor() + "!");
               }else {
                 chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
               }

@@ -10,12 +10,9 @@ public class LackingPermissionMessage extends Message{
       return  "tdrstudios.permission.lacking." + permission.getName();
     }
     private Permission permission;
-
     public void setPermission(Permission permission) {
         this.permission = permission;
     }
-
-
 
     public LackingPermissionMessage(Permission permission) {
         super("tdrstudios.permission.lacking." + permission.getName(), Chat.getErrorColor() +"You are lacking the Permission :\"" + Chat.getAccentColor()+ permission.getName() + Chat.getErrorColor() + "\" !");
