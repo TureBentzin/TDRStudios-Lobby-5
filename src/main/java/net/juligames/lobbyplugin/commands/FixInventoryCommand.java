@@ -8,7 +8,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
+import tdrstudios.Work_In_Progress;
 
+@Work_In_Progress
 public class FixInventoryCommand implements CommandExecutor {
     private Permission permission;
     private Command command;
@@ -31,7 +33,7 @@ public class FixInventoryCommand implements CommandExecutor {
     public FixInventoryCommand(String command ,String permission) {
         setCommand(LobbyPlugin.getPlugin().getCommand(command));
         setPermission(new Permission(permission, "Permission for " + getClass().getName()));
-        registerMessages();
+        registerMessages(); // Change soon
     }
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
