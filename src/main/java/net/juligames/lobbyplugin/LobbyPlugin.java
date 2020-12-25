@@ -123,7 +123,7 @@ public class LobbyPlugin extends JavaPlugin {
 
     getCommand("config").setExecutor(new ConfigCommand("config"));
   }
-  
+
   public static LobbyPlugin getPlugin() {
     return plugin;
   }
