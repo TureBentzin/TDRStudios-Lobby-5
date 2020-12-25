@@ -1,15 +1,12 @@
 package net.juligames.lobbyplugin;
 
 import de.bentzin.tools.console.Console;
-import jdk.vm.ci.meta.JavaMethod;
-import jdk.vm.ci.meta.JavaType;
-import jdk.vm.ci.meta.Signature;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
 import net.juligames.lobbyplugin.Navigator.Info;
 import net.juligames.lobbyplugin.commands.*;
-import net.juligames.lobbyplugin.events.allgemein;
+import net.juligames.lobbyplugin.events.GeneralEvents;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
@@ -17,7 +14,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
@@ -103,7 +99,7 @@ public class LobbyPlugin extends JavaPlugin {
         pluginManager.registerEvents((Listener)new JoinListener(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Info(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Einstellungen(), (Plugin)this);
-        pluginManager.registerEvents((Listener)new allgemein(), (Plugin)this);
+        pluginManager.registerEvents((Listener)new GeneralEvents(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
     }
     public void fixConfig() {
