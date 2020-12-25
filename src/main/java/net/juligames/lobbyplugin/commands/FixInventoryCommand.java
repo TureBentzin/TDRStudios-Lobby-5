@@ -40,12 +40,12 @@ public class FixInventoryCommand implements CommandExecutor {
     public FixInventoryCommand(String command ,String permission) {
         setCommand(LobbyPlugin.getPlugin().getCommand(command));
         setPermission(new Permission(permission, "Permission for " + getClass().getName()));
-        registerMessages(); // Change soon
+        ; // Change soon
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
+        registerMessages();
         if(sender instanceof Player) {
             Player player = (Player) sender;
             Chat chat = new Chat();
