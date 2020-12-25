@@ -15,8 +15,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
-import org.bukkit.util.Vector;
+import tdrstudios.Work_In_Progress;
 
+@Work_In_Progress
 public class FixInventoryCommand implements CommandExecutor {
     private Permission permission;
     private Command command;
@@ -36,10 +37,10 @@ public class FixInventoryCommand implements CommandExecutor {
         this.permission = permission;
     }
 
-    public FixInventoryCommand(Permission permission, Command command) {
-        setCommand(command);
-        setPermission(permission);
-        registerMessages();
+    public FixInventoryCommand(String command ,String permission) {
+        setCommand(LobbyPlugin.getPlugin().getCommand(command));
+        setPermission(new Permission(permission, "Permission for " + getClass().getName()));
+        registerMessages(); // Change soon
     }
 
     @Override

@@ -91,30 +91,41 @@ public class LobbyPlugin extends JavaPlugin {
         }
     }
 
-    public void initChat() {
-        Chat.setChatColor(ChatColor.GREEN);
-        Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.GRAY + "] " + Chat.getChatColor());
-        Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Lobby" + ChatColor.GRAY + "] " + Chat.getChatColor());
-    }
-    private void registerMessages() {
 
-    }
-    private void registerCommands() {
-        final String setSpawnCommandName = "setspawn";
-        final String setLobbyWarp1Name = "setLobbyWarp1";
-        final String setLobbyWarp2Name = "setLobbyWarp2";
-        final String setLobbyWarp3Name = "setLobbyWarp3";
-        final String setLobbyWarp4Name = "setLobbyWarp4";
-        final String setLobbyWarp5Name = "setLobbyWarp5";
-        getCommand(setSpawnCommandName).setExecutor(new SpawnSetter(setSpawnCommandName, "Spawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
-        getCommand(setLobbyWarp1Name).setExecutor(new SpawnSetter(setLobbyWarp1Name, "setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
-        getCommand(setLobbyWarp2Name).setExecutor(new SpawnSetter(setLobbyWarp2Name, "setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
-        getCommand(setLobbyWarp3Name).setExecutor(new SpawnSetter(setLobbyWarp3Name, "setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
-        getCommand(setLobbyWarp4Name).setExecutor(new SpawnSetter(setLobbyWarp4Name, "setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
-        getCommand(setLobbyWarp5Name).setExecutor(new SpawnSetter(setLobbyWarp5Name, "setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
-    }
+  public void initChat() {
+    Chat.setChatColor(ChatColor.GREEN);
+    Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.GRAY + "] " + Chat.getChatColor());
+    Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Lobby" + ChatColor.GRAY + "] " + Chat.getChatColor());
+  }
+  private void registerMessages() {
 
-    public static LobbyPlugin getPlugin() {
-        return plugin;
-    }
+  }
+  private void registerCommands() {
+    final String setSpawnCommandName = "setspawn";
+    final String setLobbyWarp1Name = "setLobbyWarp1";
+    final String setLobbyWarp2Name = "setLobbyWarp2";
+    final String setLobbyWarp3Name = "setLobbyWarp3";
+    final String setLobbyWarp4Name = "setLobbyWarp4";
+    final String setLobbyWarp5Name = "setLobbyWarp5";
+    getCommand(setSpawnCommandName).setExecutor(new SpawnSetter(setSpawnCommandName, "Spawn", "tdrstudios.lobby.perms.setSpawn", getConfig()));
+    getCommand(setLobbyWarp1Name).setExecutor(new SpawnSetter(setLobbyWarp1Name, "setWarp1", "tdrstudios.lobby.perms.setWarp1", getConfig()));
+    getCommand(setLobbyWarp2Name).setExecutor(new SpawnSetter(setLobbyWarp2Name, "setWarp2", "tdrstudios.lobby.perms.setWarp2", getConfig()));
+    getCommand(setLobbyWarp3Name).setExecutor(new SpawnSetter(setLobbyWarp3Name, "setWarp3", "tdrstudios.lobby.perms.setWarp3", getConfig()));
+    getCommand(setLobbyWarp4Name).setExecutor(new SpawnSetter(setLobbyWarp4Name, "setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
+    getCommand(setLobbyWarp5Name).setExecutor(new SpawnSetter(setLobbyWarp5Name, "setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
+
+    //FixCommand for Inventory
+
+    final String fixInventoryCommandName = "fixinvenory";
+    final String fixInventoryCommandName_Short = "fixinv";
+    getCommand(fixInventoryCommandName).setExecutor(new FixInventoryCommand(fixInventoryCommandName , "tdrstudios.lobby.perms.fix.inventory"));
+    getCommand(fixInventoryCommandName_Short).setExecutor(new FixInventoryCommand(fixInventoryCommandName_Short , "tdrstudios.lobby.perms.fix.inventory"));
+
+
+    getCommand("config").setExecutor(new ConfigCommand("config"));
+  }
+
+  public static LobbyPlugin getPlugin() {
+    return plugin;
+  }
 }
