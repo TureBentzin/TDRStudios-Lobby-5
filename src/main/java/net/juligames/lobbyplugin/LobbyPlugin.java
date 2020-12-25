@@ -1,6 +1,9 @@
 package net.juligames.lobbyplugin;
 
 import de.bentzin.tools.console.Console;
+import jdk.vm.ci.meta.JavaMethod;
+import jdk.vm.ci.meta.JavaType;
+import jdk.vm.ci.meta.Signature;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
@@ -49,10 +52,6 @@ public class LobbyPlugin extends JavaPlugin {
         return chat;
     }
 
-    public LobbyPlugin() {
-        //This is a Temp Fix for the Issue-InvalidPluginExeption #3
-    }
-
 
     public void betaWarn() {
         setPlugin(this);
@@ -64,12 +63,10 @@ public class LobbyPlugin extends JavaPlugin {
             getLogger().warning("You have accepted the risk of using this beta software!");
         }else {
             System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() +"/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
-
             throw new BetaError();
         }
         System.out.println("This is a beta software!");
         System.out.println(" ");
-
     }
 
     public void onEnable() {
