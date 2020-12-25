@@ -34,11 +34,11 @@ public class InventoryUtils {
         item2.setItemMeta(itemMeta2);
         ItemStack item3 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.settings.material")));
         ItemMeta itemMeta3 = item3.getItemMeta();
-        itemMeta3.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.settings.displayName")));
+        itemMeta3.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.settings.displayName"));
         item3.setItemMeta(itemMeta3);
         ItemStack item4 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.stick.material")));
         ItemMeta itemMeta4 = item4.getItemMeta();
-        itemMeta4.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.stick.displayName")));
+        itemMeta4.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.stick.displayName"));
         item4.setItemMeta(itemMeta4);
 
         //Set the ItemsStacks into the inventory

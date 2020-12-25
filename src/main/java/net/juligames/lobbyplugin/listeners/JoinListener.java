@@ -43,7 +43,7 @@ public class JoinListener implements Listener {
     chat.send(ConfigUtils.getConfig().getString("tdrstudios.join.welcome").replace("%Player%" , player.getName()).replace("%Date%" , formatter.format(date)));
 
     InventoryUtils.setInventory(player);
-    
+
     FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
     World world = Bukkit.getWorld(config.getString("Spawn.World"));
     double x = config.getDouble("Spawn.X");
