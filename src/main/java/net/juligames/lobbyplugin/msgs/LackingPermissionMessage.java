@@ -9,6 +9,10 @@ public class LackingPermissionMessage extends Message{
     public static String getNameFIX(Permission permission) {
       return  "tdrstudios.permission.lacking." + permission.getName();
     }
+
+    public static String getNameFIX(String permission) {
+        return  "tdrstudios.permission.lacking." + permission;
+    }
     private Permission permission;
     public void setPermission(Permission permission) {
         this.permission = permission;
