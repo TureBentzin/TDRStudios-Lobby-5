@@ -3,6 +3,7 @@ package net.juligames.lobbyplugin.listeners;
 import net.juligames.lobbyplugin.Chat;
 import net.juligames.lobbyplugin.LobbyPlugin;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
+import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -41,34 +42,8 @@ public class JoinListener implements Listener {
     System.out.println("Current Server Time: " + formatter.format(date));
     chat.send(ConfigUtils.getConfig().getString("tdrstudios.join.welcome").replace("%Player%" , player.getName()).replace("%Date%" , formatter.format(date)));
 
-
-    ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
-    ItemMeta itemMeta = item1.getItemMeta();
-    itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
-    item1.setItemMeta(itemMeta);
-
-    FileConfiguration c = ConfigUtils.getConfig();
-    ItemStack item2 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.info.material")));
-    ItemMeta itemMeta2 = item2.getItemMeta();
-    itemMeta2.setDisplayName(c.getString("tdrstudios.hotbar.info.displayName"));
-    item2.setItemMeta(itemMeta2);
-
-    ItemStack item3 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.settings.material")));
-    ItemMeta itemMeta3 = item3.getItemMeta();
-    itemMeta3.setDisplayName(c.getString("tdrstudios.hotbar.settings.displayName"));
-    item3.setItemMeta(itemMeta3);
-
-    ItemStack item4 = new ItemStack(Material.getMaterial(c.getString("tdrstudios.hotbar.stick.material")));
-    ItemMeta itemMeta4 = item4.getItemMeta();
-    itemMeta4.setDisplayName(c.getString("tdrstudios.hotbar.stick.displayName"));
-    item4.setItemMeta(itemMeta4);
-
-    PlayerInventory playerInventory = player.getInventory();
-    player.getInventory().clear();
-    playerInventory.setItem(7, item3);
-    playerInventory.setItem(1, item2);
-    playerInventory.setItem(4, item1);
-    playerInventory.setItem(8, item4);
+    InventoryUtils.setInventory(player);
+    
     FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
     World world = Bukkit.getWorld(config.getString("Spawn.World"));
     double x = config.getDouble("Spawn.X");

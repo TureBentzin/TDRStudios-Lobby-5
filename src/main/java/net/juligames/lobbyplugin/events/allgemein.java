@@ -1,11 +1,15 @@
 package net.juligames.lobbyplugin.events;
 
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
+import net.juligames.lobbyplugin.LobbyPlugin;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
+import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,6 +30,8 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class allgemein implements Listener {
+
+  private FileConfiguration c = ConfigUtils.getConfig();
   @EventHandler
   public void onDamage(EntityDamageEvent e) {
     if (e.getEntity() instanceof Player)
@@ -122,31 +128,12 @@ public class allgemein implements Listener {
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
-  
+
+
+  //This will be change in Merge with development!
   @EventHandler
   public void onGamemodechange(PlayerGameModeChangeEvent e) {
-    Player player = e.getPlayer();
-    ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
-    ItemMeta itemMeta = item1.getItemMeta();
-    itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
-    item1.setItemMeta(itemMeta);
-    ItemStack item2 = new ItemStack(Material.GOLD_NUGGET);
-    ItemMeta itemMeta2 = item2.getItemMeta();
-    itemMeta2.setDisplayName("§3§lInfo");
-    item2.setItemMeta(itemMeta2);
-    ItemStack item3 = new ItemStack(Material.COMPARATOR);
-    ItemMeta itemMeta3 = item3.getItemMeta();
-    itemMeta3.setDisplayName("§3§lEinstellungen");
-    item3.setItemMeta(itemMeta3);
-    ItemStack item4 = new ItemStack(Material.BLAZE_ROD);
-    ItemMeta itemMeta4 = item4.getItemMeta();
-    itemMeta4.setDisplayName("§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken");
-    item4.setItemMeta(itemMeta4);
-    PlayerInventory playerInventory = player.getInventory();
-    player.getInventory().clear();
-    playerInventory.setItem(7, item3);
-    playerInventory.setItem(1, item2);
-    playerInventory.setItem(4, item1);
-    playerInventory.setItem(8, item4);
+    InventoryUtils.setInventory(e.getPlayer());
+    LobbyPlugin.getLog().send("The player " + e.getPlayer().getName() + " has switched gamemode to " + e.getNewGameMode().name() + "!");
   }
 }
