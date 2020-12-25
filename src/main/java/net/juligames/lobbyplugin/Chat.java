@@ -5,6 +5,8 @@ import net.juligames.lobbyplugin.msgs.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class Chat {
 
     @Deprecated
@@ -101,4 +103,11 @@ public class Chat {
             send(name);
         }
    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "players=" + Arrays.toString(players) +
+                '}';
+    }
 }
