@@ -14,6 +14,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
@@ -52,36 +53,42 @@ public class LobbyPlugin extends JavaPlugin {
         //This is a Temp Fix for the Issue-InvalidPluginExeption #3
     }
 
-    @Override
-    public void onLoad() {
+
+    public void betaWarn() {
+        setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");
         System.out.println("This plugin is currently in development, so the TDRStudios don't promise that your server " + Bukkit.getServer().getName() + " not getting any damage from using this software!");
+        ConfigUtils.registerConfiguration("beta.acceptRisk" , false);
         if(getConfig().getBoolean("beta.acceptRisk")) {
             getLogger().warning("You have accepted the risk of using this beta software!");
         }else {
             System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() +"/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
-            System.exit(5);
+
             throw new BetaError();
         }
         System.out.println("This is a beta software!");
         System.out.println(" ");
+
     }
 
     public void onEnable() {
+        plugin = this;
 
-        setPlugin(this);
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
         getLog().send("JavaPlugin by tdrstudios.de load!"); //WaterMark
         initChat();
+
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         Player[] players1 = players.toArray(new Player[players.size()]);
         chat.send(players1, "This Plugin is currently in Maintenance!");
-        plugin = this;
+
         getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
+
         ConfigUtils.registerAllConfigurations();
+        betaWarn();
         registerMessages();
         registerCommands();
 
@@ -133,7 +140,7 @@ public class LobbyPlugin extends JavaPlugin {
 
     //FixCommand for Inventory
 
-    final String fixInventoryCommandName = "fixinvenory";
+    final String fixInventoryCommandName = "fixinventory";
     final String fixInventoryCommandName_Short = "fixinv";
     getCommand(fixInventoryCommandName).setExecutor(new FixInventoryCommand(fixInventoryCommandName , "tdrstudios.lobby.perms.fix.inventory"));
     getCommand(fixInventoryCommandName_Short).setExecutor(new FixInventoryCommand(fixInventoryCommandName_Short , "tdrstudios.lobby.perms.fix.inventory"));
