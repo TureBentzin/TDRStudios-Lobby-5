@@ -30,24 +30,27 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.allowWeatherChange" , true);
         registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
         registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
-    registerConfiguration("tdrstudios.hotbar.nav.displayName","§3§lTeleporter");
-    registerConfiguration("tdrstudios.hotbar.nav.slot",4);
+        registerConfiguration("tdrstudios.hotbar.nav.displayName","§3§lTeleporter");
+        registerConfiguration("tdrstudios.hotbar.nav.slot",4);
 
-    registerConfiguration("tdrstudios.hotbar.info.material" , Material.GOLD_NUGGET.name());
-    registerConfiguration("tdrstudios.hotbar.info.displayName" , "§3§lInfo");
-    registerConfiguration("tdrstudios.hotbar.info.slot",1);
+        registerConfiguration("tdrstudios.hotbar.info.material" , Material.GOLD_NUGGET.name());
+        registerConfiguration("tdrstudios.hotbar.info.displayName" , "§3§lInfo");
+        registerConfiguration("tdrstudios.hotbar.info.slot",1);
 
-    registerConfiguration("tdrstudios.hotbar.settings.material" , Material.COMPARATOR.name());
-    registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lEinstellungen");
-    registerConfiguration("tdrstudios.hotbar.settings.slot",7);
+        registerConfiguration("tdrstudios.hotbar.settings.material" , Material.COMPARATOR.name());
+        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lEinstellungen");
+        registerConfiguration("tdrstudios.hotbar.settings.slot",7);
 
-    registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
-    registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken");
-    registerConfiguration("tdrstudios.hotbar.stick.slot",8);
+        registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
+        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken");
+        registerConfiguration("tdrstudios.hotbar.stick.slot",8);
 
-    registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
+        registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
 
-    registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
+        registerConfiguration("tdrstudios.hotbar.xp", 1.0); // 1.0F
+
+
+        registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
 
     }
