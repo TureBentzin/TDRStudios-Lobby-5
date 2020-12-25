@@ -54,7 +54,7 @@ public class LobbyPlugin extends JavaPlugin {
     }
 
 
-    public void onLoad() {
+    public void betaWarn() {
         setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");
@@ -73,7 +73,7 @@ public class LobbyPlugin extends JavaPlugin {
     }
 
     public void onEnable() {
-        onLoad();
+
 
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
@@ -86,6 +86,7 @@ public class LobbyPlugin extends JavaPlugin {
         plugin = this;
         getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
         ConfigUtils.registerAllConfigurations();
+        betaWarn();
         registerMessages();
         registerCommands();
 
