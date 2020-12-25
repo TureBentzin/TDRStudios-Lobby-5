@@ -3,7 +3,10 @@ package net.juligames.lobbyplugin.events;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
+import net.juligames.lobbyplugin.Chat;
 import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.msgs.Message;
+import net.juligames.lobbyplugin.msgs.MessageManager;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
@@ -29,7 +32,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class allgemein implements Listener {
+public class GeneralEvents implements Listener {
 
   private FileConfiguration c = ConfigUtils.getConfig();
   @EventHandler
@@ -39,7 +42,7 @@ public class allgemein implements Listener {
   }
   
   @EventHandler
-  public void OnFood(FoodLevelChangeEvent e) {
+  public void onFood(FoodLevelChangeEvent e) {
     e.setCancelled(true);
     e.setFoodLevel(20);
   }
@@ -51,7 +54,7 @@ public class allgemein implements Listener {
   }
   
   @EventHandler
-  public void onInentoryDrop(PlayerDropItemEvent e) {
+  public void onInventoryDrop(PlayerDropItemEvent e) {
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
@@ -72,7 +75,7 @@ public class allgemein implements Listener {
   }
   
   @EventHandler
-  public void blockplase(BlockPlaceEvent e) {
+  public void blockplace(BlockPlaceEvent e) {
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
@@ -135,5 +138,10 @@ public class allgemein implements Listener {
   public void onGamemodechange(PlayerGameModeChangeEvent e) {
     InventoryUtils.setInventory(e.getPlayer());
     LobbyPlugin.getLog().send("The player " + e.getPlayer().getName() + " has switched gamemode to " + e.getNewGameMode().name() + "!");
+  }
+
+  public void registerMessages() {
+    MessageManager manager = LobbyPlugin.getMessageManager();
+    manager.registerMessage(new Message("tdrstudios.hotbar.stick.show" , "Every player is now " + Chat.getAccentColor() + "visible" + Chat.getChatColor() + "!"));
   }
 }
