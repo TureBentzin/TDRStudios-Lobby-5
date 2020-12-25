@@ -20,7 +20,6 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.opentest4j.IncompleteExecutionException;
 import tdrstudios.BetaError;
 
 import java.util.Collection;
@@ -57,7 +56,7 @@ public class LobbyPlugin extends JavaPlugin {
     public void onLoad() {
         System.out.println(" ");
         System.out.println("This is a beta software!");
-        System.out.println("This plugin is currently in development, so the TDRStduios dosn´t promise that your server " + Bukkit.getServer().getName() + " dont getting any damage from using this software!");
+        System.out.println("This plugin is currently in development, so the TDRStudios don't promise that your server " + Bukkit.getServer().getName() + " not getting any damage from using this software!");
         if(getConfig().getBoolean("beta.acceptRisk")) {
             getLogger().warning("You have accepted the risk of using this beta software!");
         }else {
@@ -81,7 +80,6 @@ public class LobbyPlugin extends JavaPlugin {
         Player[] players1 = players.toArray(new Player[players.size()]);
         chat.send(players1, "This Plugin is currently in Maintenance!");
         plugin = this;
-        // getCommand("setspawn").setExecutor((CommandExecutor)new setspawn());
         getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
         ConfigUtils.registerAllConfigurations();
         registerMessages();
