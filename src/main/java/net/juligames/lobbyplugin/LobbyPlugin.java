@@ -20,6 +20,8 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.opentest4j.IncompleteExecutionException;
+import tdrstudios.BetaError;
 
 import java.util.Collection;
 
@@ -50,6 +52,23 @@ public class LobbyPlugin extends JavaPlugin {
     public LobbyPlugin() {
         //This is a Temp Fix for the Issue-InvalidPluginExeption #3
     }
+
+    @Override
+    public void onLoad() {
+        System.out.println(" ");
+        System.out.println("This is a beta software!");
+        System.out.println("This plugin is currently in development, so the TDRStduios dosn´t promise that your server " + Bukkit.getServer().getName() + " dont getting any damage from using this software!");
+        if(getConfig().getBoolean("beta.acceptRisk")) {
+            getLogger().warning("You have accepted the risk of using this beta software!");
+        }else {
+            System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() +"/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
+            System.exit(5);
+            throw new BetaError();
+        }
+        System.out.println("This is a beta software!");
+        System.out.println(" ");
+    }
+
     public void onEnable() {
 
         setPlugin(this);

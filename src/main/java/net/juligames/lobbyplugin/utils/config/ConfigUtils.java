@@ -16,19 +16,20 @@ public class ConfigUtils {
         LobbyPlugin.getPlugin().saveConfig();
     }
     public static void registerAllConfigurations() {
+        registerConfiguration("beta.acceptRisk" , false);
 
-    registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
-    registerConfiguration("tdrstudios.leave.msg");
-    registerConfiguration("tdrstudios.join.welcome" , "Welcome to MYServer.tdrstudios.de %Player%! %Date%" );
-    registerConfiguration("tdrstudios.join.date.pattern" , "dd/MM/yyyy HH:mm:ss");
+        registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
+        registerConfiguration("tdrstudios.leave.msg");
+        registerConfiguration("tdrstudios.join.welcome" , "Welcome to MYServer.tdrstudios.de %Player%! %Date%" );
+        registerConfiguration("tdrstudios.join.date.pattern" , "dd/MM/yyyy HH:mm:ss");
 
     /**
     * @deprecated
      *
      */
-    registerConfiguration("tdrstudios.allowWeatherChange" , true);
-    registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
-    registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
+        registerConfiguration("tdrstudios.allowWeatherChange" , true);
+        registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
+        registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
     registerConfiguration("tdrstudios.hotbar.nav.displayName","§3§lTeleporter");
     registerConfiguration("tdrstudios.hotbar.nav.slot",4);
 
