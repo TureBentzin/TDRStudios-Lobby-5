@@ -140,7 +140,7 @@ public class LobbyPlugin extends JavaPlugin {
 
     //FixCommand for Inventory
 
-    final String fixInventoryCommandName = "fixinvenory";
+    final String fixInventoryCommandName = "fixinventory";
     final String fixInventoryCommandName_Short = "fixinv";
     getCommand(fixInventoryCommandName).setExecutor(new FixInventoryCommand(fixInventoryCommandName , "tdrstudios.lobby.perms.fix.inventory"));
     getCommand(fixInventoryCommandName_Short).setExecutor(new FixInventoryCommand(fixInventoryCommandName_Short , "tdrstudios.lobby.perms.fix.inventory"));
