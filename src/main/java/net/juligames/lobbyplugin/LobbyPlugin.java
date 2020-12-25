@@ -1,5 +1,6 @@
 package net.juligames.lobbyplugin;
 
+import de.bentzin.tools.DevTools;
 import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
@@ -9,7 +10,7 @@ import net.juligames.lobbyplugin.commands.SpawnCommand;
 import net.juligames.lobbyplugin.commands.SpawnSetter;
 import net.juligames.lobbyplugin.commands.Versioncheck;
 import net.juligames.lobbyplugin.commands.GamemodeCommand;
-import net.juligames.lobbyplugin.events.allgemein;
+import net.juligames.lobbyplugin.events.GeneralEvents;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
 import org.bukkit.Bukkit;
@@ -50,7 +51,7 @@ public class LobbyPlugin extends JavaPlugin {
   }
 
   public LobbyPlugin() {
-    //This is a Temp Fix for the Issue-InvalidPluginExeption #3
+    DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
   }
   public void onEnable() {
 
@@ -83,7 +84,7 @@ public class LobbyPlugin extends JavaPlugin {
     pluginManager.registerEvents((Listener)new JoinListener(), (Plugin)this);
     pluginManager.registerEvents((Listener)new Info(), (Plugin)this);
     pluginManager.registerEvents((Listener)new Einstellungen(), (Plugin)this);
-    pluginManager.registerEvents((Listener)new allgemein(), (Plugin)this);
+    pluginManager.registerEvents((Listener)new GeneralEvents(), (Plugin)this);
     pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
   }
   public void fixConfig() {

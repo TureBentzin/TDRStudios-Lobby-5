@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,7 +24,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class allgemein implements Listener {
+public class GeneralEvents implements Listener {
   @EventHandler
   public void onDamage(EntityDamageEvent e) {
     if (e.getEntity() instanceof Player)
@@ -119,6 +120,11 @@ public class allgemein implements Listener {
   
   @EventHandler
   public void onGamemodechange(PlayerGameModeChangeEvent e) {
+    float v = 30;
+    float v1 = 1;
+    //Send CLICK
+    e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
     Player player = e.getPlayer();
     ItemStack item1 = new ItemStack(Material.COMPASS);
     ItemMeta itemMeta = item1.getItemMeta();
