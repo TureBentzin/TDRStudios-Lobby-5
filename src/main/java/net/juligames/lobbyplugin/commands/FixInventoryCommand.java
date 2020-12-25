@@ -28,9 +28,9 @@ public class FixInventoryCommand implements CommandExecutor {
         this.permission = permission;
     }
 
-    public FixInventoryCommand(Permission permission, Command command) {
-        setCommand(command);
-        setPermission(permission);
+    public FixInventoryCommand(String command ,String permission) {
+        setCommand(LobbyPlugin.getPlugin().getCommand(command));
+        setPermission(new Permission(permission, "Permission for " + getClass().getName()));
         registerMessages();
     }
     @Override

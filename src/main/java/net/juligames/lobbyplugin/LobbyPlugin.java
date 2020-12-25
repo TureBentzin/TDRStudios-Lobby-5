@@ -113,6 +113,14 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand(setLobbyWarp4Name).setExecutor(new SpawnSetter(setLobbyWarp4Name, "setWarp4", "tdrstudios.lobby.perms.setWarp4", getConfig()));
     getCommand(setLobbyWarp5Name).setExecutor(new SpawnSetter(setLobbyWarp5Name, "setWarp5", "tdrstudios.lobby.perms.setWarp5", getConfig()));
 
+    //FixCommand for Inventory
+
+    final String fixInventoryCommandName = "fixinvenory";
+    final String fixInventoryCommandName_Short = "fixinv";
+    getCommand(fixInventoryCommandName).setExecutor(new FixInventoryCommand(fixInventoryCommandName , "tdrstudios.lobby.perms.fix.inventory"));
+    getCommand(fixInventoryCommandName_Short).setExecutor(new FixInventoryCommand(fixInventoryCommandName_Short , "tdrstudios.lobby.perms.fix.inventory"));
+
+
     getCommand("config").setExecutor(new ConfigCommand("config"));
   }
   
