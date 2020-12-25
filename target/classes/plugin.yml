@@ -4,6 +4,9 @@ main: net.juligames.lobbyplugin.LobbyPlugin
 authors:
   - TDRStudios
 api-version: 1.15
+permissions:
+  tdrstudios.lobby.perms.fix.inventory:
+    default: not op
 commands:
    setspawn:
      description: Setze den Spawnpunkt mit /setspawn

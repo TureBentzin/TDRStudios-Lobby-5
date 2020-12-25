@@ -60,40 +60,58 @@ public class FixInventoryCommand implements CommandExecutor {
                         chat.sendMessage("You have reset " + Chat.getAccentColor() + target.getDisplayName() + Chat.getChatColor() + "´s inventory!");
                         chat.send(target, Chat.getAccentColor() + player.getName() + Chat.getChatColor() + " has reset your inventory!");
                     }else {
-                        chat.send(LackingPermissionMessage.getNameFIX(getPermission().getName() + ".other"));
+                        chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission().getName() + ".other"));
                     }
 
                     } else {
-                        if (args[0] == "all" | args[0] == "*" | args[0] == "@a") {
-                            for (Player all : Bukkit.getOnlinePlayers()) {
-                                all.playSound(all.getLocation(), Sound.BLOCK_BELL_USE, SoundCategory.VOICE, 30, 2);
-                                InventoryUtils.setInventory(all);
-                                chat.send(all, Chat.getAccentColor() + player.getName() + Chat.getChatColor() + " has reset your inventory!");
+                        if (args[0].equalsIgnoreCase("all") | args[0].equalsIgnoreCase("*") | args[0].equalsIgnoreCase("@a")) {
+                            if(player.hasPermission(getPermission().getName() + ".other.all")) {
+                                for (Player all : Bukkit.getOnlinePlayers()) {
+                                    all.playSound(all.getLocation(), Sound.BLOCK_BELL_USE, SoundCategory.VOICE, 30, 2);
+                                    InventoryUtils.setInventory(all);
+                                    chat.send(all, Chat.getAccentColor() + player.getName() + Chat.getChatColor() + " has reset your inventory!");
+                                }
+                                chat.send("You have reset " + Chat.getAccentColor() + "everyone´s" + Chat.getChatColor() + " inventory!");
+                            }else {
+                                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission().getName() + ".other.all"));
+                                System.out.println("FixInventoryCommand.onCommand");
+
                             }
+                        }else {
+                            chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
                         }
-                        chat.send("You have reset " + Chat.getAccentColor() + "everyone´s" + Chat.getChatColor() + " inventory!");
+
                     }
                 }else {
                 if(args.length == 0) {
-                    player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, SoundCategory.VOICE, 30, 2);
-                    chat.sendMessage("You have reset " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " inventory!");
+                    if(player.hasPermission(getPermission())) {
+                        player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, SoundCategory.VOICE, 30, 2);
+                        chat.sendMessage("You have reset " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " inventory!");
+                        InventoryUtils.setInventory(player);
+                    }else {
+                        chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission()));
+                    }
                 }else {
-                    chat.send(UsageMessage.getNameFIX(getCommand()));
+                    chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
                 }
             }
             } else {
 
             if(sender instanceof ConsoleCommandSender) {
+                Chat chat = new Chat();
                 if(args.length == 1) {
                     if(Bukkit.getPlayer(args[0]) != null) {
                         Player target = Bukkit.getPlayer(args[0]);
                         target.playSound(target.getLocation(), Sound.BLOCK_BELL_USE, SoundCategory.VOICE, 30 ,2);
                         InventoryUtils.setInventory(target);
+                        chat.send(target, "The " + Chat.getAccentColor() + "Console" + Chat.getChatColor() + " has reset your inventory!");
+                        sender.sendMessage(target.getName() + "´s inventory was set to LobbyStandart!");
                     }else {
                      if(args[0] == "all" | args[0] == "*" | args[0] == "@a") {
                         for(Player all : Bukkit.getOnlinePlayers()) {
                             all.playSound(all.getLocation() , Sound.BLOCK_BELL_USE , SoundCategory.VOICE , 30 ,2);
                             InventoryUtils.setInventory(all);
+                            chat.send(all, "The " + Chat.getAccentColor() + "Console" + Chat.getChatColor() + " has reset your inventory!");
                         }
                         sender.sendMessage("Everyone´s inventory was set to LobbyStandart!");
                      }
@@ -111,8 +129,8 @@ public class FixInventoryCommand implements CommandExecutor {
     public void registerMessages() {
         MessageManager messageManager = LobbyPlugin.getMessageManager();
         messageManager.registerMessage(new LackingPermissionMessage(getPermission()));
-        messageManager.registerMessage(new LackingPermissionMessage(getPermission() + ".other"));
-        messageManager.registerMessage(new LackingPermissionMessage(getPermission() + ".other.all"));
+        messageManager.registerMessage(new LackingPermissionMessage(getPermission().getName() + ".other"));
+        messageManager.registerMessage(new LackingPermissionMessage(getPermission().getName() + ".other.all"));
 
         messageManager.registerMessage(new UsageMessage(getCommand()));
         getCommand().setPermissionMessage(new Chat().buildSend(getPermission().getName())); // If you see this remove it!
