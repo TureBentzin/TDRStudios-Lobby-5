@@ -122,6 +122,11 @@ public class Chat {
         player.sendMessage(getPrefix() + message);
     }
 
+
+    @Deprecated
+    public static void sendFast(Player player, String message) {
+        player.sendMessage(getPrefix() + message);
+    }
     /**
      * Send.
      *
