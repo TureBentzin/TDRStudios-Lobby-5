@@ -41,9 +41,9 @@ commands:
    config:
     usage: /<command> [save] [read]
     description: This command is only for the debug!
-  fixinventory:
-    usage: /<command> <Player/'*'>
-    description: Reset the inventory of a player
-  fixinv:
-    usage: /<command> <Player/'*'>
-    description: Reset the inventory of a player
+   fixinventory:
+     usage: /<command> <Player/'*'>
+     description: Reset the inventory of a player
+   fixinv:
+     usage: /<command> <Player/'*'>
+     description: Reset the inventory of a player
