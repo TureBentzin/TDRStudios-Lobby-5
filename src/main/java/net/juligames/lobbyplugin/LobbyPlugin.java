@@ -50,7 +50,7 @@ public class LobbyPlugin extends JavaPlugin {
   }
 
   public LobbyPlugin() {
-    //This is a Temp Fix for the Issue-InvalidPluginExeption #3
+  
   }
   public void onEnable() {
 
