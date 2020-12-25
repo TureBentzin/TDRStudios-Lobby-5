@@ -14,6 +14,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
@@ -52,11 +53,13 @@ public class LobbyPlugin extends JavaPlugin {
         //This is a Temp Fix for the Issue-InvalidPluginExeption #3
     }
 
-    @Override
+
     public void onLoad() {
+        setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");
         System.out.println("This plugin is currently in development, so the TDRStudios don't promise that your server " + Bukkit.getServer().getName() + " not getting any damage from using this software!");
+        ConfigUtils.registerConfiguration("beta.acceptRisk" , false);
         if(getConfig().getBoolean("beta.acceptRisk")) {
             getLogger().warning("You have accepted the risk of using this beta software!");
         }else {
@@ -66,11 +69,12 @@ public class LobbyPlugin extends JavaPlugin {
         }
         System.out.println("This is a beta software!");
         System.out.println(" ");
+
     }
 
     public void onEnable() {
+        onLoad();
 
-        setPlugin(this);
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
