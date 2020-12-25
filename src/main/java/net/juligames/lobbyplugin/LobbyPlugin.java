@@ -73,18 +73,20 @@ public class LobbyPlugin extends JavaPlugin {
     }
 
     public void onEnable() {
-
+        plugin = this;
 
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
         getLog().send("JavaPlugin by tdrstudios.de load!"); //WaterMark
         initChat();
+
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         Player[] players1 = players.toArray(new Player[players.size()]);
         chat.send(players1, "This Plugin is currently in Maintenance!");
-        plugin = this;
+
         getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
+
         ConfigUtils.registerAllConfigurations();
         betaWarn();
         registerMessages();
