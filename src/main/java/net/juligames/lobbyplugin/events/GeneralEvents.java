@@ -31,6 +31,7 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import tdrstudios.Work_In_Progress;
 
 public class GeneralEvents implements Listener {
 
@@ -140,6 +141,10 @@ public class GeneralEvents implements Listener {
     LobbyPlugin.getLog().send("The player " + e.getPlayer().getName() + " has switched gamemode to " + e.getNewGameMode().name() + "!");
   }
 
+  /**
+   * @apiNote This cant be used yet! This Class haven´t recodet yet so you have to wait!
+   */
+  @Work_In_Progress
   public void registerMessages() {
     MessageManager manager = LobbyPlugin.getMessageManager();
     manager.registerMessage(new Message("tdrstudios.hotbar.stick.show" , "Every player is now " + Chat.getAccentColor() + "visible" + Chat.getChatColor() + "!"));
