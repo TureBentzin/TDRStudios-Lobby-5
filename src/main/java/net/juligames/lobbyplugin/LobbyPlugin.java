@@ -61,7 +61,7 @@ public class LobbyPlugin extends JavaPlugin {
             getLogger().warning("You have accepted the risk of using this beta software!");
         }else {
             System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() +"/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
-            System.exit(5);
+
             throw new BetaError();
         }
         System.out.println("This is a beta software!");
