@@ -46,7 +46,7 @@ public class ConfigUtils {
 
     registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
 
-    registerConfiguration("tdrstudios.inventor");
+    registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
 
     }
