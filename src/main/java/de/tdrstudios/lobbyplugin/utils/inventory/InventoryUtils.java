@@ -75,9 +75,7 @@ public class InventoryUtils {
         playerInventory.clear();
         for(InventoryContent content : getIndex()) {
             playerInventory.setItem(content.getSlot(), content.toItemStack());
-            LobbyPlugin.getLog().send("{DEBUG} Pharse: setInventory(Player " + player + "); \n" +
-                    "Index: " + getIndex() + "\n" +
-                    "content: " + content);
+            
         }
     }
 
