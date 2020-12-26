@@ -15,6 +15,7 @@ import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -104,6 +105,9 @@ public class LobbyPlugin extends JavaPlugin {
         pluginManager.registerEvents((Listener)new Einstellungen(), (Plugin)this);
         pluginManager.registerEvents((Listener)new GeneralEvents(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
+
+        //register the Beta book
+        InventoryUtils.registerInventoryContent(new InventoryContent(Material.WRITTEN_BOOK , "§2The §5Beta §6Book", 1, true , 22));
     }
     public void fixConfig() {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
