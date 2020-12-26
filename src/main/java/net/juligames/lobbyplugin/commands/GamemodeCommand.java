@@ -272,8 +272,12 @@ public class GamemodeCommand implements CommandExecutor {
 
       }
     }else {
+      /**
+       * This part of the class is written by @Bommels05
+       */
       if(sender instanceof ConsoleCommandSender) {
         ConsoleCommandSender console = (ConsoleCommandSender) sender;
+        chat.sendFast(console , "Sorry! This Feature isn't available yet!");
 
       }
     }
