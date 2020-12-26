@@ -10,6 +10,8 @@ import net.juligames.lobbyplugin.events.GeneralEvents;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
+import net.juligames.lobbyplugin.utils.inventory.InventoryContent;
+import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -84,6 +86,7 @@ public class LobbyPlugin extends JavaPlugin {
         betaWarn();
         registerMessages();
         registerCommands();
+        InventoryUtils.registerAllInventoryContents();
 
         getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
 
