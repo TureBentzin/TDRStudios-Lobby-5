@@ -3,6 +3,7 @@ package net.juligames.lobbyplugin.utils.config;
 import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
@@ -74,4 +75,24 @@ public class ConfigUtils {
         }
         saveConfig();
     }
+
+    public String getString(String path) throws InvalidConfigurationException {
+        String r = getConfig().getString(path);
+        if(r != null) {
+            return r;
+        }else {
+            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+    public boolean getBoolean(String path) throws InvalidConfigurationException {
+        Boolean r = getConfig().getBoolean(path);
+        if(r != null) {
+            return r;
+        }else {
+            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+
+
+
 }
