@@ -18,7 +18,7 @@ public class ConfigUtils {
     }
     public static void registerAllConfigurations() {
         registerConfiguration("beta.acceptRisk" , false);
-        registerConfiguration("bata.enablebetabook" , true);
+        registerConfiguration("bata.enableBetaBook" , true);
 
         registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
         registerConfiguration("tdrstudios.leave.msg");
