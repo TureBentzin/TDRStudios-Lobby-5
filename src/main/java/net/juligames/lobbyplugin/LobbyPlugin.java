@@ -17,6 +17,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
@@ -107,7 +108,12 @@ public class LobbyPlugin extends JavaPlugin {
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
 
         //register the Beta book
-        InventoryUtils.registerInventoryContent(new InventoryContent(Material.WRITTEN_BOOK , "§2The §5Beta §6Book", 1, true , 22));
+        try {
+            if(ConfigUtils.getBoolean("bata.enableBetaBook"))
+            InventoryUtils.registerInventoryContent(new InventoryContent(Material.WRITTEN_BOOK , "§2The §5Beta §6Book", 1, true , 22));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
     }
     public void fixConfig() {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
