@@ -38,7 +38,7 @@ public class InventoryContent {
 
     public InventoryContent(String ConfigMaterialString, String ConfigdisplayNameString, int count , int slot) {
         setCount(count);
-        setMaterial(Material.getMaterial(ConfigUtils.getConfig().getString(ConfigMaterialString));
+        setMaterial(Material.getMaterial(ConfigUtils.getConfig().getString(ConfigMaterialString)));
         setItemStack(new ItemStack(getMaterial(), getCount()));
 
         getMeta().setDisplayName(ConfigUtils.getConfig().getString(ConfigdisplayNameString));
