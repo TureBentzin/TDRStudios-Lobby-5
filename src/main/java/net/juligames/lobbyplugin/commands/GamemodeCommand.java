@@ -108,7 +108,7 @@ public class GamemodeCommand implements CommandExecutor {
             chat.sendMessage("command.gamemode.success.1");
 
           } else {
-            chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
+            chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(1)));
           }
         if (args[0].equals("2"))
           if (p.hasPermission(getPermission(2))) {
@@ -116,7 +116,7 @@ public class GamemodeCommand implements CommandExecutor {
             chat.sendMessage("command.gamemode.success.2");
 
           } else {
-            chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
+            chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(2)));
           }
         if (args[0].equals("3"))
           if (p.hasPermission(getPermission(3))) {
@@ -124,7 +124,7 @@ public class GamemodeCommand implements CommandExecutor {
             chat.sendMessage("command.gamemode.success.3");
 
           } else {
-            chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
+            chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(3)));
           }
 
         if (args[0].equals("0") | args[0].equals("1") | args[0].equals("2") |args[0].equals("3")) {
@@ -166,7 +166,7 @@ public class GamemodeCommand implements CommandExecutor {
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
-                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(1)));
               }
             }
             if(args[0].equals("2")) {
@@ -175,7 +175,7 @@ public class GamemodeCommand implements CommandExecutor {
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
-                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(2)));
               }
             }
             if(args[0].equals("3")) {
@@ -184,7 +184,7 @@ public class GamemodeCommand implements CommandExecutor {
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
-                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(3)));
               }
             }
           }else {
