@@ -1,5 +1,6 @@
 package net.juligames.lobbyplugin.utils.inventory;
 
+import net.juligames.lobbyplugin.LobbyPlugin;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -74,6 +75,9 @@ public class InventoryUtils {
         playerInventory.clear();
         for(InventoryContent content : getIndex()) {
             playerInventory.setItem(content.getSlot(), content.toItemStack());
+            LobbyPlugin.getLog().send("{DEBUG} Pharse: setInventory(Player " + player + "); \n" +
+                    "Index: " + getIndex() + "\n" +
+                    "content: " + content);
         }
     }
 
