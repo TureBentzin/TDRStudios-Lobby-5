@@ -22,7 +22,7 @@ public class BetaError extends Error{
 
     @Override
     public String getMessage() {
-        String r =  " This Software inst complete yet!";
+        String r =  "I´m expecting a flag in config.yml for accepting the risks of beta use!";
         return r;
     }
 
