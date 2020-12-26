@@ -67,25 +67,21 @@ public class LobbyPlugin extends JavaPlugin {
         System.out.println(" ");
         System.out.println("This is a beta software!");
         System.out.println("This plugin is currently in development, so the TDRStudios don't promise that your server " + Bukkit.getServer().getName() + " not getting any damage from using this software!");
-        ConfigUtils.registerConfiguration("beta.acceptRisk" , false);
-        if(getConfig().getBoolean("beta.acceptRisk")) {
+        ConfigUtils.registerConfiguration("beta.acceptRisk", false);
+        if (getConfig().getBoolean("beta.acceptRisk")) {
             getLogger().warning("You have accepted the risk of using this beta software!");
-        }else {
-            System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() +"/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
+        } else {
+            System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() + "/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
             throw new BetaError();
         }
         System.out.println("This is a beta software!");
         System.out.println(" ");
-
-  public LobbyPlugin() {
-    DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
-  }
-
-  public void fixConfig() {
-    if(getConfig().getLocation("tdrstudios.spawn") == null) {
-      getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
-
     }
+
+         public LobbyPlugin() {
+        DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
+         }
+
 
     public void onEnable() {
         plugin = this;
@@ -137,6 +133,8 @@ public class LobbyPlugin extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
+
     public void fixConfig() {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
             getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
@@ -181,3 +179,4 @@ public class LobbyPlugin extends JavaPlugin {
     return plugin;
   }
 }
+
