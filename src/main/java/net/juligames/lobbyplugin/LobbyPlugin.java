@@ -1,5 +1,6 @@
 package net.juligames.lobbyplugin;
 
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
@@ -27,6 +28,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tdrstudios.BetaError;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class LobbyPlugin extends JavaPlugin {
     private static LobbyPlugin plugin;
@@ -109,8 +111,12 @@ public class LobbyPlugin extends JavaPlugin {
 
         //register the Beta book
         try {
-            if(ConfigUtils.getBoolean("bata.enableBetaBook"))
-            InventoryUtils.registerInventoryContent(new InventoryContent(Material.WRITTEN_BOOK , "§2The §5Beta §6Book", 1, true , 22));
+            if(ConfigUtils.getBoolean("bata.enableBetaBook")) {
+                InventoryContent betabook = new InventoryContent(Material.WRITTEN_BOOK, "§2The §5Beta §6Book", 1, true, 22);
+                betabook.getMeta().setLore(Collections.singletonList(Chat.getChatColor() + "This plugin still in development so please report any issue to TDRStudios!"));
+
+                InventoryUtils.registerInventoryContent(betabook);
+            }
         } catch (InvalidConfigurationException e) {
             e.printStackTrace();
         }

@@ -68,19 +68,16 @@ public class InventoryUtils {
         inventory.setItem(c.getInt("tdrstudios.hotbar.stick.slot"), item4);
     }
 
-    /**
-     *
-     * @param playerInventory
-     */
-    public static void setInventory(PlayerInventory playerInventory) {
+
+    public static void setInventory(Player player) {
+        PlayerInventory playerInventory = player.getInventory();
+        playerInventory.clear();
         for(InventoryContent content : getIndex()) {
             playerInventory.setItem(content.getSlot(), content.toItemStack());
         }
     }
 
-    public static void setInventory(Player player) {
-        setInventory(player.getInventory());
-    }
+
 
     public static  void registerAllInventoryContents() {
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material" ,"tdrstudios.hotbar.nav.displayName" , 1 , c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
