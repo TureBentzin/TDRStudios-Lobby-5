@@ -2,6 +2,7 @@ package net.juligames.lobbyplugin;
 
 import net.juligames.lobbyplugin.msgs.Message;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
@@ -126,6 +127,14 @@ public class Chat {
     @Deprecated
     public static void sendFast(Player player, String message) {
         player.sendMessage(getPrefix() + message);
+    }
+    @Deprecated
+    public static void sendFast(CommandSender sender, String message) {
+        sender.sendMessage(getPrefix() + message);
+    }
+    @Deprecated
+    public static void sendFast(CommandSender sender, Message message) {
+        sender.sendMessage(getPrefix() + message.getContent());
     }
     /**
      * Send.

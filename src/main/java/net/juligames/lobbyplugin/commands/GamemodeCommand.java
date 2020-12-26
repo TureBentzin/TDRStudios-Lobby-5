@@ -5,14 +5,17 @@ import net.juligames.lobbyplugin.LobbyPlugin;
 import net.juligames.lobbyplugin.msgs.LackingPermissionMessage;
 import net.juligames.lobbyplugin.msgs.Message;
 import net.juligames.lobbyplugin.msgs.UsageMessage;
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import sun.security.krb5.Config;
 import tdrstudios.Work_In_Progress;
 
 import java.util.Arrays;
@@ -266,6 +269,11 @@ public class GamemodeCommand implements CommandExecutor {
 
           }
         }
+
+      }
+    }else {
+      if(sender instanceof ConsoleCommandSender) {
+        ConsoleCommandSender console = (ConsoleCommandSender) sender;
 
       }
     }
