@@ -13,6 +13,7 @@ public class InventoryContent {
         setCount(count);
         setMaterial(material);
         setItemStack(new ItemStack(getMaterial(), getCount()));
+        setMeta(getItemStack().getItemMeta()); // Fixes #20
 
         if(isEnchant) {
             getMeta().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL , 1 , true);
@@ -49,8 +50,8 @@ public class InventoryContent {
         setMeta(getItemStack().getItemMeta()); //Add in fix #20
 
         try {
-            System.out.println("ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
-            System.out.println("Result: " + ConfigUtils.getString(ConfigdisplayNameString));
+            System.out.println("[DEBUG ISSUE#20] ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
+            System.out.println("[DEBUG ISSUE#20] Result: " + ConfigUtils.getString(ConfigdisplayNameString));
 
             getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
         } catch (InvalidConfigurationException e) {
