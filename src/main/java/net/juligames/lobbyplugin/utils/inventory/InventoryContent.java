@@ -2,6 +2,7 @@ package net.juligames.lobbyplugin.utils.inventory;
 
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -38,10 +39,23 @@ public class InventoryContent {
 
     public InventoryContent(String ConfigMaterialString, String ConfigdisplayNameString, int count , int slot) {
         setCount(count);
-        setMaterial(Material.getMaterial(ConfigUtils.getConfig().getString(ConfigMaterialString)));
+        try {
+            setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
         setItemStack(new ItemStack(getMaterial(), getCount()));
 
-        getMeta().setDisplayName(ConfigUtils.getConfig().getString(ConfigdisplayNameString));
+        setMeta(getItemStack().getItemMeta()); //Add in fix #20
+
+        try {
+            System.out.println("ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
+            System.out.println("Result: " + ConfigUtils.getString(ConfigdisplayNameString));
+
+            getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
 
         getItemStack().setItemMeta(getMeta());
         setSlot(slot);
