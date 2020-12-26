@@ -68,26 +68,23 @@ public class InventoryUtils {
         inventory.setItem(c.getInt("tdrstudios.hotbar.stick.slot"), item4);
     }
 
-    /**
-     *
-     * @param playerInventory
-     */
-    public static void setInventory(PlayerInventory playerInventory) {
+
+    public static void setInventory(Player player) {
+        PlayerInventory playerInventory = player.getInventory();
+        playerInventory.clear();
         for(InventoryContent content : getIndex()) {
             playerInventory.setItem(content.getSlot(), content.toItemStack());
         }
     }
 
-    public static void setInventory(Player player) {
-        setInventory(player.getInventory());
-    }
+
 
     public static  void registerAllInventoryContents() {
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material" ,"tdrstudios.hotbar.nav.displayName" , 1 , c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
 
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material" ,"tdrstudios.hotbar.info.displayName" , 1 , c.getInt("tdrstudios.hotbar.info.slot"))); // Navigator
 
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.settings.nav.slot"))); // Navigator
+        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.hotbar.settings.slot"))); // Navigator
 
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // Navigator
 

@@ -3,6 +3,7 @@ package net.juligames.lobbyplugin.utils.config;
 import net.juligames.lobbyplugin.LobbyPlugin;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,6 +18,7 @@ public class ConfigUtils {
     }
     public static void registerAllConfigurations() {
         registerConfiguration("beta.acceptRisk" , false);
+        registerConfiguration("bata.enableBetaBook" , true);
 
         registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
         registerConfiguration("tdrstudios.leave.msg");
@@ -53,6 +55,8 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
 
+
+
     }
     public static void registerConfiguration(String path) {
         //if(getConfig().isSet(path)) {
@@ -74,4 +78,27 @@ public class ConfigUtils {
         }
         saveConfig();
     }
+
+    public static String getString(String path) throws InvalidConfigurationException {
+        String r = getConfig().getString(path);
+        if(r != null) {
+            return r;
+        }else {
+            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+
+
+
+    public static boolean getBoolean(String path) throws InvalidConfigurationException {
+        Boolean r = getConfig().getBoolean(path);
+        if(r != null) {
+            return r;
+        }else {
+            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+
+
+
 }

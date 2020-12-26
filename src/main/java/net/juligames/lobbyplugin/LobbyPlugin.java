@@ -1,5 +1,6 @@
 package net.juligames.lobbyplugin;
 
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
@@ -17,6 +18,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
@@ -26,6 +28,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tdrstudios.BetaError;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class LobbyPlugin extends JavaPlugin {
     private static LobbyPlugin plugin;
@@ -107,7 +110,16 @@ public class LobbyPlugin extends JavaPlugin {
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
 
         //register the Beta book
-        InventoryUtils.registerInventoryContent(new InventoryContent(Material.WRITTEN_BOOK , "§2The §5Beta §6Book", 1, true , 22));
+        try {
+            if(ConfigUtils.getBoolean("bata.enableBetaBook")) {
+                InventoryContent betabook = new InventoryContent(Material.WRITTEN_BOOK, "§2The §5Beta §6Book", 1, true, 22);
+                betabook.getMeta().setLore(Collections.singletonList(Chat.getChatColor() + "This plugin still in development so please report any issue to TDRStudios!"));
+
+                InventoryUtils.registerInventoryContent(betabook);
+            }
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
     }
     public void fixConfig() {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
