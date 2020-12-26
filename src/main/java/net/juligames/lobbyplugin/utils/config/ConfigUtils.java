@@ -76,7 +76,7 @@ public class ConfigUtils {
         saveConfig();
     }
 
-    public String getString(String path) throws InvalidConfigurationException {
+    public static String getString(String path) throws InvalidConfigurationException {
         String r = getConfig().getString(path);
         if(r != null) {
             return r;
