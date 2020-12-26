@@ -16,6 +16,7 @@ import net.juligames.lobbyplugin.commands.*;
 import net.juligames.lobbyplugin.events.GeneralEvents;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
+import net.juligames.lobbyplugin.tabcomplete.ConfigTab;
 import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import net.juligames.lobbyplugin.utils.inventory.InventoryContent;
 import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
@@ -31,6 +32,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.print.PeekGraphics;
 import tdrstudios.BetaError;
 
 import java.util.Collection;
@@ -171,8 +173,9 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand(fixInventoryCommandName).setExecutor(new FixInventoryCommand(fixInventoryCommandName , "tdrstudios.lobby.perms.fix.inventory"));
     getCommand(fixInventoryCommandName_Short).setExecutor(new FixInventoryCommand(fixInventoryCommandName_Short , "tdrstudios.lobby.perms.fix.inventory"));
 
-
     getCommand("config").setExecutor(new ConfigCommand("config"));
+
+    getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
   }
 
   public static LobbyPlugin getPlugin() {
