@@ -1,11 +1,13 @@
 package net.juligames.lobbyplugin.Navigator;
 
 import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,9 +20,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class CompassNavigator implements Listener {
-  private final String GUI_NAME = "§a►  Teleporter";
-  
-  public void openGUI(Player player) {
+  private final String GUI_NAME = "§a►  Teleporter" ;
+
+    public String getGUI_NAME() {
+        return GUI_NAME;
+    }
+
+    public void openGUI(Player player) {
     ItemStack netherstar = new ItemStack(Material.NETHER_STAR);
     ItemMeta itemMetaNetherstar = netherstar.getItemMeta();
     itemMetaNetherstar.setDisplayName("§lSpawn");
@@ -49,7 +55,7 @@ public class CompassNavigator implements Listener {
     ItemMeta itemMetaDiamondsword = diamondsword.getItemMeta();
     itemMetaDiamondsword.setDisplayName("§lKnockbackffa");
     diamondsword.setItemMeta(itemMetaDiamondsword);
-    Inventory inventory = Bukkit.createInventory(null, 27, "§a►  Teleporter");
+    Inventory inventory = Bukkit.createInventory(null, 27, getGUI_NAME());
     inventory.setItem(13, new ItemStack(netherstar));
     inventory.setItem(10, new ItemStack(slimeball));
     inventory.setItem(16, new ItemStack(BED));
@@ -63,7 +69,7 @@ public class CompassNavigator implements Listener {
   @EventHandler
   public void handleNavigatorOpen(PlayerInteractEvent event) {
     if (event.getItem() != null) {
-      if (event.getItem().getType() != Material.COMPASS)
+      if (event.getItem().getType() != Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")))
         return; 
       if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)
         openGUI(event.getPlayer()); 
@@ -75,7 +81,7 @@ public class CompassNavigator implements Listener {
     if (!(event.getWhoClicked() instanceof Player))
       return; 
     Player player = (Player)event.getWhoClicked();
-    if (event.getView().getTitle().equals("§a►  Teleporter")) {
+    if (event.getView().getTitle().equals(getGUI_NAME())) {
       FileConfiguration config;
       World world;
       double x, y, z;

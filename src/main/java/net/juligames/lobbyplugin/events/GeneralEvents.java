@@ -1,10 +1,21 @@
 package net.juligames.lobbyplugin.events;
 
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+
+import net.juligames.lobbyplugin.Chat;
+import net.juligames.lobbyplugin.LobbyPlugin;
+import net.juligames.lobbyplugin.msgs.Message;
+import net.juligames.lobbyplugin.msgs.MessageManager;
+import net.juligames.lobbyplugin.utils.config.ConfigUtils;
+import net.juligames.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+
 import org.bukkit.Sound;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +35,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import tdrstudios.Work_In_Progress;
+
 public class GeneralEvents implements Listener {
+
+  private FileConfiguration c = ConfigUtils.getConfig();
+
   @EventHandler
   public void onDamage(EntityDamageEvent e) {
     if (e.getEntity() instanceof Player)
@@ -32,7 +48,9 @@ public class GeneralEvents implements Listener {
   }
   
   @EventHandler
-  public void OnFood(FoodLevelChangeEvent e) {
+
+  public void onFood(FoodLevelChangeEvent e) {
+
     e.setCancelled(true);
     e.setFoodLevel(20);
   }
@@ -44,14 +62,20 @@ public class GeneralEvents implements Listener {
   }
   
   @EventHandler
-  public void onInentoryDrop(PlayerDropItemEvent e) {
+
+  public void onInventoryDrop(PlayerDropItemEvent e) {
+
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
   
   @EventHandler
   public void onWeatherChange(WeatherChangeEvent e) {
-    e.setCancelled(true);
+
+      if(!ConfigUtils.getConfig().getBoolean("tdrstudios.allowWeatherChange")) {
+          e.setCancelled(true);
+      }
+
   }
   
   @EventHandler
@@ -61,7 +85,9 @@ public class GeneralEvents implements Listener {
   }
   
   @EventHandler
-  public void blockplase(BlockPlaceEvent e) {
+
+  public void blockplace(BlockPlaceEvent e) {
+
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
@@ -109,7 +135,7 @@ public class GeneralEvents implements Listener {
   @EventHandler
   public void onLeave(PlayerQuitEvent e) {
     Player player = e.getPlayer();
-    e.setQuitMessage("§8[§4-§8]§4 " + e.getPlayer().getName());
+    e.setQuitMessage(ConfigUtils.getConfig().getString("tdrstudios.leave.msg").replace("%Player%" , player.getName()));
   }
   
   @EventHandler
@@ -117,36 +143,28 @@ public class GeneralEvents implements Listener {
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
-  
+
+
+
+  //This will be change in Merge with development!
   @EventHandler
   public void onGamemodechange(PlayerGameModeChangeEvent e) {
+    InventoryUtils.setInventory(e.getPlayer());
+    LobbyPlugin.getLog().send("The player " + e.getPlayer().getName() + " has switched gamemode to " + e.getNewGameMode().name() + "!");
     float v = 30;
     float v1 = 1;
     //Send CLICK
     e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
 
-    Player player = e.getPlayer();
-    ItemStack item1 = new ItemStack(Material.COMPASS);
-    ItemMeta itemMeta = item1.getItemMeta();
-    itemMeta.setDisplayName("§3§lTeleporter");
-    item1.setItemMeta(itemMeta);
-    ItemStack item2 = new ItemStack(Material.GOLD_NUGGET);
-    ItemMeta itemMeta2 = item2.getItemMeta();
-    itemMeta2.setDisplayName("§3§lInfo");
-    item2.setItemMeta(itemMeta2);
-    ItemStack item3 = new ItemStack(Material.COMPARATOR);
-    ItemMeta itemMeta3 = item3.getItemMeta();
-    itemMeta3.setDisplayName("§3§lEinstellungen");
-    item3.setItemMeta(itemMeta3);
-    ItemStack item4 = new ItemStack(Material.BLAZE_ROD);
-    ItemMeta itemMeta4 = item4.getItemMeta();
-    itemMeta4.setDisplayName("§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken");
-    item4.setItemMeta(itemMeta4);
-    PlayerInventory playerInventory = player.getInventory();
-    player.getInventory().clear();
-    playerInventory.setItem(7, item3);
-    playerInventory.setItem(1, item2);
-    playerInventory.setItem(4, item1);
-    playerInventory.setItem(8, item4);
+  }
+
+  /**
+   * @apiNote This cant be used yet! This Class haven´t recodet yet so you have to wait!
+   */
+  @Work_In_Progress
+  public void registerMessages() {
+    MessageManager manager = LobbyPlugin.getMessageManager();
+    manager.registerMessage(new Message("tdrstudios.hotbar.stick.show" , "Every player is now " + Chat.getAccentColor() + "visible" + Chat.getChatColor() + "!"));
+
   }
 }
