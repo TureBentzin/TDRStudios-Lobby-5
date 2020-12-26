@@ -40,14 +40,22 @@ public class JoinListener implements Listener {
         InventoryUtils.setInventory(player);
 
         FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
-        World world = Bukkit.getWorld(config.getString("Spawn.World"));
-        double x = config.getDouble("Spawn.X");
-        double y = config.getDouble("Spawn.Y");
-        double z = config.getDouble("Spawn.Z");
-        float yaw = (float) config.getDouble("Spawn.Yaw");
-        float pitch = (float) config.getDouble("Spawn.Pitch");
-        Location location = new Location(world, x, y, z, yaw, pitch);
-        player.teleport(location);
+        if(config.getString("Spawn.X") != null && config.getString("Spawn.Y") != null && config.getString("Spawn.Z") != null
+                && config.getString("Spawn.Yaw") != null && config.getString("Spawn.Pitch") != null && config.getString("Spawn.World") != null) {
+
+            World world = Bukkit.getWorld(config.getString("Spawn.World"));
+            double x = config.getDouble("Spawn.X");
+            double y = config.getDouble("Spawn.Y");
+            double z = config.getDouble("Spawn.Z");
+            float yaw = (float) config.getDouble("Spawn.Yaw");
+            float pitch = (float) config.getDouble("Spawn.Pitch");
+            Location location = new Location(world, x, y, z, yaw, pitch);
+            player.teleport(location);
+
+        }else {
+            System.out.println("Error: I can´t find a serverspawn!");
+        }
+
         player.setGameMode(GameMode.valueOf(ConfigUtils.getConfig().getString("tdrstudios.defaultGameMode"))); // DEBUG @WIP
 
         player.setExp(ConfigUtils.getConfig().getInt("tdrstudios.hotbar.xp"));
