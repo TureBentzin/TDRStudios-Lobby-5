@@ -10,7 +10,6 @@ import de.tdrstudios.lobbyplugin.Navigator.Einstellungen;
 import de.tdrstudios.lobbyplugin.Navigator.Info;
 
 import de.tdrstudios.lobbyplugin.commands.*;
-import net.juligames.lobbyplugin.commands.*;
 
 import de.tdrstudios.lobbyplugin.events.GeneralEvents;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
@@ -26,6 +25,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -85,6 +85,7 @@ public class LobbyPlugin extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
@@ -122,15 +123,18 @@ public class LobbyPlugin extends JavaPlugin {
 
         //register the Beta book
         try {
-            if(ConfigUtils.getBoolean("bata.enableBetaBook")) {
+            if(ConfigUtils.getBoolean("beta.enableBetaBook")) {
                 InventoryContent betabook = new InventoryContent(Material.WRITTEN_BOOK, "§2The §5Beta §6Book", 1, true, 22);
-                betabook.getMeta().setLore(Collections.singletonList(Chat.getChatColor() + "This plugin still in development so please report any issue to TDRStudios!"));
-
+                ItemMeta bookmeta =  betabook.getMeta();
+                bookmeta.setDisplayName("§2The §5Beta §6Book");
+                bookmeta.setLore(Collections.singletonList(Chat.getChatColor() + "This plugin still in development so please report any issue to TDRStudios!"));
                 InventoryUtils.registerInventoryContent(betabook);
+                betabook.setMeta(bookmeta);
             }
         } catch (InvalidConfigurationException e) {
             e.printStackTrace();
         }
+        getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
 
 
