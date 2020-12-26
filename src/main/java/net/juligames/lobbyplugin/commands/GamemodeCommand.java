@@ -89,8 +89,7 @@ public class GamemodeCommand implements CommandExecutor {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     setChat(new Chat());
     if (sender instanceof Player) {
-      float v = 30;
-      float v1 = 1;
+
       Player p = (Player)sender;
       getChat().setPlayers(new Player[]{p});
       if (args.length == 1) {
@@ -99,7 +98,7 @@ public class GamemodeCommand implements CommandExecutor {
             p.setGameMode(GameMode.SURVIVAL);
             chat.sendMessage("command.gamemode.success.0");
 
-            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
@@ -107,7 +106,7 @@ public class GamemodeCommand implements CommandExecutor {
           if (p.hasPermission(getPermission(1))) {
             p.setGameMode(GameMode.CREATIVE);
             chat.sendMessage("command.gamemode.success.1");
-            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
@@ -115,7 +114,7 @@ public class GamemodeCommand implements CommandExecutor {
           if (p.hasPermission(getPermission(2))) {
             p.setGameMode(GameMode.ADVENTURE);
             chat.sendMessage("command.gamemode.success.2");
-            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
@@ -123,7 +122,7 @@ public class GamemodeCommand implements CommandExecutor {
           if (p.hasPermission(getPermission(3))) {
             p.setGameMode(GameMode.SPECTATOR);
             chat.sendMessage("command.gamemode.success.3");
-            p.playSound(p.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
           } else {
             chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermission(0)));
           }
@@ -153,7 +152,7 @@ public class GamemodeCommand implements CommandExecutor {
             if(args[0].equals("0")) {
               if(p.hasPermission(getPermissionOTHER(0))) {
                 target.setGameMode(GameMode.SURVIVAL);
-                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
@@ -163,7 +162,7 @@ public class GamemodeCommand implements CommandExecutor {
             if(args[0].equals("1")) {
               if(p.hasPermission(getPermissionOTHER(0))) {
                 target.setGameMode(GameMode.CREATIVE);
-                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
@@ -173,7 +172,6 @@ public class GamemodeCommand implements CommandExecutor {
             if(args[0].equals("2")) {
               if(p.hasPermission(getPermissionOTHER(0))) {
                 target.setGameMode(GameMode.ADVENTURE);
-                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
@@ -183,7 +181,6 @@ public class GamemodeCommand implements CommandExecutor {
             if(args[0].equals("3")) {
               if(p.hasPermission(getPermissionOTHER(0))) {
                 target.setGameMode(GameMode.SPECTATOR);
-                target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                 chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                 chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
               }else {
@@ -201,7 +198,6 @@ public class GamemodeCommand implements CommandExecutor {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);;
-                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
 
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + "Survival" + Chat.getChatColor() + "!");
                       chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
@@ -218,7 +214,6 @@ public class GamemodeCommand implements CommandExecutor {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);
-                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
                               + "Creative" + Chat.getChatColor() + "!");
                       chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
@@ -234,7 +229,6 @@ public class GamemodeCommand implements CommandExecutor {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);
-                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
                               + "Adventure" + Chat.getChatColor() + "!");
                       chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +
@@ -249,7 +243,6 @@ public class GamemodeCommand implements CommandExecutor {
                     for (Player all : Bukkit.getOnlinePlayers()) {
                       Player target = all;
                       target.setGameMode(gameMode);
-                      target.playSound(target.getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
                       chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor()
                               + "Spectator" + Chat.getChatColor() + "!");
                       chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "´s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() +

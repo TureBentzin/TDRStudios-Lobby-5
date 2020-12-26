@@ -13,6 +13,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+
+import org.bukkit.Sound;
+
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,11 +34,13 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+
 import tdrstudios.Work_In_Progress;
 
 public class GeneralEvents implements Listener {
 
   private FileConfiguration c = ConfigUtils.getConfig();
+
   @EventHandler
   public void onDamage(EntityDamageEvent e) {
     if (e.getEntity() instanceof Player)
@@ -43,7 +48,9 @@ public class GeneralEvents implements Listener {
   }
   
   @EventHandler
+
   public void onFood(FoodLevelChangeEvent e) {
+
     e.setCancelled(true);
     e.setFoodLevel(20);
   }
@@ -55,7 +62,9 @@ public class GeneralEvents implements Listener {
   }
   
   @EventHandler
+
   public void onInventoryDrop(PlayerDropItemEvent e) {
+
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
@@ -76,7 +85,9 @@ public class GeneralEvents implements Listener {
   }
   
   @EventHandler
+
   public void blockplace(BlockPlaceEvent e) {
+
     if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
       e.setCancelled(true); 
   }
@@ -134,11 +145,17 @@ public class GeneralEvents implements Listener {
   }
 
 
+
   //This will be change in Merge with development!
   @EventHandler
   public void onGamemodechange(PlayerGameModeChangeEvent e) {
     InventoryUtils.setInventory(e.getPlayer());
     LobbyPlugin.getLog().send("The player " + e.getPlayer().getName() + " has switched gamemode to " + e.getNewGameMode().name() + "!");
+    float v = 30;
+    float v1 = 1;
+    //Send CLICK
+    e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.UI_STONECUTTER_SELECT_RECIPE, v, v1);
+
   }
 
   /**
@@ -148,5 +165,6 @@ public class GeneralEvents implements Listener {
   public void registerMessages() {
     MessageManager manager = LobbyPlugin.getMessageManager();
     manager.registerMessage(new Message("tdrstudios.hotbar.stick.show" , "Every player is now " + Chat.getAccentColor() + "visible" + Chat.getChatColor() + "!"));
+
   }
 }

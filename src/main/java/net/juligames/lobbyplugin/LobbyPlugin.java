@@ -1,12 +1,18 @@
 package net.juligames.lobbyplugin;
 
+
 import com.sun.org.apache.xerces.internal.xs.StringList;
+
+import de.bentzin.tools.DevTools;
+
 import de.bentzin.tools.console.Console;
 import net.juligames.lobbyplugin.Navigator.CompassNavigator;
 import net.juligames.lobbyplugin.Navigator.Cosmetics;
 import net.juligames.lobbyplugin.Navigator.Einstellungen;
 import net.juligames.lobbyplugin.Navigator.Info;
+
 import net.juligames.lobbyplugin.commands.*;
+
 import net.juligames.lobbyplugin.events.GeneralEvents;
 import net.juligames.lobbyplugin.listeners.JoinListener;
 import net.juligames.lobbyplugin.msgs.MessageManager;
@@ -55,6 +61,7 @@ public class LobbyPlugin extends JavaPlugin {
     }
 
 
+
     public void betaWarn() {
         setPlugin(this);
         System.out.println(" ");
@@ -69,6 +76,15 @@ public class LobbyPlugin extends JavaPlugin {
         }
         System.out.println("This is a beta software!");
         System.out.println(" ");
+
+  public LobbyPlugin() {
+    DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
+  }
+
+  public void fixConfig() {
+    if(getConfig().getLocation("tdrstudios.spawn") == null) {
+      getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
+
     }
 
     public void onEnable() {
