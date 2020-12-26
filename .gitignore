@@ -28,3 +28,4 @@ scratch.tdrstudios.java
 hs_err_pid*
 target/classes/Bukkit-slots.png
 target/classes/Inventory-slots.png
+src/main/resources/debug/debug_output.tdrstudios
