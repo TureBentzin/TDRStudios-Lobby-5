@@ -8,12 +8,26 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InventoryUtils {
+
+
 
     private static FileConfiguration c = ConfigUtils.getConfig();
 
     public static FileConfiguration getConfig() {
         return c;
+    }
+
+    private static List<InventoryContent> index = new ArrayList<InventoryContent>();
+
+    public static List<InventoryContent> getIndex() {
+        return index;
+    }
+    public static void registerInventoryContent(InventoryContent inventoryContent){
+        index.add(inventoryContent);
     }
 
     /**
@@ -24,6 +38,10 @@ public class InventoryUtils {
         inventory.clear(); // Clear all Items out of the Inventory
 
         //List all ItemSacks
+
+
+
+
         ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
         ItemMeta itemMeta = item1.getItemMeta();
         itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
@@ -50,5 +68,9 @@ public class InventoryUtils {
 
     public static void setInventory(Player player) {
         setInventory(player.getInventory());
+    }
+
+    public static  void registerAllInventoryContents() {
+
     }
 }
