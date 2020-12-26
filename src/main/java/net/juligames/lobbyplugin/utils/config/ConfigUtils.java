@@ -18,6 +18,7 @@ public class ConfigUtils {
     }
     public static void registerAllConfigurations() {
         registerConfiguration("beta.acceptRisk" , false);
+        registerConfiguration("bata.enablebetabook" , true);
 
         registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
         registerConfiguration("tdrstudios.leave.msg");
@@ -54,6 +55,8 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
 
+
+
     }
     public static void registerConfiguration(String path) {
         //if(getConfig().isSet(path)) {
@@ -84,7 +87,10 @@ public class ConfigUtils {
             throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
         }
     }
-    public boolean getBoolean(String path) throws InvalidConfigurationException {
+
+
+
+    public static boolean getBoolean(String path) throws InvalidConfigurationException {
         Boolean r = getConfig().getBoolean(path);
         if(r != null) {
             return r;
