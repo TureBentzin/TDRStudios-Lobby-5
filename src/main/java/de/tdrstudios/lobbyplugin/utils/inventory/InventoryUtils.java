@@ -67,6 +67,8 @@ public class InventoryUtils {
         inventory.setItem(c.getInt("tdrstudios.hotbar.info.slot"), item2);
         inventory.setItem(c.getInt("tdrstudios.hotbar.settings.slot"), item3);
         inventory.setItem(c.getInt("tdrstudios.hotbar.stick.slot"), item4);
+
+
     }
 
 
@@ -75,7 +77,7 @@ public class InventoryUtils {
         playerInventory.clear();
         for(InventoryContent content : getIndex()) {
             playerInventory.setItem(content.getSlot(), content.toItemStack());
-            
+
         }
     }
 
