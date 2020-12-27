@@ -35,11 +35,11 @@ public class ConfigTab implements TabCompleter {
     private List<String> list = new ArrayList<String>();
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
-
-        for(String s: args) {
-            System.out.println(s);
+        StringBuilder builder = new StringBuilder();
+        for(String s : args) {
+            builder.append(s +" ");
         }
-        sender.sendMessage("TabComplete erkannt! -> " + label  + " - > " + args[0]);
+        sender.sendMessage("TabComplete erkannt! -> " + label  + " - > " + builder.toString());
         if(sender.hasPermission(getPermission())) {
             if (args.length == 1) {
                 if (args[0].startsWith("r"))
@@ -47,14 +47,15 @@ public class ConfigTab implements TabCompleter {
                 else if (args[0].startsWith("s"))
                     list.add("save");
                 else {
+                    if (args[0].equalsIgnoreCase("")) {
+                        list.add("save");
+                        list.add("read");
+                    }
                     list.add("");
                 }
-            } else if (args.length == 0) {
-                list.add("save");
-                list.add("read");
             }
 
-            return list;
+            return getList();
         }
         return null;
     }
