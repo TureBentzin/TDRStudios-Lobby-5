@@ -38,13 +38,8 @@ public class InventoryUtils {
      */
     @Deprecated
     public static void LEGACY_setInventory(PlayerInventory inventory) {
-        inventory.clear(); // Clear all Items out of the Inventory
-
+        inventory.clear(); // Clear all items out of the inventory
         //List all ItemSacks
-
-
-
-
         ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
         ItemMeta itemMeta = item1.getItemMeta();
         itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
