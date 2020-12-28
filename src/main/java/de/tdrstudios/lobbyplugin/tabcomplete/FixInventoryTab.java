@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class fixInventoryTab implements TabCompleter {
+public class FixInventoryTab implements TabCompleter {
 
     private Permission permission;
 
@@ -27,7 +27,7 @@ public class fixInventoryTab implements TabCompleter {
         return permission;
     }
 
-    public fixInventoryTab(String permission) {
+    public FixInventoryTab(String permission) {
         setPermission(new Permission(permission));
     }
 
