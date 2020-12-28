@@ -49,6 +49,11 @@ public class ConfigUtils {
 
         registerConfiguration("tdrstudios.hotbar.xp", 1.0); // 1.0F
 
+        //GamemodeManipulation
+        registerConfiguration("tdrstudios.manipulation.gamemode" , GameMode.CREATIVE.name());
+        registerConfiguration("tdrstudios.manipulation.allow" , true);
+        registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
+
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
