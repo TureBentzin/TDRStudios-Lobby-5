@@ -1,10 +1,8 @@
 package de.tdrstudios.lobbyplugin.utils.inventory;
 
-import com.sun.org.apache.bcel.internal.classfile.Deprecated;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
-import org.bukkit.command.defaults.VersionCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -61,8 +59,7 @@ public class InventoryUtils {
      */
     @Deprecated
     public static void setInventory(PlayerInventory inventory) {
-        VersionCommand command = new VersionCommand("version");
-        command.
+
         inventory.clear(); // Clear all items out of the inventory
         //List all ItemSacks
         ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
