@@ -33,7 +33,7 @@ public class Versioncheck implements CommandExecutor {
       Player p = (Player) sender;
       chat.setPlayers(new Player[]{p});
       if (args.length == 0) {
-        p.sendMessage("§3§lV1.2 Vom 18.09.2020 §4§l Programmiert von Zzocker77");
+        p.sendMessage("§3§lV1.2 Vom 18.09.2020 §4§l Programmiert von " +LobbyPlugin.getPlugin().getDescription().getAuthors());
       } else {
         chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
       } 

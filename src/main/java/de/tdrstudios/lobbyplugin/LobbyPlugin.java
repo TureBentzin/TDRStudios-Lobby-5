@@ -112,8 +112,8 @@ public class LobbyPlugin extends JavaPlugin {
 
         getCommand("gm").setExecutor((CommandExecutor)new GamemodeCommand("gm", permissions));
         getCommand("gamemode").setExecutor((CommandExecutor)new GamemodeCommand("gamemode", permissions));
-        getCommand("lv").setExecutor((CommandExecutor)new Versioncheck());
-        getCommand("lobbyversion").setExecutor((CommandExecutor)new Versioncheck());
+        getCommand("lv").setExecutor((CommandExecutor)new Versioncheck(getCommand("lv")));
+        getCommand("lobbyversion").setExecutor((CommandExecutor)new Versioncheck(getCommand("lobbyversion")));
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents((Listener)new CompassNavigator(), (Plugin)this);
         pluginManager.registerEvents((Listener)new JoinListener(), (Plugin)this);
