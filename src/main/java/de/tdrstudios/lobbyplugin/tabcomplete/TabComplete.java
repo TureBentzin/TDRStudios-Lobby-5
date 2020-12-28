@@ -10,9 +10,9 @@ import java.util.List;
 
 public abstract class TabComplete implements TabCompleter {
 
-    private List<List<Argument>>
+    private List<List<Argument>> arguments
 
 
     @Override
-    public abstract @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings);
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings);
 }
