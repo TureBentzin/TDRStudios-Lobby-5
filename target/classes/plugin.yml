@@ -9,6 +9,8 @@ permissions:
     default: not op
   tdrstudios.debug:
     default: not op
+  tdrstudios.lobby.player:
+    default: not op
 commands:
    setspawn:
      description: Setze den Spawnpunkt mit /setspawn

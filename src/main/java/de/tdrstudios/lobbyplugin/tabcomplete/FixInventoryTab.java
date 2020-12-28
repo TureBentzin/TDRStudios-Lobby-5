@@ -1,6 +1,5 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
-import com.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
