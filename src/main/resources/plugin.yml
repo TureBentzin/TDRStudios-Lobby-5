@@ -1,6 +1,7 @@
 name: TDRStudiosLobby5
 version: 1.3
 database: false
+description: Hey there! This is TDRStudiosLobby5 one of the best custom LobbyPlugins in the world!
 main: de.tdrstudios.lobbyplugin.LobbyPlugin
 authors:
   - TDRStudios
