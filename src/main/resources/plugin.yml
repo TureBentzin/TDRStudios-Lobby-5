@@ -1,5 +1,6 @@
 name: TDRStudiosLobby5
 version: 1.3
+database: false
 main: de.tdrstudios.lobbyplugin.LobbyPlugin
 authors:
   - TDRStudios
