@@ -23,6 +23,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.defaults.BukkitCommand;
+import org.bukkit.command.defaults.VersionCommand;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -122,7 +124,7 @@ public class LobbyPlugin extends JavaPlugin {
         pluginManager.registerEvents((Listener)new GeneralEvents(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
 
-        //register the Beta book
+        //register the "beta book"
         try {
             if(ConfigUtils.getBoolean("beta.enableBetaBook")) {
                 InventoryContent betabook = new InventoryContent(Material.WRITTEN_BOOK, "§2The §5Beta §6Book", 1, true, 22);

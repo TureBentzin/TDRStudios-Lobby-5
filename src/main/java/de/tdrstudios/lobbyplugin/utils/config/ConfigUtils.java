@@ -17,6 +17,7 @@ public class ConfigUtils {
     public static void registerAllConfigurations() {
         getConfig().options().header("#TDRStudios ConfigFile");
 
+
         registerConfiguration("beta.acceptRisk" , false);
         registerConfiguration("beta.enableBetaBook" , true);
 
