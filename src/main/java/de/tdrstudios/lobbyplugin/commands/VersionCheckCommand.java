@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import sun.awt.image.PixelConverter;
 
-public class Versioncheck implements CommandExecutor {
+public class VersionCheckCommand implements CommandExecutor {
 
   private Command command;
 
@@ -21,7 +21,7 @@ public class Versioncheck implements CommandExecutor {
     this.command = command;
   }
 
-  public Versioncheck(Command command) {
+  public VersionCheckCommand(Command command) {
     setCommand(command);
   }
 
