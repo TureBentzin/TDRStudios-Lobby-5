@@ -24,6 +24,15 @@ public class Argument {
 
     private String argument;
     private Permission permission;
+    private boolean playermode = false;
+
+    public boolean isPlayermode() {
+        return playermode;
+    }
+
+    public void setPlayermode(boolean playermode) {
+        this.playermode = playermode;
+    }
 
     public void setPermission(Permission permission) {
         this.permission = permission;

@@ -2,9 +2,11 @@ package de.tdrstudios.lobbyplugin.tabcomplete;
 
 import com.google.common.eventbus.DeadEvent;
 import de.bentzin.tools.DevTools;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -54,6 +56,7 @@ public class TabComplete implements TabCompleter {
                     //Get the Argument before
                     String arg0 = args[length -1];
                     if(argument.getDepends().contains(arg0))
+
                         r.add(argument.getArgument());
                 }else {
                     r.add(argument.getArgument());
@@ -63,6 +66,13 @@ public class TabComplete implements TabCompleter {
           // Add: Soon this checks for new written content (StartsWith)
         }else
             r.add("");
+
+        for(String s : r) {
+            if(s.equalsIgnoreCase("%Players%")) {
+                for(Player p : Bukkit.getOnlinePlayers())
+                    r.add(p.getName());
+            }
+        }
         return r;
     }
 
