@@ -179,7 +179,10 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand("config").setExecutor(new ConfigCommand("config"));
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
-      List<>
+      List<Argument> configTabList0 = new ArrayList<>();
+      configTabList0.add(new Argument("save"));
+      configTabList0.add(new Argument("read"));
+      getCommand("config").setTabCompleter(new Tab);
 
 
       getCommand(fixInventoryCommandName).setTabCompleter(new FixInventoryTab("tdrstudios.lobby.perms.fix.inventory"));
