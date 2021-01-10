@@ -1,5 +1,7 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
+import com.google.common.eventbus.DeadEvent;
+import de.bentzin.tools.DevTools;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -40,15 +42,13 @@ public class TabComplete implements TabCompleter {
     public @Nullable List<String> onTabComplete( CommandSender commandSender, Command command, String label, String[] args) {
 
 
-        System.out.println("args = " + Arrays.deepToString(args));
+        DevTools.getDevToolsConsole().send("args: " + Arrays.deepToString(args) , "[TabDebug]: " , ";");
 
         onTabCompleteEvent(commandSender, command, label, args , getArguments());
         int length = args.length; // get length of player insert arguments
         List<String> r = new ArrayList<>();
         if(getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
-
            List<Argument> argumentList = arguments[length -1]; // extract a List of Arguments for the player insert length!
-            System.out.println("argumentList = " + argumentList);
             for(Argument argument : argumentList) {
                 if(argument.hasDepends()) {
                     //Get the Argument before
@@ -62,7 +62,7 @@ public class TabComplete implements TabCompleter {
             }
           // Add: Soon this checks for new written content (StartsWith)
         }else
-            r.add("DEBUG");
+            r.add("");
         return r;
     }
 
