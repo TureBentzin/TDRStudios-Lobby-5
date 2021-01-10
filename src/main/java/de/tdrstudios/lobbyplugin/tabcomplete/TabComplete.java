@@ -66,11 +66,17 @@ public class TabComplete implements TabCompleter {
           // Add: Soon this checks for new written content (StartsWith)
         }else
             r.add("");
-
-        for(String s : r) {
-            if(s.equalsIgnoreCase("%Players%")) {
-                for(Player p : Bukkit.getOnlinePlayers())
-                    r.add(p.getName());
+        System.out.println("r = " + r);
+        for (int i = 0; i < r.size(); i++) {
+            System.out.println("s: " + r.get(i));
+            if(r.get(i).equalsIgnoreCase("%Players%")) {
+                r.remove("%Players%");
+                if(Bukkit.getOnlinePlayers().size() > 0)
+                    for(Player p : Bukkit.getOnlinePlayers()) {
+                        System.out.println("p.getName() = " + p.getName());
+                        if(!r.contains(p.getName()))
+                            r.add(p.getName());
+                    }
             }
         }
         return r;
@@ -81,9 +87,9 @@ public class TabComplete implements TabCompleter {
      * @param sender
      * @param cmd
      * @param label
-     * @param args insert by Player
-     * @param arguments given by Plugin
-     * @implNote This acts like a Event!
+     * @param args insert by player
+     * @param arguments given by plugin
+     * @implNote This acts like a event!
      */
     public void onTabCompleteEvent(CommandSender sender,  Command cmd,  String label, String[] args, List<Argument>[] arguments) {
     }
