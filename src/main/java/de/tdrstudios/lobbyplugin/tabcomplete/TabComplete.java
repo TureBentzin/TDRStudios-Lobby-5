@@ -6,6 +6,8 @@ import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,8 +20,8 @@ public class TabComplete implements TabCompleter {
      * @STOPSHIP: 10.01.2021
      * @Autonom This can manage your TabComplete fully self!
      */
-    public TabComplete(List<List<Argument>> arguments) {
-        setArguments((List<Argument>[]) arguments.toArray());
+    public TabComplete(List<Argument>[] arguments) {
+        setArguments(arguments);
     }
 
     //example: List[0] == Hallo,Tschüss
@@ -36,11 +38,17 @@ public class TabComplete implements TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete( CommandSender commandSender, Command command, String label, String[] args) {
-        onTabComplete(commandSender, command, label, args);
+
+
+        System.out.println("args = " + Arrays.deepToString(args));
+
+        onTabCompleteEvent(commandSender, command, label, args , getArguments());
         int length = args.length; // get length of player insert arguments
-        List<String> r = null;
+        List<String> r = new ArrayList<>();
         if(getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
-           List<Argument> argumentList = arguments[length]; // extract a List of Arguments for the player insert length!
+
+           List<Argument> argumentList = arguments[length -1]; // extract a List of Arguments for the player insert length!
+            System.out.println("argumentList = " + argumentList);
             for(Argument argument : argumentList) {
                 if(argument.hasDepends()) {
                     //Get the Argument before
@@ -54,7 +62,7 @@ public class TabComplete implements TabCompleter {
             }
           // Add: Soon this checks for new written content (StartsWith)
         }else
-            r.add(" ");
+            r.add("DEBUG");
         return r;
     }
 
@@ -67,6 +75,6 @@ public class TabComplete implements TabCompleter {
      * @param arguments given by Plugin
      * @implNote This acts like a Event!
      */
-    public void onTabComplete(CommandSender sender,  Command cmd,  String label, String[] args, List<Argument>[] arguments) {
+    public void onTabCompleteEvent(CommandSender sender,  Command cmd,  String label, String[] args, List<Argument>[] arguments) {
     }
 }

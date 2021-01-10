@@ -58,4 +58,12 @@ public class Argument {
         return true;
         else return false;
     }
+
+    @Override
+    public String toString() {
+        return "Argument{" +
+                "argument='" + argument + '\'' +
+                '}' +" \n";
+
+    }
 }

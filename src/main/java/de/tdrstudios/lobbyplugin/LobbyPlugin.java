@@ -181,10 +181,10 @@ public class LobbyPlugin extends JavaPlugin {
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
       List<Argument> configTabList0 = new ArrayList<>();
-      List<List<Argument>> configTabList = new ArrayList<>();
+      List<Argument>[] configTabList = new List[1];
       configTabList0.add(new Argument("save"));
       configTabList0.add(new Argument("read"));
-      configTabList.add(configTabList0);
+      configTabList[0] = configTabList0;
       getCommand("config").setTabCompleter(new TabComplete(configTabList));
 
 
