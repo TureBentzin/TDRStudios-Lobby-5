@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Deprecated
 public class FixInventoryTab implements TabCompleter {
 
     private Permission permission;
