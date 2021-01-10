@@ -9,7 +9,7 @@ import org.bukkit.permissions.Permission;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Deprecated
 public class ConfigTab implements TabCompleter {
 
     private Permission permission;
