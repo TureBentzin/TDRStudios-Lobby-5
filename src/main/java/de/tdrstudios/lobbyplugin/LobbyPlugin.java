@@ -16,6 +16,7 @@ import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.tabcomplete.FixInventoryTab;
+import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
@@ -180,9 +181,11 @@ public class LobbyPlugin extends JavaPlugin {
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
       List<Argument> configTabList0 = new ArrayList<>();
+      List<List<Argument>> configTabList = new ArrayList<>();
       configTabList0.add(new Argument("save"));
       configTabList0.add(new Argument("read"));
-      getCommand("config").setTabCompleter(new Tab);
+      configTabList.add(configTabList0);
+      getCommand("config").setTabCompleter(new TabComplete(configTabList));
 
 
       getCommand(fixInventoryCommandName).setTabCompleter(new FixInventoryTab("tdrstudios.lobby.perms.fix.inventory"));

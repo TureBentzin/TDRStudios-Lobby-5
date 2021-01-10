@@ -12,7 +12,7 @@ import java.util.List;
  * @STOPSHIP: 10.01.2021
  * @Autonom This can manage your TabComplete fully self!
  */
-public abstract class TabComplete implements TabCompleter {
+public class TabComplete implements TabCompleter {
 
     /**
      * @STOPSHIP: 10.01.2021
