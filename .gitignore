@@ -31,3 +31,5 @@ target/classes/Inventory-slots.png
 src/main/resources/debug/debug_output.tdrstudios
 src/main/java/test/testmaster/devtools/test.java
 src/main/java/test/testmaster/devtools/test.java
+src/main/java/de/tdrstudios/lobbyplugin/commands/FixInventoryCommand_solve.java
+src/main/java/de/tdrstudios/lobbyplugin/LobbyPlugin_solve.java
