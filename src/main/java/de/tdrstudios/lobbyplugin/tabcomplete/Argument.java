@@ -21,6 +21,7 @@ public class Argument {
         setDepends(depends);
     }
 
+
     private String argument;
     private Permission permission;
 
@@ -50,5 +51,11 @@ public class Argument {
     }
     public void addDepends(Argument argument) {
         getDepends().add(argument);
+    }
+
+    public boolean hasDepends() {
+        if(getDepends() != null)
+        return true;
+        else return false;
     }
 }
