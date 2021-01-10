@@ -36,6 +36,7 @@ public abstract class TabComplete implements TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete( CommandSender commandSender, Command command, String label, String[] args) {
+        onTabComplete(commandSender, command, label, args);
         int length = args.length; // get length of player insert arguments
         List<String> r = null;
         if(getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
@@ -57,5 +58,15 @@ public abstract class TabComplete implements TabCompleter {
         return r;
     }
 
-    public abstract List<String> onTabComplete(CommandSender sender, @Nullable Command cmd, @NotNull String label, @Nullable String[] args , List<Argument>[] arguments);
+    /**
+     *
+     * @param sender
+     * @param cmd
+     * @param label
+     * @param args insert by Player
+     * @param arguments given by Plugin
+     * @implNote This acts like a Event!
+     */
+    public void onTabComplete(CommandSender sender,  Command cmd,  String label, String[] args, List<Argument>[] arguments) {
+    }
 }
