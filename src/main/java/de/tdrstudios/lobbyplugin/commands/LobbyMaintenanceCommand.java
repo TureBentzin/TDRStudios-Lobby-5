@@ -3,6 +3,8 @@ package de.tdrstudios.lobbyplugin.commands;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,11 +27,22 @@ public class LobbyMaintenanceCommand extends MyCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if(sender instanceof Player) {
+
+        }else if (sender instanceof ConsoleCommandSender) {
+
+        }else {
+
+        }
         return false;
     }
 
     @Override
     public @Nullable List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
         return null;
+    }
+
+    public void registerMessages() {
+
     }
 }
