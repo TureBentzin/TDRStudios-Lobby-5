@@ -51,6 +51,7 @@ public class VersionCheckCommand implements CommandExecutor {
         p.spigot().sendMessage(baseComponent);
 
       } else {
+        // STOPSHIP: 12.01.21  
         chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
       } 
     }
