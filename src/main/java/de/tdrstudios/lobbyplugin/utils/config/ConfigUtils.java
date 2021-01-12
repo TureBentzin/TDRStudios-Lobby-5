@@ -15,6 +15,9 @@ public class ConfigUtils {
         LobbyPlugin.getPlugin().saveConfig();
     }
     public static void registerAllConfigurations() {
+        getConfig().options().header("#TDRStudios ConfigFile");
+
+
         registerConfiguration("beta.acceptRisk" , false);
         registerConfiguration("beta.enableBetaBook" , true);
 

@@ -58,9 +58,10 @@ public class InventoryUtils {
      * @implNote This Method is an "relict" and cant be used for the plugin!!!!
      */
     @Deprecated
-    public static void setInventory(PlayerInventory inventory) {
 
-        inventory.clear(); // Clear all items out of the inventory
+    public static void LEGACY_setInventory(PlayerInventory inventory) {
+        inventory.clear(); // Clear all Items out of the Inventory
+
         //List all ItemSacks
         ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
         ItemMeta itemMeta = item1.getItemMeta();
@@ -109,11 +110,11 @@ public class InventoryUtils {
     public static  void registerAllInventoryContents() {
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material" ,"tdrstudios.hotbar.nav.displayName" , 1 , c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
 
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material" ,"tdrstudios.hotbar.info.displayName" , 1 , c.getInt("tdrstudios.hotbar.info.slot"))); // Navigator
+        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material" ,"tdrstudios.hotbar.info.displayName" , 1 , c.getInt("tdrstudios.hotbar.info.slot"))); // Info
 
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.hotbar.settings.slot"))); // Navigator
+        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.hotbar.settings.slot"))); // Settings
 
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // Navigator
+        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // HideStick
 
     }
 
