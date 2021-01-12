@@ -5,6 +5,7 @@ import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.Permission;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,10 +16,13 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor {
     /**
      * @param arguments
      * @STOPSHIP: 10.01.2021
-     * @Autonom This can manage your TabComplete fully self!
+     * @Autonom This can manage your TabComplete and other stuff fully self!
      */
-    public MyCommand(List<Argument>[] arguments) {
+    public MyCommand(Command command ,Permission permission ,List<Argument>[] arguments) {
         super(arguments);
+        setCommand(command);
+        setPermission(permission);
+        setPermission(permission);
     }
     private Command command;
     public Command getCommand() {
@@ -28,13 +32,17 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor {
         this.command = command;
     }
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        return false;
+    private Permission permission;
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+    public Permission getPermission() {
+        return permission;
     }
 
     @Override
-    public @Nullable List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
-        return super.onTabComplete(commandSender, command, label, args);
-    }
+    public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
+
+    @Override
+    public abstract  @Nullable List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args);
 }
