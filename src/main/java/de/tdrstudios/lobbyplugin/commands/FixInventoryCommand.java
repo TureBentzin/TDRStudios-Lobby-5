@@ -5,6 +5,8 @@ import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
+import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
+import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -16,6 +18,9 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import de.tdrstudios.additional.Work_In_Progress;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Work_In_Progress
 public class FixInventoryCommand implements CommandExecutor {
@@ -41,6 +46,14 @@ public class FixInventoryCommand implements CommandExecutor {
         setCommand(LobbyPlugin.getPlugin().getCommand(command));
         setPermission(new Permission(permission, "Permission for " + getClass().getName()));
         ; // Change soon
+        List<Argument>[] argumentListArray = new List[1];
+        List<Argument> argumentList = new ArrayList<>();
+        argumentList.add(new Argument("%Players%"));
+        argumentList.add(new Argument("*"));
+        argumentList.add(new Argument("all"));
+        argumentList.add(new Argument("@a"));
+        argumentListArray[0] = argumentList;
+        LobbyPlugin.getPlugin().getCommand(getCommand().getName()).setTabCompleter(new TabComplete(argumentListArray));
     }
 
     @Override

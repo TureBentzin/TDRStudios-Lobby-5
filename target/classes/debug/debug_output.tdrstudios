@@ -1,0 +1,83 @@
+[12:46:42] [Server thread/INFO]: [LobbyPlugin]: {DEBUG} Pharse: setInventory(Player CraftPlayer{name=TDR_Minecraft});
+Index: [InventoryContent{count=1, itemStack=ItemStack{CLOCK x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3º
+lTeleporter}}, material=CLOCK, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlTeleporter}}, InventoryConte
+nt{count=1, itemStack=ItemStack{GOLD_NUGGET x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, materia
+l=GOLD_NUGGET, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, InventoryContent{count=1, itemStack=
+ItemStack{COMMAND_BLOCK x 1, TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, blockMaterial=COMM
+AND_BLOCK}}, material=COMMAND_BLOCK, meta=TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, block
+Material=COMMAND_BLOCK}}, InventoryContent{count=1, itemStack=ItemStack{BLAZE_ROD x 1, UNSPECIFIC_META:{meta-type=UNSPEC
+IFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, material=BLAZE_ROD, meta=UNSPECIFIC_META:{meta-type=UN
+SPECIFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, InventoryContent{count=1, itemStack=ItemStack{WRIT
+TEN_BOOK x 1, BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, enchants={PROTECTION_ENVIRONMEN
+TAL=1}}}, material=WRITTEN_BOOK, meta=BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, lore=[º
+aThis plugin still in development so please report any issue to TDRStudios!], enchants={PROTECTION_ENVIRONMENTAL=1}}}]
+content: InventoryContent{count=1, itemStack=ItemStack{CLOCK x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3
+ºlTeleporter}}, material=CLOCK, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlTeleporter}}!
+
+[12:46:42] [Server thread/INFO]: [LobbyPlugin]: {DEBUG} Pharse: setInventory(Player CraftPlayer{name=TDR_Minecraft});
+Index: [InventoryContent{count=1, itemStack=ItemStack{CLOCK x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3º
+lTeleporter}}, material=CLOCK, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlTeleporter}}, InventoryConte
+nt{count=1, itemStack=ItemStack{GOLD_NUGGET x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, materia
+l=GOLD_NUGGET, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, InventoryContent{count=1, itemStack=
+ItemStack{COMMAND_BLOCK x 1, TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, blockMaterial=COMM
+AND_BLOCK}}, material=COMMAND_BLOCK, meta=TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, block
+Material=COMMAND_BLOCK}}, InventoryContent{count=1, itemStack=ItemStack{BLAZE_ROD x 1, UNSPECIFIC_META:{meta-type=UNSPEC
+IFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, material=BLAZE_ROD, meta=UNSPECIFIC_META:{meta-type=UN
+SPECIFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, InventoryContent{count=1, itemStack=ItemStack{WRIT
+TEN_BOOK x 1, BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, enchants={PROTECTION_ENVIRONMEN
+TAL=1}}}, material=WRITTEN_BOOK, meta=BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, lore=[º
+aThis plugin still in development so please report any issue to TDRStudios!], enchants={PROTECTION_ENVIRONMENTAL=1}}}]
+content: InventoryContent{count=1, itemStack=ItemStack{GOLD_NUGGET x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-n
+ame=º3ºlInfo}}, material=GOLD_NUGGET, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}!
+
+[12:46:42] [Server thread/INFO]: [LobbyPlugin]: {DEBUG} Pharse: setInventory(Player CraftPlayer{name=TDR_Minecraft});
+Index: [InventoryContent{count=1, itemStack=ItemStack{CLOCK x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3º
+lTeleporter}}, material=CLOCK, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlTeleporter}}, InventoryConte
+nt{count=1, itemStack=ItemStack{GOLD_NUGGET x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, materia
+l=GOLD_NUGGET, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, InventoryContent{count=1, itemStack=
+ItemStack{COMMAND_BLOCK x 1, TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, blockMaterial=COMM
+AND_BLOCK}}, material=COMMAND_BLOCK, meta=TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, block
+Material=COMMAND_BLOCK}}, InventoryContent{count=1, itemStack=ItemStack{BLAZE_ROD x 1, UNSPECIFIC_META:{meta-type=UNSPEC
+IFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, material=BLAZE_ROD, meta=UNSPECIFIC_META:{meta-type=UN
+SPECIFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, InventoryContent{count=1, itemStack=ItemStack{WRIT
+TEN_BOOK x 1, BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, enchants={PROTECTION_ENVIRONMEN
+TAL=1}}}, material=WRITTEN_BOOK, meta=BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, lore=[º
+aThis plugin still in development so please report any issue to TDRStudios!], enchants={PROTECTION_ENVIRONMENTAL=1}}}]
+content: InventoryContent{count=1, itemStack=ItemStack{COMMAND_BLOCK x 1, TILE_ENTITY_META:{meta-type=TILE_ENTITY, displ
+ay-name=º3ºlEinstellungen, blockMaterial=COMMAND_BLOCK}}, material=COMMAND_BLOCK, meta=TILE_ENTITY_META:{meta-type=TILE_
+ENTITY, display-name=º3ºlEinstellungen, blockMaterial=COMMAND_BLOCK}}!
+
+[12:46:42] [Server thread/INFO]: [LobbyPlugin]: {DEBUG} Pharse: setInventory(Player CraftPlayer{name=TDR_Minecraft});
+Index: [InventoryContent{count=1, itemStack=ItemStack{CLOCK x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3º
+lTeleporter}}, material=CLOCK, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlTeleporter}}, InventoryConte
+nt{count=1, itemStack=ItemStack{GOLD_NUGGET x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, materia
+l=GOLD_NUGGET, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, InventoryContent{count=1, itemStack=
+ItemStack{COMMAND_BLOCK x 1, TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, blockMaterial=COMM
+AND_BLOCK}}, material=COMMAND_BLOCK, meta=TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, block
+Material=COMMAND_BLOCK}}, InventoryContent{count=1, itemStack=ItemStack{BLAZE_ROD x 1, UNSPECIFIC_META:{meta-type=UNSPEC
+IFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, material=BLAZE_ROD, meta=UNSPECIFIC_META:{meta-type=UN
+SPECIFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, InventoryContent{count=1, itemStack=ItemStack{WRIT
+TEN_BOOK x 1, BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, enchants={PROTECTION_ENVIRONMEN
+TAL=1}}}, material=WRITTEN_BOOK, meta=BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, lore=[º
+aThis plugin still in development so please report any issue to TDRStudios!], enchants={PROTECTION_ENVIRONMENTAL=1}}}]
+content: InventoryContent{count=1, itemStack=ItemStack{BLAZE_ROD x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-nam
+e=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, material=BLAZE_ROD, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display
+-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}!
+
+[12:46:42] [Server thread/INFO]: [LobbyPlugin]: {DEBUG} Pharse: setInventory(Player CraftPlayer{name=TDR_Minecraft});
+Index: [InventoryContent{count=1, itemStack=ItemStack{CLOCK x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3º
+lTeleporter}}, material=CLOCK, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlTeleporter}}, InventoryConte
+nt{count=1, itemStack=ItemStack{GOLD_NUGGET x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, materia
+l=GOLD_NUGGET, meta=UNSPECIFIC_META:{meta-type=UNSPECIFIC, display-name=º3ºlInfo}}, InventoryContent{count=1, itemStack=
+ItemStack{COMMAND_BLOCK x 1, TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, blockMaterial=COMM
+AND_BLOCK}}, material=COMMAND_BLOCK, meta=TILE_ENTITY_META:{meta-type=TILE_ENTITY, display-name=º3ºlEinstellungen, block
+Material=COMMAND_BLOCK}}, InventoryContent{count=1, itemStack=ItemStack{BLAZE_ROD x 1, UNSPECIFIC_META:{meta-type=UNSPEC
+IFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, material=BLAZE_ROD, meta=UNSPECIFIC_META:{meta-type=UN
+SPECIFIC, display-name=º3ºlSpieler ºaºlAnzeigen ºf| º4ºlVerstecken}}, InventoryContent{count=1, itemStack=ItemStack{WRIT
+TEN_BOOK x 1, BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, enchants={PROTECTION_ENVIRONMEN
+TAL=1}}}, material=WRITTEN_BOOK, meta=BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, lore=[º
+aThis plugin still in development so please report any issue to TDRStudios!], enchants={PROTECTION_ENVIRONMENTAL=1}}}]
+content: InventoryContent{count=1, itemStack=ItemStack{WRITTEN_BOOK x 1, BOOK_SIGNED_META:{meta-type=BOOK_SIGNED, displa
+y-name=º2The º5Beta º6Book, enchants={PROTECTION_ENVIRONMENTAL=1}}}, material=WRITTEN_BOOK, meta=BOOK_SIGNED_META:{meta-
+type=BOOK_SIGNED, display-name=º2The º5Beta º6Book, lore=[ºaThis plugin still in development so please report any issue
+to TDRStudios!], enchants={PROTECTION_ENVIRONMENTAL=1}}}!

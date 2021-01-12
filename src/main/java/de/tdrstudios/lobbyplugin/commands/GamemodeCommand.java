@@ -5,6 +5,9 @@ import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
 import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
+import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
+import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
+import javafx.scene.control.Tab;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -14,6 +17,9 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import de.tdrstudios.additional.Work_In_Progress;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Work_In_Progress
@@ -67,6 +73,7 @@ public class GamemodeCommand implements CommandExecutor {
     setPermission(3, permission3);;
     setCommand(LobbyPlugin.getPlugin().getCommand(cmdName));
     registerMessages();
+    registerTab();
   }
 
   /**
@@ -77,6 +84,28 @@ public class GamemodeCommand implements CommandExecutor {
     setPermissions(perms);
     setCommand(LobbyPlugin.getPlugin().getCommand(cmdName));
     registerMessages();
+    registerTab();
+
+  }
+
+  private void registerTab() {
+    List<Argument> TabList0 = new ArrayList<>();
+    List<Argument> TabList1 = new ArrayList<>();
+    List<Argument>[] TabList = new List[2];
+
+    TabList0.add(new Argument("1"));
+    TabList0.add(new Argument("2"));
+    TabList0.add(new Argument("3"));
+    TabList0.add(new Argument("0"));
+
+    TabList1.add(new Argument("*"));
+    TabList1.add(new Argument("@a"));
+    Argument argument = new Argument("%Players%");
+    argument.setPlayermode(true);
+    TabList1.add(argument);
+    TabList[0] = TabList0;
+    TabList[1] = TabList1;
+    LobbyPlugin.getPlugin().getCommand(getCommand().getName()).setTabCompleter(new TabComplete(TabList));
   }
    private double gamemodeid = 0.0D;
 

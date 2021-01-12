@@ -12,33 +12,56 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Inventory utils.
+ */
 public class InventoryUtils {
 
 
 
     private static FileConfiguration c = ConfigUtils.getConfig();
 
+    /**
+     * Gets config.
+     *
+     * @return the config
+     */
     public static FileConfiguration getConfig() {
         return c;
     }
 
     private static List<InventoryContent> index = new ArrayList<InventoryContent>();
 
+    /**
+     * Gets index.
+     *
+     * @return the index
+     */
     public static List<InventoryContent> getIndex() {
         return index;
     }
+
+    /**
+     * Register inventory content.
+     *
+     * @param inventoryContent the inventory content
+     */
     public static void registerInventoryContent(InventoryContent inventoryContent){
         index.add(inventoryContent);
     }
 
     /**
+     * Legacy: set inventory.
      *
      * @param inventory the Player Inventory that will be set to LobbyInventory
      * @deprecated
+     * @implNote This Method is an "relict" and cant be used for the plugin!!!!
      */
     @Deprecated
+
     public static void LEGACY_setInventory(PlayerInventory inventory) {
         inventory.clear(); // Clear all Items out of the Inventory
+
         //List all ItemSacks
         ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
         ItemMeta itemMeta = item1.getItemMeta();
@@ -63,10 +86,14 @@ public class InventoryUtils {
         inventory.setItem(c.getInt("tdrstudios.hotbar.settings.slot"), item3);
         inventory.setItem(c.getInt("tdrstudios.hotbar.stick.slot"), item4);
 
-
     }
 
 
+    /**
+     * Sets inventory to lobbystandart.
+     *
+     * @param player the player witch inventory should set to lobbystandart
+     */
     public static void setInventory(Player player) {
         PlayerInventory playerInventory = player.getInventory();
         playerInventory.clear();
@@ -77,7 +104,9 @@ public class InventoryUtils {
     }
 
 
-
+    /**
+     * Register all inventory contents.
+     */
     public static  void registerAllInventoryContents() {
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material" ,"tdrstudios.hotbar.nav.displayName" , 1 , c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
 

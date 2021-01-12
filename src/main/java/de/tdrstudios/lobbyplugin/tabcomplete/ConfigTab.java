@@ -1,13 +1,15 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Deprecated
 public class ConfigTab implements TabCompleter {
 
     private Permission permission;
@@ -36,6 +38,7 @@ public class ConfigTab implements TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
         StringBuilder builder = new StringBuilder();
+
         for(String s : args) {
             builder.append(s +" ");
         }

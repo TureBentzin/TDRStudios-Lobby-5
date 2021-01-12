@@ -1,6 +1,5 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
-import com.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -15,7 +14,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class fixInventoryTab implements TabCompleter {
+@Deprecated
+public class FixInventoryTab implements TabCompleter {
 
     private Permission permission;
 
@@ -27,7 +27,7 @@ public class fixInventoryTab implements TabCompleter {
         return permission;
     }
 
-    public fixInventoryTab(String permission) {
+    public FixInventoryTab(String permission) {
         setPermission(new Permission(permission));
     }
 

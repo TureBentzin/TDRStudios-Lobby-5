@@ -14,7 +14,9 @@ import de.tdrstudios.lobbyplugin.commands.*;
 import de.tdrstudios.lobbyplugin.events.GeneralEvents;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
-import de.tdrstudios.lobbyplugin.tabcomplete.fixInventoryTab;
+import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
+import de.tdrstudios.lobbyplugin.tabcomplete.FixInventoryTab;
+import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
@@ -36,7 +38,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.tdrstudios.additional.BetaError;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 public class LobbyPlugin extends JavaPlugin {
     private static LobbyPlugin plugin;
@@ -139,14 +141,12 @@ public class LobbyPlugin extends JavaPlugin {
         }
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
-
-
+    
     public void fixConfig() {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
             getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
         }
     }
-
 
   public void initChat() {
     Chat.setChatColor(ChatColor.GREEN);
@@ -181,9 +181,6 @@ public class LobbyPlugin extends JavaPlugin {
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
 
-
-      getCommand(fixInventoryCommandName).setTabCompleter(new fixInventoryTab("tdrstudios.lobby.perms.fix.inventory"));
-      getCommand(fixInventoryCommandName_Short).setTabCompleter(new fixInventoryTab("tdrstudios.lobby.perms.fix.inventory"));
   }
 
   public static LobbyPlugin getPlugin() {

@@ -53,7 +53,7 @@ public class JoinListener implements Listener {
             player.teleport(location);
 
         }else {
-            System.out.println("Error: I can´t find a serverspawn!");
+            LobbyPlugin.getLog().send("Error: I can´t find a serverspawn!");
         }
 
         player.setGameMode(GameMode.valueOf(ConfigUtils.getConfig().getString("tdrstudios.defaultGameMode"))); // DEBUG @WIP
