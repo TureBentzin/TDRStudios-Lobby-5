@@ -1,0 +1,52 @@
+Index: src/main/java/de/tdrstudios/lobbyplugin/commands/VersionCheckCommand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/de/tdrstudios/lobbyplugin/commands/VersionCheckCommand.java b/src/main/java/de/tdrstudios/lobbyplugin/commands/VersionCheckCommand.java
+--- a/src/main/java/de/tdrstudios/lobbyplugin/commands/VersionCheckCommand.java	(revision b2843ce7c5ba1224b31bfb41fe2e25c336a0a096)
++++ b/src/main/java/de/tdrstudios/lobbyplugin/commands/VersionCheckCommand.java	(revision a7bf5e3e04a14bdb1d923eaccd80369edfc31cbb)
+@@ -51,6 +51,7 @@
+         p.spigot().sendMessage(baseComponent);
+ 
+       } else {
++        // STOPSHIP: 12.01.21  
+         chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
+       } 
+     }
+Index: src/main/java/de/tdrstudios/lobbyplugin/utils/inventory/InventoryUtils.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/de/tdrstudios/lobbyplugin/utils/inventory/InventoryUtils.java b/src/main/java/de/tdrstudios/lobbyplugin/utils/inventory/InventoryUtils.java
+--- a/src/main/java/de/tdrstudios/lobbyplugin/utils/inventory/InventoryUtils.java	(revision b2843ce7c5ba1224b31bfb41fe2e25c336a0a096)
++++ b/src/main/java/de/tdrstudios/lobbyplugin/utils/inventory/InventoryUtils.java	(revision a7bf5e3e04a14bdb1d923eaccd80369edfc31cbb)
+@@ -39,12 +39,7 @@
+     @Deprecated
+     public static void LEGACY_setInventory(PlayerInventory inventory) {
+         inventory.clear(); // Clear all Items out of the Inventory
+-
+         //List all ItemSacks
+-
+-
+-
+-
+         ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")));
+         ItemMeta itemMeta = item1.getItemMeta();
+         itemMeta.setDisplayName(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.displayName"));
+@@ -86,11 +81,11 @@
+     public static  void registerAllInventoryContents() {
+         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material" ,"tdrstudios.hotbar.nav.displayName" , 1 , c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
+ 
+-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material" ,"tdrstudios.hotbar.info.displayName" , 1 , c.getInt("tdrstudios.hotbar.info.slot"))); // Navigator
++        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material" ,"tdrstudios.hotbar.info.displayName" , 1 , c.getInt("tdrstudios.hotbar.info.slot"))); // Info
+ 
+-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.hotbar.settings.slot"))); // Navigator
++        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.hotbar.settings.slot"))); // Settings
+ 
+-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // Navigator
++        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // HideStick
+ 
+     }
+ 
