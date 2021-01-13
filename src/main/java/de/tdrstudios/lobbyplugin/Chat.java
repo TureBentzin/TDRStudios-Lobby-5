@@ -22,8 +22,8 @@ public class Chat {
     @Deprecated
     public static String buildSendS(String message, boolean withPrefix) {
         if(withPrefix) {
-        return getPrefix() + message; }
-        return message;
+        return getPrefix() + Chat.getChatColor() + message; }
+        return Chat.getChatColor() + message;
     }
 
     private static String Prefix = "null ";
