@@ -109,7 +109,7 @@ public class LobbyPlugin extends JavaPlugin {
         registerCommands();
         InventoryUtils.registerAllInventoryContents();
 
-        getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand());
+        getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand(getCommand("spawn") , new Permission("de.tdrstudios.spawn")));
 
 
         Permission[] permissions = {new Permission("de.tdrstudios.lobby.gamemode.0"), new Permission("de.tdrstudios.lobby.gamemode.1"), new Permission("de.tdrstudios.lobby.gamemode.2"), new Permission("de.tdrstudios.lobby.gamemode.3")};
