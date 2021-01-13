@@ -56,11 +56,7 @@ public class VersionCheckCommand implements CommandExecutor {
       } 
     }
 
-    try {
-      sender.sendMessage(Chat.buildSendS(ConfigUtils.getString("tdrstudios.msg.only.player") , true));
-    } catch (InvalidConfigurationException e) {
-      e.printStackTrace();
-    }
+    sender.sendMessage(Chat.buildSendS(ConfigUtils.getString("tdrstudios.msg.only.player") , true));
     return false;
   }
 

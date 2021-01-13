@@ -40,23 +40,15 @@ public class InventoryContent {
 
     public InventoryContent(String ConfigMaterialString, String ConfigdisplayNameString, int count , int slot) {
         setCount(count);
-        try {
-            setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
+        setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
         setItemStack(new ItemStack(getMaterial(), getCount()));
 
         setMeta(getItemStack().getItemMeta()); //Add in fix #20
 
-        try {
-           // System.out.println("[DEBUG ISSUE#20] ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
-            //System.out.println("[DEBUG ISSUE#20] Result: " + ConfigUtils.getString(ConfigdisplayNameString));
+        // System.out.println("[DEBUG ISSUE#20] ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
+        //System.out.println("[DEBUG ISSUE#20] Result: " + ConfigUtils.getString(ConfigdisplayNameString));
 
-            getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
+        getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
 
         getItemStack().setItemMeta(getMeta());
         setSlot(slot);
