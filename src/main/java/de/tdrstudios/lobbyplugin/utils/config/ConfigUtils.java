@@ -41,11 +41,11 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.hotbar.info.slot",1);
 
         registerConfiguration("tdrstudios.hotbar.settings.material" , Material.COMPARATOR.name());
-        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lEinstellungen§f");
+        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lSettings§f");
         registerConfiguration("tdrstudios.hotbar.settings.slot",7);
 
         registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
-        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken§f");
+        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lPlayer §a§lHide §f| §4§lShow§f");
         registerConfiguration("tdrstudios.hotbar.stick.slot",8);
 
         registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
@@ -59,6 +59,9 @@ public class ConfigUtils {
 
         //Pure Messages:
         registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
+        registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
+        registerConfiguration("tdrstudios.spawn.success.other" , "%Player% has warped you to the spawn!");
+        registerConfiguration("tdrstudios.spawn.success.otherB" , "You warped %Player% to the spawn!");
 
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class MyCommand extends TabComplete implements CommandExecutor {
+public abstract class MyCommand extends TabComplete implements CommandExecutor, CommandMethods{
 
     /**
      * @param arguments
@@ -43,6 +43,4 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor {
     @Override
     public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
 
-    @Override
-    public abstract  @Nullable List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args);
 }
