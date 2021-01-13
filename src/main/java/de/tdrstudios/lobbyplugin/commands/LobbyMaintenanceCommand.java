@@ -45,4 +45,14 @@ public class LobbyMaintenanceCommand extends MyCommand {
     public void registerMessages() {
 
     }
+
+    @Override
+    public void generatePermission(String permission) {
+
+    }
+
+    @Override
+    public List<String>[] registerTabComplete() {
+        return new List[0];
+    }
 }
