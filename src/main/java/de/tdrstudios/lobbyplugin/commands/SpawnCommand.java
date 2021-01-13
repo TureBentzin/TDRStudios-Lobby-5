@@ -3,10 +3,8 @@ package de.tdrstudios.lobbyplugin.commands;
 import de.tdrstudios.additional.Work_In_Progress;
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
-import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
-import de.tdrstudios.lobbyplugin.msgs.Message;
-import de.tdrstudios.lobbyplugin.msgs.MessageManager;
-import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
+import de.tdrstudios.lobbyplugin.enums.SenderType;
+import de.tdrstudios.lobbyplugin.msgs.*;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
@@ -15,6 +13,7 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
@@ -38,37 +37,55 @@ public class SpawnCommand extends MyCommand {
 
   @Work_In_Progress
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
+    //Basics
+    FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
+    World world = Bukkit.getWorld(config.getString("Spawn.World"));
+    double x = config.getDouble("Spawn.X");
+    double y = config.getDouble("Spawn.Y");
+    double z = config.getDouble("Spawn.Z");
+    float yaw = (float) config.getDouble("Spawn.Yaw");
+    float pitch = (float) config.getDouble("Spawn.Pitch");
+    Location location = new Location(world, x, y, z, yaw, pitch);
+    //End of Basics
     if (sender instanceof Player) {
-      Player player = (Player)sender;
+      Player player = (Player) sender;
       Chat chat = new Chat();
       chat.setPlayers(new Player[]{player});
-      FileConfiguration config = LobbyPlugin.getPlugin().getConfig();
-      if (args.length == 0) {
-        if(player.hasPermission(getPermission())) {
 
-          World world = Bukkit.getWorld(config.getString("Spawn.World"));
-          double x = config.getDouble("Spawn.X");
-          double y = config.getDouble("Spawn.Y");
-          double z = config.getDouble("Spawn.Z");
-          float yaw = (float) config.getDouble("Spawn.Yaw");
-          float pitch = (float) config.getDouble("Spawn.Pitch");
-          Location location = new Location(world, x, y, z, yaw, pitch);
+      if (args.length == 0) {
+        if (player.hasPermission(getPermission())) {
           player.teleport(location);
           chat.sendMessage("tdrstudios.spawn.success");
-        }else
+        } else
           chat.sendMessage(new LackingPermissionMessage(getPermission()));
+      } else if (args.length == 1) {
+        if (Bukkit.getOfflinePlayer(args[0]).isOnline()) {
+            //TODO: Bommels schreib den Code!
+        } else if (args[0].equalsIgnoreCase("all") | args[0].equalsIgnoreCase("@a") | args[0].equalsIgnoreCase("*")) {
+          if (player.hasPermission(getPermission().getName() + ".other.all")) {
+            //TODO: Bommels schreib den Code!
+          } else {
+            chat.send(LackingPermissionMessage.getNameFIX(getPermission() + ".other.all"));
+          }
+        } else {
+          chat.send(UsageMessage.getNameFIX(getCommand()));
+        }
+
       } else {
         chat.sendMessage(UsageMessage.getNameFIX(getCommand()));
-      } 
-    } 
-    return false;
-  }
+      }
 
-  @Override
-  public @Nullable List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
-    return null;
-  }
 
+    }else {
+      if(sender instanceof ConsoleCommandSender){
+        //TODO: Bommels schreib den Code!
+      }else {
+        Chat.sendFast(sender , new OnlySenderMessage(SenderType.PLAYER));
+      }
+    }
+    return true;
+  }
 
   @Override
 
@@ -79,6 +96,10 @@ public class SpawnCommand extends MyCommand {
     messageManager.registerMessage(new Message("tdrstudios.spawn.success.other", ConfigUtils.getString("tdrstudios.spawn.success.other")));
     messageManager.registerMessage(new Message("tdrstudios.spawn.success.otherB", ConfigUtils.getString("tdrstudios.spawn.success.otherB")));
     messageManager.registerMessage(new UsageMessage(getCommand()));
+    messageManager.registerMessage(new LackingPermissionMessage(getPermission()));
+    messageManager.registerMessage(new LackingPermissionMessage(getPermission().getName() + ".other"));
+    messageManager.registerMessage(new LackingPermissionMessage(getPermission().getName() + ".other.all"));
+
 
   }
 
