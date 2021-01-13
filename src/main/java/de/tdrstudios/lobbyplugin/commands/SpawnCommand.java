@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-public class SpawnCommand implements CommandExecutor {
+public class SpawnCommand extends MyCommand {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if (sender instanceof Player) {
       Player player = (Player)sender;
@@ -31,4 +31,6 @@ public class SpawnCommand implements CommandExecutor {
     } 
     return false;
   }
+
+  
 }
