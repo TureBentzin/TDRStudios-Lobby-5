@@ -17,6 +17,10 @@ public enum  SenderType {
     public void setText(String text) {
         this.text = text;
     }
+    @Deprecated
+    /**
+     * You can use .toString()
+     */
     public String getText() {
         return text;
     }
@@ -41,5 +45,10 @@ public enum  SenderType {
     }
     SenderType(String text) {
     setText(text);
+    }
+
+    @Override
+    public String toString() {
+        return text;
     }
 }
