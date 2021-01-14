@@ -16,7 +16,7 @@ public class OnlySenderMessage extends Message {
     }
 
     public OnlySenderMessage(SenderType senderType) {
-        super("sendermessage - > " + senderType.name(), "If you see this - report it immediately!");
+        super("sendermessage - > " + senderType, "If you see this - report it immediately!");
         init(senderType);
     }
     public void init(SenderType senderType) {
