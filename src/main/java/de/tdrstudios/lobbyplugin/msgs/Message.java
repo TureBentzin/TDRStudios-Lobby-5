@@ -45,6 +45,11 @@ public class Message {
         setContent(content);
     }
 
+    public String replace(String before, String after) {
+        getContent().replace(before , after);
+        return getContent();
+    }
+
     @Override
     public String toString() {
         return "Message{" +
