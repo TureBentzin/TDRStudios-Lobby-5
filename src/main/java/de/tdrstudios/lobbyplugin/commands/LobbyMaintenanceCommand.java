@@ -1,6 +1,10 @@
 package de.tdrstudios.lobbyplugin.commands;
 
+import de.tdrstudios.lobbyplugin.Chat;
+import de.tdrstudios.lobbyplugin.LobbyPlugin;
+import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
+import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -27,12 +31,17 @@ public class LobbyMaintenanceCommand extends MyCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender instanceof Player) {
+        if(ConfigUtils.getBoolean("tdrstudios.feature.maintenance.enable")) {
+            if (sender instanceof Player) {
 
-        }else if (sender instanceof ConsoleCommandSender) {
 
+            } else if (sender instanceof ConsoleCommandSender) {
+
+            } else {
+
+            }
         }else {
-
+            sender.sendMessage(Chat.getPrefix() + Chat.getErrorColor() + ConfigUtils.getString("tdrstudios.feature.msg.disabled"));
         }
         return false;
     }
@@ -43,6 +52,7 @@ public class LobbyMaintenanceCommand extends MyCommand {
     }
 
     public void registerMessages() {
+        LobbyPlugin.getMessageManager().registerMessage(new Message("tdrstudios.feature.maintenance.enable" , ConfigUtils.getString("tdrstudios.feature.maintenance.msg.enabled")));
 
     }
 
