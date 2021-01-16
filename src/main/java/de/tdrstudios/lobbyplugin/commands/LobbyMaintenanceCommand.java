@@ -46,6 +46,7 @@ public class LobbyMaintenanceCommand extends MyCommand {
 
     }
 
+
     @Override
     public void generatePermission(String permission) {
 

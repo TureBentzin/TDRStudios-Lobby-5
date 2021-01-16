@@ -57,6 +57,9 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
 
+        //Maintenance
+        registerConfiguration("tdrstudios.feature.maintenance");
+
         //Pure Messages:
         registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
         registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
