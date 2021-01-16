@@ -1,5 +1,6 @@
 package de.tdrstudios.lobbyplugin.utils.config;
 
+import de.bentzin.tools.DevTools;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -59,6 +60,11 @@ public class ConfigUtils {
 
         //Maintenance
         registerConfiguration("tdrstudios.feature.maintenance");
+        registerConfiguration("tdrstudios.feature.maintenance.enable" , true);
+        registerConfiguration("tdrstudios.feature.maintenance.active" , false);
+
+
+        registerConfiguration("tdrstudios.feature.msg.disabled" , "Sorry  - This feature is disabled");
 
         //Pure Messages:
         registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
@@ -107,13 +113,18 @@ public class ConfigUtils {
 
 
 
-    public static boolean getBoolean(String path) throws InvalidConfigurationException {
+    public static Boolean getBoolean(String path) {
         Boolean r = getConfig().getBoolean(path);
         if(r != null) {
             return r;
         }else {
-            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            try {
+                throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            }catch (InvalidConfigurationException e) {
+                DevTools.getDevToolsConsole().send("Error: " + e.getStackTrace());
+            }
         }
+        return null;
     }
 
 
