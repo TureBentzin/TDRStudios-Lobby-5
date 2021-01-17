@@ -91,7 +91,9 @@ public class ConfigUtils {
         if(r != null) {
             return r;
         }else {
+            getConfig().set(path , "Enter here!");
             throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+
         }
     }
 
@@ -102,6 +104,7 @@ public class ConfigUtils {
         if(r != null) {
             return r;
         }else {
+            getConfig().set(path , "Enter here!");
             throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
         }
     }
