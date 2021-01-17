@@ -60,6 +60,10 @@ public class ConfigUtils {
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
+        //StaticItems
+        registerConfiguration("tdrstudios.items.back.material" , Material.ARROW.name());
+        registerConfiguration("tdrstudios.items.back.name" , "§4§l<X>");
+
     }
     public static void registerConfiguration(String path) {
         //if(getConfig().isSet(path)) {
