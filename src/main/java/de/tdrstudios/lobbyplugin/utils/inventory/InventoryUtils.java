@@ -119,5 +119,9 @@ public class InventoryUtils {
     }
 
 
+    //General Inventory Content
+    private InventoryContent backItem = new InventoryContent("tdrstudios.items.back.material" , "tdrstudios.items.back.name", 1, 0);
+
+
 
 }
