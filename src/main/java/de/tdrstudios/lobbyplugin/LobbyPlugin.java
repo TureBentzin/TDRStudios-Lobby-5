@@ -131,7 +131,8 @@ public class LobbyPlugin extends JavaPlugin {
             if(ConfigUtils.getBoolean("beta.enableBetaBook")) {
                 InventoryContent betabook = new InventoryContent(Material.WRITTEN_BOOK, "§2The §5Beta §6Book", 1, true, 22);
                 ItemMeta bookmeta =  betabook.getMeta();
-                bookmeta.setDisplayName("§2The §5Beta §6Book");
+
+                bookmeta.setDisplayName(ChatColor.BOLD + "§2The §5Beta §6Book");
                 bookmeta.setLore(Collections.singletonList(Chat.getChatColor() + "This plugin still in development so please report any issue to TDRStudios!"));
                 InventoryUtils.registerInventoryContent(betabook);
                 betabook.setMeta(bookmeta);
