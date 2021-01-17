@@ -9,6 +9,20 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class InventoryContent {
 
+    private boolean staticItem = false;
+
+    public void setStaticItem(boolean staticItem) {
+        this.staticItem = staticItem;
+    }
+
+    /**
+     *
+     * @return if the item is for multiple use!
+     */
+    public boolean isStaticItem() {
+        return staticItem;
+    }
+
     public InventoryContent(Material material, String displayName, int count, boolean isEnchant , int slot) {
         setCount(count);
         setMaterial(material);
