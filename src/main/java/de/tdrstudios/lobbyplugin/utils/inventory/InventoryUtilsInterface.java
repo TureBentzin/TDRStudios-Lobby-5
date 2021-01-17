@@ -1,10 +1,11 @@
 package de.tdrstudios.lobbyplugin.utils.inventory;
+import java.util.*;
+public abstract interface InventoryUtilsInterface {
+    List<InventoryContent> index = new ArrayList<>();
 
-public interface InventoryUtilsInterface {
     /**
-     *
-     * @param inventoryContent
-     * Register a InventoryContent
+     * @param inventoryContent Register a InventoryContent
      */
-    public void registerInventoryContent(InventoryContent inventoryContent);
+
+
 }
