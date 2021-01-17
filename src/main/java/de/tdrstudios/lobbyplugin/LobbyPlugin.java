@@ -41,10 +41,12 @@ import java.util.Collection;
 import java.util.*;
 
 public class LobbyPlugin extends JavaPlugin {
+    public final String author = "TDRStudios";
+
     private static LobbyPlugin plugin;
 
-    public static void setPlugin(LobbyPlugin plugin) {
-        LobbyPlugin.plugin = plugin;
+    public static void setPlugin(LobbyPlugin newPlugin) {
+        LobbyPlugin.plugin = newPlugin;
     }
 
     private static Chat chat;
