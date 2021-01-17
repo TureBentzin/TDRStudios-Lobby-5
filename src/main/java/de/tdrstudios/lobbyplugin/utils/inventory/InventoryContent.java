@@ -76,6 +76,31 @@ public class InventoryContent {
         setSlot(slot);
     }
 
+    public InventoryContent(String ConfigMaterialString, String ConfigdisplayNameString, int count , int slot , boolean staticItem) {
+        setCount(count);
+        setStaticItem(staticItem);
+        try {
+            setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        setItemStack(new ItemStack(getMaterial(), getCount()));
+
+        setMeta(getItemStack().getItemMeta()); //Add in fix #20
+
+        try {
+            // System.out.println("[DEBUG ISSUE#20] ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
+            //System.out.println("[DEBUG ISSUE#20] Result: " + ConfigUtils.getString(ConfigdisplayNameString));
+
+            getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        getItemStack().setItemMeta(getMeta());
+        setSlot(slot);
+    }
+
 
 
     private int count;
