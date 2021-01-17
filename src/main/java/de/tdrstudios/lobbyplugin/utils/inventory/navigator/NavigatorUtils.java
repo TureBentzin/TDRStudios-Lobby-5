@@ -1,17 +1,38 @@
 package de.tdrstudios.lobbyplugin.utils.inventory.navigator;
 
+import com.sun.deploy.security.CertStore;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtilsInterface;
 
-public class NavigatorUtils  implements InventoryUtilsInterface {
+import java.util.ArrayList;
+import java.util.*;
+
+public class NavigatorUtils extends InventoryUtilsInterface {
+
+    private static List<InventoryContent> index = new ArrayList<>();
 
     /**
      * @param inventoryContent Register a InventoryContent
      */
-    @Override
-    public void registerInventoryContent(InventoryContent inventoryContent) {
 
+    public static boolean registerInventoryContent(InventoryContent inventoryContent) {
+
+        if(!index.contains(inventoryContent)) {
+            index.add(inventoryContent);
+            return true;
+        }else
+            return false;
     }
+
+    public static boolean removeInventoryContent(InventoryContent inventoryContent) {
+        if(index.contains(inventoryContent)) {
+            index.remove(inventoryContent);
+            return true;
+        }else
+            return false;
+    }
+
+
 
 
     //    public void openGUI(Player player) {
