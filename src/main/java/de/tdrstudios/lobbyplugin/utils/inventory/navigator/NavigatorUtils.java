@@ -17,6 +17,12 @@ import java.util.*;
 
 public class NavigatorUtils extends InventoryUtilsInterface {
 
+    public NavigatorUtils() {
+        Inventory inventory = getInventory();
+        System.out.println("NavigatorUtils.NavigatorUtils.const");
+        System.out.println("inventory.toString() = " + inventory.toString());
+    }
+
 
     private static FileConfiguration c;
 
@@ -79,7 +85,15 @@ public class NavigatorUtils extends InventoryUtilsInterface {
         return c;
     }
 
-    private static Inventory inventory = Bukkit.createInventory(null, InventoryType.CHEST);
+    private static Inventory inventory;
+
+    static {
+        try {
+            inventory = Bukkit.createInventory(null, InventoryType.CHEST, ConfigUtils.getString("tdrstudios.inventorys.nav.name"));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static Inventory getInventory() {
         for(InventoryContent content : index) {
@@ -93,7 +107,7 @@ public class NavigatorUtils extends InventoryUtilsInterface {
 
     public static void registerAllInventoryContents() {
         String rootPattern = "tdrstudios.inventorys.nav.items.";
-        registerInventoryContent(getContentFromConfig(rootPattern + "spawn"));
+        registerInventoryContent(getContentFromConfig(rootPattern + "spawn", true));
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame1")); // sw
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame2")); // bw
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame3")); // cb
@@ -114,10 +128,27 @@ public class NavigatorUtils extends InventoryUtilsInterface {
         }catch (InvalidConfigurationException exception){
             exception.printStackTrace();
         }
-
         return new InventoryContent(root + ".material" ,root + ".name", ConfigUtils.getConfig().getInt(root + ".count"),  ConfigUtils.getConfig().getInt(root + ".slot"));
+    }
+    private static InventoryContent getContentFromConfig(String root , boolean enchant) {
+        try {
+            if (ConfigUtils.getString(root + ".material") != null) {}else
+            {
+                ConfigUtils.registerConfiguration(root + ".material");
+                ConfigUtils.registerConfiguration(root + ".name");
+                ConfigUtils.registerConfiguration(root + ".count");
+            }
+        }catch (InvalidConfigurationException exception){
+            exception.printStackTrace();
+        }
+        InventoryContent inventoryContent = new InventoryContent(root + ".material" ,root + ".name", ConfigUtils.getConfig().getInt(root + ".count"),  ConfigUtils.getConfig().getInt(root + ".slot"));
+        inventoryContent.setEnchant(enchant);
+        return inventoryContent;
 
     }
+    //tdrstudios.inventorys.nav.items.MiniGame1.material
+    //tdrstudios.inventorys.nav.items.MiniGame2.name
+    //tdrstudios.inventorys.nav.items.MiniGame3.count
 
 
 
