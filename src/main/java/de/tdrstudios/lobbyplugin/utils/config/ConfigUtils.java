@@ -1,6 +1,7 @@
 package de.tdrstudios.lobbyplugin.utils.config;
 
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -26,10 +27,6 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.join.welcome" , "Welcome to MYServer.tdrstudios.de %Player%! %Date%" );
         registerConfiguration("tdrstudios.join.date.pattern" , "dd/MM/yyyy HH:mm:ss");
 
-    /**
-    * @deprecated
-     *
-     */
         registerConfiguration("tdrstudios.allowWeatherChange" , true);
         registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
         registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
@@ -56,6 +53,32 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.manipulation.gamemode" , GameMode.CREATIVE.name());
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
+
+        registerConfiguration("tdrstudios.inventory.nav.name" , ChatColor.DARK_RED + "If you see this -§l report it");
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawm.material" , Material.GOLD_NUGGET.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count");
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.name" , "null");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.name" , "null");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.count" ,1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.material" , Material.DIAMOND_HOE.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.name" , "§6|Example");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.name" , "null");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.count");
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
 
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
