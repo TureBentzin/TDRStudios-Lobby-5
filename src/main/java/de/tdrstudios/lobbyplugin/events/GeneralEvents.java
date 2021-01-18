@@ -11,11 +11,14 @@ import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import org.bukkit.Sound;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -79,16 +82,27 @@ public class GeneralEvents implements Listener {
   
   @EventHandler
   public void blockbreak(BlockBreakEvent e) {
-    if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
-      e.setCancelled(true); 
+  onManipulation(e.getPlayer() , e);
+
+  }
+
+  private void onManipulation(Player player , Cancellable cancellable){
+    try {
+      if(ConfigUtils.getBoolean("tdrstudios.manipulation.allow"))
+        if(player.hasPermission(ConfigUtils.getString("tdrstudios.manipulation.permission")))
+          if(player.getGameMode() != GameMode.valueOf(ConfigUtils.getString("tdrstudios."))))
+      player.getPlayer().playSound(player.getLocation() , Sound.BLOCK_ANVIL_DESTROY ,30 , 1 );
+      cancellable.setCancelled(true);
+    } catch (InvalidConfigurationException e) {
+      e.printStackTrace();
+    }
+
   }
   
   @EventHandler
 
   public void blockplace(BlockPlaceEvent e) {
-
-    if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
-      e.setCancelled(true); 
+    onManipulation(e.getPlayer() , e);
   }
   
   ArrayList<String> HideShow = new ArrayList<>();
