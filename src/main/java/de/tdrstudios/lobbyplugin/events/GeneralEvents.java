@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
+import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
 import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
@@ -89,10 +90,18 @@ public class GeneralEvents implements Listener {
   private void onManipulation(Player player , Cancellable cancellable){
     try {
       if(ConfigUtils.getBoolean("tdrstudios.manipulation.allow"))
-        if(player.hasPermission(ConfigUtils.getString("tdrstudios.manipulation.permission")))
-          if(player.getGameMode() != GameMode.valueOf(ConfigUtils.getString("tdrstudios."))))
-      player.getPlayer().playSound(player.getLocation() , Sound.BLOCK_ANVIL_DESTROY ,30 , 1 );
-      cancellable.setCancelled(true);
+        if(player.getGameMode() == GameMode.valueOf(ConfigUtils.getString("tdrstudios.manipulation.gamemode"))) {
+          if (player.hasPermission(ConfigUtils.getString("tdrstudios.manipulation.permission"))) {
+            cancellable.setCancelled(false);
+          }else{
+            Chat chat = new Chat();
+            chat.setPlayers(new Player[]{player});
+            chat.send(ConfigUtils.getString("tdrstudios.manipulation.permission"));
+          }
+        }else {
+          player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 30, 1);
+          cancellable.setCancelled(false);
+        }
     } catch (InvalidConfigurationException e) {
       e.printStackTrace();
     }
