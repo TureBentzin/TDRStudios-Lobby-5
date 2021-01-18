@@ -1,11 +1,18 @@
 package de.tdrstudios.lobbyplugin.utils.inventory;
 
+import com.google.common.collect.Multimap;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Map;
+import java.util.jar.Attributes;
 
 public class InventoryContent {
 
@@ -99,6 +106,14 @@ public class InventoryContent {
 
         getItemStack().setItemMeta(getMeta());
         setSlot(slot);
+    }
+
+    public void setEnchant(boolean value) {
+        ItemMeta itemMeta = getMeta();
+        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        getItemStack().addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL ,1);
+        getItemStack().setItemMeta(itemMeta);
+
     }
 
 
