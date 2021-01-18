@@ -3,6 +3,7 @@ package de.tdrstudios.lobbyplugin.utils.inventory;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -131,5 +132,11 @@ public class InventoryUtils {
         return backItem;
     }
 
-
+    protected static Sound openingSound = Sound.BLOCK_BARREL_OPEN; //Soon in config
+    public static Sound getOpeningSound() {
+        return openingSound;
+    }
+    public static void playOpeningSound(Player player) {
+        player.playSound(player.getLocation() , getOpeningSound() , 30, 1);
+    }
 }
