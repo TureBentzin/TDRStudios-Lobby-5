@@ -41,21 +41,27 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.hotbar.info.slot",1);
 
         registerConfiguration("tdrstudios.hotbar.settings.material" , Material.COMPARATOR.name());
-        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lEinstellungen§f");
+        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lSettings§f");
         registerConfiguration("tdrstudios.hotbar.settings.slot",7);
 
         registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
-        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken§f");
+        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lPlayer §a§lHide §f| §4§lShow§f");
         registerConfiguration("tdrstudios.hotbar.stick.slot",8);
 
         registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
 
         registerConfiguration("tdrstudios.hotbar.xp", 1.0); // 1.0F
 
-        //GamemodeManipulation
+        //This allows you to manipulate the world around you!
         registerConfiguration("tdrstudios.manipulation.gamemode" , GameMode.CREATIVE.name());
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
+
+        //Pure Messages:
+        registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
+        registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
+        registerConfiguration("tdrstudios.spawn.success.other" , "%Player% has warped you to the spawn!");
+        registerConfiguration("tdrstudios.spawn.success.otherB" , "You warped %Player% to the spawn!");
 
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
@@ -82,13 +88,18 @@ public class ConfigUtils {
         saveConfig();
     }
 
-    public static String getString(String path) throws InvalidConfigurationException {
+    public static String getString(String path){
         String r = getConfig().getString(path);
         if(r != null) {
             return r;
         }else {
-            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            try {
+                throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        return null;
     }
 
 

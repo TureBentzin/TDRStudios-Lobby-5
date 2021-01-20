@@ -18,8 +18,12 @@ commands:
      description: Setze den Spawnpunkt mit /setspawn
      usage: /<command>
    spawn:
-     description: Teleportiere dich zum Spawn mit /spawn
-     usage: /<command>
+     description: This teleports you to the spawn!
+     usage: /<command> [Player]
+     aliases:
+       - lobby
+       - hub
+       - go
    setlobbyWarp1:
      description: Setze den Spawnpunkt für das erste Lobbyitem mit /setlobbyspawn1
      usage: /<command>
