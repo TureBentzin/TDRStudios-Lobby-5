@@ -1,6 +1,5 @@
 package de.tdrstudios.lobbyplugin.utils.inventory.navigator;
 
-import com.sun.deploy.security.CertStore;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtilsInterface;
