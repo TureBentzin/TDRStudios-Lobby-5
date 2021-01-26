@@ -112,11 +112,13 @@ public class NavigatorUtils extends InventoryUtilsInterface {
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame3")); // cb
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame4")); // fb
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame5")); // KFFA
+
     }
 
     //Example: tdrstudios.inventorys.nav.items.spawn.material
     //Root   : tdrstudios.inventorys.nav.items.spawn
     private static InventoryContent getContentFromConfig(String root) {
+        System.out.println("Debug: >"+ root + "< == " + getConfig().get(root) != null);
         try {
             if (ConfigUtils.getString(root + ".material") != null) {}else
             {
