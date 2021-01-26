@@ -79,8 +79,7 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
-
-
+        
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
         //StaticItems
