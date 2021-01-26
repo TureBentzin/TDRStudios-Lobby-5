@@ -79,12 +79,45 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
-        
+
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
         //StaticItems
         registerConfiguration("tdrstudios.items.back.material" , Material.ARROW.name());
         registerConfiguration("tdrstudios.items.back.name" , "§4§l<X>");
+
+        String prefix1 = "tdrstudios.inventorys.nav.items.";
+
+        registerConfiguration(prefix1 + "MiniGame1.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame1.name");
+        registerConfiguration(prefix1 + "MiniGame1.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame1.slot" , 10);
+
+        registerConfiguration(prefix1 + "MiniGame2.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame2.name");
+        registerConfiguration(prefix1 + "MiniGame2.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame2.slot" , 16);
+
+        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame3.slot" , 28);
+
+        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame3.slot" , 34);
+
+        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame3.slot" , 40);
+
+        registerConfiguration(prefix1 + "spawn.material" , Material.COMPASS.name());
+        registerConfiguration(prefix1 + "spawn.name" , "§4Set in Config!");
+        registerConfiguration(prefix1 + "spawn.count" , 1);
+        registerConfiguration(prefix1 + "spawn.slot" , 40);
+
 
     }
     public static void registerConfiguration(String path) {
