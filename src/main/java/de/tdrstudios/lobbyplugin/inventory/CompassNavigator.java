@@ -1,4 +1,4 @@
-package de.tdrstudios.lobbyplugin.Navigator;
+package de.tdrstudios.lobbyplugin.inventory;
 
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
@@ -16,9 +16,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class CompassNavigator implements Listener {
   private final String GUI_NAME = "§a►  Teleporter" ;
