@@ -16,9 +16,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import sun.security.krb5.Config;
 
 public class CompassNavigator implements Listener {
-  private final String GUI_NAME = "§a►  Teleporter" ;
+  private String GUI_NAME = "§e► Error!" ;
 
     public String getGUI_NAME() {
         return GUI_NAME;
@@ -27,6 +28,10 @@ public class CompassNavigator implements Listener {
     public void openGUI(Player player) {
       player.openInventory(NavigatorUtils.getInventory());
       InventoryUtils.playOpeningSound(player);
+    }
+
+    public void updateGUI_NAME() {
+      GUI_NAME = ConfigUtils.getString("tdrstudios.inventorys.nav.name");
     }
   
   @EventHandler
