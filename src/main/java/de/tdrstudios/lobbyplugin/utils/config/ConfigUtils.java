@@ -54,8 +54,6 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
 
-        registerConfiguration("tdrstudios.inventory.nav.name" , ChatColor.DARK_RED + "If you see this -§l report it");
-
         registerConfiguration("tdrstudios.inventorys.nav.itmes.spawm.material" , Material.GOLD_NUGGET.name());
         registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name");
         registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count");
@@ -79,6 +77,8 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.name" , "§a►  Navigator");
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
