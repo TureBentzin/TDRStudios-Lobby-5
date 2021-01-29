@@ -9,6 +9,7 @@ import org.bukkit.permissions.Permission;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MyCommand extends TabComplete implements CommandExecutor, CommandMethods{
@@ -38,6 +39,31 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
     }
     public Permission getPermission() {
         return permission;
+    }
+
+    /**
+     *
+     * @return a list with a empty String
+     */
+    public static List<Argument>[] getNullList() {
+        List<Argument>[] args = new List[1];
+        List<Argument> list1 = new ArrayList<>();
+        list1.add(new Argument(" "));
+        args[0] = list1;
+        return args;
+    }
+
+    /**
+     *
+     * @param parm The Spaceholder
+     * @return a list with a String filled with the parm
+     */
+    public static List<Argument>[] getNullList(String parm) {
+        List<Argument>[] args = new List[1];
+        List<Argument> list1 = new ArrayList<>();
+        list1.add(new Argument(parm));
+        args[0] = list1;
+        return args;
     }
 
     @Override
