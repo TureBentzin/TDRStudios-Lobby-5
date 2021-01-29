@@ -7,6 +7,7 @@ import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
 import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
+import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,7 +15,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
-public class SpawnSetter implements CommandExecutor{
+import java.util.ArrayList;
+import java.util.List;
+
+public class SpawnSetter extends MyCommand{
 
     private Chat chat = LobbyPlugin.getChat();
     private String name;
@@ -55,6 +59,8 @@ public class SpawnSetter implements CommandExecutor{
     }
 
     public SpawnSetter(String cmdName, String pname , String permission, FileConfiguration configuration) {
+
+        super(LobbyPlugin.getPlugin().getCommand(pname) , new Permission(permission) , new ArrayList<Argument>[]{});
         log.send("Init : " + pname);
         command = LobbyPlugin.getPlugin().getCommand(cmdName);
         setConfig(configuration);
@@ -102,4 +108,20 @@ public class SpawnSetter implements CommandExecutor{
     }
 
 
+    @Override
+    public void registerMessages() {
+
+    }
+
+    @Override
+    public void generatePermission(String permission) {
+
+
+    }
+
+    @Override
+    public List<String>[] registerTabComplete() {
+
+        return new List[0];
+    }
 }
