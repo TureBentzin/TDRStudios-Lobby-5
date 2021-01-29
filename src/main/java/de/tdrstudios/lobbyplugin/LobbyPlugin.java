@@ -4,19 +4,16 @@ package de.tdrstudios.lobbyplugin;
 import de.bentzin.tools.DevTools;
 
 import de.bentzin.tools.console.Console;
-import de.tdrstudios.lobbyplugin.Navigator.CompassNavigator;
-import de.tdrstudios.lobbyplugin.Navigator.Cosmetics;
-import de.tdrstudios.lobbyplugin.Navigator.Einstellungen;
-import de.tdrstudios.lobbyplugin.Navigator.Info;
+import de.tdrstudios.lobbyplugin.inventory.CompassNavigator;
+import de.tdrstudios.lobbyplugin.inventory.Cosmetics;
+import de.tdrstudios.lobbyplugin.inventory.Einstellungen;
+import de.tdrstudios.lobbyplugin.inventory.Info;
 
 import de.tdrstudios.lobbyplugin.commands.*;
 
 import de.tdrstudios.lobbyplugin.events.GeneralEvents;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
-import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
-import de.tdrstudios.lobbyplugin.tabcomplete.FixInventoryTab;
-import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
@@ -25,8 +22,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.defaults.BukkitCommand;
-import org.bukkit.command.defaults.VersionCommand;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
