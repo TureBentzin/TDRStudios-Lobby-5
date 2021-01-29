@@ -1,6 +1,7 @@
 package de.tdrstudios.lobbyplugin.utils.config;
 
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -26,10 +27,6 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.join.welcome" , "Welcome to MYServer.tdrstudios.de %Player%! %Date%" );
         registerConfiguration("tdrstudios.join.date.pattern" , "dd/MM/yyyy HH:mm:ss");
 
-    /**
-    * @deprecated
-     *
-     */
         registerConfiguration("tdrstudios.allowWeatherChange" , true);
         registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
         registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
@@ -57,14 +54,78 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
 
+
         //Pure Messages:
         registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
         registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
         registerConfiguration("tdrstudios.spawn.success.other" , "%Player% has warped you to the spawn!");
         registerConfiguration("tdrstudios.spawn.success.otherB" , "You warped %Player% to the spawn!");
 
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawm.material" , Material.GOLD_NUGGET.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count");
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.name" , "null");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.name" , "null");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.count" ,1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.material" , Material.DIAMOND_HOE.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.name" , "§6|Example");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.name" , "null");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.count");
+
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.name" , "§a►  Navigator");
+
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
+
+        //StaticItems
+        registerConfiguration("tdrstudios.items.back.material" , Material.ARROW.name());
+        registerConfiguration("tdrstudios.items.back.name" , "§4§l<X>");
+
+        String prefix1 = "tdrstudios.inventorys.nav.items.";
+
+        registerConfiguration(prefix1 + "MiniGame1.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame1.name");
+        registerConfiguration(prefix1 + "MiniGame1.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame1.slot" , 10);
+
+        registerConfiguration(prefix1 + "MiniGame2.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame2.name");
+        registerConfiguration(prefix1 + "MiniGame2.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame2.slot" , 16);
+
+        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame3.slot" , 28);
+
+        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame3.slot" , 34);
+
+        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame3.slot" , 40);
+
+        registerConfiguration(prefix1 + "spawn.material" , Material.COMPASS.name());
+        registerConfiguration(prefix1 + "spawn.name" , "§4Set in Config!");
+        registerConfiguration(prefix1 + "spawn.count" , 1);
+        registerConfiguration(prefix1 + "spawn.slot" , 40);
+
 
     }
     public static void registerConfiguration(String path) {
@@ -93,11 +154,15 @@ public class ConfigUtils {
         if(r != null) {
             return r;
         }else {
+
             try {
                 throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            getConfig().set(path , "Enter here!");
+            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
         }
         return null;
     }
@@ -109,6 +174,7 @@ public class ConfigUtils {
         if(r != null) {
             return r;
         }else {
+            getConfig().set(path , "Enter here!");
             throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
         }
     }

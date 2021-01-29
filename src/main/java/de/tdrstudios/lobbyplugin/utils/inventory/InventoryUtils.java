@@ -3,6 +3,7 @@ package de.tdrstudios.lobbyplugin.utils.inventory;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -49,7 +50,7 @@ public class InventoryUtils {
     public static void registerInventoryContent(InventoryContent inventoryContent){
         index.add(inventoryContent);
     }
-    
+
     /**
      * Sets inventory to lobbystandart.
      *
@@ -77,8 +78,22 @@ public class InventoryUtils {
 
         registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // HideStick
 
+        registerInventoryContent(getBackItem(), 35);
+
     }
 
 
+    //General Inventory Content
+    private static InventoryContent backItem = new InventoryContent("tdrstudios.items.back.material" , "tdrstudios.items.back.name", 1, 0);
+    public static InventoryContent getBackItem() {
+        return backItem;
+    }
 
+    protected static Sound openingSound = Sound.BLOCK_BARREL_OPEN; //Soon in config
+    public static Sound getOpeningSound() {
+        return openingSound;
+    }
+    public static void playOpeningSound(Player player) {
+        player.playSound(player.getLocation() , getOpeningSound() , 30, 1);
+    }
 }

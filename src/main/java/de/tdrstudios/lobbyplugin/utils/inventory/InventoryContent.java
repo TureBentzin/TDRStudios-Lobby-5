@@ -1,13 +1,34 @@
 package de.tdrstudios.lobbyplugin.utils.inventory;
 
+import com.google.common.collect.Multimap;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Map;
+import java.util.jar.Attributes;
+
 public class InventoryContent {
+
+    private boolean staticItem = false;
+
+    public void setStaticItem(boolean staticItem) {
+        this.staticItem = staticItem;
+    }
+
+    /**
+     *
+     * @return if the item is for multiple use!
+     */
+    public boolean isStaticItem() {
+        return staticItem;
+    }
 
     public InventoryContent(Material material, String displayName, int count, boolean isEnchant , int slot) {
         setCount(count);
@@ -52,6 +73,39 @@ public class InventoryContent {
 
         getItemStack().setItemMeta(getMeta());
         setSlot(slot);
+    }
+
+    public InventoryContent(String ConfigMaterialString, String ConfigdisplayNameString, int count , int slot , boolean staticItem) {
+        setCount(count);
+        setStaticItem(staticItem);
+        try {
+            setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+        setItemStack(new ItemStack(getMaterial(), getCount()));
+
+        setMeta(getItemStack().getItemMeta()); //Add in fix #20
+
+        try {
+            // System.out.println("[DEBUG ISSUE#20] ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
+            //System.out.println("[DEBUG ISSUE#20] Result: " + ConfigUtils.getString(ConfigdisplayNameString));
+
+            getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
+
+        getItemStack().setItemMeta(getMeta());
+        setSlot(slot);
+    }
+
+    public void setEnchant(boolean value) {
+        ItemMeta itemMeta = getMeta();
+        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        getItemStack().addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL ,1);
+        getItemStack().setItemMeta(itemMeta);
+
     }
 
 
