@@ -16,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
 import sun.security.krb5.Config;
 
 public class CompassNavigator implements Listener {
@@ -25,9 +26,10 @@ public class CompassNavigator implements Listener {
         return GUI_NAME;
     }
 
-    public void openGUI(Player player) {
+    public Inventory openGUI(Player player) {
       player.openInventory(NavigatorUtils.getInventory());
       InventoryUtils.playOpeningSound(player);
+      return NavigatorUtils.getInventory();
     }
 
     public void updateGUI_NAME() {
@@ -37,7 +39,7 @@ public class CompassNavigator implements Listener {
   @EventHandler
   public void handleNavigatorOpen(PlayerInteractEvent event) {
     if (event.getItem() != null) {
-      if (event.getItem().getType() != Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")))
+      if (event.getItem().getType() != Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")) && event.getItem().getItemMeta().getDisplayName() == ConfigUtils.getString("tdrstudios.hotbar.nav.name"))
         return; 
       if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)
         openGUI(event.getPlayer()); 
@@ -48,42 +50,45 @@ public class CompassNavigator implements Listener {
   public void handleNavigatorGUIClick(InventoryClickEvent event) {
     if (!(event.getWhoClicked() instanceof Player))
       return; 
-    Player player = (Player)event.getWhoClicked();
+    Player player = (Player) event.getWhoClicked();
     if (event.getView().getTitle().equals(getGUI_NAME())) {
+
       FileConfiguration config;
       World world;
       double x, y, z;
       float yaw, pitch;
       Location location;
-      FileConfiguration setlobbyspawn1config;
+
       World setlobbyspawn1world;
       double setlobbyspawn1x, setlobbyspawn1y, setlobbyspawn1z;
       float setlobbyspawn1yaw, setlobbyspawn1pitch;
       Location setlobbyspawn1location;
-      FileConfiguration setlobbyspawn2config;
+
       World setlobbyspawn2world;
       double setlobbyspawn2x, setlobbyspawn2y, setlobbyspawn2z;
       float setlobbyspawn2yaw, setlobbyspawn2pitch;
       Location setlobbyspawn2location;
-      FileConfiguration setlobbyspawn3config;
+
       World setlobbyspawn3world;
       double setlobbyspawn3x, setlobbyspawn3y, setlobbyspawn3z;
       float setlobbyspawn3yaw, setlobbyspawn3pitch;
       Location setlobbyspawn3location;
-      FileConfiguration setlobbyspawn4config;
+
       World setlobbyspawn4world;
       double setlobbyspawn4x, setlobbyspawn4y, setlobbyspawn4z;
       float setlobbyspawn4yaw, setlobbyspawn4pitch;
       Location setlobbyspawn4location;
-      FileConfiguration setlobbyspawn5config;
+
       World setlobbyspawn5world;
       double setlobbyspawn5x, setlobbyspawn5y, setlobbyspawn5z;
       float setlobbyspawn5yaw, setlobbyspawn5pitch;
-      Location setlobbyspawn5location;
+
       event.setCancelled(true);
+
+      config = LobbyPlugin.getPlugin().getConfig();
       switch (event.getCurrentItem().getType()) {
         case NETHER_STAR:
-          config = LobbyPlugin.getPlugin().getConfig();
+
           world = Bukkit.getWorld(config.getString("Spawn.World"));
           x = config.getDouble("Spawn.X");
           y = config.getDouble("Spawn.Y");
@@ -95,10 +100,10 @@ public class CompassNavigator implements Listener {
           player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 10.0F, 1.0F);
           return;
         case GRASS:
-          setlobbyspawn1config = LobbyPlugin.getPlugin().getConfig();
-          setlobbyspawn1world = Bukkit.getWorld(setlobbyspawn1config.getString("lobbySpawn1.World"));
-          setlobbyspawn1x = setlobbyspawn1config.getDouble("lobbySpawn1.X");
-          setlobbyspawn1y = setlobbyspawn1config.getDouble("lobbySpawn1.Y");
+
+          setlobbyspawn1world = Bukkit.getWorld(config.getString("lobbySpawn1.World"));
+          setlobbyspawn1x = config.getDouble("lobbySpawn1.X");
+          setlobbyspawn1y = config.getDouble("lobbySpawn1.Y");
           setlobbyspawn1z = setlobbyspawn1config.getDouble("lobbySpawn1.Z");
           setlobbyspawn1yaw = (float)setlobbyspawn1config.getDouble("lobbySpawn1.Yaw");
           setlobbyspawn1pitch = (float)setlobbyspawn1config.getDouble("lobbySpawn1.Pitch");
