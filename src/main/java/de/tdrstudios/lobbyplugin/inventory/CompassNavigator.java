@@ -113,7 +113,7 @@ public class CompassNavigator implements Listener {
       }
 
 
-      player.sendMessage("§aDas ist ein leerer Slot.");
+      player.sendMessage("§a Breakpoint 116 - CPN.j passed!");
     }
 
 
@@ -141,5 +141,6 @@ public class CompassNavigator implements Listener {
 
 enum TeleportType {
   SPAWN,
+  BACK,
   MINIGAME;
 }
