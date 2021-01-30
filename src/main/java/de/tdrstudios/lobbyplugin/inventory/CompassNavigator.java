@@ -63,8 +63,8 @@ public class CompassNavigator implements Listener {
       Location location;
 
       TeleportType teleportType = null;
-      if(event.getCurrentItem().getItemMeta().getDisplayName() == ConfigUtils.getString("tdrstudios.inventorys.nav.itmes.spawn.name")
-      && event.getCurrentItem().getType() == Material.getMaterial("tdrstudios.inventorys.nav.itmes.spawn.material"))
+      if(event.getCurrentItem().getItemMeta().getDisplayName() == ConfigUtils.getString("tdrstudios.inventorys.nav.items.spawn.name")
+      && event.getCurrentItem().getType() == Material.getMaterial("tdrstudios.inventorys.nav.items.spawn.material"))
         teleportType = TeleportType.SPAWN;
       else
         teleportType = TeleportType.MINIGAME;
@@ -134,7 +134,7 @@ public class CompassNavigator implements Listener {
     player.teleport(location);
     player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
     Message message = new Message("temp_handle_click" , ConfigUtils.getString("tdrstudios.msg.teleport.navigator"));
-    message.replace("%MiniGame%" , Chat.getAccentColor() + ConfigUtils.getString("tdrstudios.inventorys.nav.itmes.MiniGame" + id + ".diplayname") + Chat.getChatColor());
+    message.replace("%MiniGame%" , Chat.getAccentColor() + ConfigUtils.getString("tdrstudios.inventorys.nav.items.MiniGame" + id + ".diplayname") + Chat.getChatColor());
      new Chat(player).sendMessage(message);
   }
 }

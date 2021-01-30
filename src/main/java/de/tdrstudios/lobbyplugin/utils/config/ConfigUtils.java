@@ -64,34 +64,34 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.spawn.success.otherB" , "You warped %Player% to the spawn!");
         registerConfiguration("tdrstudios.msg.teleport.navigator" , "You have warped to %MiniGame%!");
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawm.material" , Material.GOLD_NUGGET.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name" , "§8 Spawn");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count", 1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.spawm.material" , Material.GOLD_NUGGET.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.spawn.name" , "§8 Spawn");
+        registerConfiguration("tdrstudios.inventorys.nav.items.spawn.count", 1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.name" , "§e null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.count" , 1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.name" , "§e null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.count" , 1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.name" , "§e null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.count" ,1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.name" , "§e null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.count" ,1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.material" , Material.DIAMOND_HOE.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.name" , "§6|Example");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.count" , 1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.material" , Material.DIAMOND_HOE.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.name" , "§6|Example");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.count" , 1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.name" , "§e null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.count");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.name" , "§e null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.count");
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.material" , Material.SAND.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.name" , "§8| A Sand");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.count" , 1);
 
         registerConfiguration("tdrstudios.inventorys.nav.name" , "§a►  Navigator");
 
