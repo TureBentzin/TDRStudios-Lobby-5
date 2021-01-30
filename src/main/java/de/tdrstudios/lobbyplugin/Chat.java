@@ -12,6 +12,10 @@ import java.util.Arrays;
  */
 public class Chat {
 
+    public Chat(Player player) {
+        setPlayers(new Player[]{player});
+    }
+
     /**
      * Build send s string.
      *
