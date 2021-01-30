@@ -65,8 +65,8 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.msg.teleport.navigator" , "You have warped to %MiniGame%!");
 
         registerConfiguration("tdrstudios.inventorys.nav.itmes.spawm.material" , Material.GOLD_NUGGET.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name" , "§8 Spawn");
+        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count", 1);
 
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.material" , Material.AIR.name());
         registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.name" , "§e null");
@@ -119,15 +119,15 @@ public class ConfigUtils {
         registerConfiguration(prefix1 + "MiniGame3.count" , 1);
         registerConfiguration(prefix1 + "MiniGame3.slot" , 28);
 
-        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
-        registerConfiguration(prefix1 + "MiniGame3.name");
-        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
-        registerConfiguration(prefix1 + "MiniGame3.slot" , 34);
+        registerConfiguration(prefix1 + "MiniGame4.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame4.name");
+        registerConfiguration(prefix1 + "MiniGame4.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame4.slot" , 34);
 
-        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
-        registerConfiguration(prefix1 + "MiniGame3.name");
-        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
-        registerConfiguration(prefix1 + "MiniGame3.slot" , 40);
+        registerConfiguration(prefix1 + "MiniGame5.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame5.name");
+        registerConfiguration(prefix1 + "MiniGame5.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame5.slot" , 40);
 
         registerConfiguration(prefix1 + "spawn.material" , Material.COMPASS.name());
         registerConfiguration(prefix1 + "spawn.name" , "§4Set in Config!");
@@ -155,6 +155,10 @@ public class ConfigUtils {
             System.out.println("DEBUG: Nachher im Slot " + path + getConfig().get(path));
         }
         saveConfig();
+    }
+
+    public static boolean isSet(String path) {
+        return getConfig().get(path) != null;
     }
 
     public static String getString(String path){
