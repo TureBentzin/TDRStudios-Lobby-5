@@ -17,6 +17,13 @@ public class Chat {
     }
 
     /**
+    Default constructor!
+     */
+    public Chat() {
+
+    }
+
+    /**
      * Build send s string.
      *
      * @param message    the message
