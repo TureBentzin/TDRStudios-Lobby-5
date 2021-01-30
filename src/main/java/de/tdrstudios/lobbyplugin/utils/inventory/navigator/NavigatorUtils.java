@@ -87,11 +87,8 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     private static Inventory inventory;
 
     static {
-        try {
+
             inventory = Bukkit.createInventory(null, InventoryType.CHEST, ConfigUtils.getString("tdrstudios.inventorys.nav.name"));
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
     }
 
     public static Inventory getInventory() {
@@ -119,29 +116,23 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     //Root   : tdrstudios.inventorys.nav.items.spawn
     private static InventoryContent getContentFromConfig(String root) {
         System.out.println("Debug: >"+ root + "< == " + getConfig().get(root) != null);
-        try {
-            if (ConfigUtils.getString(root + ".material") != null) {}else
-            {
+
+            if (ConfigUtils.getString(root + ".material") != null) {}else{
                 ConfigUtils.registerConfiguration(root + ".material");
                 ConfigUtils.registerConfiguration(root + ".name");
                 ConfigUtils.registerConfiguration(root + ".count");
-            }
-        }catch (InvalidConfigurationException exception){
-            exception.printStackTrace();
-        }
+
         return new InventoryContent(root + ".material" ,root + ".name", ConfigUtils.getConfig().getInt(root + ".count"),  ConfigUtils.getConfig().getInt(root + ".slot"));
     }
     private static InventoryContent getContentFromConfig(String root , boolean enchant) {
-        try {
+
             if (ConfigUtils.getString(root + ".material") != null) {}else
             {
                 ConfigUtils.registerConfiguration(root + ".material");
                 ConfigUtils.registerConfiguration(root + ".name");
                 ConfigUtils.registerConfiguration(root + ".count");
             }
-        }catch (InvalidConfigurationException exception){
-            exception.printStackTrace();
-        }
+
         InventoryContent inventoryContent = new InventoryContent(root + ".material" ,root + ".name", ConfigUtils.getConfig().getInt(root + ".count"),  ConfigUtils.getConfig().getInt(root + ".slot"));
         inventoryContent.setEnchant(enchant);
         return inventoryContent;
