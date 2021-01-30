@@ -19,6 +19,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import sun.security.krb5.Config;
 
 public class CompassNavigator implements Listener {
@@ -55,20 +56,59 @@ public class CompassNavigator implements Listener {
     Player player = (Player) event.getWhoClicked();
     if (event.getView().getTitle().equals(getGUI_NAME())) {
 
-      FileConfiguration config;
+      FileConfiguration configuration = ConfigUtils.getConfig();
       World world;
       double x, y, z;
       float yaw, pitch;
       Location location;
 
       TeleportType teleportType = null;
-
+      if(event.getCurrentItem().getItemMeta().getDisplayName() == ConfigUtils.getString("tdrstudios.inventorys.nav.itmes.spawn.name")
+      && event.getCurrentItem().getType() == Material.getMaterial("tdrstudios.inventorys.nav.itmes.spawn.material"))
+        teleportType = TeleportType.SPAWN;
+      else
+        teleportType = TeleportType.MINIGAME;
       event.setCancelled(true);
-      config = LobbyPlugin.getPlugin().getConfig();
+
 
       switch (teleportType) {
 
         case SPAWN:
+           world = Bukkit.getWorld(configuration.getString("lobbySpawn.World"));
+          x = configuration.getInt("lobbySpawn.X");
+          y = configuration.getInt("lobbySpawn.Y");
+          z = configuration.getInt("lobbySpawn.Z");
+          yaw = (float)configuration.getDouble("lobbySpawn.Yaw");
+          pitch = (float)configuration.getDouble("lobbySpawn.Pitch");
+
+          location = new Location(world, x, y, z,  yaw, pitch);
+
+          player.teleport(location);
+          player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_TWINKLE, 10.0F, 1.0F);
+          Message message = new Message("temp_handle_click" , ConfigUtils.getString("tdrstudios.msg.teleport.navigator"));
+          message.replace("%MiniGame%" , Chat.getAccentColor() + "Spawn" + Chat.getChatColor());
+          new Chat(player).sendMessage(message);
+          return;
+        case MINIGAME:
+          boolean b = true;
+          int i = 1;
+          while (b) {
+            String path = "tdrstudios.inventorys.nav.items.MiniGame" + i;
+            if(ConfigUtils.isSet(path + ".name")) {
+              Material material = Material.getMaterial(ConfigUtils.getString(path + ".material"));
+              String name = ConfigUtils.getString(path + ".name");
+              ItemStack itemStack = event.getCurrentItem();
+              if(itemStack.getType().equals(material) && itemStack.getItemMeta().getDisplayName() == name) {
+                handleClick((Player) event.getWhoClicked(), i, configuration);
+              }
+
+            }else {
+              b = false;
+            }
+
+
+            i ++ ;
+          }
 
       }
 
