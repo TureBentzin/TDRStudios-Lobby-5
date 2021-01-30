@@ -115,14 +115,17 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     //Example: tdrstudios.inventorys.nav.items.spawn.material
     //Root   : tdrstudios.inventorys.nav.items.spawn
     private static InventoryContent getContentFromConfig(String root) {
-        System.out.println("Debug: >"+ root + "< == " + getConfig().get(root) != null);
+        System.out.println("Debug: >" + root + "< == " + getConfig().get(root) != null);
 
-            if (ConfigUtils.getString(root + ".material") != null) {}else{
-                ConfigUtils.registerConfiguration(root + ".material");
-                ConfigUtils.registerConfiguration(root + ".name");
-                ConfigUtils.registerConfiguration(root + ".count");
+        if (ConfigUtils.getString(root + ".material") != null) {
+            throw new NullPointerException("The Content on <" + root + "> isn't set!");
+        } else {
+            ConfigUtils.registerConfiguration(root + ".material");
+            ConfigUtils.registerConfiguration(root + ".name");
+            ConfigUtils.registerConfiguration(root + ".count");
 
-        return new InventoryContent(root + ".material" ,root + ".name", ConfigUtils.getConfig().getInt(root + ".count"),  ConfigUtils.getConfig().getInt(root + ".slot"));
+            return new InventoryContent(root + ".material", root + ".name", ConfigUtils.getConfig().getInt(root + ".count"), ConfigUtils.getConfig().getInt(root + ".slot"));
+        }
     }
     private static InventoryContent getContentFromConfig(String root , boolean enchant) {
 

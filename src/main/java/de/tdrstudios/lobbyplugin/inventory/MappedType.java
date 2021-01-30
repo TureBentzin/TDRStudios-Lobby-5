@@ -46,7 +46,7 @@ public class MappedType {
     }
     public static boolean unmapGameID(InventoryContent inventoryContent , int MiniGameID) {
         if(getGameIDMap().containsValue(gameIDMap)) {
-            getGameIDMap().remove(inventoryContent, MiniGameID)
+            getGameIDMap().remove(inventoryContent, MiniGameID);
             return true;
         }else
             return false;

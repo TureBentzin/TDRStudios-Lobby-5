@@ -49,6 +49,15 @@ public class InventoryUtils {
     }
 
     /**
+     * Register inventory content.
+     * @param inventoryContent the inventory content
+     */
+    public static void registerInventoryContent(InventoryContent inventoryContent , int slot){
+        inventoryContent.setSlot(slot);
+        index.add(inventoryContent);
+    }
+
+    /**
      * Sets inventory to lobbystandart.
      * @param player the player witch inventory should set to lobbystandart
      */

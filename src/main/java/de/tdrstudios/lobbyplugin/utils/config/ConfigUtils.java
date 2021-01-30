@@ -162,7 +162,6 @@ public class ConfigUtils {
         if(r != null) {
             return r;
         }else {
-
             try {
                 throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
             } catch (Exception e) {
@@ -170,7 +169,6 @@ public class ConfigUtils {
             }
 
             getConfig().set(path , "Enter here!");
-            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
         }
         return null;
     }
