@@ -94,10 +94,23 @@ public class InventoryContent {
     }
 
     public void setEnchant(boolean value) {
-        ItemMeta itemMeta = getMeta();
-        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        getItemStack().addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL ,1);
-        getItemStack().setItemMeta(itemMeta);
+
+         if(value) {
+            if(getItemStack().getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL) < 1) {
+                ItemMeta itemMeta = getMeta();
+                itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                getItemStack().addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+                getItemStack().setItemMeta(itemMeta);
+            }
+        }else {
+            if(getItemStack().getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL) > 0) {
+                ItemMeta itemMeta = getMeta();
+                getItemStack().removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+                itemMeta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+                getItemStack().setItemMeta(itemMeta);
+            }
+        }
+
 
     }
 
