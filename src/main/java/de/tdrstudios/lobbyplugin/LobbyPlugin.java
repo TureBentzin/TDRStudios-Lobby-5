@@ -86,8 +86,6 @@ public class LobbyPlugin extends JavaPlugin {
 
     public void onEnable() {
         plugin = this;
-
-
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
@@ -104,6 +102,7 @@ public class LobbyPlugin extends JavaPlugin {
         betaWarn();
         registerMessages();
         registerCommands();
+        registerEvents();
         InventoryUtils.registerAllInventoryContents();
 
         getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand(getCommand("spawn") , new Permission("de.tdrstudios.spawn")));
@@ -144,6 +143,12 @@ public class LobbyPlugin extends JavaPlugin {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
             getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
         }
+    }
+
+    public void registerEvents() {
+        Bukkit.getPluginManager().registerEvents(new GeneralEvents() , getPlugin());
+        Bukkit.getPluginManager().registerEvents(new JoinListener() , getPlugin());
+        Bukkit.getPluginManager().registerEvents(new CompassNavigator() , getPlugin());
     }
 
   public void initChat() {
