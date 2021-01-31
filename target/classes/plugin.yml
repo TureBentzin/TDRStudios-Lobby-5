@@ -20,7 +20,7 @@ commands:
    spawn:
      description: This teleports you to the spawn!
      usage: /<command> [Player]
-     aliases: 
+     aliases:
        - lobby
        - hub
        - go
