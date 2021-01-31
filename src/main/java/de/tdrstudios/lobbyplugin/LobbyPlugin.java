@@ -17,6 +17,7 @@ import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
+import de.tdrstudios.lobbyplugin.utils.inventory.navigator.NavigatorUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -104,6 +105,7 @@ public class LobbyPlugin extends JavaPlugin {
         registerCommands();
         registerEvents();
         InventoryUtils.registerAllInventoryContents();
+        NavigatorUtils.registerAllInventoryContents(); // Diese eine kleine Zeile hat gefehlt! Warum bin ich nur so dumm...
 
         getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand(getCommand("spawn") , new Permission("de.tdrstudios.spawn")));
 
