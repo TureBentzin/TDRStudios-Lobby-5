@@ -7,13 +7,11 @@ import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
-import sun.awt.image.PixelConverter;
+
 
 public class VersionCheckCommand implements CommandExecutor {
 
