@@ -102,6 +102,7 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     }
 
     public static void registerAllInventoryContents() {
+        System.out.println("NavigatorUtils.registerAllInventoryContents");
         String rootPattern = "tdrstudios.inventorys.nav.items.";
         registerInventoryContent(getContentFromConfig(rootPattern + "spawn", true));
         registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame1")); // sw
@@ -115,30 +116,37 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     //Example: tdrstudios.inventorys.nav.items.spawn.material
     //Root   : tdrstudios.inventorys.nav.items.spawn
     private static InventoryContent getContentFromConfig(String root) {
-        System.out.println("Debug: >" + root + "< == " + getConfig().get(root) != null);
 
         if (ConfigUtils.getString(root + ".material") != null) {
-            throw new NullPointerException("The Content on <" + root + "> isn't set!");
+            return new InventoryContent(root + ".material",
+                    root + ".name",
+                    ConfigUtils.getConfig().getInt(root + ".count"),
+                    ConfigUtils.getConfig().getInt(root + ".slot"));
+
         } else {
             ConfigUtils.registerConfiguration(root + ".material");
             ConfigUtils.registerConfiguration(root + ".name");
             ConfigUtils.registerConfiguration(root + ".count");
 
-            return new InventoryContent(root + ".material", root + ".name", ConfigUtils.getConfig().getInt(root + ".count"), ConfigUtils.getConfig().getInt(root + ".slot"));
+            throw new NullPointerException("The content on <" + root + "> isn't set!");
         }
     }
     private static InventoryContent getContentFromConfig(String root , boolean enchant) {
 
-            if (ConfigUtils.getString(root + ".material") != null) {}else
-            {
+            if (ConfigUtils.getString(root + ".material") != null) {
+                InventoryContent inventoryContent =  new InventoryContent(root + ".material",
+                        root + ".name",
+                        ConfigUtils.getConfig().getInt(root + ".count"),
+                        ConfigUtils.getConfig().getInt(root + ".slot"));
+                inventoryContent.setEnchant(true);
+                return inventoryContent;
+            }else {
+
                 ConfigUtils.registerConfiguration(root + ".material");
                 ConfigUtils.registerConfiguration(root + ".name");
                 ConfigUtils.registerConfiguration(root + ".count");
+                throw new NullPointerException("The content on <" + root + "> isn't set!");
             }
-
-        InventoryContent inventoryContent = new InventoryContent(root + ".material" ,root + ".name", ConfigUtils.getConfig().getInt(root + ".count"),  ConfigUtils.getConfig().getInt(root + ".slot"));
-        inventoryContent.setEnchant(enchant);
-        return inventoryContent;
 
     }
     //tdrstudios.inventorys.nav.items.MiniGame1.material
