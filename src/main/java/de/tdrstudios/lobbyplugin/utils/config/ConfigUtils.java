@@ -57,6 +57,7 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
 
 
+        //TODO: Fix this Problem with duplicate.
         //Pure Messages:
         registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
         registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
