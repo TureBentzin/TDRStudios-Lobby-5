@@ -33,5 +33,4 @@ src/main/java/test/testmaster/devtools/test.java
 src/main/java/test/testmaster/devtools/test.java
 src/main/java/de/tdrstudios/lobbyplugin/commands/FixInventoryCommand_solve.java
 src/main/java/de/tdrstudios/lobbyplugin/LobbyPlugin_solve.java
-target/classes/plugin.yml
-target/classes/META-INF/TDRStudios-Lobby-5.kotlin_module
+src/main/java/test/testmaster/devtools/MyPlayer.java

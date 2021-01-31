@@ -12,6 +12,17 @@ import java.util.Arrays;
  */
 public class Chat {
 
+    public Chat(Player player) {
+        setPlayers(new Player[]{player});
+    }
+
+    /**
+    Default constructor!
+     */
+    public Chat() {
+
+    }
+
     /**
      * Build send s string.
      *

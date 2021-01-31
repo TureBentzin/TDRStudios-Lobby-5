@@ -1,4 +1,4 @@
-package de.tdrstudios.lobbyplugin.Navigator;
+package de.tdrstudios.lobbyplugin.inventory;
 
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;

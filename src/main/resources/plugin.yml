@@ -7,6 +7,9 @@ authors:
   - TDRStudios
 api-version: 1.15
 permissions:
+  tdrstudios.*:
+    children:
+      -
   tdrstudios.lobby.perms.fix.inventory:
     default: not op
   tdrstudios.debug:
