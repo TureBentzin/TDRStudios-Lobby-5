@@ -184,11 +184,6 @@ public class LobbyPlugin extends JavaPlugin {
   public static LobbyPlugin getPlugin() {
     return plugin;
   }
-
-    public static void main(String[] args) {
-
-        org.bukkit.craftbukkit.Main.main(args);
-
-    }
+  
 }
 
