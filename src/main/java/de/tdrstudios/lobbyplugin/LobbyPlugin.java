@@ -184,6 +184,6 @@ public class LobbyPlugin extends JavaPlugin {
   public static LobbyPlugin getPlugin() {
     return plugin;
   }
-  
+
 }
 
