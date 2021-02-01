@@ -87,8 +87,7 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     private static Inventory inventory;
 
     static {
-
-            inventory = Bukkit.createInventory(null, InventoryType.CHEST, ConfigUtils.getString("tdrstudios.inventorys.nav.name"));
+            inventory = Bukkit.createInventory(null, 54, ConfigUtils.getString("tdrstudios.inventorys.nav.name"));
     }
 
     public static Inventory getInventory() {

@@ -30,7 +30,6 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.join.date.pattern" , "dd/MM/yyyy HH:mm:ss");
 
         registerConfiguration("tdrstudios.allowWeatherChange" , true);
-        registerConfiguration("tdrstudios.hotbar.nav" , new ItemStack(Material.COMPASS).toString());
         registerConfiguration("tdrstudios.hotbar.nav.material" , Material.COMPASS.name());
         registerConfiguration("tdrstudios.hotbar.nav.displayName","§3§lTeleporter§f");
         registerConfiguration("tdrstudios.hotbar.nav.slot",4);

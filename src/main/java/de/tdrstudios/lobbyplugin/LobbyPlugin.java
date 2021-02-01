@@ -137,6 +137,8 @@ public class LobbyPlugin extends JavaPlugin {
             }
         } catch (InvalidConfigurationException e) {
             e.printStackTrace();
+        }catch (NullPointerException ex) {
+
         }
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
