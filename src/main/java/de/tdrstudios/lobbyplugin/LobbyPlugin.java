@@ -17,6 +17,7 @@ import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
+import de.tdrstudios.lobbyplugin.utils.inventory.navigator.NavigatorUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -93,8 +94,6 @@ public class LobbyPlugin extends JavaPlugin {
 
     public void onEnable() {
         plugin = this;
-
-
         chat = new Chat();
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
@@ -111,7 +110,9 @@ public class LobbyPlugin extends JavaPlugin {
         betaWarn();
         registerMessages();
         registerCommands();
+        registerEvents();
         InventoryUtils.registerAllInventoryContents();
+        NavigatorUtils.registerAllInventoryContents(); // Diese eine kleine Zeile hat gefehlt! Warum bin ich nur so dumm...
 
         getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand(getCommand("spawn") , new Permission("de.tdrstudios.spawn")));
 
@@ -143,6 +144,8 @@ public class LobbyPlugin extends JavaPlugin {
             }
         } catch (InvalidConfigurationException e) {
             e.printStackTrace();
+        }catch (NullPointerException ex) {
+
         }
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
@@ -151,6 +154,12 @@ public class LobbyPlugin extends JavaPlugin {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
             getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
         }
+    }
+
+    public void registerEvents() {
+        Bukkit.getPluginManager().registerEvents(new GeneralEvents() , getPlugin());
+        Bukkit.getPluginManager().registerEvents(new JoinListener() , getPlugin());
+        Bukkit.getPluginManager().registerEvents(new CompassNavigator() , getPlugin());
     }
 
   public void initChat() {

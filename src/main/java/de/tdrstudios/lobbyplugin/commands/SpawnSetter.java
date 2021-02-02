@@ -8,6 +8,7 @@ import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
+import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -65,7 +66,8 @@ public class SpawnSetter extends MyCommand{
 
     public SpawnSetter(String cmdName, String pname , String permission, FileConfiguration configuration) {
 
-        super(LobbyPlugin.getPlugin().getCommand(pname) , new Permission(permission));
+        super(LobbyPlugin.getPlugin().getCommand(pname) , new Permission(permission) , TabComplete.getNullList());
+
         log.send("Init : " + pname);
         command = LobbyPlugin.getPlugin().getCommand(cmdName);
         setConfig(configuration);
