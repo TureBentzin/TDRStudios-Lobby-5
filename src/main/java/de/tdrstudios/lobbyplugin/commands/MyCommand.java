@@ -49,7 +49,10 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
     /**
      *
      * @return a list with a empty String
+     * @deprecated use TabComplete.getNullList
+     * @see TabComplete
      */
+    @Deprecated
     public static List<Argument>[] getNullList() {
         List<Argument>[] args = new List[1];
         List<Argument> list1 = new ArrayList<>();

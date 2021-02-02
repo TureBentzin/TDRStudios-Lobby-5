@@ -29,6 +29,7 @@ public class CompassNavigator implements Listener {
     }
 
     public Inventory openGUI(Player player) {
+      System.out.println("CompassNavigator.openGUI");
       player.openInventory(NavigatorUtils.getInventory());
       InventoryUtils.playOpeningSound(player);
       return NavigatorUtils.getInventory();
@@ -41,10 +42,17 @@ public class CompassNavigator implements Listener {
   @EventHandler
   public void handleNavigatorOpen(PlayerInteractEvent event) {
     if (event.getItem() != null) {
-      if (event.getItem().getType() != Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material")) && event.getItem().getItemMeta().getDisplayName() == ConfigUtils.getString("tdrstudios.hotbar.nav.name"))
-        return; 
-      if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)
-        openGUI(event.getPlayer()); 
+      System.out.println("CompassNavigator.handleNavigatorOpen");
+      System.out.println("B - Material : " + event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))));
+      System.out.println("B - DisplayName : " + event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName")));
+      if (event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))) && event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName"))) {
+        System.out.println("Debug: +1");
+        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+          System.out.println("Debug: +2");
+          openGUI(event.getPlayer());
+        }
+      }
+
     } 
   }
   

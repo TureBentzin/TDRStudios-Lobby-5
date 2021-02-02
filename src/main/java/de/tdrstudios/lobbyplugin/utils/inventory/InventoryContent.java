@@ -1,5 +1,7 @@
 package de.tdrstudios.lobbyplugin.utils.inventory;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
@@ -7,11 +9,16 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.tags.CustomItemTagContainer;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Map;
+import java.util.*;
 import java.util.jar.Attributes;
 
 public class InventoryContent {
@@ -36,12 +43,15 @@ public class InventoryContent {
         setItemStack(new ItemStack(getMaterial(), getCount()));
         setMeta(getItemStack().getItemMeta()); // Fixes #20
 
-        if(isEnchant) {
-            getMeta().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL , 1 , true);
-        }
-        getMeta().setDisplayName(displayName);
+        if (meta != null) {
 
-        getItemStack().setItemMeta(getMeta());
+            if (isEnchant) {
+                getMeta().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+            }
+            getMeta().setDisplayName(displayName);
+
+            getItemStack().setItemMeta(getMeta());
+        }
         setSlot(slot);
     }
 
@@ -49,13 +59,18 @@ public class InventoryContent {
         setCount(count);
         setMaterial(Material.getMaterial(ConfigUtils.getConfig().getString(ConfigMaterialString)));
         setItemStack(new ItemStack(getMaterial(), getCount()));
+        setMeta(getItemStack().getItemMeta()); // Fixes #20
 
-        if(isEnchant) {
-            getMeta().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL , 1 , true);
+        if (meta != null) {
+
+
+            if (isEnchant) {
+                getMeta().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+            }
+            getMeta().setDisplayName(displayName);
+
+            getItemStack().setItemMeta(getMeta());
         }
-        getMeta().setDisplayName(displayName);
-
-        getItemStack().setItemMeta(getMeta());
         setSlot(slot);
     }
 
@@ -63,15 +78,12 @@ public class InventoryContent {
         setCount(count);
         setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
         setItemStack(new ItemStack(getMaterial(), getCount()));
-
         setMeta(getItemStack().getItemMeta()); //Add in fix #20
+        if (meta != null) {
+            getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
+            getItemStack().setItemMeta(getMeta());
+        }
 
-        // System.out.println("[DEBUG ISSUE#20] ConfigMaterialString = " + ConfigMaterialString + ", ConfigdisplayNameString = " + ConfigdisplayNameString + ", count = " + count + ", slot = " + slot);
-        //System.out.println("[DEBUG ISSUE#20] Result: " + ConfigUtils.getString(ConfigdisplayNameString));
-
-        getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
-
-        getItemStack().setItemMeta(getMeta());
         setSlot(slot);
     }
 
@@ -79,14 +91,15 @@ public class InventoryContent {
         setCount(count);
         setStaticItem(staticItem);
 
-            setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
+        setMaterial(Material.getMaterial(Objects.requireNonNull(ConfigUtils.getString(ConfigMaterialString))));
 
         setItemStack(new ItemStack(getMaterial(), getCount()));
 
         setMeta(getItemStack().getItemMeta()); //Add in fix #20
 
 
-            getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
+
+        getMeta().setDisplayName(ConfigUtils.getString(ConfigdisplayNameString));
 
 
         getItemStack().setItemMeta(getMeta());
@@ -94,10 +107,24 @@ public class InventoryContent {
     }
 
     public void setEnchant(boolean value) {
-        ItemMeta itemMeta = getMeta();
-        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        getItemStack().addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL ,1);
-        getItemStack().setItemMeta(itemMeta);
+        if (meta == null) return;
+
+        if(value) {
+            if(getItemStack().getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL) < 1) {
+                ItemMeta itemMeta = getMeta();
+                itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                getItemStack().addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+                getItemStack().setItemMeta(itemMeta);
+            }
+        }else {
+            if(getItemStack().getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL) > 0) {
+                ItemMeta itemMeta = getMeta();
+                getItemStack().removeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL);
+                itemMeta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+                getItemStack().setItemMeta(itemMeta);
+            }
+        }
+
 
     }
 
@@ -122,6 +149,20 @@ public class InventoryContent {
         this.meta = meta;
     }
 
+    public List<String> getLore() {
+        return meta == null ? Collections.EMPTY_LIST : meta.getLore();
+    }
+
+    public void setLore(List<String> lore) {
+        if (meta == null) return;
+        meta.setLore(lore);
+    }
+
+
+    @Nullable
+    /**
+     * @Nullable this can be null so use null checks
+     */
     public ItemMeta getMeta() {
         return meta;
     }
@@ -160,5 +201,8 @@ public class InventoryContent {
                 '}';
     }
 
-    public ItemStack toItemStack() { return getItemStack();}
+    public ItemStack toItemStack() {
+        getItemStack().setItemMeta(getMeta());
+        return getItemStack();
+    }
 }
