@@ -67,31 +67,7 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventorys.nav.items.spawm.material" , Material.GOLD_NUGGET.name());
         registerConfiguration("tdrstudios.inventorys.nav.items.spawn.name" , "§8 Spawn");
         registerConfiguration("tdrstudios.inventorys.nav.items.spawn.count", 1);
-
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.name" , "§e null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.count" , 1);
-
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.name" , "§e null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.count" ,1);
-
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.material" , Material.DIAMOND_HOE.name());
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.name" , "§6|Example");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.count" , 1);
-
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.name" , "§e null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.count");
-
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.material" , Material.SAND.name());
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.name" , "§8| A Sand");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.diplayname" , "Null");
-        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.count" , 1);
+        
 
         registerConfiguration("tdrstudios.inventorys.nav.name" , "§a►  Navigator");
 
@@ -107,25 +83,30 @@ public class ConfigUtils {
         registerConfiguration(prefix1 + "MiniGame1.material" , Material.AIR.name());
         registerConfiguration(prefix1 + "MiniGame1.name");
         registerConfiguration(prefix1 + "MiniGame1.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame1.displayname" , "unset!");
         registerConfiguration(prefix1 + "MiniGame1.slot" , 10);
 
         registerConfiguration(prefix1 + "MiniGame2.material" , Material.AIR.name());
         registerConfiguration(prefix1 + "MiniGame2.name");
+        registerConfiguration(prefix1 + "MiniGame2.displayname" , "unset!");
         registerConfiguration(prefix1 + "MiniGame2.count" , 1);
         registerConfiguration(prefix1 + "MiniGame2.slot" , 16);
 
         registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
         registerConfiguration(prefix1 + "MiniGame3.name");
+        registerConfiguration(prefix1 + "MiniGame3.displayname" , "unset!");
         registerConfiguration(prefix1 + "MiniGame3.count" , 1);
         registerConfiguration(prefix1 + "MiniGame3.slot" , 28);
 
         registerConfiguration(prefix1 + "MiniGame4.material" , Material.AIR.name());
         registerConfiguration(prefix1 + "MiniGame4.name");
+        registerConfiguration(prefix1 + "MiniGame4.displayname" , "unset!");
         registerConfiguration(prefix1 + "MiniGame4.count" , 1);
         registerConfiguration(prefix1 + "MiniGame4.slot" , 34);
 
         registerConfiguration(prefix1 + "MiniGame5.material" , Material.AIR.name());
         registerConfiguration(prefix1 + "MiniGame5.name");
+        registerConfiguration(prefix1 + "MiniGame5.displayname" , "unset!");
         registerConfiguration(prefix1 + "MiniGame5.count" , 1);
         registerConfiguration(prefix1 + "MiniGame5.slot" , 40);
 
