@@ -23,6 +23,10 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -31,6 +35,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.tdrstudios.additional.BetaError;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.*;
@@ -64,6 +69,8 @@ public class LobbyPlugin extends JavaPlugin {
 
 
     public void betaWarn() {
+
+        CraftPlayer player = new CraftPlayer(Bukkit.getServer(), );
         setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");

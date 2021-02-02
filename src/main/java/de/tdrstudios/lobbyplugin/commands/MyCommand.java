@@ -62,7 +62,7 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
 
     /**
      *
-     * @param parm The Spaceholder
+     * @param parm The spaceholder
      * @return a list with a String filled with the parm
      */
     public static List<Argument>[] getNullList(String parm) {
