@@ -29,6 +29,14 @@ public class TabComplete implements TabCompleter {
         setArguments(arguments);
     }
 
+    public TabComplete() {
+        List<Argument>[] argumentsList = new List[1];
+        List<Argument> arguments = new ArrayList<>();
+        arguments.add(new Argument(" "));
+        argumentsList[0] = arguments;
+        setArguments(argumentsList);
+    }
+
     //example: List[0] == Hallo,Tschüss
     //         List[1] == Admins,Alle
     private List<Argument>[] arguments;

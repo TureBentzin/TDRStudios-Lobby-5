@@ -8,7 +8,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
-import sun.security.krb5.Config;
+
 
 import javax.naming.directory.InvalidAttributesException;
 import java.util.ArrayList;

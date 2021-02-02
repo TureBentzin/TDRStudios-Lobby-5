@@ -20,7 +20,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import sun.security.krb5.Config;
 
 public class CompassNavigator implements Listener {
   private String GUI_NAME = "§e► Error!" ;
@@ -109,12 +108,9 @@ public class CompassNavigator implements Listener {
               if(itemStack.getType().equals(material) && itemStack.getItemMeta().getDisplayName() == name) {
                 handleClick((Player) event.getWhoClicked(), i, configuration);
               }
-
             }else {
               b = false;
             }
-
-
             i ++ ;
           }
 

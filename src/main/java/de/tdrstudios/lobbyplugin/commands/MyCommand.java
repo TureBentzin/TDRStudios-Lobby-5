@@ -25,6 +25,13 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
         setPermission(permission);
         setPermission(permission);
     }
+
+    public MyCommand(Command command ,Permission permission) {
+
+        setCommand(command);
+        setPermission(permission);
+        setPermission(permission);
+    }
     private Command command;
     public Command getCommand() {
         return command;
@@ -58,7 +65,7 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
 
     /**
      *
-     * @param parm The Spaceholder
+     * @param parm The spaceholder
      * @return a list with a String filled with the parm
      */
     public static List<Argument>[] getNullList(String parm) {

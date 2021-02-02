@@ -58,9 +58,16 @@ public class SpawnSetter extends MyCommand{
     public String getName() {
         return name;
     }
+    protected List<Argument> arguments() {
+        List<Argument> arguments = new ArrayList<>();
+        arguments.add(new Argument(" "));
+        return arguments;
+    }
 
     public SpawnSetter(String cmdName, String pname , String permission, FileConfiguration configuration) {
+
         super(LobbyPlugin.getPlugin().getCommand(pname) , new Permission(permission) , TabComplete.getNullList());
+
         log.send("Init : " + pname);
         command = LobbyPlugin.getPlugin().getCommand(cmdName);
         setConfig(configuration);

@@ -7,7 +7,6 @@ import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
-import javafx.scene.control.Tab;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;

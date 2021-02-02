@@ -3,7 +3,6 @@ package de.tdrstudios.lobbyplugin.utils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import sun.security.krb5.Config;
 
 public class SoundUtils {
 
