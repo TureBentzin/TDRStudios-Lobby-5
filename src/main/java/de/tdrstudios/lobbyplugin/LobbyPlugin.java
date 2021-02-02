@@ -70,7 +70,7 @@ public class LobbyPlugin extends JavaPlugin {
 
     public void betaWarn() {
 
-        CraftPlayer player = new CraftPlayer(Bukkit.getServer(), );
+
         setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");

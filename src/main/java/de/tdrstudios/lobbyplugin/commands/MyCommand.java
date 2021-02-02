@@ -23,13 +23,11 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
         super(arguments);
         setCommand(command);
         setPermission(permission);
-        setPermission(permission);
     }
 
     public MyCommand(Command command ,Permission permission) {
-
+        super(getNullList());
         setCommand(command);
-        setPermission(permission);
         setPermission(permission);
     }
     private Command command;
