@@ -67,7 +67,7 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventorys.nav.items.spawm.material" , Material.GOLD_NUGGET.name());
         registerConfiguration("tdrstudios.inventorys.nav.items.spawn.name" , "§8 Spawn");
         registerConfiguration("tdrstudios.inventorys.nav.items.spawn.count", 1);
-        
+
 
         registerConfiguration("tdrstudios.inventorys.nav.name" , "§a►  Navigator");
 
