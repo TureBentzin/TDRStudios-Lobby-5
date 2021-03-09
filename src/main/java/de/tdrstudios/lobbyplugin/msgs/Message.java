@@ -45,6 +45,17 @@ public class Message {
         setContent(content);
     }
 
+    /**
+     *
+     * @param before
+     * @param after
+     * @return a String with the new Content! This isnt format Content only Raw text!
+     */
+    public String replace(String before, String after) {
+        getContent().replace(before , after);
+        return getContent();
+    }
+
     @Override
     public String toString() {
         return "Message{" +

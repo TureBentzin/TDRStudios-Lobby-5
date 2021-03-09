@@ -2,6 +2,7 @@ package de.tdrstudios.lobbyplugin.tabcomplete;
 
 import com.google.common.eventbus.DeadEvent;
 import de.bentzin.tools.DevTools;
+import de.tdrstudios.lobbyplugin.commands.MyCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -92,5 +93,18 @@ public class TabComplete implements TabCompleter {
      * @implNote This acts like a event!
      */
     public void onTabCompleteEvent(CommandSender sender,  Command cmd,  String label, String[] args, List<Argument>[] arguments) {
+    }
+
+    /**
+     *
+     * @return a list with a empty String
+     * @see MyCommand
+     */
+    public static List<Argument>[] getNullList() {
+        List<Argument>[] args = new List[1];
+        List<Argument> list1 = new ArrayList<>();
+        list1.add(new Argument(" "));
+        args[0] = list1;
+        return args;
     }
 }

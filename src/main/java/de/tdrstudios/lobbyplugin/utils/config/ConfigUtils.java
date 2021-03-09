@@ -22,6 +22,8 @@ public class ConfigUtils {
         registerConfiguration("beta.acceptRisk" , false);
         registerConfiguration("beta.enableBetaBook" , true);
 
+        registerConfiguration("tdrstudios.sound.volume" , 20);
+
         registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
         registerConfiguration("tdrstudios.leave.msg");
         registerConfiguration("tdrstudios.join.welcome" , "Welcome to MYServer.tdrstudios.de %Player%! %Date%" );
@@ -38,47 +40,61 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.hotbar.info.slot",1);
 
         registerConfiguration("tdrstudios.hotbar.settings.material" , Material.COMPARATOR.name());
-        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lEinstellungen§f");
+        registerConfiguration("tdrstudios.hotbar.settings.displayName" , "§3§lSettings§f");
         registerConfiguration("tdrstudios.hotbar.settings.slot",7);
 
         registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
-        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lSpieler §a§lAnzeigen §f| §4§lVerstecken§f");
+        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lPlayer §a§lHide §f| §4§lShow§f");
         registerConfiguration("tdrstudios.hotbar.stick.slot",8);
 
         registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
 
         registerConfiguration("tdrstudios.hotbar.xp", 1.0); // 1.0F
 
-        //GamemodeManipulation
+        //This allows you to manipulate the world around you!
         registerConfiguration("tdrstudios.manipulation.gamemode" , GameMode.CREATIVE.name());
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawm.material" , Material.GOLD_NUGGET.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.name");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.spawn.count");
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.name" , "null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame1.count" , 1);
+        //Pure Messages:
+        registerConfiguration("tdrstudios.msg.only" , "This is only for %Sender%!");
+        registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
+        registerConfiguration("tdrstudios.spawn.success.other" , "%Player% has warped you to the spawn!");
+        registerConfiguration("tdrstudios.spawn.success.otherB" , "You warped %Player% to the spawn!");
+        registerConfiguration("tdrstudios.msg.teleport.navigator" , "You have warped to %MiniGame%!");
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.name" , "null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame2.count" ,1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.spawm.material" , Material.GOLD_NUGGET.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.spawn.name" , "§8 Spawn");
+        registerConfiguration("tdrstudios.inventorys.nav.items.spawn.count", 1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.material" , Material.DIAMOND_HOE.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.name" , "§6|Example");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame3.count" , 1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.name" , "§e null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame1.count" , 1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.material" , Material.AIR.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.name" , "null");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame4.count");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.name" , "§e null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame2.count" ,1);
 
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.material" , Material.SAND.name());
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.name" , "§8| A Sand");
-        registerConfiguration("tdrstudios.inventorys.nav.itmes.MiniGame5.count" , 1);
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.material" , Material.DIAMOND_HOE.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.name" , "§6|Example");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame3.count" , 1);
+
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.material" , Material.AIR.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.name" , "§e null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame4.count");
+
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.material" , Material.SAND.name());
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.name" , "§8| A Sand");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.diplayname" , "Null");
+        registerConfiguration("tdrstudios.inventorys.nav.items.MiniGame5.count" , 1);
 
         registerConfiguration("tdrstudios.inventorys.nav.name" , "§a►  Navigator");
+
 
         registerConfiguration("tdrstudios.inventor"); //I don´t know for what this configuration is?
 
@@ -103,15 +119,15 @@ public class ConfigUtils {
         registerConfiguration(prefix1 + "MiniGame3.count" , 1);
         registerConfiguration(prefix1 + "MiniGame3.slot" , 28);
 
-        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
-        registerConfiguration(prefix1 + "MiniGame3.name");
-        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
-        registerConfiguration(prefix1 + "MiniGame3.slot" , 34);
+        registerConfiguration(prefix1 + "MiniGame4.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame4.name");
+        registerConfiguration(prefix1 + "MiniGame4.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame4.slot" , 34);
 
-        registerConfiguration(prefix1 + "MiniGame3.material" , Material.AIR.name());
-        registerConfiguration(prefix1 + "MiniGame3.name");
-        registerConfiguration(prefix1 + "MiniGame3.count" , 1);
-        registerConfiguration(prefix1 + "MiniGame3.slot" , 40);
+        registerConfiguration(prefix1 + "MiniGame5.material" , Material.AIR.name());
+        registerConfiguration(prefix1 + "MiniGame5.name");
+        registerConfiguration(prefix1 + "MiniGame5.count" , 1);
+        registerConfiguration(prefix1 + "MiniGame5.slot" , 40);
 
         registerConfiguration(prefix1 + "spawn.material" , Material.COMPASS.name());
         registerConfiguration(prefix1 + "spawn.name" , "§4Set in Config!");
@@ -141,15 +157,24 @@ public class ConfigUtils {
         saveConfig();
     }
 
-    public static String getString(String path) throws InvalidConfigurationException {
+    public static boolean isSet(String path) {
+        return getConfig().get(path) != null;
+    }
+
+    public static String getString(String path){
         String r = getConfig().getString(path);
         if(r != null) {
             return r;
         }else {
-            getConfig().set(path , "Enter here!");
-            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            try {
+                throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
+            getConfig().set(path , "Enter here!");
         }
+        return null;
     }
 
 

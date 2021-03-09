@@ -44,6 +44,8 @@ public class GeneralEvents implements Listener {
 
   private FileConfiguration c = ConfigUtils.getConfig();
 
+  public GeneralEvents() {}
+
   @EventHandler
   public void onDamage(EntityDamageEvent e) {
     if (e.getEntity() instanceof Player)
@@ -53,23 +55,19 @@ public class GeneralEvents implements Listener {
   @EventHandler
 
   public void onFood(FoodLevelChangeEvent e) {
-
     e.setCancelled(true);
     e.setFoodLevel(20);
   }
   
   @EventHandler
   public void onInventoryClickEvent(InventoryClickEvent e) {
-    if (e.getWhoClicked().getGameMode() != GameMode.CREATIVE)
-      e.setCancelled(true); 
+    onManipulation((Player) e.getWhoClicked(), e);
   }
   
   @EventHandler
 
   public void onInventoryDrop(PlayerDropItemEvent e) {
-
-    if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
-      e.setCancelled(true); 
+    onManipulation(e.getPlayer() ,e);
   }
   
   @EventHandler
@@ -162,8 +160,7 @@ public class GeneralEvents implements Listener {
   
   @EventHandler
   public void canpickupitems(PlayerPickupItemEvent e) {
-    if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
-      e.setCancelled(true); 
+    onManipulation(e.getPlayer(), e);
   }
 
 

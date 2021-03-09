@@ -1,10 +1,15 @@
 name: TDRStudiosLobby5
 version: 1.3
+database: false
+description: Hey there! This is TDRStudiosLobby5 one of the best custom LobbyPlugins in the world!
 main: de.tdrstudios.lobbyplugin.LobbyPlugin
 authors:
   - TDRStudios
 api-version: 1.15
 permissions:
+  tdrstudios.*:
+    children:
+      -
   tdrstudios.lobby.perms.fix.inventory:
     default: not op
   tdrstudios.debug:
@@ -16,8 +21,12 @@ commands:
      description: Setze den Spawnpunkt mit /setspawn
      usage: /<command>
    spawn:
-     description: Teleportiere dich zum Spawn mit /spawn
-     usage: /<command>
+     description: This teleports you to the spawn!
+     usage: /<command> [Player]
+     aliases:
+       - lobby
+       - hub
+       - go
    setlobbyWarp1:
      description: Setze den Spawnpunkt für das erste Lobbyitem mit /setlobbyspawn1
      usage: /<command>
