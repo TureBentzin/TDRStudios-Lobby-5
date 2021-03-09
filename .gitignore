@@ -27,3 +27,12 @@ scratch.tdrstudios.java
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+target/classes/Bukkit-slots.png
+target/classes/Inventory-slots.png
+src/main/resources/debug/debug_output.tdrstudios
+src/main/java/test/testmaster/devtools/test.java
+src/main/java/test/testmaster/devtools/test.java
+src/main/java/de/tdrstudios/lobbyplugin/commands/FixInventoryCommand_solve.java
+src/main/java/de/tdrstudios/lobbyplugin/LobbyPlugin_solve.java
+src/main/java/test/testmaster/devtools/MyPlayer.java
+target/classes/debug/debug_output.tdrstudios
