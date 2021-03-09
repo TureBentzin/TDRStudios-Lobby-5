@@ -1,4 +1,0 @@
-**All Permissions**
-
--  tdrstudios.*
-
