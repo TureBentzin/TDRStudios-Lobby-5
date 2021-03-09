@@ -1,0 +1,11 @@
+#Configuration for LobbyPlugin by TDRStudios and ZZocker
+
+
+tdrstudios:
+  join:
+    msg:
+    welcome:
+    date:
+      pattern:
+  leave:
+    msg:
