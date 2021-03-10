@@ -4,6 +4,7 @@ package de.tdrstudios.lobbyplugin;
 import de.bentzin.tools.DevTools;
 
 import de.bentzin.tools.console.Console;
+import de.tdrstudios.additional.debug.DebugConsole;
 import de.tdrstudios.lobbyplugin.inventory.CompassNavigator;
 import de.tdrstudios.lobbyplugin.inventory.Cosmetics;
 import de.tdrstudios.lobbyplugin.inventory.Einstellungen;
@@ -98,6 +99,7 @@ public class LobbyPlugin extends JavaPlugin {
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
         getLog().send("JavaPlugin by tdrstudios.de load!"); //WaterMark
+        DebugConsole.getDebugConsole().setActive(true); //DEBUG:
         initChat();
 
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
