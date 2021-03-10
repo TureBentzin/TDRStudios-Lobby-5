@@ -14,9 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @deprecated
- * @Archive This code is only here for arcive purposes.
- * @usage no usage
+ * @deprecated This code is only here for archive purposes and should not be used.
  */
 @Deprecated
 public class FixInventoryTab implements TabCompleter {
