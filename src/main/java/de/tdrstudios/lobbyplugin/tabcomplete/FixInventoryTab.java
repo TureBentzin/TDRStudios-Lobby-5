@@ -1,6 +1,5 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
-import de.tdrstudios.additional.HistoricalCode;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,13 +9,11 @@ import org.bukkit.permissions.Permission;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Deprecated
-@HistoricalCode(getHistoricalCause = "First trys for Tabomplete")
 public class FixInventoryTab implements TabCompleter {
 
 

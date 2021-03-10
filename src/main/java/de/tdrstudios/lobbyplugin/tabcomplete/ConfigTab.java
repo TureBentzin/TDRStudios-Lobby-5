@@ -1,17 +1,13 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
-import de.tdrstudios.additional.HistoricalCode;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
 import java.util.ArrayList;
 import java.util.List;
 @Deprecated
-@HistoricalCode(getHistoricalCause = "First trys for Tabomplete")
 public class ConfigTab implements TabCompleter {
 
     private Permission permission;
