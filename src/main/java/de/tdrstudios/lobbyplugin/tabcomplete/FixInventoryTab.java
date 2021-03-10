@@ -9,13 +9,16 @@ import org.bukkit.permissions.Permission;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @deprecated This code is only here for archive purposes and should not be used.
+ */
 @Deprecated
 public class FixInventoryTab implements TabCompleter {
+
 
     private Permission permission;
 
@@ -33,6 +36,7 @@ public class FixInventoryTab implements TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String s, @NotNull String[] args) {
+
         List<String> tab = new ArrayList<>();
         if(sender instanceof Player) {
             Player player = (Player) sender;
