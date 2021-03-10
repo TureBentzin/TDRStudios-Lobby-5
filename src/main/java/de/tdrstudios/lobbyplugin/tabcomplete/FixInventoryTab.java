@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @deprecated
+ * @Archive This code is only here for arcive purposes.
+ * @usage no usage
+ */
 @Deprecated
 public class FixInventoryTab implements TabCompleter {
 
