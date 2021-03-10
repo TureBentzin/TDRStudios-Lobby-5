@@ -1,5 +1,6 @@
 package de.tdrstudios.lobbyplugin.inventory;
 
+import de.tdrstudios.additional.debug.DebugConsole;
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.Message;
@@ -42,7 +43,7 @@ public class CompassNavigator implements Listener {
   @EventHandler
   public void handleNavigatorOpen(PlayerInteractEvent event) {
     if (event.getItem() != null) {
-      System.out.println("CompassNavigator.handleNavigatorOpen");
+      DebugConsole.getDebugConsole().send("handleNavigatorOpen");
       System.out.println("B - Material : " + event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))));
       System.out.println("B - DisplayName : " + event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName")));
       if (event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))) && event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName"))) {
