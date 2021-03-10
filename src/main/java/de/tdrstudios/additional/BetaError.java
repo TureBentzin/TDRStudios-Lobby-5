@@ -15,7 +15,7 @@ public class BetaError extends Error{
     public BetaError() {
         System.err.println("You are running a beta software without accepting the risk of doing this! So we have to stop the server!");
         for(Player player : Bukkit.getOnlinePlayers()) {
-            player.kickPlayer(Chat.getPrefix() + "\n" + Chat.getErrorColor() + "This server runs a unsupported version of " + LobbyPlugin.getPlugin().getName() + " and don't accept the risks of doing that!" + "\"" + Chat.getChatColor() +"your TDRStudios Team" ); //Beta Kick!
+            player.kickPlayer(Chat.getPrefix() + "\n" + Chat.getErrorColor() + "This server runs a unsupported version of "+ Chat.getAccentColor() + LobbyPlugin.getPlugin().getName() + Chat.getErrorColor() + " and don't accept the risks of doing that!" + "\"" + Chat.getChatColor() +"your TDRStudios Team" ); //Beta Kick!
         }
         DevTools.getOperationManager().executeOperation(new StopServerOperation());
     }
@@ -28,19 +28,19 @@ public class BetaError extends Error{
 
     @Override
     public void printStackTrace() {
-        super.printStackTrace();
+        System.out.println(getMessage());
         shutdown();
     }
 
     @Override
     public void printStackTrace(PrintWriter s) {
-        super.printStackTrace(s);
+       s.println(getMessage());
         shutdown();
     }
 
     @Override
     public void printStackTrace(PrintStream s) {
-        super.printStackTrace(s);
+        s.println(getMessage());
         shutdown();
     }
     private void shutdown() {
