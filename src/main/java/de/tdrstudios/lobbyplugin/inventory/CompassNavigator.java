@@ -112,6 +112,7 @@ public class CompassNavigator implements Listener {
             }else {
               b = false;
             }
+
             i ++ ;
           }
 
