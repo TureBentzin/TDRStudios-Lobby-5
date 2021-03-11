@@ -1,5 +1,8 @@
 package de.tdrstudios.lobbyplugin.msgs;
 
+import de.tdrstudios.lobbyplugin.Chat;
+import de.tdrstudios.lobbyplugin.enums.FormatType;
+
 import java.util.ArrayList;
 
 
@@ -59,6 +62,19 @@ public class MessageManager {
     }
     public ArrayList<Message> getDebug() {
         return getMessages();
+    }
+
+    public FormatMessage formatMessage(Message message , FormatType formatType){
+        FormatMessage r = new FormatMessage("fomat" + message.getName(), message.getContent() , formatType);
+        if(formatType == FormatType.INFO){
+            r.setContent(Chat.getPrefix() + Chat.getChatColor() + message.getContent());
+        }else if(formatType == FormatType.ERROR)
+            r.setContent(Chat.getPrefix() + Chat.getErrorColor() + message.getContent());
+        else if (formatType == FormatType.RAW)
+            r.setContent(message.getContent());
+        else if (formatType == FormatType.CANVAS)
+            r.setContent(Chat.getPrefix() + message.getContent());
+        return r;
     }
 
 
