@@ -112,6 +112,7 @@ public class CompassNavigator implements Listener {
             }else {
               b = false;
             }
+
             i ++ ;
           }
 
@@ -142,10 +143,13 @@ public class CompassNavigator implements Listener {
     message.replace("%MiniGame%" , Chat.getAccentColor() + ConfigUtils.getString("tdrstudios.inventorys.nav.items.MiniGame" + id + ".diplayname") + Chat.getChatColor());
      new Chat(player).sendMessage(message);
   }
+
+
+  public static enum TeleportType {
+    SPAWN,
+    BACK,
+    MINIGAME;
+  }
 }
 
-enum TeleportType {
-  SPAWN,
-  BACK,
-  MINIGAME;
-}
+
