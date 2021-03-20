@@ -2,6 +2,7 @@ package de.tdrstudios.lobbyplugin.events;
 
 import java.util.ArrayList;
 
+import de.tdrstudios.additional.debug.Point;
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
@@ -44,7 +45,12 @@ public class GeneralEvents implements Listener {
 
   private FileConfiguration c = ConfigUtils.getConfig();
 
-  public GeneralEvents() {}
+  public GeneralEvents() {
+
+    LobbyPlugin.getMessageManager().registerMessage(new Message("de.tdrstudios.hideshow.hide" ,  Chat.getChatColor() + ConfigUtils.getString("tdrstudios.hotbar.stick.chat.body") + Chat.getAccentColor() + " invisible" + Chat.getChatColor() + "!"));
+
+    LobbyPlugin.getMessageManager().registerMessage(new Message("de.tdrstudios.hideshow.reveal" ,  Chat.getChatColor() + ConfigUtils.getString("tdrstudios.hotbar.stick.chat.body") + Chat.getAccentColor() + " visible" + Chat.getChatColor() + "!"));
+  }
 
   @EventHandler
   public void onDamage(EntityDamageEvent e) {
@@ -61,6 +67,7 @@ public class GeneralEvents implements Listener {
   
   @EventHandler
   public void onInventoryClickEvent(InventoryClickEvent e) {
+    if(e.getCurrentItem() != null)
     onManipulation((Player) e.getWhoClicked(), e);
   }
   
@@ -85,7 +92,7 @@ public class GeneralEvents implements Listener {
 
   }
 
-  private void onManipulation(Player player , Cancellable cancellable){
+  private void onManipulation(Player player , Cancellable cancellable, boolean playSound){
     try {
       if(ConfigUtils.getBoolean("tdrstudios.manipulation.allow"))
         if(player.getGameMode() == GameMode.valueOf(ConfigUtils.getString("tdrstudios.manipulation.gamemode"))) {
@@ -94,16 +101,24 @@ public class GeneralEvents implements Listener {
           }else{
             Chat chat = new Chat();
             chat.setPlayers(new Player[]{player});
-            chat.send(ConfigUtils.getString("tdrstudios.manipulation.permission"));
+            if(playSound)
+            chat.sendMessage(new LackingPermissionMessage(ConfigUtils.getString("tdrstudios.manipulation.permission")));
+            cancellable.setCancelled(true);
           }
         }else {
-          player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 30, 1);
+          if(playSound)
+          player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 30, 1);
+          new Point(Thread.currentThread()).point();
           cancellable.setCancelled(true);
         }
     } catch (InvalidConfigurationException e) {
       e.printStackTrace();
     }
 
+  }
+
+  private void onManipulation(Player player, Cancellable cancellable) {
+    onManipulation(player, cancellable , true);
   }
   
   @EventHandler
@@ -113,34 +128,52 @@ public class GeneralEvents implements Listener {
   }
   
   ArrayList<String> HideShow = new ArrayList<>();
-  
+
   @EventHandler
   public void onInteract(PlayerInteractEvent event) {
     Player player = event.getPlayer();
-    if (player.getItemInHand().getType() == Material.BLAZE_ROD)
-      if (this.HideShow.contains(player.getName())) {
-        this.HideShow.remove(player.getName());
-        for (Player players : Bukkit.getOnlinePlayers())
-          player.showPlayer(players); 
-        player.sendMessage("§8[§eInfo§8]§a Alle Spieler sind nun sichtbar");
-        PlayerInventory playerInventory = player.getInventory();
-        ItemStack item1 = new ItemStack(Material.BLAZE_ROD);
-        ItemMeta itemMeta = item1.getItemMeta();
-        itemMeta.setDisplayName("§3§lVerstecken");
-        item1.setItemMeta(itemMeta);
-        playerInventory.setItem(8, item1);
-      } else {
-        this.HideShow.add(player.getName());
-        for (Player players : Bukkit.getOnlinePlayers())
-          player.hidePlayer(players); 
-        player.sendMessage("§8[§eInfo§8]§a Alle Spieler sind nun unsichtbar");
-        PlayerInventory playerInventory = player.getInventory();
-        ItemStack item1 = new ItemStack(Material.BLAZE_ROD);
-        ItemMeta itemMeta = item1.getItemMeta();
-        itemMeta.setDisplayName("§3§lAnzeigen");
-        item1.setItemMeta(itemMeta);
-        playerInventory.setItem(8, item1);
-      }  
+    Chat chat = new Chat(player);
+    if(event.getClickedBlock() != null)
+    chat.send(Chat.getAccentColor() + "You have interact: " + event.getAction() + "@" + event.getClickedBlock().getType().name());
+    else
+      chat.send(Chat.getAccentColor() + "You have interact: " + event.getAction() + "@" + "nothing");
+    if(event.getItem() != null && event.getItem().getType() == Material.getMaterial(ConfigUtils.getString("tdrstudios.hotbar.stick.material"))) {
+
+      if (player.getItemInHand().getType() == Material.getMaterial(ConfigUtils.getString("tdrstudios.hotbar.stick.material")))
+        if (this.HideShow.contains(player.getName())) {
+          this.HideShow.remove(player.getName());
+          for (Player p : Bukkit.getOnlinePlayers()) {
+            player.showPlayer(p);
+          }
+
+          chat.sendMessage(LobbyPlugin.getMessageManager().getMessageByName("de.tdrstudios.hideshow.reveal"));
+          PlayerInventory playerInventory = player.getInventory();
+          ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getString("tdrstudios.hotbar.stick.material")));
+          ItemMeta itemMeta = item1.getItemMeta();
+          itemMeta.setDisplayName(ConfigUtils.getString("tdrstudios.hotbar.stick.naming.show"));
+          item1.setItemMeta(itemMeta);
+          playerInventory.setItem(ConfigUtils.getConfig().getInt("tdrstudios.hotbar.stick.slot"), item1);
+        } else {
+
+          this.HideShow.add(player.getName());
+          for (Player players : Bukkit.getOnlinePlayers())
+            player.hidePlayer(players);
+          chat.sendMessage(LobbyPlugin.getMessageManager().getMessageByName("de.tdrstudios.hideshow.hide"));
+          PlayerInventory playerInventory = player.getInventory();
+          ItemStack item1 = new ItemStack(Material.getMaterial(ConfigUtils.getString("tdrstudios.hotbar.stick.material")));
+          ItemMeta itemMeta = item1.getItemMeta();
+          itemMeta.setDisplayName(ConfigUtils.getString("tdrstudios.hotbar.stick.naming.hide"));
+          item1.setItemMeta(itemMeta);
+          playerInventory.setItem(ConfigUtils.getConfig().getInt("tdrstudios.hotbar.stick.slot"), item1);
+        }
+    }else {
+      if (player.hasPermission(ConfigUtils.getString("tdrstudios.manipulation.permission"))) {
+        event.setCancelled(false);
+      }else {
+        chat.send(Chat.getErrorColor() + "This is" + Chat.getAccentColor() + " currently" + Chat.getErrorColor() + " not allowed!");
+        event.setCancelled(true);
+      }
+    }
   }
   
   @EventHandler
@@ -160,7 +193,7 @@ public class GeneralEvents implements Listener {
   
   @EventHandler
   public void canpickupitems(PlayerPickupItemEvent e) {
-    onManipulation(e.getPlayer(), e);
+    onManipulation(e.getPlayer(), e, false);
   }
 
 
