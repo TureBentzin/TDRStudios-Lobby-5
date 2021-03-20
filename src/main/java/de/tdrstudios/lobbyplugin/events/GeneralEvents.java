@@ -98,7 +98,7 @@ public class GeneralEvents implements Listener {
           }
         }else {
           player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_DESTROY, 30, 1);
-          cancellable.setCancelled(false);
+          cancellable.setCancelled(true);
         }
     } catch (InvalidConfigurationException e) {
       e.printStackTrace();
