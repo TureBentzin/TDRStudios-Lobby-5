@@ -122,12 +122,14 @@ public class LobbyPlugin extends JavaPlugin {
         getCommand("lv").setExecutor((CommandExecutor)new VersionCheckCommand(getCommand("lv")));
         getCommand("lobbyversion").setExecutor((CommandExecutor)new VersionCheckCommand(getCommand("lobbyversion")));
         PluginManager pluginManager = Bukkit.getPluginManager();
-        pluginManager.registerEvents((Listener)new CompassNavigator(), (Plugin)this);
+       /* pluginManager.registerEvents((Listener)new CompassNavigator(), (Plugin)this);
         pluginManager.registerEvents((Listener)new JoinListener(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Info(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Einstellungen(), (Plugin)this);
         pluginManager.registerEvents((Listener)new GeneralEvents(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
+
+        */
 
         //register the "beta book"
         try {
