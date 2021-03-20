@@ -82,12 +82,12 @@ public class LobbyPlugin extends JavaPlugin {
             System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() + "/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
             throw new BetaError();
         }
-        System.out.println("This is a beta software!");
-        System.out.println(" ");
+          System.out.println("This is a beta software!");
+            System.out.println(" ");
     }
 
          public LobbyPlugin() {
-        DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
+            DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
          }
 
 
