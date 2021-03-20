@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 public class BetaError extends Error{
 
     public BetaError() {
-        System.err.println("You are running a beta software without accepting the risk of doing this! So we have to stop the server!");
+        System.err.println("You are running a beta software without accepting the risk of doing this! So we have to stop the server now!");
         for(Player player : Bukkit.getOnlinePlayers()) {
             player.kickPlayer(Chat.getPrefix() + "\n" + Chat.getErrorColor() + "This server runs a unsupported version of "+ Chat.getAccentColor() + LobbyPlugin.getPlugin().getName() + Chat.getErrorColor() + " and don't accept the risks of doing that!" + "\"" + Chat.getChatColor() +"your TDRStudios Team" ); //Beta Kick!
         }
@@ -43,6 +43,8 @@ public class BetaError extends Error{
         s.println(getMessage());
         shutdown();
     }
+    
+    
     private void shutdown() {
         Bukkit.getServer().shutdown();
     }
