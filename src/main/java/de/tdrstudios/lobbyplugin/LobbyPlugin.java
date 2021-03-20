@@ -69,8 +69,6 @@ public class LobbyPlugin extends JavaPlugin {
 
 
     public void betaWarn() {
-
-
         setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");
@@ -86,9 +84,9 @@ public class LobbyPlugin extends JavaPlugin {
             System.out.println(" ");
     }
 
-         public LobbyPlugin() {
-            DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
-         }
+    public LobbyPlugin() {
+        DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
+    }
 
 
     public void onEnable() {
