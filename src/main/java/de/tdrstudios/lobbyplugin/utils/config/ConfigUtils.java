@@ -43,8 +43,11 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.hotbar.settings.slot",7);
 
         registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
-        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lPlayer §a§lHide §f| §4§lShow§f");
+        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3Player:§r §7Hide §r§7 -§l Show");
         registerConfiguration("tdrstudios.hotbar.stick.slot",8);
+        registerConfiguration("tdrstudios.hotbar.stick.chat.body" , "All players are now");
+        registerConfiguration("tdrstudios.hotbar.stick.naming.hide" , "§3Player:§r §7§lHide §r§7 - Show");
+        registerConfiguration("tdrstudios.hotbar.stick.naming.show" , "§3Player:§r §7Hide §r§7 -§l Show");
 
         registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
 
