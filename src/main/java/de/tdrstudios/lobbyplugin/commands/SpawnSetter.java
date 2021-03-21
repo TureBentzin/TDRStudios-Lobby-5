@@ -9,6 +9,7 @@ import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
+import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -73,7 +74,7 @@ public class SpawnSetter extends MyCommand{
         setConfig(configuration);
         setName(pname);
         setPermission(new Permission(permission, "The Permission for : " + getName() + "!"));
-        registerMSGs(); // This have to be after the Init of the Name, the Permission and The Chat!
+        registerMessages(); // This have to be after the Init of the Name, the Permission and The Chat!
     }
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
@@ -105,19 +106,16 @@ public class SpawnSetter extends MyCommand{
         }
         return false;
     }
-    public void  registerMSGs() {
-        MessageManager manager = LobbyPlugin.getMessageManager();
-        manager.registerMessage(new Message("spawn.setter." + getName() +".success","You have set the position for " + Chat.getAccentColor() + getName() + Chat.getChatColor() + "!"));
-        //manager.registerMessage(new Message("spawn.setter." + getName() + ".error.arguments" , Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + getCommand().getUsage() + Chat.getChatColor() + "!"));
-        manager.registerMessage(new UsageMessage(getCommand()));
-        manager.registerMessage(new LackingPermissionMessage(permission));
-
-    }
 
 
     @Override
     public void registerMessages() {
-
+        MessageManager manager = LobbyPlugin.getMessageManager();
+        //  manager.registerMessage(new Message("spawn.setter." + getName() +".success","You have set the position for " + Chat.getAccentColor() + getName() + Chat.getChatColor() + "!"));
+        manager.registerMessage(new Message("spawn.setter." + getName() + ".success", ConfigUtils.getString("tdrstudios.spawn.set").replace("%target%", " " + Chat.getAccentColor() + getName() + Chat.getChatColor())));
+        //manager.registerMessage(new Message("spawn.setter." + getName() + ".error.arguments" , Chat.getErrorColor() + "Please care about the usage : " + Chat.getAccentColor() + getCommand().getUsage() + Chat.getChatColor() + "!"));
+        manager.registerMessage(new UsageMessage(getCommand()));
+        manager.registerMessage(new LackingPermissionMessage(permission));
     }
 
     @Override
