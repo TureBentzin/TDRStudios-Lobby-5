@@ -30,7 +30,8 @@ public class Point extends PointTrace{
         setId(id);
     }
 
-    public void point() {
+    public String point() {
         System.out.println("Code:" + getId() + " " + getMethodName() + "@" + getClassName() + "@" + getFileName() + " on line: " + getLineNumber());
+        return "Code:" + getId() + " " + getMethodName() + "@" + getClassName() + "@" + getFileName() + " on line: " + getLineNumber();
     }
 }
