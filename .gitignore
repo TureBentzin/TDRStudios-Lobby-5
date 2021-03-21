@@ -34,3 +34,4 @@ src/main/java/de/tdrstudios/lobbyplugin/LobbyPlugin_solve.java
 src/main/java/test/testmaster/devtools/MyPlayer.java
 target/classes/debug/debug_output.tdrstudios
 target/classes/plugin.yml
+target/classes/plugin.yml
