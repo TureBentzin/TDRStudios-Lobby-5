@@ -92,7 +92,7 @@ public class SpawnCommand extends MyCommand {
   public void registerMessages() {
 
     MessageManager messageManager = LobbyPlugin.getMessageManager();
-    messageManager.registerMessage(new Message("tdrstudios.spawn.success", ConfigUtils.getString("tdrstudios.spawn.success")));
+    messageManager.registerMessage(new Message("tdrstudios.spawn.success", ConfigUtils.getString("tdrstudios.spawn.success.me")));
     messageManager.registerMessage(new Message("tdrstudios.spawn.success.other", ConfigUtils.getString("tdrstudios.spawn.success.other")));
     messageManager.registerMessage(new Message("tdrstudios.spawn.success.otherB", ConfigUtils.getString("tdrstudios.spawn.success.otherB")));
     messageManager.registerMessage(new UsageMessage(getCommand()));

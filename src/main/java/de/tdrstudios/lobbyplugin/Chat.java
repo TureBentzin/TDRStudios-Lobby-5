@@ -221,4 +221,14 @@ public class Chat {
                 "players=" + Arrays.toString(players) +
                 '}';
     }
+
+    public void send(boolean b) {
+        send(""+ b);
+    }
+
+    public void lineSeperator() {
+        for (Player player : getPlayers()) {
+            player.sendMessage("    ");
+        }
+    }
 }

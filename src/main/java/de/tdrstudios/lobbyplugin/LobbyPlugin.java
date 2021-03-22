@@ -6,9 +6,6 @@ import de.bentzin.tools.DevTools;
 import de.bentzin.tools.console.Console;
 import de.tdrstudios.additional.debug.DebugConsole;
 import de.tdrstudios.lobbyplugin.inventory.CompassNavigator;
-import de.tdrstudios.lobbyplugin.inventory.Cosmetics;
-import de.tdrstudios.lobbyplugin.inventory.Einstellungen;
-import de.tdrstudios.lobbyplugin.inventory.Info;
 
 import de.tdrstudios.lobbyplugin.commands.*;
 
@@ -25,17 +22,12 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.Permission;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.tdrstudios.additional.BetaError;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.*;
@@ -69,8 +61,6 @@ public class LobbyPlugin extends JavaPlugin {
 
 
     public void betaWarn() {
-
-
         setPlugin(this);
         System.out.println(" ");
         System.out.println("This is a beta software!");
@@ -82,13 +72,13 @@ public class LobbyPlugin extends JavaPlugin {
             System.err.println("You cant start your server without accepting the risks of using this plugin! \n You can accept the beta risks if you set the flag \"beta.acceptRisk\" in the ConfigYML at /plugins/" + getPlugin().getName() + "/cnfig.yml to \"true\"! \n The server will stop with ExitCode 5!");
             throw new BetaError();
         }
-        System.out.println("This is a beta software!");
-        System.out.println(" ");
+          System.out.println("This is a beta software!");
+            System.out.println(" ");
     }
 
-         public LobbyPlugin() {
+    public LobbyPlugin() {
         DevTools.getDevToolsConsole().send("{" +this.getClass().getName() + "}" + " load!");
-         }
+    }
 
 
     public void onEnable() {
@@ -124,12 +114,14 @@ public class LobbyPlugin extends JavaPlugin {
         getCommand("lv").setExecutor((CommandExecutor)new VersionCheckCommand(getCommand("lv")));
         getCommand("lobbyversion").setExecutor((CommandExecutor)new VersionCheckCommand(getCommand("lobbyversion")));
         PluginManager pluginManager = Bukkit.getPluginManager();
-        pluginManager.registerEvents((Listener)new CompassNavigator(), (Plugin)this);
+       /* pluginManager.registerEvents((Listener)new CompassNavigator(), (Plugin)this);
         pluginManager.registerEvents((Listener)new JoinListener(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Info(), (Plugin)this);
-        pluginManager.registerEvents((Listener)new Einstellungen(), (Plugin)this);
+        pluginManager.registerEvents((Listener)new SettingsInventory(), (Plugin)this);
         pluginManager.registerEvents((Listener)new GeneralEvents(), (Plugin)this);
         pluginManager.registerEvents((Listener)new Cosmetics(), (Plugin)this);
+
+        */
 
         //register the "beta book"
         try {
@@ -157,7 +149,7 @@ public class LobbyPlugin extends JavaPlugin {
     }
 
     public void registerEvents() {
-        Bukkit.getPluginManager().registerEvents(new GeneralEvents() , getPlugin());
+        Bukkit.getPluginManager().registerEvents(GeneralEvents.getInstance() , getPlugin());
         Bukkit.getPluginManager().registerEvents(new JoinListener() , getPlugin());
         Bukkit.getPluginManager().registerEvents(new CompassNavigator() , getPlugin());
     }

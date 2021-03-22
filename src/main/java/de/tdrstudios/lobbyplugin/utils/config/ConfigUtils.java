@@ -1,5 +1,6 @@
 package de.tdrstudios.lobbyplugin.utils.config;
 
+import de.tdrstudios.additional.debug.Point;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -7,6 +8,10 @@ import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 public class ConfigUtils {
     public static FileConfiguration getConfig() {
@@ -15,6 +20,20 @@ public class ConfigUtils {
     public static void saveConfig() {
         LobbyPlugin.getPlugin().saveConfig();
     }
+
+    private static List<String> ActionWhitelist = new ArrayList<>();
+    public static List<String> getDefaultActionWhitelist() {
+        return ActionWhitelist;
+    }
+
+    static {
+        getDefaultActionWhitelist().add(Material.OAK_DOOR.name());
+        getDefaultActionWhitelist().add(Material.OAK_BUTTON.name());
+        getDefaultActionWhitelist().add(Material.AIR.name());
+        new Point(Thread.currentThread(), 2).point();
+        System.out.println("ActionWhitelist = " + ActionWhitelist);
+    }
+
     public static void registerAllConfigurations() {
         getConfig().options().header("#TDRStudios ConfigFile");
 
@@ -43,8 +62,11 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.hotbar.settings.slot",7);
 
         registerConfiguration("tdrstudios.hotbar.stick.material" , Material.BLAZE_ROD.name());
-        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3§lPlayer §a§lHide §f| §4§lShow§f");
+        registerConfiguration("tdrstudios.hotbar.stick.displayName" , "§3Player:§r §7Hide §r§7 -§l Show");
         registerConfiguration("tdrstudios.hotbar.stick.slot",8);
+        registerConfiguration("tdrstudios.hotbar.stick.chat.body" , "All players are now");
+        registerConfiguration("tdrstudios.hotbar.stick.naming.hide" , "§3Player:§r §7§lHide §r§7 - Show");
+        registerConfiguration("tdrstudios.hotbar.stick.naming.show" , "§3Player:§r §7Hide §r§7 -§l Show");
 
         registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
 
@@ -54,6 +76,14 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.manipulation.gamemode" , GameMode.CREATIVE.name());
         registerConfiguration("tdrstudios.manipulation.allow" , true);
         registerConfiguration("tdrstudios.manipulation.permission" , "tdrstudios.lobby.perms.manipulate");
+        registerConfiguration("tdrstudios.manipulation.explosions.entity" , false);
+        registerConfiguration("tdrstudios.manipulation.explosions.block" , false);
+        registerConfiguration("tdrstudios.manipulation.explosions.firework" , true);
+        registerConfiguration("tdrstudios.manipulation.farmland.fertilize" , false);
+        registerConfiguration("tdrstudios.manipulation.farmland.grow" , false);
+        registerConfiguration("tdrstudios.manipulation.fire.burn" , false);
+        registerConfiguration("tdrstudios.manipulation.fire.ignite" , true);
+        registerConfiguration("tdrstudios.manipulation.fire.spread" , false);
 
 
         //TODO: Fix this Problem with duplicate.
@@ -62,6 +92,7 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.spawn.success.me" , "Warped to the spawn!");
         registerConfiguration("tdrstudios.spawn.success.other" , "%Player% has warped you to the spawn!");
         registerConfiguration("tdrstudios.spawn.success.otherB" , "You warped %Player% to the spawn!");
+        registerConfiguration("tdrstudios.spawn.set", "You have set the position for %target%!");
         registerConfiguration("tdrstudios.msg.teleport.navigator" , "You have warped to %MiniGame%!");
 
         registerConfiguration("tdrstudios.inventorys.nav.items.spawm.material" , Material.GOLD_NUGGET.name());
@@ -116,6 +147,9 @@ public class ConfigUtils {
         registerConfiguration(prefix1 + "spawn.slot" , 40);
 
 
+        registerConfiguration("tdrstudios.actions.whitelist" , getDefaultActionWhitelist()); // register allowed Material.MATERIAL.name()
+
+
     }
     public static void registerConfiguration(String path) {
         //if(getConfig().isSet(path)) {
@@ -142,7 +176,7 @@ public class ConfigUtils {
         return getConfig().get(path) != null;
     }
 
-    public static String getString(String path){
+    public static String getString(@NotNull String path){
         String r = getConfig().getString(path);
         if(r != null) {
             return r;
@@ -160,13 +194,31 @@ public class ConfigUtils {
 
 
 
-    public static boolean getBoolean(String path) throws InvalidConfigurationException {
+    public static boolean getBoolean(@NotNull String path) throws InvalidConfigurationException {
         Boolean r = getConfig().getBoolean(path);
         if(r != null) {
             return r;
         }else {
             getConfig().set(path , "Enter here!");
             throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+    @Deprecated
+    public static @Nullable String[] getArray(@NotNull String path) {
+        List<String> stringList = getConfig().getStringList(path);
+        String[] strings = new String[stringList.size()];
+        for (int i = 0; i < stringList.size(); i++) {
+            strings[i] = stringList.get(i);
+        }
+        return strings;
+    }
+    public static List<String> getList(@NotNull String path) throws InvalidConfigurationException {
+        List<String> stringList = getConfig().getStringList(path);
+        if(stringList != null) {
+            return  stringList;
+        }else {
+            getConfig().set(path, "Enter here!");
+            throw  new InvalidConfigurationException("The StringList on path \"" + path + "\" isn´s set in the Configuration!");
         }
     }
 

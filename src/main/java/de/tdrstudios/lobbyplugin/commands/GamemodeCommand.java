@@ -152,7 +152,7 @@ public class GamemodeCommand implements CommandExecutor {
 
       if(args.length == 0) {
         getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
-        return false;
+        return true;
       }
 
       if (args.length == 1) {
@@ -228,7 +228,7 @@ public class GamemodeCommand implements CommandExecutor {
                   chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
                 }
               } else {
-                chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(gameModeId)) + ".all");
+                chat.sendMessage(new LackingPermissionMessage(getPermissionOTHER(gameModeId)+ ".all"));
               }
             } else {
               chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor()+ " is not online!");

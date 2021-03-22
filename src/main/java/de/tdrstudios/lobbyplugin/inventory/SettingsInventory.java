@@ -17,7 +17,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class Einstellungen implements Listener {
+public class SettingsInventory implements Listener {
   private final String GUI_NAME = "§a►  Settings";
   
   private final String BEWERTEN_GUI_NAME = "§a►  Bewerten";

@@ -12,10 +12,55 @@ permissions:
       -
   tdrstudios.lobby.perms.fix.inventory:
     default: not op
+  tdrstudios.lobby.perms.fix.inventory.other:
+    default: op
+  tdrstudios.lobby.perms.fix.inventory.other.all:
+    default: op
   tdrstudios.debug:
     default: not op
   tdrstudios.lobby.player:
     default: not op
+  tdrstudios.lobby.perms.manipulate:
+    description: allows world and inventory manipulation in the gamemode creative
+  tdrstudios.lobby.perms.setSpawn:
+    description: allows the player to set the spawn!
+  tdrstudios.lobby.perms.setWarp1:
+    description: allows the player to set the first Warp
+  tdrstudios.lobby.perms.setWarp2:
+    description: allows the player to set the second Warp
+  tdrstudios.lobby.perms.setWarp3:
+    description: allows the player to set the third Warp
+  tdrstudios.lobby.perms.setWarp4:
+    description: allows the player to set the forth Warp
+  tdrstudios.lobby.perms.setWarp5:
+   description: allows the player to set the fith Warp
+  de.tdrstudios.lobby.gamemode.0:
+    default: op
+  de.tdrstudios.lobby.gamemode.1:
+    default: op
+  de.tdrstudios.lobby.gamemode.2:
+    default: op
+  de.tdrstudios.lobby.gamemode.3:
+    default: op
+  de.tdrstudios.lobby.gamemode.0.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.1.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.2.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.3.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.0.other.all:
+    default: op
+  de.tdrstudios.lobby.gamemode.1.other.all:
+    default: op
+  de.tdrstudios.lobby.gamemode.2.other.all:
+    default: op
+  de.tdrstudios.lobby.gamemode.3.other.all:
+    default: op
+  de.tdrstudios.spawn:
+    default: op
+  
 commands:
    setspawn:
      description: Setze den Spawnpunkt mit /setspawn
