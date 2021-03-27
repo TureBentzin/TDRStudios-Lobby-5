@@ -88,7 +88,7 @@ public class LobbyPlugin extends JavaPlugin {
         messageManager = new MessageManager();
         getLog().send("JavaPlugin by tdrstudios.de load!"); //WaterMark
         DebugConsole.getDebugConsole().setActive(true); //DEBUG:
-        initChat();
+      ///  initChat();
 
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         Player[] players1 = players.toArray(new Player[players.size()]);
@@ -97,12 +97,15 @@ public class LobbyPlugin extends JavaPlugin {
         getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
 
         ConfigUtils.registerAllConfigurations();
+        initChat();
         betaWarn();
         registerMessages();
         registerCommands();
         registerEvents();
         InventoryUtils.registerAllInventoryContents();
         NavigatorUtils.registerAllInventoryContents(); // Diese eine kleine Zeile hat gefehlt! Warum bin ich nur so dumm...
+
+
 
         getCommand("spawn").setExecutor((CommandExecutor)new SpawnCommand(getCommand("spawn") , new Permission("de.tdrstudios.spawn")));
 
@@ -139,6 +142,7 @@ public class LobbyPlugin extends JavaPlugin {
         }catch (NullPointerException ex) {
 
         }
+        validateConfig();
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
     
@@ -155,12 +159,26 @@ public class LobbyPlugin extends JavaPlugin {
     }
 
   public void initChat() {
-    Chat.setChatColor(ChatColor.GREEN);
-    Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.GRAY + "] " + Chat.getChatColor());
-    Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Lobby" + ChatColor.GRAY + "] " + Chat.getChatColor());
+      //Colors...
+      chat.loadColors();
+      log.send(ChatColor.WHITE + "Set the ChatColor to " + Chat.getChatColor() + Chat.getChatColor().name() + ChatColor.WHITE);
+      log.send(ChatColor.WHITE + "Set the ErrorColor to " + Chat.getErrorColor() + Chat.getErrorColor().name() + ChatColor.WHITE);
+      log.send(ChatColor.WHITE + "Set the AccentColor to " + Chat.getAccentColor() + Chat.getAccentColor().name() + ChatColor.WHITE);
+
+      // Chat.setChatColor(ChatColor.GREEN);
+      // Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + this.getConfig().getName() + ChatColor.GRAY + "] " + Chat.getChatColor());
+      Chat.setPrefix(ChatColor.GRAY + "[" + ChatColor.YELLOW + "Lobby" + ChatColor.GRAY + "] " + Chat.getChatColor());
+      log.send(ChatColor.WHITE + "Set the Prefix to " + Chat.getPrefix() + ChatColor.WHITE);
   }
   private void registerMessages() {
 
+  }
+  private void validateConfig() {
+        String[] strings = ConfigUtils.getArray("tdrstudios.actions.whitelist");
+        Material[] materials = new Material[strings.length];
+      for (int i = 0; i < strings.length; i++) {
+          materials[i] = Material.getMaterial(strings[i]);
+      }
   }
   private void registerCommands() {
     final String setSpawnCommandName = "setspawn";
