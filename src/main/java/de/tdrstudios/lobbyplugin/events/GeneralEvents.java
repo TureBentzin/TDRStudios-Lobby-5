@@ -9,6 +9,8 @@ import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -20,6 +22,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -237,6 +240,8 @@ public class GeneralEvents implements Listener {
                     playerInventory.setItem(ConfigUtils.getConfig().getInt("tdrstudios.hotbar.stick.slot"), item1);
                 }
 
+            }else {
+                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("test..."));
             }
         }
 
@@ -295,4 +300,5 @@ public class GeneralEvents implements Listener {
         manager.registerMessage(new Message("tdrstudios.hotbar.stick.show", "Every player is now " + Chat.getAccentColor() + "visible" + Chat.getChatColor() + "!"));
 
     }
+
 }
