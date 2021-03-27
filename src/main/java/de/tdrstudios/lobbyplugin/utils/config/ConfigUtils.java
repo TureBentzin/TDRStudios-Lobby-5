@@ -43,6 +43,10 @@ public class ConfigUtils {
 
         registerConfiguration("tdrstudios.sound.volume" , 20);
 
+        registerConfiguration("tdrstudios.system.color", ChatColor.AQUA.name());
+        registerConfiguration("tdrstudios.system.errorcolor", ChatColor.RED.name());
+        registerConfiguration("tdrstudios.system.accentcolor", ChatColor.GRAY.name());
+
         registerConfiguration("tdrstudios.join.msg" , "§8[§e+§8]§a %Player%");
         registerConfiguration("tdrstudios.leave.msg");
         registerConfiguration("tdrstudios.join.welcome" , "Welcome to MYServer.tdrstudios.de %Player%! %Date%" );

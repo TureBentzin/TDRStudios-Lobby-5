@@ -1,6 +1,7 @@
 package de.tdrstudios.lobbyplugin;
 
 import de.tdrstudios.lobbyplugin.msgs.Message;
+import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -68,6 +69,7 @@ public class Chat {
         return chatColor;
     }
 
+
     /**
      * Sets chat color.
      *
@@ -76,6 +78,15 @@ public class Chat {
     public static void setChatColor(ChatColor chatColor) {
         Chat.chatColor = chatColor;
     }
+
+    private static void setAccentColor(ChatColor accentColor) {
+        AccentColor = accentColor;
+    }
+
+    private static void setErrorColor(ChatColor errorColor) {
+        ErrorColor = errorColor;
+    }
+
     private static ChatColor ErrorColor = ChatColor.RED;
 
     private static ChatColor AccentColor = ChatColor.GRAY;
@@ -99,6 +110,11 @@ public class Chat {
     }
     // public static String
 
+    public static void loadColors() {
+        setChatColor(ChatColor.valueOf(ConfigUtils.getString("tdrstudios.system.color")));
+        setAccentColor(ChatColor.valueOf(ConfigUtils.getString("tdrstudios.system.accentcolor")));
+        setErrorColor(ChatColor.valueOf(ConfigUtils.getString("tdrstudios.system.errorcolor")));
+    }
 
     /**
      * The Players.
