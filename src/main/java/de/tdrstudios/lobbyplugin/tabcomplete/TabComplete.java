@@ -53,7 +53,7 @@ public class TabComplete implements TabCompleter {
     public @Nullable List<String> onTabComplete( CommandSender commandSender, Command command, String label, String[] args) {
 
 
-        DevTools.getDevToolsConsole().send("args: " + Arrays.deepToString(args) , "TabDebug" , ";");
+        //DevTools.getDevToolsConsole().send("args: " + Arrays.deepToString(args) , "TabDebug" , ";");
 
         onTabCompleteEvent(commandSender, command, label, args , getArguments());
         int length = args.length; // get length of player insert arguments
