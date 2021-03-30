@@ -159,7 +159,7 @@ public class ConfigUtils {
     public static void registerConfiguration(String path) {
         //if(getConfig().isSet(path)) {
         if(getConfig().get(path) != null) {
-            LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is already set!");
+            //LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is already set!");
         }else {
             getConfig().set(path , "null");
         }
@@ -168,7 +168,7 @@ public class ConfigUtils {
     public static void registerConfiguration(String path , Object object) {
        // if(getConfig().isSet(path)) {
         if(getConfig().get(path) != null) {
-            LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is alredy set!");
+           // LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is alredy set!");
         }else {
             System.out.println("DEBUG: Vorher im Slot " + path + getConfig().get(path));
             getConfig().set(path , object);
