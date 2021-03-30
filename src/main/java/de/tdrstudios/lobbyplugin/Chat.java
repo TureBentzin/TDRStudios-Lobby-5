@@ -188,6 +188,15 @@ public class Chat {
     public static void sendFast(CommandSender sender, Message message) {
         sender.sendMessage(getPrefix() + message.getContent());
     }
+
+    @Deprecated
+    public static void sendFastMessage(CommandSender sender, String name) {
+        sender.sendMessage(getPrefix() + LobbyPlugin.getMessageManager().getMessageByName(name).getContent());
+    }
+    @Deprecated
+    public static void sendFastMessage(CommandSender sender, int id) {
+        sender.sendMessage(getPrefix() + LobbyPlugin.getMessageManager().getMessageByID(id).getContent());
+    }
     /**
      * Send.
      *
