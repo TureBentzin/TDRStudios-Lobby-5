@@ -176,65 +176,7 @@ public class GamemodeCommand implements CommandExecutor {
       } else {
        //Other
         if(args.length == 2) {
-
-          if(Bukkit.getOfflinePlayer(args[1]).isOnline()) {
-            Player target = Bukkit.getPlayer(args[1]);
-            if(LobbyPlugin.getPlugin().getConfig().getBoolean("tdrstudios.commands.gamemode.allow.otherSelfSet")) {
-              if(target == p) {
-                chat.sendMessage(Chat.getErrorColor() + "For this action: use \"" + Chat.getAccentColor() + getCommand().getName() + " <gamemode> " + Chat.getChatColor() + "\" !");
-                return true;
-              }
-            }
-
-            GameMode gameMode = getGamemode(args[0]);
-
-            if(gameMode == null) {
-              getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
-              return false;
-            }
-
-            int gameModeId = gameMode.getValue();
-
-            if(target == null) {
-              chat.sendMessage(Chat.getErrorColor() + "For this action: use \"" + Chat.getAccentColor() + getCommand().getName() + " <gamemode> <player>" + Chat.getChatColor() + "\" !");
-              return true;
-            }
-
-            if(p.hasPermission(getPermissionOTHER(gameModeId))) {
-              target.setGameMode(gameMode);
-
-              chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() +  " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
-              chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + target.getName() + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
-            }else {
-              chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
-            }
-
-          } else {
-            if(args[1].equals("*") | args[1].equals("@a")) {
-              GameMode gameMode = getGamemode(args[0]);
-
-              if(gameMode == null) {
-                getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
-                return false;
-              }
-
-              int gameModeId = gameMode.getValue();
-
-              if (p.hasPermission(getPermissionOTHER(gameModeId) + ".all")) {
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                  player.setGameMode(gameMode);
-
-                  chat.send(player, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
-                  chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() +  " have switched " + Chat.getAccentColor() + "everyone" + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
-                }
-              } else {
-                chat.sendMessage(new LackingPermissionMessage(getPermissionOTHER(gameModeId)+ ".all"));
-              }
-            } else {
-              chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor()+ " is not online!");
-            }
-          }
-          return true;
+          other(p, args);
         }
       }
     } else {
@@ -243,11 +185,137 @@ public class GamemodeCommand implements CommandExecutor {
        */
       if(sender instanceof ConsoleCommandSender) {
         ConsoleCommandSender console = (ConsoleCommandSender) sender;
-        Chat.sendFast(console , "Sorry! This Feature isn't available yet!");
+        Chat.sendFast(console, "This feature is currentry in development! Please report all Issues via GitHub!");
+        if (args.length == 2) {
+          return other(sender, args);
+        } else
+          Chat.sendFastMessage(sender, UsageMessage.getNameFIX(getCommand()));
+        return true;
       }
     }
     return true;
   }
+
+  public boolean other(CommandSender sender, String[] args) {
+
+    if (sender instanceof Player) {
+      Player p = (Player) sender;
+      if (Bukkit.getOfflinePlayer(args[1]).isOnline()) {
+        Player target = Bukkit.getPlayer(args[1]);
+        if (!LobbyPlugin.getPlugin().getConfig().getBoolean("tdrstudios.commands.gamemode.allow.otherSelfSet")) {
+          if (target.equals(p)) {
+            chat.sendMessage(Chat.getErrorColor() + "For this action: use \"" + Chat.getAccentColor() + getCommand().getName() + " <gamemode>" + Chat.getErrorColor() + "\"!");
+            return true;
+          }
+        }
+
+        GameMode gameMode = getGamemode(args[0]);
+
+        if (gameMode == null) {
+          getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
+          return false;
+        }
+
+        int gameModeId = gameMode.getValue();
+
+        if (target == null) {
+          chat.sendMessage(Chat.getErrorColor() + "For this action: use \"" + Chat.getAccentColor() + getCommand().getName() + " <gamemode> <player>" + Chat.getChatColor() + "\" !");
+          return true;
+        }
+
+        if (p.hasPermission(getPermissionOTHER(gameModeId))) {
+          target.setGameMode(gameMode);
+
+          chat.send(target, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+          chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched " + Chat.getAccentColor() + target.getName() + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+        } else {
+          chat.sendMessage(LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+        }
+
+      } else {
+        if (args[1].equals("*") | args[1].equals("@a")) {
+          GameMode gameMode = getGamemode(args[0]);
+
+          if (gameMode == null) {
+            getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
+            return false;
+          }
+
+          int gameModeId = gameMode.getValue();
+
+          if (p.hasPermission(getPermissionOTHER(gameModeId) + ".all")) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+              player.setGameMode(gameMode);
+
+              chat.send(player, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+              chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched " + Chat.getAccentColor() + "everyone" + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+            }
+          } else {
+            chat.sendMessage(new LackingPermissionMessage(getPermissionOTHER(gameModeId) + ".all"));
+          }
+        } else {
+          chat.send(p, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor() + " is not online!");
+        }
+      }
+    }
+
+    else if(sender instanceof ConsoleCommandSender) {
+      if (Bukkit.getOfflinePlayer(args[1]).isOnline()) {
+        Player target = Bukkit.getPlayer(args[1]);
+
+
+        GameMode gameMode = getGamemode(args[0]);
+
+        if (gameMode == null) {
+          getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
+          return false;
+        }
+
+        int gameModeId = gameMode.getValue();
+
+        if (target == null) {
+          chat.sendMessage(Chat.getErrorColor() + "For this action: use \"" + Chat.getAccentColor() + getCommand().getName() + " <gamemode> <player>" + Chat.getChatColor() + "\" !");
+          return true;
+        }
+
+        if (sender.hasPermission(getPermissionOTHER(gameModeId))) {
+          target.setGameMode(gameMode);
+
+          chat.send(target, Chat.getAccentColor() + sender.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+          Chat.sendFast(sender, Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched " + Chat.getAccentColor() + target.getName() + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+        } else {
+          Chat.sendFast(sender, LackingPermissionMessage.getNameFIX(getPermissionOTHER(0)));
+        }
+
+      } else {
+        if (args[1].equals("*") | args[1].equals("@a")) {
+          GameMode gameMode = getGamemode(args[0]);
+
+          if (gameMode == null) {
+            getChat().sendMessage(UsageMessage.getNameFIX(getCommand()));
+            return false;
+          }
+
+          int gameModeId = gameMode.getValue();
+
+          if (sender.hasPermission(getPermissionOTHER(gameModeId) + ".all")) {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+              player.setGameMode(gameMode);
+
+              chat.send(player, Chat.getAccentColor() + sender.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+              Chat.sendFast(sender,Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched " + Chat.getAccentColor() + "everyone" + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+            }
+          } else {
+            Chat.sendFast(sender, new LackingPermissionMessage(getPermissionOTHER(gameModeId) + ".all"));
+          }
+        } else {
+          Chat.sendFast(sender, Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[1] + Chat.getErrorColor() + " is not online!");
+        }
+      }
+    }
+      return true;
+    }
+
 
   public void registerMessages() {
     System.out.println("Commands Register!");
@@ -272,4 +340,6 @@ public class GamemodeCommand implements CommandExecutor {
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(2) +  ".all"));
     LobbyPlugin.getMessageManager().registerMessage(new LackingPermissionMessage(getPermissionOTHER(3) +  ".all"));
   }
+
+
 }
