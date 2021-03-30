@@ -12,6 +12,7 @@ import de.tdrstudios.lobbyplugin.commands.*;
 import de.tdrstudios.lobbyplugin.events.GeneralEvents;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
+import de.tdrstudios.lobbyplugin.utils.ColorUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
@@ -142,6 +143,8 @@ public class LobbyPlugin extends JavaPlugin {
         }catch (NullPointerException ex) {
 
         }
+
+        Chat.printLogo(ColorUtils.getRandomChatColor());
         validateConfig();
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
