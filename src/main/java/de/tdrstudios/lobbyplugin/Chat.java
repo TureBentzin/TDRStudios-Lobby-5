@@ -244,6 +244,29 @@ public class Chat {
    }
 
     /**
+     * Build send string.
+     *
+     * @param message the message
+     * @return the string
+     */
+    public String buildSendMessage(Message message) {
+        return getPrefix() + message.getContent();
+    }
+
+    public String buildSendMessage(int id) {
+        return  buildSendMessage(LobbyPlugin.getMessageManager().getMessageByID(id));
+    }
+    public String buildSendMessage(String name) {
+        Message send = LobbyPlugin.getMessageManager().getMessageByName(name);
+        if(send != null) {
+           return buildSendMessage(send);
+        }else {
+            return buildSend(name);
+        }
+    }
+
+
+    /**
      * Send message.
      *
      * @param message the message
