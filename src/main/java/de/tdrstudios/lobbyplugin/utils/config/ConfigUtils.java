@@ -43,7 +43,7 @@ public class ConfigUtils {
 
         registerConfiguration("tdrstudios.sound.volume" , 20);
 
-        registerConfiguration("tdrstudios.system.color", ChatColor.AQUA.name());
+        registerConfiguration("tdrstudios.system.color", ChatColor.GREEN.name());
         registerConfiguration("tdrstudios.system.errorcolor", ChatColor.RED.name());
         registerConfiguration("tdrstudios.system.accentcolor", ChatColor.GRAY.name());
 
