@@ -147,6 +147,16 @@ public class Chat {
 //For Object
     public Player[] players;
 
+    public CommandSender[] commandSenders;
+
+    public CommandSender[] getCommandSenders() {
+        return commandSenders;
+    }
+
+    public void setCommandSenders(CommandSender[] commandSenders) {
+        this.commandSenders = commandSenders;
+    }
+
     /**
      * Sets players.
      *
