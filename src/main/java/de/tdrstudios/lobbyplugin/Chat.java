@@ -1,12 +1,17 @@
 package de.tdrstudios.lobbyplugin;
 
 import de.tdrstudios.lobbyplugin.msgs.Message;
+import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
+import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 /**
  * The type Chat.
@@ -114,6 +119,26 @@ public class Chat {
         setChatColor(ChatColor.valueOf(ConfigUtils.getString("tdrstudios.system.color")));
         setAccentColor(ChatColor.valueOf(ConfigUtils.getString("tdrstudios.system.accentcolor")));
         setErrorColor(ChatColor.valueOf(ConfigUtils.getString("tdrstudios.system.errorcolor")));
+    }
+
+    public static final String logo = "\n" +
+            " \n"+
+            "   ████████╗██████╗░██████╗░░██████╗████████╗██╗░░░██╗██████╗░██╗░█████╗░░██████╗\n" +
+            "   ╚══██╔══╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║░░░██║██╔══██╗██║██╔══██╗██╔════╝\n" +
+            "   ░░░██║░░░██║░░██║██████╔╝╚█████╗░░░░██║░░░██║░░░██║██║░░██║██║██║░░██║╚█████╗░\n" +
+            "   ░░░██║░░░██║░░██║██╔══██╗░╚═══██╗░░░██║░░░██║░░░██║██║░░██║██║██║░░██║░╚═══██╗\n" +
+            "   ░░░██║░░░██████╔╝██║░░██║██████╔╝░░░██║░░░╚██████╔╝██████╔╝██║╚█████╔╝██████╔╝\n" +
+            "   ░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░░╚═════╝░╚═════╝░╚═╝░╚════╝░╚═════╝░\n" +
+            " ";
+    public static void printLogo(ConsoleCommandSender console, ChatColor chatColor) {
+        console.sendMessage(logo.replaceAll("█" , chatColor + "█" + ChatColor.RESET));
+    }
+
+    public static void printLogo() {
+        printLogo(Bukkit.getConsoleSender(), ChatColor.WHITE);
+    }
+    public static void printLogo(ChatColor chatColor) {
+        printLogo(Bukkit.getConsoleSender(), chatColor);
     }
 
     /**
