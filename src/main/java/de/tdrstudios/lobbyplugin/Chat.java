@@ -22,9 +22,9 @@ public class Chat {
         setPlayers(new Player[]{player});
     }
 
-    /**
-    Default constructor!
-     */
+    public Chat(CommandSender commandSender) {
+        setCommandSenders(new CommandSender[]{commandSender});
+    }
     public Chat() {
 
     }
