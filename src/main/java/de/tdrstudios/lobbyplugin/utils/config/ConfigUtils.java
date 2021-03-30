@@ -73,6 +73,7 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.hotbar.stick.naming.show" , "§3Player:§r §7Hide §r§7 -§l Show");
 
         registerConfiguration("tdrstudios.defaultGameMode" , GameMode.SURVIVAL.name());
+        registerConfiguration("tdrstudios.commands.gamemode.allow.otherSelfSet" , false);
 
         registerConfiguration("tdrstudios.hotbar.xp", 1.0); // 1.0F
 
