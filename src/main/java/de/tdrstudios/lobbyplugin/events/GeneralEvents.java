@@ -191,7 +191,7 @@ public class GeneralEvents implements Listener {
     public void onMuliPlace(BlockMultiPlaceEvent event) {
         if (event.getPlayer().hasPermission("tdrstudios.lobby.perms.manipulate") && event.getPlayer().getGameMode() == GameMode.valueOf(ConfigUtils.getString("tdrstudios.manipulation.gamemode"))) {
             event.setCancelled(false);
-            event.getPlayer().sendMessage("DEBUG: Multiplace allowed!");
+           // event.getPlayer().sendMessage("DEBUG: Multiplace allowed!");
         } else {
             event.setCancelled(true);
         }
@@ -251,6 +251,13 @@ public class GeneralEvents implements Listener {
             } else {
                 onManipulation(player, event, false);
             }
+    }
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent event){
+        if(event.getPlayer().getName().startsWith("Bommels")) {
+            event.setCancelled(true);
+        }
     }
 
 
