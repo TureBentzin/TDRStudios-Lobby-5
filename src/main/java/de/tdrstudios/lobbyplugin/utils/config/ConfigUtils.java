@@ -35,7 +35,7 @@ public class ConfigUtils {
     }
 
     public static void registerAllConfigurations() {
-        getConfig().options().header("#TDRStudios ConfigFile");
+        getConfig().options().header("TDRStudios ConfigFile");
 
 
         registerConfiguration("beta.acceptRisk" , false);
