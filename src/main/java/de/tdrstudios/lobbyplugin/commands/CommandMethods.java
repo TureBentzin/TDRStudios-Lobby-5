@@ -6,7 +6,7 @@ import java.util.List;
 
 public  interface CommandMethods {
 
-    public void registerMessages();
-    public void generatePermission(String permission);
+    public default void registerMessages() {}
+    public default void generatePermission(String permission) {};
     public List<String>[] registerTabComplete();
 }
