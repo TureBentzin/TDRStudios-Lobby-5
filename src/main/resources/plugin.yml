@@ -1,27 +1,110 @@
-name: LobbyPlugin
-version: 1.2
-main: net.juligames.lobbyplugin.LobbyPlugin
+name: TDRStudiosLobby5
+version: 1.5
+database: false
+description: Hey there! This is TDRStudiosLobby5 one of the best custom LobbyPlugins in the world!
+main: de.tdrstudios.lobbyplugin.LobbyPlugin
 authors:
-  -TDRStudios
-
+  - TDRStudios
+api-version: 1.15
+permissions:
+  tdrstudios.*:
+    children:
+      -
+  tdrstudios.lobby.perms.fix.inventory:
+    default: not op
+  tdrstudios.lobby.perms.fix.inventory.other:
+    default: op
+  tdrstudios.lobby.perms.fix.inventory.other.all:
+    default: op
+  tdrstudios.debug:
+    default: not op
+  tdrstudios.lobby.player:
+    default: not op
+  tdrstudios.lobby.perms.manipulate:
+    description: allows world and inventory manipulation in the gamemode creative
+  tdrstudios.lobby.perms.setSpawn:
+    description: allows the player to set the spawn!
+  tdrstudios.lobby.perms.setWarp1:
+    description: allows the player to set the first Warp
+  tdrstudios.lobby.perms.setWarp2:
+    description: allows the player to set the second Warp
+  tdrstudios.lobby.perms.setWarp3:
+    description: allows the player to set the third Warp
+  tdrstudios.lobby.perms.setWarp4:
+    description: allows the player to set the forth Warp
+  tdrstudios.lobby.perms.setWarp5:
+   description: allows the player to set the fith Warp
+  de.tdrstudios.lobby.gamemode.0:
+    default: op
+  de.tdrstudios.lobby.gamemode.1:
+    default: op
+  de.tdrstudios.lobby.gamemode.2:
+    default: op
+  de.tdrstudios.lobby.gamemode.3:
+    default: op
+  de.tdrstudios.lobby.gamemode.0.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.1.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.2.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.3.other:
+    default: op
+  de.tdrstudios.lobby.gamemode.0.other.all:
+    default: op
+  de.tdrstudios.lobby.gamemode.1.other.all:
+    default: op
+  de.tdrstudios.lobby.gamemode.2.other.all:
+    default: op
+  de.tdrstudios.lobby.gamemode.3.other.all:
+    default: op
+  de.tdrstudios.spawn:
+    default: op
+  
 commands:
    setspawn:
      description: Setze den Spawnpunkt mit /setspawn
+     usage: /<command>
    spawn:
-     description: Teleportiere dich zum Spawn mit /spawn
-   setlobbyspawn1:
+     description: This teleports you to the spawn!
+     usage: /<command> [Player]
+     aliases:
+       - lobby
+       - hub
+       - go
+   setlobbyWarp1:
      description: Setze den Spawnpunkt für das erste Lobbyitem mit /setlobbyspawn1
-   setlobbyspawn2:
+     usage: /<command>
+   setlobbyWarp2:
      description: Setze den Spawnpunkt für das 2te Lobbyitem mit /setlobbyspawn2
-   setlobbyspawn3:
+     usage: /<command>
+   setlobbyWarp3:
+     usage: /<command>
      description: Setze den Spawnpunkt für das 3te Lobbyitem mit /setlobbyspawn3
-   setlobbyspawn4:
+   setlobbyWarp4:
+     usage: /<command>
      description: Setze den Spawnpunkt für das 4te Lobbyitem mit /setlobbyspawn4
-   setlobbyspawn5:
+   setlobbyWarp5:
+     usage: /<command>
      description: Setze den Spawnpunkt für das 5te Lobbyitem mit /setlobbyspawn5
    gm:
      description: Ändere deinen Gamemode mit /gm [0] [1] [2] [3]
+     usage: /<command> [0] [1] [2] [3] <Player>
+   gamemode:
+     description: Ändere deinen Gamemode mit /gamemode [0] [1] [2] [3]
+     usage: /<command> [0] [1] [2] [3] <Player>
    lv:
+     usage: /<command>
      description: Zeige die Version vom Plugin an.
    lobbyversion:
+     usage: /<command>
      description: Zeige die Version vom Plugin an.
+   config:
+    usage: /<command> [save] [read]
+    description: This command is only for the debug!
+   fixinventory:
+     usage: /<command> <Player/'*'>
+     description: Reset the inventory of a player
+   fixinv:
+     usage: /<command> <Player/'*'>
+     description: Reset the inventory of a player
