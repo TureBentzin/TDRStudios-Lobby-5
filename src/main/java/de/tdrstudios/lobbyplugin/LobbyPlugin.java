@@ -29,6 +29,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.tdrstudios.additional.BetaError;
+import test.testmaster.TestCommand;
 
 import java.util.Collection;
 import java.util.*;
@@ -93,7 +94,7 @@ public class LobbyPlugin extends JavaPlugin {
 
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         Player[] players1 = players.toArray(new Player[players.size()]);
-        chat.send(players1, "This Plugin is currently in Maintenance!");
+
 
         getConfig().addDefault("tdrstudios.commands.gamemode.allow.otherSelfSet" , "please enter");
 
@@ -143,7 +144,7 @@ public class LobbyPlugin extends JavaPlugin {
         }catch (NullPointerException ex) {
 
         }
-
+        chat.send(players1, "This Plugin is currently in Maintenance!"); //TODO:  Remove before Relese
         Chat.printLogo(ColorUtils.getRandomChatColor());
         validateConfig();
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
@@ -205,6 +206,8 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand(fixInventoryCommandName_Short).setExecutor(new FixInventoryCommand(fixInventoryCommandName_Short , "tdrstudios.lobby.perms.fix.inventory"));
 
     getCommand("config").setExecutor(new ConfigCommand("config"));
+
+    getCommand("test").setExecutor(new TestCommand(getCommand("test")));
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
 

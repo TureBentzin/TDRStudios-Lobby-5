@@ -108,3 +108,5 @@ commands:
    fixinv:
      usage: /<command> <Player/'*'>
      description: Reset the inventory of a player
+   test:
+     usage: /<command> <Player> <Message>

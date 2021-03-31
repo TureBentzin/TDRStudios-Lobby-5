@@ -18,20 +18,42 @@ import java.util.Set;
 
 public class KickUtils{
 
-    final static String format = "%prefix% \n %cause& \n %footer%";
 
-    public static boolean kickPlayer(Player player, String message, KickType kickType , CommandSender kicker) {
-        if(kickType == KickType.SYSTEM) {
-            player.kickPlayer(format.replaceAll("%prefix%", Chat.getPrefix()).replaceAll("%cause%", Chat.getChatColor() + message).replaceAll());
-        }
+
+    public static boolean kickPlayer(Player player, String message, @Nullable KickType kickType ,@Nullable CommandSender kicker) {
+        if(kickType == null)
+            kickType = KickType.UNKNOWN;
+            player.kickPlayer(Chat.getPrefix() + "\n" + kickType.getHeader() + message + getStringKicker(kicker));
+            return !player.isOnline();
+    }
+
+
+
+    public static String getStringKicker(CommandSender kicker) {
+        if(kicker !=null)
+        return "\n" + Chat.getChatColor() + "kicked by " + Chat.getAccentColor() + kicker.getName() + Chat.getChatColor();
+        else
+            return "";
     }
 
 
     public static enum KickType {
-        TIME_OUT,
-        AFK,
-        SYSTEM,
-        UNKNOWN;
+        TIME_OUT("-Timed out-"),
+        AFK("-You were idle for too long-"),
+        SYSTEM(""),
+        KICK_ALL("-All players removed from this lobby-"),
+        UNKNOWN("-You got kicked from this server-");
+
+        String getHeader(ChatColor headerColor, ChatColor afterColor){
+            return "\n" + headerColor + header + "\n" + afterColor;
+        }
+        String getHeader() {
+            return getHeader(Chat.getAccentColor(), Chat.getChatColor());
+        }
+        String header = "";
+        KickType(String header) {
+            this.header = header;
+        }
     }
 
 

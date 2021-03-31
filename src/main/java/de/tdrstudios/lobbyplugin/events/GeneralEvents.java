@@ -253,12 +253,6 @@ public class GeneralEvents implements Listener {
             }
     }
 
-    @EventHandler
-    public void onMove(PlayerMoveEvent event){
-        if(event.getPlayer().getName().startsWith("Bommels")) {
-            event.setCancelled(true);
-        }
-    }
 
 
     public void onTEST(PlayerInteractEvent event) {
