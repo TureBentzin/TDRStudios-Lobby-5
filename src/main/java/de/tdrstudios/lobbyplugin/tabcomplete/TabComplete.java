@@ -2,12 +2,16 @@ package de.tdrstudios.lobbyplugin.tabcomplete;
 
 import com.google.common.eventbus.DeadEvent;
 import de.bentzin.tools.DevTools;
+import de.tdrstudios.additional.debug.DebugConsole;
+import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.commands.MyCommand;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Debug;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,13 +55,20 @@ public class TabComplete implements TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete( CommandSender commandSender, Command command, String label, String[] args) {
-
+        if(getArguments() == null) {
+            List<String> nullList= new ArrayList<>();
+            nullList.add("");
+            return nullList;
+        }
 
         //DevTools.getDevToolsConsole().send("args: " + Arrays.deepToString(args) , "TabDebug" , ";");
 
         onTabCompleteEvent(commandSender, command, label, args , getArguments());
         int length = args.length; // get length of player insert arguments
         List<String> r = new ArrayList<>();
+
+        DebugConsole.getDebugConsole().send("getArguments().length = " + getArguments().length);
+        DebugConsole.getDebugConsole().send("length = " + length);
         if(getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
            List<Argument> argumentList = arguments[length -1]; // extract a List of Arguments for the player insert length!
             for(Argument argument : argumentList) {
@@ -75,14 +86,11 @@ public class TabComplete implements TabCompleter {
           // Add: Soon this checks for new written content (StartsWith)
         }else
             r.add("");
-        System.out.println("r = " + r);
         for (int i = 0; i < r.size(); i++) {
-            System.out.println("s: " + r.get(i));
             if(r.get(i).equalsIgnoreCase("%Players%")) {
                 r.remove("%Players%");
                 if(Bukkit.getOnlinePlayers().size() > 0)
                     for(Player p : Bukkit.getOnlinePlayers()) {
-                        System.out.println("p.getName() = " + p.getName());
                         if(!r.contains(p.getName()))
                             r.add(p.getName());
                     }

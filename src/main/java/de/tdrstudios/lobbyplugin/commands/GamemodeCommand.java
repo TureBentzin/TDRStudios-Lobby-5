@@ -8,6 +8,7 @@ import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -244,12 +245,15 @@ public class GamemodeCommand implements CommandExecutor {
           int gameModeId = gameMode.getValue();
 
           if (p.hasPermission(getPermissionOTHER(gameModeId) + ".all")) {
+            if(!Bukkit.getOnlinePlayers().isEmpty()) {
             for (Player player : Bukkit.getOnlinePlayers()) {
               player.setGameMode(gameMode);
-
               chat.send(player, Chat.getAccentColor() + p.getName() + Chat.getChatColor() + " has switched " + Chat.getAccentColor() + "your" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
-              chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched " + Chat.getAccentColor() + "everyone" + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
             }
+            chat.send(Chat.getAccentColor() + "You" + Chat.getChatColor() + " have switched " + Chat.getAccentColor() + "everyone" + "'s" + Chat.getChatColor() + " gamemode to " + Chat.getAccentColor() + gameMode.name() + Chat.getChatColor() + "!");
+          }else {
+            chat.send(Chat.getErrorColor() + "Error: There is no player online on this Server!");
+          }
           } else {
             chat.sendMessage(new LackingPermissionMessage(getPermissionOTHER(gameModeId) + ".all"));
           }
