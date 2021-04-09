@@ -58,6 +58,13 @@ public class Argument {
     public List<Argument> getDepends() {
         return depends;
     }
+    public List<String> getDependsAsString() {
+        ArrayList<String> r = new ArrayList<>();
+        for (Argument depend : getDepends()) {
+            r.add(depend.argument);
+        }
+        return r;
+    }
     public void addDepends(Argument argument) {
         getDepends().add(argument);
     }

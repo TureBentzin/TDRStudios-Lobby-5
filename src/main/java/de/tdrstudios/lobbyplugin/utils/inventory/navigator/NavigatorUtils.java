@@ -91,8 +91,9 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     }
 
     public static Inventory getInventory() {
-        for(InventoryContent content : index) {
-            inventory.setItem( content.getSlot() ,content.toItemStack());
+        for(InventoryContent content : getIndex()) {
+            System.out.println("placed: " + content.getName() + "@" + content.getSlot());
+            inventory.setItem(content.getSlot() ,content.toItemStack());
         }
         return inventory;
     }
@@ -148,6 +149,12 @@ public class NavigatorUtils extends InventoryUtilsInterface {
             }
 
     }
+
+    public ArrayList<InventoryContent> getContents() {
+        return (ArrayList<InventoryContent>) getIndex();
+    }
+
+
     //tdrstudios.inventorys.nav.items.MiniGame1.material
     //tdrstudios.inventorys.nav.items.MiniGame2.name
     //tdrstudios.inventorys.nav.items.MiniGame3.count

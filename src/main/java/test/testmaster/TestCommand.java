@@ -12,36 +12,37 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestCommand extends MyCommand {
 
     public TestCommand(Command command) {
         super(command, new Permission("test"), getNullList());
+        setArguments(getTabComplete());
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        System.out.println(label);
-        if(args.length < 1) {
-            Chat.sendFast(sender, new UsageMessage(getCommand()));
-        }else {
-            Player target = Bukkit.getPlayer(args[0]);
-            if(target != null) {
-                if(args.length > 2) {
-                    StringBuilder stringBuilder = new StringBuilder();
-                    for (int i = 0; i < args.length; i++) {
-                        if(i != 0)
-                            stringBuilder.append(args[i] + " ");
-                    }
-                    KickUtils.kickPlayer(target,  stringBuilder.toString(), null, sender);
-                }
-                else
-                    KickUtils.kickPlayer(target, "kicked from the server!" , null, sender);
-            }else {
-                Chat.sendFast(sender, Chat.getErrorColor() + "Player " + Chat.getAccentColor() +  args[0] + Chat.getErrorColor() + " is not online!");
-            }
-         }
+        sender.sendMessage(label);
         return true;
+    }
+
+    @Override
+    public List<Argument>[] getTabComplete() {
+        List<Argument> arguments0 = new ArrayList<>();
+        Argument players = new Argument("%Players%");
+        players.setPlayermode(true);
+        arguments0.add(new Argument("1"));
+        arguments0.add(new Argument("2", new Permission("test.2")));
+        arguments0.add(players);
+        List<Argument> arguments1 = new ArrayList<>();
+        List<Argument> geheimDepends = new ArrayList<>();
+        geheimDepends.add(players);
+        arguments1.add(new Argument("geheim", new Permission("test.geheim"), geheimDepends));
+        List<Argument>[] argumentsArray = new List[2];
+        argumentsArray[0] = arguments0;
+        argumentsArray[1] = arguments1;
+        return argumentsArray;
     }
 }

@@ -4,6 +4,7 @@ import de.tdrstudios.additional.debug.DebugConsole;
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.Message;
+import de.tdrstudios.lobbyplugin.utils.SoundUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.navigator.NavigatorUtils;
@@ -19,6 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -30,6 +32,7 @@ public class CompassNavigator implements Listener {
     }
 
     public Inventory openGUI(Player player) {
+        updateGUI_NAME();
         System.out.println("CompassNavigator.openGUI");
         player.openInventory(NavigatorUtils.getInventory());
         InventoryUtils.playOpeningSound(player);
@@ -43,14 +46,12 @@ public class CompassNavigator implements Listener {
     @EventHandler
     public void handleNavigatorOpen(PlayerInteractEvent event) {
         if (event.getItem() != null) {
-            // DebugConsole.getDebugConsole().send("handleNavigatorOpen");
-            //System.out.println("B - Material : " + event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))));
-            //System.out.println("B - DisplayName : " + event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName")));
             if (event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))) && event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName"))) {
-                System.out.println("Debug: +1");
-                if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                    System.out.println("Debug: +2");
+
+                if (event.getHand().equals(EquipmentSlot.HAND)){
+
                     openGUI(event.getPlayer());
+                    Chat.sendFast(event.getPlayer(), Chat.getAccentColor() + " -opened navigator: " + NavigatorUtils.getIndex());
                 }
             }
 
@@ -59,6 +60,7 @@ public class CompassNavigator implements Listener {
 
     @EventHandler
     public void handleNavigatorGUIClick(InventoryClickEvent event) {
+        event.getWhoClicked().sendMessage("handleNavigatorGUIClick!");
         if (!(event.getWhoClicked() instanceof Player))
             return;
         Player player = (Player) event.getWhoClicked();
@@ -120,8 +122,8 @@ public class CompassNavigator implements Listener {
 
 
             player.sendMessage("§a Breakpoint 116 - CPN.j passed!");
-        }
-
+        }else
+        player.sendMessage("not this inventory!");
 
     }
 

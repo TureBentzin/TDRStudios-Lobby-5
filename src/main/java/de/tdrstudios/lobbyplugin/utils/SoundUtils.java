@@ -7,9 +7,13 @@ import org.bukkit.entity.Player;
 public class SoundUtils {
 
     private static Sound teleportSound = Sound.ENTITY_FIREWORK_ROCKET_TWINKLE;
+    private static Sound selectSound = Sound.BLOCK_END_PORTAL_FRAME_FILL;
 
     public static Sound getTeleportSound() {
         return teleportSound;
+    }
+    public static Sound getSelectSound() {
+        return selectSound;
     }
 
     public static void setTeleportSound(Sound pTeleportSound) {
