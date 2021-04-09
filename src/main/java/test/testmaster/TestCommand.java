@@ -21,11 +21,6 @@ public class TestCommand extends MyCommand {
     }
 
     @Override
-    public List<String>[] registerTabComplete() {
-        return new List[0];
-    }
-
-    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         System.out.println(label);
         if(args.length < 1) {
@@ -36,8 +31,8 @@ public class TestCommand extends MyCommand {
                 if(args.length > 2) {
                     StringBuilder stringBuilder = new StringBuilder();
                     for (int i = 0; i < args.length; i++) {
-                        if(i > 1)
-                            stringBuilder.append(args[i]);
+                        if(i != 0)
+                            stringBuilder.append(args[i] + " ");
                     }
                     KickUtils.kickPlayer(target,  stringBuilder.toString(), null, sender);
                 }

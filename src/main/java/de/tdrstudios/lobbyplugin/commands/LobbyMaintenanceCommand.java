@@ -51,8 +51,4 @@ public class LobbyMaintenanceCommand extends MyCommand {
 
     }
 
-    @Override
-    public List<String>[] registerTabComplete() {
-        return new List[0];
-    }
 }

@@ -13,6 +13,7 @@ import de.tdrstudios.lobbyplugin.events.GeneralEvents;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.ColorUtils;
+import de.tdrstudios.lobbyplugin.utils.KickUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
@@ -161,6 +162,7 @@ public class LobbyPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinListener() , getPlugin());
         Bukkit.getPluginManager().registerEvents(new CompassNavigator() , getPlugin());
     }
+
 
   public void initChat() {
       //Colors...

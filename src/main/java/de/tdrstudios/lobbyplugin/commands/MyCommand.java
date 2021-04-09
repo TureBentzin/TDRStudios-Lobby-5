@@ -76,5 +76,8 @@ public abstract class MyCommand extends TabComplete implements CommandExecutor, 
 
     @Override
     public abstract boolean onCommand(CommandSender sender, Command cmd, String label, String[] args);
+    public void callCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        onCommand(sender, cmd, label, args);
+    }
 
 }

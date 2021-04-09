@@ -8,5 +8,6 @@ public  interface CommandMethods {
 
     public default void registerMessages() {}
     public default void generatePermission(String permission) {};
-    public List<String>[] registerTabComplete();
+    public default List<String>[] getTabComplete(){return null;};
+    public default void registerTabComplete() {};
 }

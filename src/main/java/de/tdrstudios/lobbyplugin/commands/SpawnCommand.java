@@ -110,7 +110,7 @@ public class SpawnCommand extends MyCommand {
 
 
   @Override
-  public List<String>[] registerTabComplete() {
+  public void registerTabComplete() {
     List<Argument>[] r = new List[1];
     List<Argument> list1 = new ArrayList<>();
     Argument playerArgument = new Argument("%Players%");
@@ -119,6 +119,5 @@ public class SpawnCommand extends MyCommand {
     list1.add(new Argument("@a"));
     list1.add(new Argument("all"));
     list1.add(playerArgument);
-    return new List[0];
   }
 }
