@@ -8,11 +8,6 @@ import org.bukkit.permissions.Permission;
 
 import java.util.List;
 
-public class FlyCommand extends SimpleCommand{
-    //perm: de.tdrstudios.lobby.fly
-    public FlyCommand(String permission) {
-        super(LobbyPlugin.getPlugin().getCommand("fly"), new Permission(permission), getNullList());
-
-    }
+public class FlyCommand{
 
 }
