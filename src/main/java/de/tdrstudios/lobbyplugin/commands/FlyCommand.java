@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
 
 import java.util.List;
-
+//TODO: Add a Command for /fly <Player> <on/off>
 public class FlyCommand{
 
 }
