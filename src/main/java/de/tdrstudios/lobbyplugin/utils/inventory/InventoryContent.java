@@ -149,6 +149,13 @@ public class InventoryContent {
         this.meta = meta;
     }
 
+    public String getName(){
+        if(itemStack.hasItemMeta())
+        return getMeta().getDisplayName();
+        else
+            return getMaterial().name();
+    }
+
     public List<String> getLore() {
         return meta == null ? Collections.EMPTY_LIST : meta.getLore();
     }
