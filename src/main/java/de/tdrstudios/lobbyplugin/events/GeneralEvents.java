@@ -28,7 +28,9 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.MainHand;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -212,7 +214,7 @@ public class GeneralEvents implements Listener {
         if (player.getItemInHand().getType() == Material.getMaterial(ConfigUtils.getString("tdrstudios.hotbar.stick.material"))) {
 
 
-            if (event.getAction() == Action.RIGHT_CLICK_AIR) {
+            if (event.getHand() == EquipmentSlot.HAND) {
                 if (this.HideShow.contains(player.getName())) {
                     this.HideShow.remove(player.getName());
                     for (Player p : Bukkit.getOnlinePlayers()) {
@@ -240,8 +242,6 @@ public class GeneralEvents implements Listener {
                     playerInventory.setItem(ConfigUtils.getConfig().getInt("tdrstudios.hotbar.stick.slot"), item1);
                 }
 
-            }else {
-                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("test..."));
             }
         }
 

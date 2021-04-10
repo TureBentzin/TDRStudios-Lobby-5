@@ -76,13 +76,36 @@ public class TabComplete implements TabCompleter {
 <<<<<<< Updated upstream
         if(getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
            List<Argument> argumentList = arguments[length -1]; // extract a List of Arguments for the player insert length!
+
             for(Argument argument : argumentList) {
                 if(argument.hasDepends()) {
+                    // STOPSHIP: 09.04.2021
+                    
                     //Get the Argument before
-                    String arg0 = args[length -1];
-                    if(argument.getDepends().contains(arg0))
+                    String arg0 = args[length - 2];
+                    boolean playermode = Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(arg0));
+                    //commandSender.sendMessage("OnlinePlayers: " + Bukkit.getOnlinePlayers());
+                    //commandSender.sendMessage("arg0: " + arg0);
+                    //commandSender.sendMessage("playermode: " + playermode);
+                    if(!playermode) {
+                       /* commandSender.sendMessage("Depends: " + argument.getDependsAsString());
+                        commandSender.sendMessage("Before: " + arg0);
+                        commandSender.sendMessage("args: " + Arrays.toString(args));
 
+                        */
+
+                    if (argument.getDependsAsString().contains(arg0))
                         r.add(argument.getArgument());
+                    else {
+                        //commandSender.sendMessage("DEBUG: Depends for Argument not suc: " + argument.getArgument());
+                    }
+                }else {
+                        if(Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(arg0))){ //Tripple check
+                            r.add(argument.getArgument());
+                        }else {
+                          //  commandSender.sendMessage("DEBUG: Depends for Argument not suc: " + argument.getArgument());
+                        }
+                    }
                 }else {
                     r.add(argument.getArgument());
 =======

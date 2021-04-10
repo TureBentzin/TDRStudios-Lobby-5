@@ -212,6 +212,7 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand("test").setExecutor(new TestCommand(getCommand("test")));
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
+      getCommand("fly").setExecutor(new FlyCommand(getCommand("fly"), new Permission("tdrstudios.lobby.perms.fly"), ));
 
   }
 
