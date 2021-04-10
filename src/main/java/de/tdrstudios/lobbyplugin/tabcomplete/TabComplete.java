@@ -1,22 +1,15 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
-import com.google.common.eventbus.DeadEvent;
-import de.bentzin.tools.DevTools;
 import de.tdrstudios.additional.debug.DebugConsole;
-import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.commands.MyCommand;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Debug;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
