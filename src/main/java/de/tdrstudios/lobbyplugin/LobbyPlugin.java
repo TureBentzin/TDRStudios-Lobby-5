@@ -90,7 +90,7 @@ public class LobbyPlugin extends JavaPlugin {
         log = new Console(getPlugin().getName() , getPlugin().getName(), "!");
         messageManager = new MessageManager();
         getLog().send("JavaPlugin by tdrstudios.de load!"); //WaterMark
-        DebugConsole.getDebugConsole().setActive(true); //DEBUG:
+        DebugConsole.getDebugConsole().setActive(false); //DEBUG:
       ///  initChat();
 
         Collection<? extends Player> players = Bukkit.getOnlinePlayers();

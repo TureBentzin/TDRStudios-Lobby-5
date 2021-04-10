@@ -18,8 +18,6 @@ public class NavigatorUtils extends InventoryUtilsInterface {
 
     public NavigatorUtils() {
         Inventory inventory = getInventory();
-        System.out.println("NavigatorUtils.NavigatorUtils.const");
-        System.out.println("inventory.toString() = " + inventory.toString());
     }
 
 
@@ -92,7 +90,7 @@ public class NavigatorUtils extends InventoryUtilsInterface {
 
     public static Inventory getInventory() {
         for(InventoryContent content : getIndex()) {
-            System.out.println("placed: " + content.getName() + "@" + content.getSlot());
+            //System.out.println("placed: " + content.getName() + "@" + content.getSlot());
             inventory.setItem(content.getSlot() ,content.toItemStack());
         }
         return inventory;

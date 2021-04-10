@@ -100,7 +100,7 @@ commands:
      usage: /<command>
      description: Zeige die Version vom Plugin an.
    config:
-    usage: /<command> [save] [read]
+    usage: /<command> [save/read/get] [path]
     description: This command is only for the debug!
    fixinventory:
      usage: /<command> <Player/'*'>
