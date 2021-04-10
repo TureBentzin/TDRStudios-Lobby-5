@@ -36,7 +36,7 @@ public class Message {
         return id;
     }
 
-    public boolean havePrefix() {
+    public boolean hasPrefix() {
         return prefix;
     }
 
