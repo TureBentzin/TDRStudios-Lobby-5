@@ -109,7 +109,7 @@ public class GeneralEvents implements Listener {
                 } else {
                     if (announce)
                         player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 30, 1);
-                    new Point(Thread.currentThread()).point();
+                    //new Point(Thread.currentThread()).point();
                     cancellable.setCancelled(true);
                 }
         } catch (InvalidConfigurationException e) {
