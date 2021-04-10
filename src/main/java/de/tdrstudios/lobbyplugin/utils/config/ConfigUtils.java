@@ -14,6 +14,30 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 public class ConfigUtils {
+    private static ArrayList<String> paths = new ArrayList<>();
+    public static ArrayList<String> getPaths() {
+        return paths;
+    }
+    @Deprecated
+    protected static void addToPaths(String path) {
+        paths.add(path);
+    }
+
+    private static HashMap<String,Object> defaultsmap = new HashMap();
+
+    public static HashMap getDefaultsmap() {
+        return defaultsmap;
+    }
+    protected static void addToDefaults(String path,@Nullable Object object) {
+        if(!getPaths().contains(object))
+        addToPaths(path);
+        defaultsmap.put(path, object);
+    }
+
+    public static Set<String> getKeys(boolean deep){
+        return getConfig().getKeys(deep);
+    }
+
     public static FileConfiguration getConfig() {
         return LobbyPlugin.getPlugin().getConfig();
     }
@@ -148,6 +172,7 @@ public class ConfigUtils {
 
         registerConfiguration(prefix1 + "spawn.material" , Material.COMPASS.name());
         registerConfiguration(prefix1 + "spawn.name" , "§4Set in Config!");
+        registerConfiguration(prefix1 + "spawn.displayname" , "Spawn");
         registerConfiguration(prefix1 + "spawn.count" , 1);
         registerConfiguration(prefix1 + "spawn.slot" , 40);
 
@@ -157,6 +182,7 @@ public class ConfigUtils {
 
     }
     public static void registerConfiguration(String path) {
+        addToDefaults(path, null);
         //if(getConfig().isSet(path)) {
         if(getConfig().get(path) != null) {
             //LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is already set!");
@@ -166,13 +192,12 @@ public class ConfigUtils {
         saveConfig();
     }
     public static void registerConfiguration(String path , Object object) {
+        addToDefaults(path, object);
        // if(getConfig().isSet(path)) {
         if(getConfig().get(path) != null) {
            // LobbyPlugin.getLog().send("ERROR: Path \"" + path + "\" is alredy set!");
         }else {
-            System.out.println("DEBUG: Vorher im Slot " + path + getConfig().get(path));
             getConfig().set(path , object);
-            System.out.println("DEBUG: Nachher im Slot " + path + getConfig().get(path));
         }
         saveConfig();
     }
@@ -187,7 +212,7 @@ public class ConfigUtils {
             return r;
         }else {
             try {
-                throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+                throw new InvalidConfigurationError("The String on path \"" + path + "\" isn´s set in the Configuration!");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -205,7 +230,7 @@ public class ConfigUtils {
             return r;
         }else {
             getConfig().set(path , "Enter here!");
-            throw new InvalidConfigurationException("The String on path \"" + path + "\" isn´s set in the Configuration!");
+            throw new InvalidConfigurationError("The String on path \"" + path + "\" isn´s set in the Configuration!");
         }
     }
     @Deprecated
@@ -223,7 +248,16 @@ public class ConfigUtils {
             return  stringList;
         }else {
             getConfig().set(path, "Enter here!");
-            throw  new InvalidConfigurationException("The StringList on path \"" + path + "\" isn´s set in the Configuration!");
+            throw  new InvalidConfigurationError("The StringList on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+    public static Material getMaterial(@NotNull String path) throws InvalidConfigurationException {
+        Material material = Material.getMaterial(getString(path));
+        if(material != null) {
+            return material;
+        }else{
+            getConfig().set(path, "Enter here!");
+            throw  new InvalidConfigurationError("The Material on path \"" + path + "\" isn´s set in the Configuration!");
         }
     }
 
