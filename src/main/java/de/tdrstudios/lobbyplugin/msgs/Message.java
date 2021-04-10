@@ -63,11 +63,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", content='" + content + '\'' +
-                ", prefix=" + prefix +
-                '}';
+        return getContent();
     }
 }

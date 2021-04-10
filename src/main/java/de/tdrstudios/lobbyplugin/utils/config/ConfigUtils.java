@@ -1,11 +1,13 @@
 package de.tdrstudios.lobbyplugin.utils.config;
 
 import de.tdrstudios.additional.debug.Point;
+import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -258,6 +260,22 @@ public class ConfigUtils {
         }else{
             getConfig().set(path, "Enter here!");
             throw  new InvalidConfigurationError("The Material on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+    public static Object getObject(@NotNull String path) throws InvalidConfigurationException {
+        Object object = getConfig().get(path);
+        if(object != null) {
+            return object;
+        }else {
+            getConfig().set(path, "Enter here!");
+            throw  new InvalidConfigurationError("The Object on path \"" + path + "\" isn´s set in the Configuration!");
+        }
+    }
+
+    public static void sendSectionTree(Chat chat, String path, boolean deep) throws InvalidConfigurationException {
+        Object rootObject = getObject(path);
+        if(rootObject instanceof MemorySection) {
+
         }
     }
 
