@@ -8,6 +8,8 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 
 import javax.naming.directory.InvalidAttributesException;
@@ -30,43 +32,44 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     }
 
     public static void setIndex(List<InventoryContent> index) {
-       NavigatorUtils.index = index;
+        NavigatorUtils.index = index;
     }
 
     /**
      * @param inventoryContent Register a InventoryContent
      */
     public static boolean registerInventoryContent(InventoryContent inventoryContent) {
-        if(!index.contains(inventoryContent)) {
+        if (!index.contains(inventoryContent)) {
             index.add(inventoryContent);
             return true;
-        }else
+        } else
             return false;
     }
+
     public static boolean registerInventoryContent(InventoryContent inventoryContent, int slot) {
-        if(!index.contains(inventoryContent)) {
+        if (!index.contains(inventoryContent)) {
             index.add(inventoryContent);
             return true;
-        }else
+        } else
             return false;
     }
 
     public static boolean removeInventoryContent(InventoryContent inventoryContent) {
-        if(index.contains(inventoryContent)) {
+        if (index.contains(inventoryContent)) {
             index.remove(inventoryContent);
             return true;
-        }else
+        } else
             return false;
     }
+
     public static Boolean removeInventoryContent(int slot) throws InvalidAttributesException {
 
-        if(!index.isEmpty())
+        if (!index.isEmpty())
             for (InventoryContent content : index) {
-                if(content.getSlot() == slot) {
+                if (content.getSlot() == slot) {
                     index.remove(content);
                     return true;
-                }
-                else
+                } else
                     return false;
             }
         else
@@ -76,6 +79,7 @@ public class NavigatorUtils extends InventoryUtilsInterface {
 
     /**
      * Gets config.
+     *
      * @return the config
      */
     public static FileConfiguration getConfig() {
@@ -85,18 +89,20 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     private static Inventory inventory;
 
     static {
-            inventory = Bukkit.createInventory(null, 54, ConfigUtils.getString("tdrstudios.inventorys.nav.name"));
+        inventory = Bukkit.createInventory(null, 54, ConfigUtils.getString("tdrstudios.inventorys.nav.name"));
     }
 
     public static Inventory getInventory() {
-        for(InventoryContent content : getIndex()) {
+        for (InventoryContent content : getIndex()) {
             //System.out.println("placed: " + content.getName() + "@" + content.getSlot());
-            inventory.setItem(content.getSlot() ,content.toItemStack());
+            inventory.setItem(content.getSlot(), content.toItemStack());
         }
+        fillInBackground(inventory, getContentFromConfig("tdrstudios.inventorys.nav.background", true));
         return inventory;
     }
+
     public static void setInventory(Inventory inventory) {
-       NavigatorUtils.inventory = inventory;
+        NavigatorUtils.inventory = inventory;
     }
 
     public static void registerAllInventoryContents() {
@@ -129,28 +135,42 @@ public class NavigatorUtils extends InventoryUtilsInterface {
             throw new NullPointerException("The content on <" + root + "> isn't set!");
         }
     }
-    private static InventoryContent getContentFromConfig(String root , boolean enchant) {
 
-            if (ConfigUtils.getString(root + ".material") != null) {
-                InventoryContent inventoryContent =  new InventoryContent(root + ".material",
-                        root + ".name",
-                        ConfigUtils.getConfig().getInt(root + ".count"),
-                        ConfigUtils.getConfig().getInt(root + ".slot"));
-                inventoryContent.setEnchant(true);
-                return inventoryContent;
-            }else {
+    private static InventoryContent getContentFromConfig(String root, @NotNull boolean enchanted) {
 
-                ConfigUtils.registerConfiguration(root + ".material");
-                ConfigUtils.registerConfiguration(root + ".name");
-                ConfigUtils.registerConfiguration(root + ".count");
-                throw new NullPointerException("The content on <" + root + "> isn't set!");
-            }
+        if (ConfigUtils.getString(root + ".material") != null) {
+            InventoryContent inventoryContent = new InventoryContent(root + ".material",
+                    root + ".name",
+                    ConfigUtils.getConfig().getInt(root + ".count"),
+                    ConfigUtils.getConfig().getInt(root + ".slot"));
+            inventoryContent.setEnchant(true);
+            return inventoryContent;
+        } else {
+
+            ConfigUtils.registerConfiguration(root + ".material");
+            ConfigUtils.registerConfiguration(root + ".name");
+            ConfigUtils.registerConfiguration(root + ".count");
+            throw new NullPointerException("The content on <" + root + "> isn't set!");
+        }
 
     }
 
     public ArrayList<InventoryContent> getContents() {
         return (ArrayList<InventoryContent>) getIndex();
     }
+
+    public static Inventory fillInBackground(Inventory inventory, InventoryContent inventoryContent) {
+        for (ItemStack content : inventory.getContents()) {
+            System.out.println("content = " + content);
+          /*  if(content.){
+                content = inventoryContent.toItemStack();
+            }
+
+           */
+        }
+        return inventory;
+    }
+
 
 
     //tdrstudios.inventorys.nav.items.MiniGame1.material
