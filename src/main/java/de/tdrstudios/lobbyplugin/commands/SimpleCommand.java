@@ -42,6 +42,12 @@ public abstract class SimpleCommand extends MyCommand{
 
     public SimpleCommand(Command command, Permission permission, List<Argument>[] arguments) {
         super(command, permission, arguments);
+        setArguments(getTabComplete());
+    }
+    public SimpleCommand(Command command, Permission permission, List<Argument>[] arguments, CommandSender commandSender) {
+        super(command, permission, arguments);
+        setCommandSender(commandSender);
+        setArguments(getTabComplete());
     }
 
     public boolean senderIsPlayer = getCommandSender() instanceof Player;
@@ -49,8 +55,10 @@ public abstract class SimpleCommand extends MyCommand{
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         onSimpleCommand(sender, cmd, label, args);
+        setCommandSender(sender);
         if(sender instanceof Player)
             setChat(new Chat((Player) sender));
+
         return true;
     }
     public abstract void onSimpleCommand(CommandSender sender, Command cmd, String label, String[] args);
