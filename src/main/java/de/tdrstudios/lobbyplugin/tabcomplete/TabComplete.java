@@ -73,7 +73,7 @@ public class TabComplete implements TabCompleter {
         List<String> r = new ArrayList<>();
         DebugConsole.getDebugConsole().send("getArguments().length = " + getArguments().length);
         DebugConsole.getDebugConsole().send("length = " + length);
-<<<<<<< Updated upstream
+/*<<<<<<< Updated upstream
         if(getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
            List<Argument> argumentList = arguments[length -1]; // extract a List of Arguments for the player insert length!
 
@@ -88,11 +88,11 @@ public class TabComplete implements TabCompleter {
                     //commandSender.sendMessage("arg0: " + arg0);
                     //commandSender.sendMessage("playermode: " + playermode);
                     if(!playermode) {
-                       /* commandSender.sendMessage("Depends: " + argument.getDependsAsString());
-                        commandSender.sendMessage("Before: " + arg0);
-                        commandSender.sendMessage("args: " + Arrays.toString(args));
+                       // commandSender.sendMessage("Depends: " + argument.getDependsAsString());
+                       // commandSender.sendMessage("Before: " + arg0);
+                       // commandSender.sendMessage("args: " + Arrays.toString(args));
 
-                        */
+
 
                     if (argument.getDependsAsString().contains(arg0))
                         r.add(argument.getArgument());
@@ -108,7 +108,9 @@ public class TabComplete implements TabCompleter {
                     }
                 }else {
                     r.add(argument.getArgument());
-=======
+
+
+ */
         if (getArguments().length >= length) { // Check if the TabArguments habe the same or a bigger length then the player insert!
             List<Argument> argumentList = arguments[length - 1]; // extract a List of Arguments for the player insert length!
 
@@ -146,7 +148,7 @@ public class TabComplete implements TabCompleter {
                 } else {
                     if (argument.getArgument().startsWith(args[args.length - 1]))
                         r.add(argument.getArgument());
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
                 }
 
             }
