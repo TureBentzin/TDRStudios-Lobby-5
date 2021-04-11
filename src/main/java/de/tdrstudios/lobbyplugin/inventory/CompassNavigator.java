@@ -36,7 +36,6 @@ public class CompassNavigator implements Listener {
 
     public Inventory openGUI(Player player) {
         updateGUI_NAME();
-        System.out.println("CompassNavigator.openGUI");
         player.openInventory(NavigatorUtils.getInventory());
         InventoryUtils.playOpeningSound(player);
         return NavigatorUtils.getInventory();
@@ -50,11 +49,9 @@ public class CompassNavigator implements Listener {
     public void handleNavigatorOpen(PlayerInteractEvent event) {
         if (event.getItem() != null) {
             if (event.getItem().getType().equals(Material.getMaterial(ConfigUtils.getConfig().getString("tdrstudios.hotbar.nav.material"))) && event.getItem().getItemMeta().getDisplayName().equals(ConfigUtils.getString("tdrstudios.hotbar.nav.displayName"))) {
-
                 if (event.getHand().equals(EquipmentSlot.HAND)){
-
                     openGUI(event.getPlayer());
-                    Chat.sendFast(event.getPlayer(), Chat.getAccentColor() + " -opened navigator: " + NavigatorUtils.getIndex());
+                    //Chat.sendFast(event.getPlayer(), Chat.getAccentColor() + " -opened navigator: " + NavigatorUtils.getIndex());
                 }
             }
 
