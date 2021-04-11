@@ -181,6 +181,10 @@ public class ConfigUtils {
 
         registerConfiguration("tdrstudios.actions.whitelist" , getDefaultActionWhitelist()); // register allowed Material.MATERIAL.name()
 
+        registerConfiguration("tdrstudios.inventorys.nav.background.material" , Material.YELLOW_STAINED_GLASS_PANE);
+        registerConfiguration("tdrstudios.inventorys.nav.background.name" , " ");
+        registerConfiguration("tdrstudios.inventorys.nav.background.count" , 1);
+
 
     }
     public static void registerConfiguration(String path) {
