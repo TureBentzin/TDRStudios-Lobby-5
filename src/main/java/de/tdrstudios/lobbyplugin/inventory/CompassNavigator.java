@@ -7,6 +7,7 @@ import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.utils.SoundUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
+import de.tdrstudios.lobbyplugin.utils.config.InvalidConfigurationError;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.navigator.NavigatorUtils;
 import javafx.scene.effect.Light;
@@ -16,6 +17,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -63,7 +65,7 @@ public class CompassNavigator implements Listener {
         ItemStack stack = event.getCurrentItem();
         if(stack == null)
             return;
-        event.getWhoClicked().sendMessage("handleNavigatorGUIClick!");
+      //  event.getWhoClicked().sendMessage("handleNavigatorGUIClick!");
 
         if (!(event.getWhoClicked() instanceof Player))
             return;
@@ -131,13 +133,16 @@ public class CompassNavigator implements Listener {
             }
 
 
-            player.sendMessage("§a Breakpoint 116 - CPN.j passed!");
+           // player.sendMessage("§a Breakpoint 116 - CPN.j passed!");
         }else
-        player.sendMessage("not this inventory!");
+        //player.sendMessage("not this inventory!");
 
     }
 
-    private void handleClick(Player player, int id, FileConfiguration configuration) {
+    private void handleClick(Player player, int id, FileConfiguration configuration) throws InvalidConfigurationError {
+        MemorySection memorySection = (MemorySection) ConfigUtils.getConfig().getDefaultSection();
+        if(!memorySection.contains("setWarp" + id))
+            throw new InvalidConfigurationError("The Warp " + id + " is not set!");
         int x, y, z;
         float yaw, pitch;
         Location location;

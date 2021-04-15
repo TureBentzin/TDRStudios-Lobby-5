@@ -4,6 +4,7 @@ import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtilsInterface;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.inventory.InventoryType;
@@ -159,14 +160,10 @@ public class NavigatorUtils extends InventoryUtilsInterface {
         return (ArrayList<InventoryContent>) getIndex();
     }
 
-    public static Inventory fillInBackground(Inventory inventory, InventoryContent inventoryContent) {
-        for (ItemStack content : inventory.getContents()) {
-            System.out.println("content = " + content);
-          /*  if(content.){
-                content = inventoryContent.toItemStack();
-            }
-
-           */
+    public static Inventory fillInBackground(Inventory inventory, InventoryContent inventoryContent){
+        for (int i = 0; i < inventory.getContents().length; i++) {
+            if(inventory.getItem(i) == null)
+            inventory.setItem(i, inventoryContent.toItemStack());
         }
         return inventory;
     }

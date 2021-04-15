@@ -4,6 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -107,7 +108,8 @@ public class InventoryContent {
     }
 
     public void setEnchant(boolean value) {
-        if (meta == null) return;
+        if (meta == null)
+        setMeta(Bukkit.getItemFactory().getItemMeta(getItemStack().getType()));
 
         if(value) {
             if(getItemStack().getItemMeta().getEnchantLevel(Enchantment.PROTECTION_ENVIRONMENTAL) < 1) {
@@ -210,6 +212,7 @@ public class InventoryContent {
 
     public ItemStack toItemStack() {
         getItemStack().setItemMeta(getMeta());
+
         return getItemStack();
     }
 }

@@ -176,12 +176,12 @@ public class ConfigUtils {
         registerConfiguration(prefix1 + "spawn.name" , "§4Set in Config!");
         registerConfiguration(prefix1 + "spawn.displayname" , "Spawn");
         registerConfiguration(prefix1 + "spawn.count" , 1);
-        registerConfiguration(prefix1 + "spawn.slot" , 40);
+        registerConfiguration(prefix1 + "spawn.slot" , 4);
 
 
         registerConfiguration("tdrstudios.actions.whitelist" , getDefaultActionWhitelist()); // register allowed Material.MATERIAL.name()
 
-        registerConfiguration("tdrstudios.inventorys.nav.background.material" , Material.YELLOW_STAINED_GLASS_PANE);
+        registerConfiguration("tdrstudios.inventorys.nav.background.material" , Material.YELLOW_STAINED_GLASS_PANE.name());
         registerConfiguration("tdrstudios.inventorys.nav.background.name" , " ");
         registerConfiguration("tdrstudios.inventorys.nav.background.count" , 1);
 
