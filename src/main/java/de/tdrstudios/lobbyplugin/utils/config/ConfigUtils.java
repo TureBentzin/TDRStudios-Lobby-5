@@ -180,6 +180,11 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.actions.whitelist" , getDefaultActionWhitelist()); // register allowed Material.MATERIAL.name()
 
 
+        registerConfiguration("tdrstudios.commands.fly.msgs.succsesA", "Flight was set to %Mode%!");
+        registerConfiguration("tdrstudios.commands.fly.msgs.succsesB", "Flight of %Target% was set to %Mode%!");
+        registerConfiguration("tdrstudios.commands.fly.msgs.alreadyA", "You are already %Status%!");
+        registerConfiguration("tdrstudios.commands.fly.msgs.alreadyB", "%Target% is already %Status%!");
+
     }
     public static void registerConfiguration(String path) {
         addToDefaults(path, null);

@@ -9,7 +9,6 @@ import de.tdrstudios.lobbyplugin.utils.SoundUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.navigator.NavigatorUtils;
-import javafx.scene.effect.Light;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

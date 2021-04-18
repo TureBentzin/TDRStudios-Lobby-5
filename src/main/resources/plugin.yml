@@ -60,7 +60,9 @@ permissions:
     default: op
   de.tdrstudios.spawn:
     default: op
-  
+  tdrstudios.lobby.perms.fly:
+    default: op
+
 commands:
    setspawn:
      description: Setze den Spawnpunkt mit /setspawn
@@ -110,3 +112,5 @@ commands:
      description: Reset the inventory of a player
    test:
      usage: /<command> <Player> <Message>
+   fly:
+     usage: /<command> <Player/on/off> <on/off>

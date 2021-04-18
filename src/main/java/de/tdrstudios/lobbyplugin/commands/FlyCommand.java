@@ -2,6 +2,8 @@ package de.tdrstudios.lobbyplugin.commands;
 
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
+import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
+import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.utils.FlyUtils;
 import org.bukkit.Bukkit;
@@ -18,120 +20,86 @@ public class FlyCommand extends SimpleCommand {
 
     Permission perm;
 
-    public FlyCommand(Command command, Permission permission, List<Argument>[] arguments) {
-        super(command, permission, arguments);
+    public FlyCommand(Command command, Permission permission) {
+        super(command, permission, getNullList());
         perm = permission;
+        setArguments(getTabComplete());
     }
 
     @Override
     public void onSimpleCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (senderIsPlayer) {
+        if (sender instanceof Player) {
             Player p = (Player) sender;
+            Chat chat = new Chat(p);
             if (sender.hasPermission(perm)) {
                 if (args.length != 0) {
+                    if (args[0].equalsIgnoreCase("on")) {
+                        FlyUtils.setFly(true, p, null);
+                        return;
+                    }
+                    if (args[0].equalsIgnoreCase("off")) {
+                        FlyUtils.setFly(false, p, null);
+                        return;
+                    }
                     Player target = Bukkit.getPlayer(args[0]);
 
                     if (target != null) {
                         if (args.length == 1) {
                             FlyUtils.toggleFly(target, p);
-                        }
-                        else {
-                            if (args[1] == "on") {
-                                if (!target.isFlying()) {
-                                    //fliegt jetzt
-                                    target.setFlying(true);
-                                    return;
-                                }
-                                else {
-                                    //msg fliegt schon
-                                    return;
-                                }
+                        } else {
+                            if (args[1].equalsIgnoreCase("on")) {
+                                FlyUtils.setFly(true, target, p);
+                                return;
                             }
-                            if (args[1] == "off") {
-                                if (target.isFlying()) {
-                                    //fliegt jetzt nicht mehr
-                                    target.setFlying(false);
-                                    return;
-                                }
-                                else {
-                                    //msg fliegt nicht
-                                    return;
-                                }
+                            if (args[1].equalsIgnoreCase("off")) {
+                                FlyUtils.setFly(false, target, p);
+                                return;
+                            } else {
+                                chat.sendMessage(getUsageMessage());
                             }
-                            //falsches argument
                         }
+                    } else {
+                        chat.send(Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[0] + Chat.getErrorColor() + " is not online!");
                     }
-                    else {
-                        //spieler nicht online
-                    }
+                } else {
+                    FlyUtils.toggleFly(p, null);
                 }
-                else {
-                    if (p.isFlying()) {
-                        p.setFlying(false);
-                        //du fliegst nicht mehr
-                    }
-                    else {
-                        p.setFlying(true);
-                        //du fliegst jetzt
-                    }
-                }
-            }
-            else {
-                //keine rechte
+            } else {
+                chat.sendMessage(new LackingPermissionMessage(perm));
             }
         }
         else {
+            Chat chat = new Chat(sender);
             if (sender.hasPermission(perm)) {
                 if (args.length != 0) {
                     Player target = Bukkit.getPlayer(args[0]);
 
                     if (target != null) {
                         if (args.length == 1) {
-                            if(target.isFlying()) {
-                                target.setFlying(false);
-                                //fliegt nicht mehr
-                            }
-                            else {
-                                target.setFlying(true);
-                                //fliegt jetzt
-                            }
+                            FlyUtils.toggleFly(target, sender);
                         }
                         else {
                             if (args[1] == "on") {
-                                if (!target.isFlying()) {
-                                    //fliegt jetzt
-                                    target.setFlying(true);
-                                    return;
-                                }
-                                else {
-                                    //msg fliegt schon
-                                    return;
-                                }
+                                FlyUtils.setFly(true, target, sender);
                             }
                             if (args[1] == "off") {
-                                if (target.isFlying()) {
-                                    //fliegt jetzt nicht mehr
-                                    target.setFlying(false);
-                                    return;
-                                }
-                                else {
-                                    //msg fliegt nicht
-                                    return;
-                                }
+                                FlyUtils.setFly(false, target, sender);
                             }
-                            //falsches argument
+                            else {
+                                chat.sendMessage(getUsageMessage());
+                            }
                         }
                     }
                     else {
-                        //spieler nicht online
+                        chat.send(Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[0] + Chat.getErrorColor() + " is not online!");
                     }
                 }
                 else {
-                    //du must einen spieler angeben
+                    chat.sendMessage(getUsageMessage());
                 }
             }
             else {
-                //keine rechte
+                chat.sendMessage(new LackingPermissionMessage(perm));
             }
         }
     }

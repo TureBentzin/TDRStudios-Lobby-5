@@ -13,6 +13,7 @@ import de.tdrstudios.lobbyplugin.events.GeneralEvents;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.ColorUtils;
+import de.tdrstudios.lobbyplugin.utils.FlyUtils;
 import de.tdrstudios.lobbyplugin.utils.KickUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
@@ -103,6 +104,7 @@ public class LobbyPlugin extends JavaPlugin {
         initChat();
         betaWarn();
         registerMessages();
+        FlyUtils.registerMessages();
         registerCommands();
         registerEvents();
         InventoryUtils.registerAllInventoryContents();
@@ -212,7 +214,8 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand("test").setExecutor(new TestCommand(getCommand("test")));
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
-      getCommand("fly").setExecutor(new FlyCommand(getCommand("fly"), new Permission("tdrstudios.lobby.perms.fly"), ));
+
+      getCommand("fly").setExecutor(new FlyCommand(getCommand("fly"), new Permission("tdrstudios.lobby.perms.fly")));
 
   }
 

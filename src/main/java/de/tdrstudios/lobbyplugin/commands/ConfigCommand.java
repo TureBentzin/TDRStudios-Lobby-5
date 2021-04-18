@@ -6,7 +6,6 @@ import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
 import de.tdrstudios.lobbyplugin.tabcomplete.TabComplete;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
-import javafx.beans.property.adapter.ReadOnlyJavaBeanBooleanProperty;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
