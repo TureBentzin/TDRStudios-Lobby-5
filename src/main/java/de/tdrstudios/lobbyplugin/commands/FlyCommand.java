@@ -41,25 +41,29 @@ public class FlyCommand extends SimpleCommand {
                         FlyUtils.setFly(false, p, null);
                         return;
                     }
-                    Player target = Bukkit.getPlayer(args[0]);
+                    if (p.hasPermission("tdrstudios.lobby.perms.fly.other")) {
+                        Player target = Bukkit.getPlayer(args[0]);
 
-                    if (target != null) {
-                        if (args.length == 1) {
-                            FlyUtils.toggleFly(target, p);
-                        } else {
-                            if (args[1].equalsIgnoreCase("on")) {
-                                FlyUtils.setFly(true, target, p);
-                                return;
-                            }
-                            if (args[1].equalsIgnoreCase("off")) {
-                                FlyUtils.setFly(false, target, p);
-                                return;
+                        if (target != null) {
+                            if (args.length == 1) {
+                                FlyUtils.toggleFly(target, p);
                             } else {
+                                if (args[1].equalsIgnoreCase("on")) {
+                                    FlyUtils.setFly(true, target, p);
+                                    return;
+                                }
+                                if (args[1].equalsIgnoreCase("off")) {
+                                    FlyUtils.setFly(false, target, p);
+                                    return;
+                                }
                                 chat.sendMessage(getUsageMessage());
                             }
+                        } else {
+                            chat.send(Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[0] + Chat.getErrorColor() + " is not online!");
                         }
-                    } else {
-                        chat.send(Chat.getErrorColor() + "The Player " + Chat.getAccentColor() + args[0] + Chat.getErrorColor() + " is not online!");
+                    }
+                    else {
+                        chat.sendMessage(new LackingPermissionMessage("tdrstudios.lobby.perms.fly.other"));
                     }
                 } else {
                     FlyUtils.toggleFly(p, null);
@@ -79,15 +83,15 @@ public class FlyCommand extends SimpleCommand {
                             FlyUtils.toggleFly(target, sender);
                         }
                         else {
-                            if (args[1] == "on") {
+                            if (args[1].equalsIgnoreCase("on")) {
                                 FlyUtils.setFly(true, target, sender);
+                                return;
                             }
-                            if (args[1] == "off") {
+                            if (args[1].equalsIgnoreCase("off")) {
                                 FlyUtils.setFly(false, target, sender);
+                                return;
                             }
-                            else {
-                                chat.sendMessage(getUsageMessage());
-                            }
+                            chat.sendMessage(getUsageMessage());
                         }
                     }
                     else {

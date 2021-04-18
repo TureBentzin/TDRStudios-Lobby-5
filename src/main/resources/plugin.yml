@@ -62,6 +62,8 @@ permissions:
     default: op
   tdrstudios.lobby.perms.fly:
     default: op
+  tdrstudios.lobby.perms.fly.other:
+    default: op
 
 commands:
    setspawn:

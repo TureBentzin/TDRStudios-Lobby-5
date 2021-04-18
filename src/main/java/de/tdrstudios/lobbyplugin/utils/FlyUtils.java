@@ -16,53 +16,51 @@ public class FlyUtils {
         Chat chat = new Chat(player);
         if(sender == null) {
             if (player.isFlying() && fly) {
-                Message message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyA");
-                chat.send(Chat.getErrorColor() + message.replaceContent("%Status%", Chat.getAccentColor() + "flying" + Chat.getErrorColor()));
+                String message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyA").getContent();
+                chat.send(Chat.getErrorColor() + message.replaceAll("%Status%", Chat.getAccentColor() + "flying" + Chat.getErrorColor()));
                 return;
             }
             if (!player.isFlying() && !fly) {
-                Message message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyA");
-                chat.send(Chat.getErrorColor() + message.replaceContent("%Status%", Chat.getAccentColor() + "standing" + Chat.getErrorColor()));
+                String message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyA").getContent();
+                chat.send(Chat.getErrorColor() + message.replaceAll("%Status%", Chat.getAccentColor() + "standing" + Chat.getErrorColor()));
                 return;
             }
             player.setAllowFlight(fly);
             player.setFlying(fly);
             if (fly) {
-                Message message = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA");
-                player.sendMessage(message.getContent());
-                chat.send(message.replaceContent("%Mode%", Chat.getAccentColor() + "flying" + Chat.getChatColor()));
+                String message = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA").getContent();
+                chat.send(message.replaceAll("%Mode%", Chat.getAccentColor() + "flying" + Chat.getChatColor()));
             }
             else {
-                Message message = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA");
-                player.sendMessage(message.getContent());
-                chat.send(message.replaceContent("%Mode%", Chat.getAccentColor() + "standing" + Chat.getChatColor()));
+                String message = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA").getContent();
+                chat.send(message.replaceAll("%Mode%", Chat.getAccentColor() + "standing" + Chat.getChatColor()));
             }
         }
         else {
-            chat = new Chat(sender);
+            Chat chat2 = new Chat(sender);
             if (player.isFlying() && fly) {
-                Message message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyB");
-                chat.send(Chat.getErrorColor() + message.replaceMessage("%Status%", Chat.getAccentColor() + "flying" + Chat.getErrorColor()).replaceContent("%Target%", Chat.getAccentColor() + player.getName() + Chat.getErrorColor()));
+                String message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyB").getContent();
+                chat2.send(Chat.getErrorColor() + message.replaceAll("%Status%", Chat.getAccentColor() + "flying" + Chat.getErrorColor()).replaceAll("%Target%", Chat.getAccentColor() + player.getName() + Chat.getErrorColor()));
                 return;
             }
             if (!player.isFlying() && !fly) {
-                Message message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyB");
-                chat.send(Chat.getErrorColor() + message.replaceMessage("%Status%", Chat.getAccentColor() + "standing" + Chat.getErrorColor()).replaceContent("%Target%", Chat.getAccentColor() + player.getName() + Chat.getErrorColor()));
+                String message = LobbyPlugin.getMessageManager().getMessageByName("fly.alreadyB").getContent();
+                chat2.send(Chat.getErrorColor() + message.replaceAll("%Status%", Chat.getAccentColor() + "standing" + Chat.getErrorColor()).replaceAll("%Target%", Chat.getAccentColor() + player.getName() + Chat.getErrorColor()));
                 return;
             }
             player.setAllowFlight(fly);
             player.setFlying(fly);
             if (fly) {
-                Message message1 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesB");
-                Message message2 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA");
-                Chat.sendFast(player, message2.replaceContent("%Mode%", Chat.getAccentColor() + "flying" + Chat.getChatColor()));
-                chat.send(message1.replaceMessage("%Mode%", Chat.getAccentColor() + "flying" + Chat.getChatColor()).replaceContent("%Target%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()));
+                String message1 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesB").getContent();
+                String message2 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA").getContent();
+                chat.send(message2.replaceAll("%Mode%", Chat.getAccentColor() + "flying" + Chat.getChatColor()));
+                chat2.send(message1.replaceAll("%Mode%", Chat.getAccentColor() + "flying" + Chat.getChatColor()).replaceAll("%Target%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()));
             }
             else {
-                Message message1 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesB");
-                Message message2 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA");
-                Chat.sendFast(player, message2.replaceContent("%Mode%", Chat.getAccentColor() + "standing" + Chat.getChatColor()));
-                chat.send(message1.replaceMessage("%Mode%", Chat.getAccentColor() + "standing" + Chat.getChatColor()).replaceContent("%Target%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()));
+                String message1 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesB").getContent();
+                String message2 = LobbyPlugin.getMessageManager().getMessageByName("fly.succsesA").getContent();
+                chat.send(message2.replaceAll("%Mode%", Chat.getAccentColor() + "standing" + Chat.getChatColor()));
+                chat2.send(message1.replaceAll("%Mode%", Chat.getAccentColor() + "standing" + Chat.getChatColor()).replaceAll("%Target%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()));
             }
         }
     }
@@ -97,7 +95,7 @@ public class FlyUtils {
         LobbyPlugin.getMessageManager().registerMessage(message2);
         Message message3 = new Message("fly.alreadyA", ConfigUtils.getString("tdrstudios.commands.fly.msgs.alreadyA"));
         LobbyPlugin.getMessageManager().registerMessage(message3);
-        Message message4 = new Message("fly.succsesB", ConfigUtils.getString("tdrstudios.commands.fly.msgs.succsesB"));
+        Message message4 = new Message("fly.alreadyB", ConfigUtils.getString("tdrstudios.commands.fly.msgs.alreadyB"));
         LobbyPlugin.getMessageManager().registerMessage(message4);
     }
 

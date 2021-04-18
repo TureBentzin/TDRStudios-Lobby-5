@@ -224,10 +224,17 @@ public class Chat {
      * @param message the message
      */
     public void send(String message) {
-        if(getPlayers() !=null) {
+        if(getPlayers() != null) {
             for (Player player : getPlayers()) {
                 if (player != null) {
                     player.sendMessage(getPrefix() + message);
+                }
+            }
+        }
+        if (getCommandSenders() != null) {
+            for (CommandSender sender : getCommandSenders()) {
+                if (sender != null) {
+                    sender.sendMessage(getPrefix() + message);
                 }
             }
         }
