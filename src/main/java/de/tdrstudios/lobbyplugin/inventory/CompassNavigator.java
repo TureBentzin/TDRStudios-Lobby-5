@@ -134,7 +134,7 @@ public class CompassNavigator implements Listener {
 
 
            // player.sendMessage("§a Breakpoint 116 - CPN.j passed!");
-        }else
+        }else {}
         //player.sendMessage("not this inventory!");
 
     }
