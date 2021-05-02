@@ -26,7 +26,7 @@ import java.util.Objects;
 
 @SuppressWarnings("deprecation")
 @Work_In_Progress
-public class GamemodeCommand implements CommandExecutor {
+public class GamemodeCommand extends MyCommand {
   private Permission[] permissions = new Permission[4];
   private Command command;
   private Chat chat;
@@ -88,13 +88,15 @@ public class GamemodeCommand implements CommandExecutor {
    */
 
   public GamemodeCommand(String cmdName, Permission[] perms) {
+    super(LobbyPlugin.getPlugin().getCommand(cmdName),perms[1], getNullList());
     setPermissions(perms);
     setCommand(LobbyPlugin.getPlugin().getCommand(cmdName));
     registerMessages();
-    registerTab();
+    setArguments(getTabComplete());
   }
 
-  private void registerTab() {
+  @Override
+  public List<Argument>[] getTabComplete() {
     List<Argument> TabList0 = new ArrayList<>();
     List<Argument> TabList1 = new ArrayList<>();
     List<Argument>[] TabList = new List[2];
@@ -116,7 +118,7 @@ public class GamemodeCommand implements CommandExecutor {
     TabList[0] = TabList0;
     TabList[1] = TabList1;
 
-    Objects.requireNonNull(LobbyPlugin.getPlugin().getCommand(getCommand().getName())).setTabCompleter(new TabComplete(TabList));
+    return TabList;
   }
 
   private GameMode getGamemode(String arg) {
