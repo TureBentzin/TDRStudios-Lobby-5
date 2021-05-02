@@ -1,6 +1,7 @@
 package de.tdrstudios.lobbyplugin.tabcomplete;
 
 import de.tdrstudios.additional.debug.DebugConsole;
+import de.tdrstudios.additional.debug.Point;
 import de.tdrstudios.lobbyplugin.commands.MyCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
