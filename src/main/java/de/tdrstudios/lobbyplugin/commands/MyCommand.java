@@ -12,7 +12,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MyCommand extends TabComplete implements CommandExecutor, CommandMethods{
+public abstract class MyCommand extends TabComplete implements TablessCommand{
+
+    //ReOverWrite
+    @Override
+    /**
+     * Use this as a preset for your getTabComplete Method in your Command!
+     */
+    public List<Argument>[] getTabComplete() {
+        return this.getArguments();
+    }
 
     /**
      * @param arguments

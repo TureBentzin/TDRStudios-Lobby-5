@@ -23,26 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Work_In_Progress
-public class FixInventoryCommand implements CommandExecutor {
-    private Permission permission;
-    private Command command;
-
-    protected Command getCommand() {
-        return command;
-    }
-
-    public Permission getPermission() {
-        return permission;
-    }
-
-    protected void setCommand(Command command) {
-        this.command = command;
-    }
-    public void setPermission(Permission permission) {
-        this.permission = permission;
-    }
+public class FixInventoryCommand extends MyCommand {
 
     public FixInventoryCommand(String command ,String permission) {
+        super(LobbyPlugin.getPlugin().getCommand(command), new Permission(permission), getNullList());
         setCommand(LobbyPlugin.getPlugin().getCommand(command));
         setPermission(new Permission(permission, "Permission for " + getClass().getName()));
         ; // Change soon
@@ -53,7 +37,7 @@ public class FixInventoryCommand implements CommandExecutor {
         argumentList.add(new Argument("all"));
         argumentList.add(new Argument("@a"));
         argumentListArray[0] = argumentList;
-        LobbyPlugin.getPlugin().getCommand(getCommand().getName()).setTabCompleter(new TabComplete(argumentListArray));
+        setArguments(argumentListArray);
     }
 
     @Override
