@@ -1,7 +1,6 @@
 package test.testmaster.devtools;
 
 import de.tdrstudios.additional.debug.Point;
-import de.tdrstudios.additional.debug.PointTrace;
 
 public class Main {
 

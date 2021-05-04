@@ -150,7 +150,7 @@ public class LobbyPlugin extends JavaPlugin {
         validateConfig();
         getLogger().warning("[Preview] You are using a preview version of the plugin so please report any issues, that arent debugs to the developers via issue on github.");
     }
-    
+
     public void fixConfig() {
         if(getConfig().getLocation("tdrstudios.spawn") == null) {
             getConfig().set("tdrstudios.spawn", new Location(Bukkit.getWorld("world"), 0 , Bukkit.getWorld("world").getSeaLevel() ,0));
@@ -219,5 +219,5 @@ public class LobbyPlugin extends JavaPlugin {
     return plugin;
   }
 
-}
 
+}
