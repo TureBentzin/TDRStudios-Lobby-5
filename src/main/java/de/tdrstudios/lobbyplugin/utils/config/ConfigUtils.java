@@ -185,6 +185,13 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.inventorys.nav.background.name" , " ");
         registerConfiguration("tdrstudios.inventorys.nav.background.count" , 1);
 
+        registerConfiguration("tdrstudios.commands.glow.msgs.toggled" , "Your Glow was set to %Status%!");
+        registerConfiguration("tdrstudios.commands.glow.msgs.toggled-byPlayer" , Chat.getAccentColor() + "%Player% set your Glow to %Status%!");
+        registerConfiguration("tdrstudios.commands.glow.msgs.toggled-byMe" , "You set %Player%´s Glow to %Status%!");
+        registerConfiguration("tdrstudios.commands.glow.msgs.fail.already" , "The Glow of %Player% is already %Status%!");
+        registerConfiguration("tdrstudios.commands.glow.msgs.fail.already-me" , "Your Glow is already %Status%!");
+
+
 
     }
     public static void registerConfiguration(String path) {
