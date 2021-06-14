@@ -22,7 +22,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -210,6 +212,8 @@ public class LobbyPlugin extends JavaPlugin {
     getCommand("config").setExecutor(new ConfigCommand("config"));
 
     getCommand("test").setExecutor(new TestCommand(getCommand("test")));
+
+    getCommand("glow").setExecutor(new GlowCommand("glow", new Permission("tdrstudios.lobby.perms.glow")));
 
     //getCommand("config").setTabCompleter(new ConfigTab(new Permission("tdrstudios.debug")));
 
