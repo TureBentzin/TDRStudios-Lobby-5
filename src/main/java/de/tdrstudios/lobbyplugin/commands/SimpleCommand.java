@@ -1,6 +1,8 @@
 package de.tdrstudios.lobbyplugin.commands;
 
+import de.tdrstudios.additional.debug.DebugConsole;
 import de.tdrstudios.lobbyplugin.Chat;
+import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.msgs.Message;
 import de.tdrstudios.lobbyplugin.msgs.UsageMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
@@ -50,14 +52,25 @@ public abstract class SimpleCommand extends MyCommand{
         setArguments(getTabComplete());
     }
 
+    @Override
+    public Permission getOtherPermission() {
+       return new Permission(getPermission().getName() + ".other", getPermission().getDescription(), getPermission().getDefault());
+    }
+
     public boolean senderIsPlayer = getCommandSender() instanceof Player;
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        onSimpleCommand(sender, cmd, label, args);
-        setCommandSender(sender);
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
         if(sender instanceof Player)
             setChat(new Chat((Player) sender));
+        setCommandSender(sender);
+        DebugConsole.getDebugConsole().send(" Executing SimpleCommand: " + sender.getName() + " is executing " + getCommand().getName());
+        try {
+            onSimpleCommand(sender, cmd, label, args);
+        }catch (Exception e){
+            System.out.println("Error in a simple Command: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         return true;
     }
