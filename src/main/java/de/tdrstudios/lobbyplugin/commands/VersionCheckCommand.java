@@ -43,7 +43,8 @@ public class VersionCheckCommand implements CommandExecutor {
         ClickEvent clickEvent = baseComponent.getClickEvent();
         baseComponent.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL , "https://github.com/TDRMinecraft/ZZockers_Lobby_Edit"));
         //p.sendMessage("§3§lV1.2 Vom 18.09.2020 §4§l Programmiert von " +LobbyPlugin.getPlugin().getDescription().getAuthors());
-        chat.sendMessage("Plugin: " + Chat.getAccentColor()+ LobbyPlugin.getPlugin().getDescription().getVersion());
+        chat.sendMessage("Plugin: " + Chat.getAccentColor()+ LobbyPlugin.getPlugin().getDescription().getName());
+        chat.sendMessage("Info: " + Chat.getAccentColor() + LobbyPlugin.getPlugin().getDescription().getDescription());
         chat.sendMessage("Version: " + Chat.getAccentColor() + LobbyPlugin.getPlugin().getDescription().getVersion());
         chat.sendMessage("By: " + Chat.getAccentColor() + LobbyPlugin.getPlugin().getDescription().getAuthors());
         //p.spigot().sendMessage(baseComponent);
