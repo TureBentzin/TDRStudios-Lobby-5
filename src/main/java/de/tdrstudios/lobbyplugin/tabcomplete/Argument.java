@@ -20,6 +20,15 @@ public class Argument {
         setPermission(permission);
         setDepends(depends);
     }
+    public Argument(String argument, Permission permission, Argument[] depends) {
+        setArgument(argument);
+        setPermission(permission);
+        ArrayList<Argument> arguments = new ArrayList<>();
+        for (Argument depend : depends) {
+            arguments.add(depend);
+        }
+        setDepends(arguments);
+    }
 
 
     private String argument;
