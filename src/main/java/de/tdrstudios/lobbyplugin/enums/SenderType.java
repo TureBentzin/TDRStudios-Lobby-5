@@ -11,6 +11,7 @@ public enum  SenderType {
     PLAYER("Player"),
     CONSOLE("Console"),
     COMMAND_BLOCK("Commandblock"),
+    UNKNOWN("Unknown"),
     ;
 
     private String text;
@@ -26,7 +27,7 @@ public enum  SenderType {
     }
 
     public static SenderType getFromCommandSender(CommandSender commandSender) {
-        SenderType r = null;
+        SenderType r = UNKNOWN;
         if(commandSender instanceof Player)
             r = SenderType.PLAYER;
         if(commandSender instanceof ConsoleCommandSender)
