@@ -184,7 +184,7 @@ public class GlowCommand extends SimpleCommand {
             GLOW_EFFECT.apply(player);
             getPlayerChat().send(player, getToggledMessage(true));
         }
-        SoundUtils.playSound(player, TOGGLE_SOUND);
+        SoundUtils.playSound(player, TOGGLE_SOUND, 2);
     }
 
     private void toggleGlow(Player player, CommandSender initiator) {
@@ -223,6 +223,6 @@ public class GlowCommand extends SimpleCommand {
             GLOW_EFFECT.apply(player);
             getPlayerChat().send(player, getToggledMessage(true));
         }
-        SoundUtils.playSound(player, TOGGLE_SOUND);
+        SoundUtils.playSound(player, TOGGLE_SOUND, 2);
     }
 }
