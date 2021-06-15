@@ -35,7 +35,7 @@ public class SpeedUtils {
         );
     }
 
-    public static void toggleGlow(Player player) {
+    public static void toggleSpeed(Player player) {
         if (hasSpeed(player)) {
             player.removePotionEffect(SPEED_EFFECT.getType());
             Chat.sendFast(player, getToggledMessage(false));
@@ -46,7 +46,7 @@ public class SpeedUtils {
         SoundUtils.playSound(player, TOGGLE_SOUND, 2);
     }
 
-    private void toggleGlow(Player player, CommandSender initiator) {
+    private void toggleSpeed(Player player, CommandSender initiator) {
         if (hasSpeed(player)) {
             player.removePotionEffect(SPEED_EFFECT.getType());
             Chat.sendFast(player, getToggledMessage(false, initiator));
@@ -60,7 +60,7 @@ public class SpeedUtils {
         }
         SoundUtils.playSound(player, TOGGLE_SOUND, 2);
     }
-    private void setGlow(Player player, boolean b, CommandSender initiator) {
+    private void setSpeed(Player player, boolean b, CommandSender initiator) {
         if (!b) {
             player.removePotionEffect(SPEED_EFFECT.getType());
             Chat.sendFast(player, getToggledMessage(false, initiator));
@@ -74,7 +74,7 @@ public class SpeedUtils {
         }
         SoundUtils.playSound(player, TOGGLE_SOUND, 2);
     }
-    private void setGlow(Player player, boolean b) {
+    private void setSpeed(Player player, boolean b) {
         if (!b) {
             player.removePotionEffect(SPEED_EFFECT.getType());
             Chat.sendFast(player, getToggledMessage(false));
