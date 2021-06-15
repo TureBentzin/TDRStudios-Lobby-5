@@ -1,5 +1,6 @@
 package de.tdrstudios.lobbyplugin.commands;
 
+import de.tdrstudios.additional.Work_In_Progress;
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
@@ -24,6 +25,7 @@ public class FlyCommand extends SimpleCommand {
     }
 
     @Override
+    @Work_In_Progress
     public void onSimpleCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (senderIsPlayer) {
             Player p = (Player) sender;
