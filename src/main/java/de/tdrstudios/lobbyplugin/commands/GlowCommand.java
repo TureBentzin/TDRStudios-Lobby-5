@@ -31,6 +31,7 @@ public class GlowCommand extends SimpleCommand {
     public GlowCommand(String command, Permission permission) {
         super(LobbyPlugin.getPlugin().getCommand(command), permission, getNullList());
         setArguments(getTabComplete());
+
     }
 
     @Override
