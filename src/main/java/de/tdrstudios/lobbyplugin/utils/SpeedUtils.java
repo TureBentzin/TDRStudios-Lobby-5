@@ -50,12 +50,12 @@ public class SpeedUtils {
         if (hasSpeed(player)) {
             player.removePotionEffect(SPEED_EFFECT.getType());
             Chat.sendFast(player, getToggledMessage(false, initiator));
-            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.glow.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "off" + Chat.getChatColor()));
+            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.speed.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "off" + Chat.getChatColor()));
 
         } else {
             SPEED_EFFECT.apply(player);
             Chat.sendFast(player, getToggledMessage(true, initiator));
-            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.glow.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "on" + Chat.getChatColor()));
+            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.speed.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "on" + Chat.getChatColor()));
 
         }
         SoundUtils.playSound(player, TOGGLE_SOUND, 2);
@@ -64,12 +64,12 @@ public class SpeedUtils {
         if (!b) {
             player.removePotionEffect(SPEED_EFFECT.getType());
             Chat.sendFast(player, getToggledMessage(false, initiator));
-            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.glow.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "on" + Chat.getChatColor()));
+            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.speed.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "on" + Chat.getChatColor()));
 
         } else {
             SPEED_EFFECT.apply(player);
             Chat.sendFast(player, getToggledMessage(true, initiator));
-            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.glow.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "off" + Chat.getChatColor()));
+            Chat.sendFast(initiator, ConfigUtils.getString("tdrstudios.commands.speed.msgs.toggled-byMe").replace("%Player%", Chat.getAccentColor() + player.getName() + Chat.getChatColor()).replace("%Status%", Chat.getAccentColor() + "off" + Chat.getChatColor()));
 
         }
         SoundUtils.playSound(player, TOGGLE_SOUND, 2);

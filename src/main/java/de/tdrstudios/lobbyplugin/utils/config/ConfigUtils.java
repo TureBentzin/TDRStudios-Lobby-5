@@ -191,6 +191,15 @@ public class ConfigUtils {
         registerConfiguration("tdrstudios.commands.glow.msgs.fail.already" , "The Glow of %Player% is already %Status%!");
         registerConfiguration("tdrstudios.commands.glow.msgs.fail.already-me" , "Your Glow is already %Status%!");
 
+        registerConfiguration("tdrstudios.commands.speed.msgs.toogled" , "Your Speed was set to %Status%!");
+        registerConfiguration("tdrstudios.commands.speed.msgs.toogled-byPlayer" , "%Player% set your Speed to %Status%");
+        registerConfiguration("tdrstudios.commands.speed.msgs.toggled-byMe" , "You set %Player%´s Speed to %Status%!");
+        registerConfiguration("tdrstudios.commands.speed.msgs.fail.already" , "The Speed of %Player% is already %Status%!");
+        registerConfiguration("tdrstudios.commands.speed.msgs.fail.already-me" , "Your Speed is already %Status%!");
+
+
+
+
 
 
     }

@@ -10,6 +10,7 @@ import de.tdrstudios.lobbyplugin.inventory.CompassNavigator;
 import de.tdrstudios.lobbyplugin.commands.*;
 
 import de.tdrstudios.lobbyplugin.events.GeneralEvents;
+import de.tdrstudios.lobbyplugin.inventory.actionitem.ActionItemListener;
 import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.msgs.MessageManager;
 import de.tdrstudios.lobbyplugin.utils.ColorUtils;
@@ -163,6 +164,9 @@ public class LobbyPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(GeneralEvents.getInstance() , getPlugin());
         Bukkit.getPluginManager().registerEvents(new JoinListener() , getPlugin());
         Bukkit.getPluginManager().registerEvents(new CompassNavigator() , getPlugin());
+
+
+        Bukkit.getPluginManager().registerEvents(ActionItemListener.getInstance(), getPlugin());
     }
 
 

@@ -8,6 +8,8 @@ public class SoundUtils {
 
     private static Sound teleportSound = Sound.ENTITY_FIREWORK_ROCKET_TWINKLE;
     private static Sound selectSound = Sound.BLOCK_END_PORTAL_FRAME_FILL;
+    private static Sound clickSound = Sound.UI_BUTTON_CLICK;
+
     /**
      * @implNote Play with a pitch of "2"
      */
@@ -27,6 +29,14 @@ public class SoundUtils {
 
     public static void setSelectSound(Sound selectSound) {
         SoundUtils.selectSound = selectSound;
+    }
+
+    public static void setClickSound(Sound clickSound) {
+        SoundUtils.clickSound = clickSound;
+    }
+
+    public static Sound getClickSound() {
+        return clickSound;
     }
 
     /**
