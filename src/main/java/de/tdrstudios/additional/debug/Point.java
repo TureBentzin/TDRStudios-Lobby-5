@@ -19,6 +19,10 @@ public class Point extends PointTrace{
         super(thread);
     }
 
+    public Point() {
+        super(Thread.currentThread());
+    }
+
     /**
      *
      * @param thread The current Thread
