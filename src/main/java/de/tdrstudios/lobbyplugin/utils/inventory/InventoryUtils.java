@@ -4,6 +4,7 @@ import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -55,17 +56,30 @@ public class InventoryUtils {
     public static void registerInventoryContent(InventoryContent inventoryContent , int slot){
         inventoryContent.setSlot(slot);
         index.add(inventoryContent);
+
     }
 
     /**
-     * Sets inventory to lobbystandart.
-     * @param player the player witch inventory should set to lobbystandart
+     * Sets inventory to lobbyDefault.
+     * @param player the player witch inventory should set to lobbyDefault
      */
     public static void setInventory(Player player) {
         PlayerInventory playerInventory = player.getInventory();
         playerInventory.clear();
         for(InventoryContent content : getIndex()) {
-            playerInventory.setItem(content.getSlot(), content.toItemStack());
+            if(content instanceof PermissionInventoryContent) {
+                PermissionInventoryContent permissionInventoryContent = (PermissionInventoryContent) content;
+                if(permissionInventoryContent.getPermission() != null) {
+                    if(player.hasPermission(permissionInventoryContent.getPermission()))
+                        playerInventory.setItem(content.getSlot(), content.toItemStack());
+                    else {
+                        player.sendMessage("DEBUG: No Permissions for: " + content.getName());
+                    }
+                }else {
+                    playerInventory.setItem(content.getSlot(), content.toItemStack());
+                }
+            }else
+                playerInventory.setItem(content.getSlot(), content.toItemStack());
         }
     }
 
@@ -73,17 +87,25 @@ public class InventoryUtils {
      * Register all inventory contents.
      */
     public static  void registerAllInventoryContents() {
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material" ,"tdrstudios.hotbar.nav.displayName" , 1 , c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material" ,"tdrstudios.hotbar.info.displayName" , 1 , c.getInt("tdrstudios.hotbar.info.slot"))); // Info
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material" ,"tdrstudios.hotbar.settings.displayName" , 1 , c.getInt("tdrstudios.hotbar.settings.slot"))); // Settings
-        registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material" ,"tdrstudios.hotbar.stick.displayName" , 1 , c.getInt("tdrstudios.hotbar.stick.slot"))); // HideStick
+        LobbyPlugin.getLog().send("Starting the registration of all InventoryContents");
+        try {
+            registerInventoryContent(new InventoryContent("tdrstudios.hotbar.nav.material", "tdrstudios.hotbar.nav.displayName", 1, c.getInt("tdrstudios.hotbar.nav.slot"))); // Navigator
+            registerInventoryContent(new InventoryContent("tdrstudios.hotbar.info.material", "tdrstudios.hotbar.info.displayName", 1, c.getInt("tdrstudios.hotbar.info.slot"))); // Info
+            registerInventoryContent(new InventoryContent("tdrstudios.hotbar.settings.material", "tdrstudios.hotbar.settings.displayName", 1, c.getInt("tdrstudios.hotbar.settings.slot"))); // Settings
+            registerInventoryContent(new InventoryContent("tdrstudios.hotbar.stick.material", "tdrstudios.hotbar.stick.displayName", 1, c.getInt("tdrstudios.hotbar.stick.slot"))); // HideStick
 
-        registerInventoryContent(getBackItem(), 35);
+            registerInventoryContent(getBackItem(), 35);
+        }catch (Exception e){
+            LobbyPlugin.getLog().send("Error while registering the InventoryContent");
+            e.printStackTrace();
+        }
     }
 
 
     //General Inventory Content
-    private static InventoryContent backItem = new InventoryContent("tdrstudios.items.back.material" , "tdrstudios.items.back.name", 1, 0);
+    private static InventoryContent backItem =  new InventoryContent("tdrstudios.items.back.material" , "tdrstudios.items.back.name", 1, 0);
+
+
     public static InventoryContent getBackItem() {
         return backItem;
     }

@@ -56,9 +56,13 @@ public class InventoryContent {
         setSlot(slot);
     }
 
-    public InventoryContent(String ConfigMaterialString, String displayName, int count, boolean isEnchant , int slot) {
+    public InventoryContent(String ConfigMaterialString, String displayName, int count, boolean isEnchant , int slot){
         setCount(count);
-        setMaterial(Material.getMaterial(ConfigUtils.getConfig().getString(ConfigMaterialString)));
+        try {
+            setMaterial(ConfigUtils.getMaterial(ConfigMaterialString));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
         setItemStack(new ItemStack(getMaterial(), getCount()));
         setMeta(getItemStack().getItemMeta()); // Fixes #20
 
@@ -77,7 +81,11 @@ public class InventoryContent {
 
     public InventoryContent(String ConfigMaterialString, String ConfigdisplayNameString, int count , int slot) {
         setCount(count);
-        setMaterial(Material.getMaterial(ConfigUtils.getString(ConfigMaterialString)));
+        try {
+            setMaterial(ConfigUtils.getMaterial(ConfigMaterialString));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
         setItemStack(new ItemStack(getMaterial(), getCount()));
         setMeta(getItemStack().getItemMeta()); //Add in fix #20
         if (meta != null) {
@@ -92,7 +100,11 @@ public class InventoryContent {
         setCount(count);
         setStaticItem(staticItem);
 
-        setMaterial(Material.getMaterial(Objects.requireNonNull(ConfigUtils.getString(ConfigMaterialString))));
+        try {
+            setMaterial(ConfigUtils.getMaterial(ConfigMaterialString));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
 
         setItemStack(new ItemStack(getMaterial(), getCount()));
 

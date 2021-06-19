@@ -1,5 +1,7 @@
 package de.tdrstudios.lobbyplugin.utils.inventory.navigator;
 
+import de.bentzin.tools.console.Console;
+import de.tdrstudios.lobbyplugin.listeners.JoinListener;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryContent;
 import de.tdrstudios.lobbyplugin.utils.inventory.InventoryUtilsInterface;
@@ -35,6 +37,8 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     public static void setIndex(List<InventoryContent> index) {
         NavigatorUtils.index = index;
     }
+
+    private static Console console = new de.bentzin.tools.console.Console(JoinListener.class.getSimpleName(), JoinListener.class.getName(), "");
 
     /**
      * @param inventoryContent Register a InventoryContent
@@ -98,7 +102,11 @@ public class NavigatorUtils extends InventoryUtilsInterface {
             //System.out.println("placed: " + content.getName() + "@" + content.getSlot());
             inventory.setItem(content.getSlot(), content.toItemStack());
         }
-        fillInBackground(inventory, getContentFromConfig("tdrstudios.inventorys.nav.background", true));
+        try {
+            fillInBackground(inventory, getContentFromConfig("tdrstudios.inventorys.nav.background", true));
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
         return inventory;
     }
 
@@ -109,18 +117,23 @@ public class NavigatorUtils extends InventoryUtilsInterface {
     public static void registerAllInventoryContents() {
         System.out.println("NavigatorUtils.registerAllInventoryContents");
         String rootPattern = "tdrstudios.inventorys.nav.items.";
-        registerInventoryContent(getContentFromConfig(rootPattern + "spawn", true));
-        registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame1")); // sw
-        registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame2")); // bw
-        registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame3")); // cb
-        registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame4")); // fb
-        registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame5")); // KFFA
+        try {
+            registerInventoryContent(getContentFromConfig(rootPattern + "spawn", true));
+            registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame1")); // sw
+            registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame2")); // bw
+            registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame3")); // cb
+            registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame4")); // fb
+            registerInventoryContent(getContentFromConfig(rootPattern + "MiniGame5")); // KFFA
+        }catch (Exception e){
+            console.send("Error while registering the Minigames!");
+            e.printStackTrace();
+        }
 
     }
 
     //Example: tdrstudios.inventorys.nav.items.spawn.material
     //Root   : tdrstudios.inventorys.nav.items.spawn
-    private static InventoryContent getContentFromConfig(String root) {
+    private static InventoryContent getContentFromConfig(String root) throws InvalidConfigurationException {
 
         if (ConfigUtils.getString(root + ".material") != null) {
             return new InventoryContent(root + ".material",
@@ -137,7 +150,7 @@ public class NavigatorUtils extends InventoryUtilsInterface {
         }
     }
 
-    private static InventoryContent getContentFromConfig(String root, @NotNull boolean enchanted) {
+    private static InventoryContent getContentFromConfig(String root, @NotNull boolean enchanted) throws InvalidConfigurationException {
 
         if (ConfigUtils.getString(root + ".material") != null) {
             InventoryContent inventoryContent = new InventoryContent(root + ".material",
