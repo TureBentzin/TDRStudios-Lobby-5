@@ -3,6 +3,9 @@ package de.tdrstudios.lobbyplugin.commands;
 import de.tdrstudios.lobbyplugin.Chat;
 import de.tdrstudios.lobbyplugin.LobbyPlugin;
 import de.tdrstudios.lobbyplugin.enums.SenderType;
+import de.tdrstudios.lobbyplugin.inventory.actionitem.ActionItem;
+import de.tdrstudios.lobbyplugin.inventory.actionitem.ToggleCommandItem;
+import de.tdrstudios.lobbyplugin.inventory.actionitem.items.GlowItem;
 import de.tdrstudios.lobbyplugin.msgs.LackingPermissionMessage;
 import de.tdrstudios.lobbyplugin.msgs.OnlySenderMessage;
 import de.tdrstudios.lobbyplugin.tabcomplete.Argument;
@@ -10,9 +13,11 @@ import de.tdrstudios.lobbyplugin.utils.SoundUtils;
 import de.tdrstudios.lobbyplugin.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.potion.PotionEffect;
@@ -22,15 +27,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GlowCommand extends SimpleCommand {
-
     public static final boolean AMBIENT = true;
     public static final PotionEffect GLOW_EFFECT = new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, GlowCommand.AMBIENT, false, false);
 
     public static Sound TOGGLE_SOUND = SoundUtils.getToggleSound();
 
+    private GlowItem glowItem;
+
     public GlowCommand(String command, Permission permission) {
         super(LobbyPlugin.getPlugin().getCommand(command), permission, getNullList());
         setArguments(getTabComplete());
+        instance = this;
+        try {
+            glowItem = new GlowItem();
+        } catch (InvalidConfigurationException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -121,7 +133,7 @@ public class GlowCommand extends SimpleCommand {
                                 }
 
                             } else if (args[1].equalsIgnoreCase("off")) {
-                                if (isGlowing(target))
+                                if (!isGlowing(target))
                                     chat.sendFast(sender, Chat.getErrorColor() + ConfigUtils.getString("tdrstudios.commands.glow.msgs.fail.already").replace("%Status%", Chat.getAccentColor() + "off" + Chat.getErrorColor()).replace("%Player%", Chat.getAccentColor() + target.getName() + Chat.getErrorColor()));
                                 else {
                                     setGlow(target, false, sender);
@@ -155,7 +167,7 @@ public class GlowCommand extends SimpleCommand {
     }
 
 
-    private boolean isGlowing(Player player) {
+    public boolean isGlowing(Player player) {
         return player.hasPotionEffect(PotionEffectType.GLOWING);
     }
 
@@ -225,5 +237,10 @@ public class GlowCommand extends SimpleCommand {
             getPlayerChat().send(player, getToggledMessage(true));
         }
         SoundUtils.playSound(player, TOGGLE_SOUND, 2);
+    }
+
+    private static GlowCommand instance;
+    public static GlowCommand getInstance() {
+        return instance;
     }
 }
